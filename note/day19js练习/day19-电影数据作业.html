@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="movies.js"></script>
+    <script>
+        console.log(data);
+        var subjects = data.subjects;
+        console.log(subjects);
+        for( i = 0 ; i < subjects.length; i ++){
+            var moviesItem = subjects[i];
+            var title = moviesItem.title;
+            var genres = moviesItem.genres;
+            var rating = moviesItem.rating.stars;
+
+            casts = '';
+            for(j = 0 ; j<moviesItem.casts.length; j++){
+                casts +='/'+moviesItem.casts[j].name;
+                casts = casts.substr(1);
+            }
+
+            directors='';
+            for(j = 0; j<moviesItem.directors.length; j++){
+                directors+='/'+moviesItem.directors[j].name;
+                directors =directors.substr(1);
+            }
+            var src = '第'+(i+1)+'部,电影名:<<'+title+'>>,类型:'+genres.join('')+',评分'+rating+'主要演员'+casts+',导演'+directors;
+            console.log(src);
+
+        }
+        
+
+
+        
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

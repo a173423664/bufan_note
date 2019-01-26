@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*reset css*/
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			color: #333;
+		}
+	
+		.clr{
+			clear: both;
+		}
+		.header{
+			width: 100%;
+			height: 135px;
+		}
+		.header .header-top{
+			width: 100%;
+			height: 37px;
+			background-color: #2e3139;
+		}
+		.header .header-top .header-top-c{
+			position: relative;
+			width: 1000px;
+			height: 10%;
+			margin: 0 auto;
+		}
+		.header .header-top-c .welcome{
+			font-size: 14px;
+			color: #969696;
+			line-height: 37px;
+		}
+		.header .header-top-c .setting{
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 100%;
+			font-size: 14px;
+			line-height: 37px;
+		}
+		.header .header-top-c .setting a{
+			color: #969696;
+		}
+		.header .header-top-c .setting a:hover{
+			color: #fff;
+		}
+		.header .header-main{
+			width: 100%;
+			height: 98px;
+		}
+		.header .header-main .header-main-c{
+			position: relative;
+			width: 1000px;
+			height: 100%;
+			margin: 0 auto;
+		}
+		.header .header-main-c .logo{
+			display: block;
+			width: 180px;
+			height: 100%;
+			background: url(img/logo.png) no-repeat center;
+		
+			background-size: 180px auto;
+		}
+		.header .header-main-c .nav{
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 100%;
+		}
+		.header .header-main-c .nav li{
+			float: left;
+			height: 100%;
+			margin-left: 24px;
+		}
+		.header .header-main-c .nav li a{
+			display: block;
+			width: 64px;
+			height: 32px;
+			margin-top: 33px;
+			text-align: center;
+		}
+
+		.header .header-main-c .nav li.active a{
+			color: #1669ad;
+			border-bottom: 2px solid #1669ad;
+		}
+		.header .header-main-c .nav li:hover a{
+			color: #1669ad;
+			border-bottom: 2px solid #1669ad;
+		}
+		.banner{
+			width: 100%;
+			height: 400px;
+			background-color: #175587;
+		}
+		.banner .banner-c{
+			position: relative;
+			width: 1000px;
+			height: 100%;
+			margin: 0 auto;
+		}
+		.banner .swiper{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		.banner .swiper li{
+			float: left;
+			width: 1000px;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		.banner .swiper li.banner1{
+			background-image: url(img/banner1.jpg);
+		}
+		.banner .banner-c .dotts{
+			position: absolute;
+			left: 0;
+			bottom: 12px;
+			height: 4px;
+		}
+		.banner .banner-c .dotts li{
+			float: left;
+			width: 24px;
+			height: 100%;
+			margin-right: 6px;
+			background-color: #4280ba;
+		}
+		.banner .banner-c .dotts li.active{
+			background-color: #d1d1d1;
+		}
+		.banner .banner-c .dotts li a{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.banner .banner-c .dotts li:hover{
+			background-color: #d1d1d1;
+		}
+		.container .common-title{
+			position: relative;
+			width: 100%;
+			height: 40px;
+			border-bottom: 1px solid #cfcfcf;
+			overflow: hidden;
+		}
+		.container .common-title .dotts{
+			position: absolute;
+			left: 0;
+			top: 12px;
+			width: 6px;
+			height: 16px;
+			background-color: #11589d;
+			overflow: hidden;
+		}
+		.container .common-title .dotts span{
+			display: block;
+			width: 100%;
+			height: 4px;
+			margin-top: 6px;
+			background-color: #fff;
+		}
+		.container .common-title .cname{
+			font-size: 18px;
+			font-weight: bold;
+			color: #5a5a5a;
+			line-height: 40px;
+			margin-left: 22px;
+		}
+		.container .common-title .ename{
+			font-size: 15px;
+			color: #5a5a5a;
+			line-height: 40px;
+			margin-left: 20px;
+		}
+		.container .common-title .more{
+			position: absolute;
+			right: 0;
+			bottom: 5px;
+			display: block;
+			width: 53px;
+			height: 20px;
+			color: #5a5a5a;
+			text-align: center;
+			line-height: 20px;
+			font-size: 14px;
+			border: 1px solid #cfcfcf;
+			background-color: #eee;
+		}
+		.container .container-c{
+			width: 1000px;
+			margin: 0 auto;
+		}
+		.container .product{
+			padding-top: 27px;
+		}
+		.container .product .imgs{
+			width: 100%;
+			margin-top: 17px;
+		}
+		.container .product .imgs .img-item{
+			float: left;
+			width: 244px;
+			margin-left: 8px;
+		}
+		.container .product .imgs .img-item.margin-left-none{
+			margin-left: 0;
+		}
+		.container .product .imgs .img-item img{
+			
+			border: 5px solid #fff;
+		}
+		.container .product .imgs .img-item p{
+			color: #3a3a3a;
+			font-size: 15px;
+			text-align: center;
+			line-height: 38px;
+		}
+		.container .company{
+			margin-top: 34px;
+		}
+
+		.container .company .imgs2{
+			margin-top: 20px;
+			 width: 100%;	 
+		}
+		.container .company .imgs2 .imgs2-item{
+			width: 100%;
+
+		}
+		.container .company .imgs2 .imgs2-item img{
+			border: 5px solid #fff;
+
+
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="header-top">
+			
+			<div class="header-top-c">
+				<p class="welcome">
+					欢迎莅临河南省巩义市昌隆精化有限公司！
+				</p>
+				<div class="setting">
+					<a href="#">收藏本站</a>
+					|
+					<a href="#">设为首页</a>
+				</div>
+			</div>	
+		</div>
+		<div class="header-main">
+			
+			<div class="header-main-c">
+				<a href="#" class="logo"></a>
+				
+				<ul class="nav">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">公司简介</a></li>
+					<li><a href="#">产品中心</a></li>
+					<li  class="active"><a href="#">新闻动态</a></li>
+					<li><a href="#">诚聘英才</a></li>
+					<li><a href="#">联系我们</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- 头部结束,banner开始====== -->
+	<div class="banner">
+		<div class="banner-c">
+			<!-- 因为明显图片是轮播 所以写成ul>li -->
+			<ul class="swiper">
+				<li class="swiper-slide banner1">
+					
+				</li>
+
+			</ul>
+			<ul class="dotts">
+				<li><a href="#"></a></li>
+				<li class="active"><a href="#"></a></li>
+				
+			</ul>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="container-c">
+		
+			<div class="product">
+				<div class="common-title">
+					<div class="dotts">
+						<span></span>
+					</div>
+					<span class="cname">产品中心</span>
+					<span class="ename">PRODUCTS</span>
+					<a href="#" class="more">more></a>
+				</div>
+				<ul class="imgs">
+					<li class="img-item margin-left-none">
+						<img src="img/p1.jpg" alt="">
+						<p>速溶硅酸钠/粉状硅酸钠</p>
+					</li>
+					<li class="img-item">
+						<img src="img/sbl.gif" alt="">
+						<p>水玻璃</p>
+					</li>
+					<li class="img-item">
+						<img src="img/g.gif" alt="">
+						<p>固体硅酸钠</p>
+					</li>
+					<li class="img-item">
+						<img src="img/grj.gif" alt="">
+						<p>硅溶胶</p>
+					</li>
+					<li class="clr"></li>
+				</ul>
+			</div>
+			<div class="company">
+				<div class="common-title">
+					<div class="dotts">
+						<span></span>
+					</div>
+					<span class="cname">公司简介</span>
+					<span class="ename">COMPONY</span>
+					<a href="#" class="more">more></a>
+				</div>
+				<ul class="imgs2">
+					<li class="imgs2-item">
+						<img src="img/cs-icon.gif" alt="">
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+	<div class="footer">
+		
+	</div>
+	<div class="zx">
+		
+	</div>
+</body>
+</html>

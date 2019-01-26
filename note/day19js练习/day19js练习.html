@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>将一个字符串组输出为分割的形式</title>
+</head>
+<body>
+    <script>
+        function count(arr) {
+            if (arr.length <= 0) {
+                return '';
+            }
+            var s = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                s = s + "|" + arr[i];
+            }
+            return s;
+        }
+        var arr = new Array();
+        arr[0] = "张飞";
+        arr[1] = "刘备";
+        arr[2] = "关羽";
+        alert(count(arr));
+
+    </script>
+    
+</body>
+</html>

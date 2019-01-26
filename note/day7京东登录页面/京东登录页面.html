@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin:0;
+		}
+
+		ul,ol{
+			list-style: none;
+		}
+
+		a{
+			text-decoration: none;
+		}
+
+		.top{
+			width: 300px;
+			height: 50px;
+			margin: 10px 450px;
+			background: url(img/logo-201305-b.png) no-repeat left;
+			background-size:170px;
+			cursor: pointer;
+		}
+
+
+		.top .top-lg{
+			position: absolute;
+			left:630px;
+			top:20px;
+			width: 110px;
+			height: 50px;
+			background: url(img/l-icon.png) no-repeat right;
+				
+		}
+
+		.top .tips-list1{
+			position: absolute;
+			right: 460px;
+			top: 52px;
+			width: 140px;
+			height: 18px;
+			background: url(img/q-icon.png) no-repeat left;
+			font-size: 12px; 
+			text-indent: 2em;
+
+		}
+
+		.top .tips-list1 a{
+			color: #999999;
+		}
+
+		.top .tips-list1:hover a{
+			text-decoration: underline;
+			color: red;
+		}
+
+		.header{
+			height: 38.89px;
+			width: 100%;
+			background-color: #fff8f0;
+			font-size: 12px;
+			text-align: center;
+			line-height: 38.89px
+		}
+		
+		.header .header-a-a{
+			color:#999999;
+			background: url(img/icon-tips.png) no-repeat 555px;
+			background-size: 16px;
+
+		}
+
+		.header .header-a-a a{
+			color:black;
+		}
+
+		.header .header-a-a:hover a{
+			text-decoration: underline;
+
+		}
+
+		.banner{
+			height: 475px;
+			width: 100%;
+			background: #E93854 url(img/banner1.png) no-repeat center;
+			overflow: hidden;
+		}
+
+		.banner .banner-list{
+			width: 341px;
+			height: 430px;
+			background-color: white;
+			margin-top: 10px;
+			margin-left: 1100px;
+		}
+
+		.banner .banner-list .banner-list-list1{
+			width: 100%;
+			height: 40px;
+			background-color: #FFF8F0;
+			font-size: 12px;
+			line-height: 40px;
+			text-align: center;
+			color: #999999;
+			background: url(img/icon-tips.png) no-repeat 15px;
+		}
+
+		.banner .banner-list .banner-list-list2{
+			width: 341px;
+			height: 55px;
+			
+		}
+
+
+		.banner .banner-list .banner-list-list2 a{
+			width: 170px;
+			height: 55px;
+			line-height: 55px;
+			font-size: 18px;
+			display: block;
+			float: left;
+		}
+
+
+		.banner .banner-list .banner-list-list2 .a1{
+			color: red;
+			font-weight: bolder;
+			text-indent: 2em;
+		}
+		.banner .banner-list .banner-list-list2 .a2{
+			color: #666666;
+			text-indent: 3em;
+			border-left: 1px solid #F4F4F4;
+		}
+
+		.banner .banner-list .banner-list-list2 .a2:hover{
+			color: red;
+			font-weight: bolder;
+		}
+
+		.banner .banner-list .wx{
+			position: relative;
+			width: 341px;
+			height: 165px;
+			margin-top:20px;
+			background-color: pink;
+			background: url(img/show.png) no-repeat center;
+		}
+
+		.banner .banner-list .wx .wr{
+			position: absolute;
+			left: 0;
+			top: 10px;
+			display: none;
+		}
+
+
+		.banner .banner-list .wx:hover .wr{
+			display: block;
+		}
+
+		.banner .banner-list .wx .er{
+			position: absolute;
+			left: 190px;
+			display: none;
+		}
+
+		
+		.banner .banner-list .wx:hover .er{
+			display: block;
+		}
+		
+		.banner .banner-list2{
+			width: 341px;
+			background-color: pink;
+			font-size: 12px;
+			color: #666;
+			display: block;
+			line-height: 30px;
+			height: 30px;
+			text-align: center;
+		}
+		
+		.banner .banner-list2 .banner-list-list3{
+			height: 30PX;
+			float: left;
+			text-indent: 100px;
+		}
+
+		.banner .banner-list2 .banner-list-list3 a{
+			color: red;
+		}
+
+		.banner .banner-list2 .banner-list-list4{
+			float: left;
+			margin-left: 14px;
+		}
+
+		.banner .banner-list3{
+			margin:15px auto;
+			width: 266px;
+			height: 65px;
+		}
+
+		.banner .banner-list3 .banner-list-list5{
+			float: left;
+			margin-left: 40px;
+			height: 56px;
+			width: 66px;
+			background: url(img/1234.png) no-repeat left;
+			background-size: 29px;
+			font-size: 12px;
+			color: #666666;
+			line-height: 56px;
+			text-indent:30px;
+		}
+
+		.banner .banner-list3 .banner-list-list6{
+			float: left;
+			height: 56px;
+			width: 66px;
+			background:  url(img/12345.png) no-repeat 10px;
+			background-size: 29px;
+			font-size: 12px;
+			color: #666666;
+			line-height: 56px;
+			text-indent:38px;
+
+		}
+
+		.banner .banner-list3 .banner-list-list7{
+			float: left;
+			height: 56px;
+			width: 76px;
+			background:  url(img/123.png) no-repeat 5px;
+			background-size: 29px;
+			font-size: 12px;
+			color: #666666;
+			line-height: 56px;
+			text-indent: 32px;
+
+		}
+
+		.banner .banner-list4 {
+			margin-top: -15px;
+			margin-left: 30px;
+			height: 40px;
+			width: 310px;
+			background-size: 33px;
+			font-size: 12px;
+			line-height: 40px;
+		}
+
+
+		.banner .banner-list4 .banner-list-list8{
+			float: left;
+			height:40px;
+			width: 60px;
+			background: url(img/123456.png) no-repeat left;
+			text-indent: 20px;
+			cursor: pointer;
+
+		}
+
+		.banner .banner-list4 .banner-list-list9{
+			height:40px;
+			width: 60px;
+			float: left;
+			background: url(img/1234567.png) no-repeat left;
+			text-indent: 20px;
+			cursor: pointer;	
+		}
+
+
+		.banner .banner-list4 .banner-list-list10{
+			margin-left: 85px;
+			height:40px;
+			width: 100px;
+			float: left;
+			background:  url(img/12345678.png) no-repeat 15px;
+			text-indent: 33px;
+			cursor: pointer;
+
+		}
+
+		.banner .banner-list4 .banner-list-list10 a{
+			color:#b61d1d;
+		}
+
+		.banner .banner-list4 .banner-list-list8:hover a{
+			text-decoration: underline;
+
+		}
+
+		.banner .banner-list4 .banner-list-list9:hover a{
+			text-decoration: underline;
+
+		}
+
+		.banner .banner-list4 .banner-list-list10:hover a{
+			text-decoration: underline;
+		}
+
+		.footer{
+			height: 86px;
+			width: 990px;
+			margin: 0 auto;
+		}
+
+		.footer div{
+			float: left;
+			height: 100%;
+			line-height:43px;
+			text-align: center;
+			color: #666666;
+		}
+
+		.footer .footer-list .footer-list-item{
+			float: left;
+			font-size: 12px;
+			height:43px;
+			line-height: 43px;
+			text-align: center;
+			margin-left: 18px;
+			margin-right:18px;
+		}
+		.footer .footer-list .footer-list-item a{
+			color: #666666;
+		}
+
+		.footer .footer-list .footer-list-item:hover a{
+			text-decoration: underline;
+
+		}
+
+		.footer .footer-list2 li{
+			height:43px;
+			font-size: 12px;
+			line-height: 43px;
+			text-align: center;
+			color: #666666;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="top">
+		<div class="top-lg"></div>	
+		<div class="tips-list1">
+		 	<ul class="tips-list2">
+				<li ><a href="#">登陆页面,调查问卷</a></li>
+		 	</ul>
+		</div>
+	</div>
+
+	<div class="header">
+		<ul class="header-a">
+			<li class="header-a-a">依据《网络安全法》，为保障您的账户安全和正常使用，请尽快完成手机号验证！ 新版<a href="">《京东隐私政策》</a>已上线，将更有利于保护您的个人隐私。</li>
+		</ul>
+		
+	</div>
+
+	<div class="banner">
+		<div class="banner-list">
+			<ul>
+				<li class="banner-list-list1">京东不会以任何理由要求您转账汇款，谨防诈骗。</li>
+				<li class="banner-list-list2">
+					<a class="a1" href="">扫码登录</a>
+					<a class="a2" href="">账户登录</a>
+				</li>
+			</ul>
+			<div class="wx">
+				<img  class="wr" src="img/show.png" alt="">
+				<img class="er" src="img/phone-orange.png" alt="">
+			</div>
+			<ul class="banner-list2">
+				<li class="banner-list-list3">打开<a class="" href="">手机京东</a></li>
+				<li class="banner-list-list4">扫描二维码</li>
+			</ul>
+			<ul class="banner-list3">
+				<li class="banner-list-list5">免输入</li>
+				<li class="banner-list-list6">更快</li>
+				<li class="banner-list-list7">更安全</li>
+			</ul>
+
+			<ul class="banner-list4">
+				<li class="banner-list-list8"><a href="">QQ</a></li>
+				<li class="banner-list-list9"><a href="">微信</a></li>
+				<li class="banner-list-list10"><a href="">立即注册</a></li>
+			</ul>
+		</div>	
+	</div>
+	<div class="footer">
+		<ul class="footer-list">
+			<li class="footer-list-item"><a href="">关于我们</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">联系我们</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">人才招聘</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">商家入驻</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">广告服务</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">手机京东</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">友情链接</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">销售联盟</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">京东社区</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">京东公益</a></li>
+			<div>|</div>
+			<li class="footer-list-item"><a href="">English Site</a></li>
+		</ul>
+		<ul class="footer-list2">
+			<li>Copyright © 2004-2019  京东JD.com 版权所有</li>
+		</ul>
+	</div>
+</body>
+</html>

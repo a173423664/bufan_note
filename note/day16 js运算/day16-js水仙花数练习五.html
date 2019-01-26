@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>水仙花数</title>
+	<script>
+// 水仙花数是一种特殊的三位数，它的特点就是，每个数位的立方和，等于它本身。
+// 比如153就是水仙花数。因为：
+// 13+53+33 = 153
+// 100~999之内，只有4个水仙花数，请找出来。
+
+// 我们首先要把每一位数都取出来，然后通过验证等式是否成立来找出水仙花数
+// 153为例个位 153%10 =3,   153%100/10 取整数为5   153/100取整数为1.
+	while (true){
+    // 先默认while值为true;
+          var num=Number(prompt('请输入一个三位数'));
+           if(num<1000&num>=100){
+             var a=num%10;                  //个位数
+              var b=parseInt(num%100/10);    //十位数
+              var c=parseInt(num/100);       //百位数
+              }else {
+               alert('输入错误；');
+               continue;
+           }
+            if(num==a*a*a+b*b*b+c*c*c){
+                 alert(num+"是水仙花数");
+                 break;
+           }else {
+                 alert(num+"不是是水仙花数");
+                break;
+           }
+        }
+        // 输出水仙花数数量
+          document.write('水仙花数有：')
+          for(var num=100;num<1000;num++){
+             var a=num%10;                  //个位数 
+             var b=parseInt(num%100/10);    //十位数
+             var c=parseInt(num/100);       //百位数
+            if(num==a*a*a+b*b*b+c*c*c){
+                document.write(num+',')
+           }
+        }
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

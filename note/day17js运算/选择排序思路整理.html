@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+			/*选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。*/ 
+		var arr = [33,22,11,27,17];
+		// 选择排序是拿一位数依次与其他数进行比较
+		// 长度为5,只会发生4次比较.j只会等于3但小于4时停止.
+		
+		for(var j = 0; j<arr.length-1 ;j++){
+
+			// j赋值给minIndex为默认最小下标
+
+			var minIndex = j;
+			// 如果不等于j+1 那么第一位数字将自比一次 浪费次数!!
+			// 同样i也会发生4次比较
+			
+			for(var i = j + 1 ; i < arr.length; i++ ){
+				if (arr[minIndex]>arr[i]) {
+					minIndex = i ;
+				}	
+		}
+		if (minIndex != j){
+			var temp = arr[j];
+			arr[j] = arr[minIndex];
+			arr[minIndex] = temp;
+		}
+		console.log('最小下标值:'+minIndex);
+		console.log(arr);
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

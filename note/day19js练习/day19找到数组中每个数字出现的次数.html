@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 找到数组中每个字母出现的次数["c","a","z","a","a"]   js没有map
+        var str = ["c","a","z","a","a"] ;
+        // 1先将数组转成字符串
+        var str2 =str.join('');
+        // 2设置一个空对象
+        var obj ={};
+
+        for(var i=0;i<str2.length;i++){
+            // 3.先把 str2字符串的每个值赋值给变量str3,变量str3 c a z a a
+            var str3=str2[i];
+            // 所谓遍历，是指沿着某条搜索路线，依次对树中每个结点均做一次且仅做一次访问。
+            if(obj[str3]){
+                // 如果出现则obj的值加1
+            obj[str3]++;
+            // 如果没有出现则将他赋值为1
+            }else{obj[str3]=1;
+        }
+    }
+        for(var d in obj){
+        alert(a+'出现的次数为'+obj[a]);
+    }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
