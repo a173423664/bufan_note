@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>切换图片练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width:500px;
+            height: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: yellow;
+            text-align: center;
+            position: relative;
+            top: 0;
+            left: 0;
+        } 
+        #up{
+        	position: absolute;
+        	top: 40%;
+        	left: 0;
+   
+        }
+        #next{
+        	position: absolute;
+        	top: 40%;
+        	right: 0;
+        }
+    </style> 
+        <script>
+        	// onload事件在整个页面加载完成之后才出发.为window绑定一个onload事件.
+        	// 1.该事件对应的响应函数会在页面加载完毕之后执行.
+  			// 2.这样可以确保我们代码执行时,所有DOM对象已经加载完毕
+            window.onload =function(){
+            	// 获取两个按钮
+                var up =document.getElementById("up");
+                var next =document.getElementById("next");
+                var img = document.getElementsByTagName("img")[0];
+                // imgArr.length= 5;
+                var imgArr = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"];
+                // 创建一个变量 保存当前显示照片索引
+                var index = 0 ;
+                // 获取img标签
+               
+                // 给两个按钮绑定单击响应函数
+
+                up.onclick =function(){
+                    index--;
+                    if(index<0){
+                    // 当index<0 返回最后一张图片
+                        index =imgArr.length-1;
+                    }
+                    // 修改元素属性方法  元素.属性 = 属性值
+                    img.src=imgArr[index];
+                   
+                }
+
+                next.onclick =function(){
+                	// 下一张index自增,反之自减
+                    index++;
+                    if(index>imgArr.length-1){
+                    // 当index大于下标最后一张图 则返回第一张图片
+                        index=0;
+                    }
+                    img.src=imgArr[index];
+                    var info = document.getElementById('info');
+                info.innerHTML = "一共"+imgArr.length+"张图片,当前"+(index+1)+"张";
+                }
+        
+            }
+        </script>
+</head>
+<body>
+    <div id="div1">
+        <p id="info"></p>
+        <img src="img/1.jpg" alt="">
+        <button id="up">上一张</button>
+        <button id="next">下一张</button>
+
+    </div>
+    
+</body>
+</html>
