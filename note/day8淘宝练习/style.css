@@ -26,12 +26,15 @@ a{
 	position: relative;
 }
 
+.main .hf .hf-a,.main .lx .lx-a,.main .cx .cx-a,.main .yx .yx-a,.main .cp .cp-a,.main .dy .dy-a,.main .jd .jd-a,.main .lc .lc-a,.main .zfw .zfw-a,.main .yc .yc-a
+
 .main .hf .hf-a{
 	display: block;
 	width: 64px;
 	height: 70px;
 	margin:3.5px auto;
-	overflow: hidden;
+	/* overflow: hidden; */
+	/* background-color: yellow; */
 }
 .main .hf .hf-a .hf-span{
 	display: block;
@@ -210,7 +213,7 @@ a{
 	margin: 3.5px auto;
 }
 
-.main .sdm .sdm-a{
+.main .sdm .sdm-a .sdm-span{
 	display: block;
 	width: 24px;
 	height: 24px;
@@ -236,6 +239,9 @@ a{
 	background: url(img/tb-icon.png) no-repeat 0 -483px;
 
 }
+
+
+
 
 .main a{
 	color: #333;

@@ -554,16 +554,18 @@ a{
 	width: 100%;
 	height: 230px;
 	padding-top: 90px;
+	background-color: yellow;
 
 }
 .container-c  .wrapper .wrapper-list{
 	width: 100%;
 	height: 230px;
+	background-color: blue;
 }
 .container-c .wrapper-list .wrapper-item{
 	color: #fff;
 	text-align: center;
-	background: url(img/wrapper-a.jpg) no-repeat center;
+	background:   yellow url(img/wrapper-a.jpg) no-repeat center;
 	float: left;
 	width: 170px;
 	height: 230px;
