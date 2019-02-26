@@ -1,0 +1,544 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+ol,ul{
+    list-style: none;
+}
+/* 头部 */
+.header{
+    width: 100%;
+    height: 40px;
+    background-color: #333333;
+}
+/* 头部版心 */
+.header-c{
+    height: 100%;
+    width: 1226px;
+    margin: 0 auto;
+    /* background-color: #e3e3e3; */
+    position: relative;
+}
+/* 头部导航 */
+.header-c .header-nav{
+    height: 100%;
+}
+.header-c .top-nav-list{
+    float: left;
+    font-size: 12px;
+    line-height: 40px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.header-c .header-nav .top-nav-list a{
+    color: #b0b0b0;
+    
+}
+/* 导航之间竖线 */
+.header-c span{
+    float: left;
+    font-size:12px;
+    line-height:40px;
+    color: #676767;
+    margin-right: 3px;
+    margin-left: 3px;
+}
+/* 头部导航hover效果 */
+.header-c .header-nav .top-nav-list a:hover,
+.header-c  .header-loginbar .top-nav-list a:hover{
+    color: #fff;
+}
+
+/* 头部注册登录条部分 */
+.header-c  .header-loginbar{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    /* background-color: yellow; */
+}
+
+/* 购物车 */
+.header-c  .header-loginbar .top-nav-list.che{
+    width: 120px;
+    height: 40px;
+    background-color: #424242;
+}
+
+.header-c  .header-loginbar .top-nav-list.che a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.header-c  .header-loginbar .top-nav-list.che a:hover{
+    font-weight: bold;
+    color: orange;
+    background-color: #fff;
+}
+
+
+    
+.header-c  .header-loginbar .top-nav-list a{
+    color: #b0b0b0;
+    display: block;
+    /* 只有转成块元素才能对a标签进行居中操作 */
+    text-align: center;
+}
+.header-c .cart-menu{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    height: 100px;
+    width: 316px;
+    text-align: center;
+    line-height: 100px;
+    font-size: 10px;
+    color: #000;
+    z-index: 199;
+    background-color: #fff;
+    border-right:1px solid #c3c3c3;
+    border-left:1px solid #c3c3c3;
+}
+.header-c .cart-menu:hover a{
+    font-weight: bold;
+    color: orange;
+    background-color: #fff;
+}
+.header-c .cart-menu.active{
+    display: block;
+}
+.header-c .cart-menu:hover{
+    display: block;
+}
+
+
+
+/* 主体部分 */
+.container{
+    position: relative;
+    height: 100px;
+    width: 100%;
+}
+/* 主体版心 */
+.container .container-c{
+    width: 1226px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+/* 主体logo部分 */
+.container-c .c-logo{
+    float: left;
+    height: 100%;
+}
+
+.container-c .c-logo .logo-1,
+.container-c .c-logo .logo-2{
+    float: left;
+    height: 100%;
+}
+
+.container-c .c-logo .logo-1{
+    width: 56px;
+    background: url(img/logo1.png) no-repeat center; 
+}
+/* 转成块元素只能在一行内显示 */
+.container-c .c-logo .logo-2{
+    width: 163px;
+    background: url(img/logo2.png) no-repeat  center; 
+}
+/* 主体导航部分 */
+.container-c .container-nav{
+    float: left;
+    height: 100%;
+}
+.container-c .container-nav .container-nav-list{
+    float: left;
+    height: 100%;
+}
+
+.container-c .container-nav .container-nav-list a{
+    display: block;
+    height: 100%;
+    line-height: 100px;
+    /* margin: 0 12px; */
+    /* 这里用padding写不会有空格 */
+    padding: 0 10px;
+    color: #333;
+}
+
+/* 导航hover效果 */
+.container-c .container-nav .container-nav-list a:hover{
+    color: orange;
+}
+
+/* 导航栏下的隐藏子菜单栏 */
+ .nav-item-sub-list{
+    display: none;
+    width: 100%;
+    height: 220px;
+    position: absolute;
+    top:100px;
+    left: 0;
+    background-color: #fff;
+    z-index: 200;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+/* 激活样式 */
+/* 两种状态都可以显示内容  */
+.nav-item-sub-list.active{
+    display: block;
+}
+.nav-item-sub-list:hover{
+    display: block;
+}
+
+.nav-item-sub-list .nav-data-list{
+    width: 1226px;
+    height: 100%;
+    margin: 0 auto;
+    /* background-color: yellow; */
+}
+.nav-item-sub-list .nav-data-list .pro-item{
+    float: left;
+    /* 宽度等于六分之一 */
+	width: 204px;
+	height: 100%;
+    text-align: center;
+    /* background-color: yellow; */
+}
+.nav-item-sub-list .nav-data-list .pro-item .new{
+     /* span是行内元素 须转化成块元素 */
+     display: block;
+     width: 72px;
+     height: 20px;
+     border: 1px solid #ff6700;
+     font-size: 14px;
+     color: #ff6700;
+     line-height: 20px;
+     text-align: center;
+     margin: 0 auto;
+     background-color: #fff;
+}
+/* 当new被激活时 不显示 */
+.nav-item-sub-list .nav-data-list .pro-item .new.active{
+    border: none
+}
+
+.nav-item-sub-list .nav-data-list .pro-item .img-link{
+    display: block;
+	width: 203px;
+	height: 110px;
+	border-right: 1px solid gray;
+	/*针对文字 行内元素 行内块 左右居中*/
+    /* text-align: center; */
+    /* 向上下为8个像素 */
+    margin: 8px auto;
+}
+.nav-item-sub-list .nav-data-list .pro-item .img-link .img{
+    height:100%;
+}
+.nav-item-sub-list .nav-data-list .pro-item .name,
+.nav-item-sub-list .nav-data-list .pro-item .price{
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+}
+.nav-item-sub-list .nav-data-list .pro-item .price{
+    color: #ff6700;
+}
+
+
+/* 搜索框 */
+.container-c .search-block{
+    position: absolute;
+    right: 0;
+    top:50%;
+    margin-top: -25px;
+    width: 295px;
+    height: 50px;
+    border: 1px solid #C3C3C3;
+    z-index: 100;
+}
+
+/* 激活样式 */
+/* 这里注意激活样式 只给边框换颜色!!! */
+.container-c .search-block.active{
+    border-color: orange;
+}
+
+.container-c .search-block.active .tips{
+    display: none;
+}
+
+.container-c .search-block.active .search-btn{
+    border-left-color:orange;
+}
+
+.container-c .search-block.active .pro-list{
+    display: block;
+}
+
+/* .container-c .search-block.actives{
+    border-color: gray;
+
+}
+.container-c .search-block.actives .search-btn.actives{
+    border-left-color:gray;
+} */
+
+
+/* 焦点框 */
+.container-c .search-block .search-input{
+    float: left;
+    width: 245px;
+    height: 50px;
+    border: none;
+    /* 去除焦点边框 */
+    outline: none;
+    text-indent: 2em;
+}
+/* 放大镜按键 */
+.container-c .search-block .search-btn{
+    float: left;
+    width: 49px;
+    height: 50px;
+    border-left:1px solid #C3C3C3; 
+    background: url(img/fdj.png) no-repeat center;
+
+}
+/* 搜索框hover效果 */
+/* 这个怎么解决?????? */
+/* .container-c .search-block:hover{
+    border: 1px solid #7F7F7F;
+} */
+.container-c .search-block .search-btn:hover{
+    background: orange url(img/fdj2.png) no-repeat center;
+}
+.container-c .search-block .tips a:hover{
+    color: #fff;
+    background-color: orange;
+}
+/* 提示文字定位 */
+.container-c .search-block .tips{
+    position: absolute;
+    top: 18px;
+    right: 60px;
+
+}
+/* 提示文字 */
+.container-c .search-block .tips a{
+    float: left;
+    height: 14px;
+    /* display: block; */
+    color: #757575;
+    font-size: 12px;
+    margin-left: 14px;
+    background-color: #EEEEEE;
+    line-height: 14px;
+    padding: 2px;
+}
+/* 搜索栏下产品信息 */
+.container-c .pro-list{
+    display: none;
+    position: absolute;
+    left: -1px;
+    top:50px;
+    width: 245px;
+    border: 1px solid #FF7F27;
+    z-index: 99;
+    background-color: #fff;
+}
+
+.container-c .pro-list li a{
+    display: block;
+    height: 30px;
+    color: #615F5F; 
+    font-size: 12px;
+    line-height: 30px;
+    
+}
+.container-c .pro-list li .p-name{
+
+    padding-left: 1em;
+}
+.container-c .pro-list li .p-stock{
+    color: #B6B0B6;
+    position: absolute;
+    right: 25px;
+    
+}
+
+.container-c .pro-list li a:hover{
+    background-color: #EBE5E5;
+}
+
+
+/* 广告栏部分 */
+.banner{
+   height: 460px;
+   width: 100%;
+   background-color: white;
+
+}
+/* 广告版心 */
+.banner-c{
+    height: 100%;
+    width: 1226px;
+    background-color: pink;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+/* 幻灯片 */
+.banner-c .banner-swiper{
+   height: 100%;
+   width: 600%;
+   position: absolute;
+   /* overflow: hidden; */
+
+}
+.banner-c .banner-swiper li{
+   float: left;
+}
+/* 侧边导航栏 */
+.banner-c  .aside-list{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 234px;
+    height: 440px;
+    background-color: rgba(0,0,0,0.5);
+    /* 注意这里写padding-top更好 */
+    padding-top: 20px; 
+    z-index: 100;
+}  
+
+/* 侧边导航栏 子栏 */
+.banner-c .aside-list li{
+   height: 42px;
+   width: 100%;
+   background : url(img/j2.png) no-repeat;
+   background-position: 200px center;
+   background-size: 12px;
+}
+
+.banner-c .aside-list li a{
+   display: block;
+   height: 100%;
+   width: 100%;
+   color: #fff;
+   font-size: 14px;
+   line-height: 42px; 
+   text-indent: 2em; 
+}
+
+.banner-c .aside-list li a:hover{
+background-color: rgba(255,103,0,.9);
+}
+
+
+/* .banner-c .aside-msg{
+    position: absolute;
+    top: 0;
+    left:234px;
+    width: 992px;
+    height: 460px;
+    background-color: pink;
+    z-index: 123;
+}
+
+.aside-msg .aside-msg-sub-list .aside-item{
+    height: 57.5px;
+    width: 100%;
+}
+
+.aside-msg .aside-msg-sub-list .aside-item .imgs-link{
+    display: block;
+    height: 57.5px;
+    width: 248px;
+}
+
+.aside-msg .aside-msg-sub-list .aside-item .imgs-link imgs{
+    height: 100;
+}
+.aside-msg .aside-msg-sub-list .aside-item .cname{
+    font-size: 14px;
+    line-height: 40px;
+} */
+
+
+
+
+
+/* 左右轮播箭头 */
+.banner-c .arr{
+    position: absolute;
+    left: 234px;
+    top:50%;
+    margin-top:-35px;
+    display: block;
+    width: 40px; 
+    height:70px;
+    line-height: 70px;
+    font-size: 28px;
+    text-align: center;
+    color: #C3C3C3;
+}
+
+.banner-c .arr.arr-right{
+   right:0;
+   left:auto;
+}
+
+.banner-c .arr:hover{
+    background-color: rgba(0,0,0,0.6);
+    color:  #fff;
+}
+
+/* 轮播小点点 */
+.banner-c .dotts{
+   position: absolute;
+   right: 60px;
+   bottom: 30px;
+}
+
+.banner-c .dotts li{
+   float: left;
+    width: 6px;
+    height: 6px;
+	border: 2px solid #fff;
+	background-color: #e5e5e5;
+	/*css3属性 圆角*/
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.banner-c .dotts li a{
+   display: block;
+   /* border: 2px solid rgba(255,255,255,0.3); */
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+}
+
+.banner-c .dotts li a:hover{
+    background-color: #c3c3c3;
+}
+.banner-c .dotts li.active{
+    border-color: orange;
+}
+
+
+
+
+.banner-c .dotts li.active>a{
+    background-color: #333;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{margin:0; padding:0;}
+#run{width:2000px; height:2000px; background:#06c; position:absolute; border:1px solid #000; opacity:0.3; filter:alpha(opacity=30);}
+</style>
+<script>
+window.onload = function(){
+  var run = document.getElementById("run");
+  var btn = document.getElementById("btn");
+  var speed = 1;
+  var timer = null;
+  var alpha=17;
+  run.onmouseover = function(){
+    startrun(100);
+  }
+  run.onmouseout = function(){
+    startrun(30);
+  }
+  function startrun(target){
+    clearInterval(timer);
+    timer = setInterval(function(){
+      if(target > alpha){
+        speed = 2;
+      }else{
+        speed = -2;
+      }
+      
+      if(alpha == target){
+        clearInterval(timer);
+      }
+      else{
+        alpha = alpha + speed;
+        run.style.filter = 'alpha(opacity='+alpha+')';
+        run.style.opacity = alpha/100;
+        document.title = alpha;
+      }
+    },17)
+  }
+}
+
+</script>
+</head>
+
+<body>
+<div id="run"></div>
+</body>
+</html>

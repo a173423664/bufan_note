@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图练习</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+
+<body>
+    <div class="header">
+        <!-- 头部版心 -->
+        <div class="header-c">
+            <!-- 头部导航栏 -->
+            <ul class="header-nav">
+                <li class="top-nav-list"><a href="#">小米商城</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">MIUI</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">loT</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">云服务</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">金融</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">产品</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">小爱开放空间</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">政企服务</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">资质证照</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">协议规则</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">下载app</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">Select Region</a></li>
+            </ul>
+            <!-- 头部登录条 -->
+            <ul class="header-loginbar">
+                <li class="top-nav-list"><a href="#">登录</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">注册</a></li>
+                <span>|</span>
+                <li class="top-nav-list"><a href="#">消息通知</a></li>
+                <!-- 购物车 -->
+                <li id="car" class="top-nav-list che">
+                    <a href="#">购物车(0)</a>
+                </li>
+            </ul>
+            <!-- 隐藏购物车信息 -->
+            <p class="cart-menu"> 购物车中还没有商品，赶紧选购吧！</p>
+          
+        </div>
+    </div>
+    <!-- 主体部分 -->
+    <div class="container">
+         <!-- 导航栏下的子菜单栏 -->
+         <div class="nav-item-sub-list">
+                <ul class="nav-data-list">
+                    <!-- li自动生成 -->
+                </ul>
+            </div>
+        <!-- 版心 -->
+        <div class="container-c">
+            <!-- 主体logo -->
+            <div class="c-logo">
+                <a href="#" class="logo-1"></a>
+                <a href="#" class="logo-2"></a>
+            </div>
+            <!-- 主体导航 -->
+            <ul class="container-nav">
+                <li id="li_1" class="container-nav-list"><a href="#">小米手机</a></li>
+                <li id="li_2" class="container-nav-list"><a href="#">红米</a></li>
+                <li id="li_3" class="container-nav-list"><a href="#">电视</a></li>
+                <li id="li_4" class="container-nav-list"><a href="#">笔记本</a></li>
+                <li id="li_5" class="container-nav-list"><a href="#">家电</a></li>
+                <li id="li_6" class="container-nav-list"><a href="#">新品</a></li>
+                <li id="li_7" class="container-nav-list"><a href="#">路由器</a></li>
+                <li id="li_8" class="container-nav-list"><a href="#">智能硬件</a></li>
+                <li id="li_9" class="container-nav-list"><a href="#">服务</a></li>
+                <li id="li_10" class="container-nav-list"><a href="#">社区</a></li>
+            </ul>
+            <!-- 主体搜索框 -->
+            <div class="search-block">
+                    <input type="text" class="search-input">
+                    <a href="#" class="search-btn"></a>
+                <!-- 默认搜索框信息 -->
+                <div class="tips">
+                    <a href="#" class="tip-item">小米8</a>
+                    <a href="#" class="tip-item">小米MIX 2S</a>
+                </div>
+                <!-- 隐藏产品信息 -->
+                <ul class="pro-list">
+                        <li><a href="#"><span class="p-name">小米6x</span><span class="p-stock">约有1件</span></a></li>
+                        <li><a href="#"><span class="p-name">小米mix 2S</span><span class="p-stock">约有5件</span></a></li>
+                        <li><a href="#"><span class="p-name">黑鲨游戏机手机</span><span class="p-stock">约有1件</span></a></li>
+                        <li><a href="#"><span class="p-name">红米Note 5</span><span class="p-stock">约有15件</a></li>
+                        <li><a href="#"><span class="p-name">红米5A</span><span class="p-stock">约有5件</span></a></li>
+                        <li><a href="#"><span class="p-name">小米电视4C</span><span class="p-stock">约有5件</span></a></li>
+                        <li><a href="#"><span class="p-name">电视32英寸</span><span class="p-stock">约有3件</span></a></li>
+                        <li><a href="#"><span class="p-name">笔记本pro</span><span class="p-stock">约有15件</span></a></li>
+                        <li><a href="#"><span class="p-name">空气净化器</span><span class="p-stock">约有11件</span></a></li>
+                        <li><a href="#"><span class="p-name">净水器</span><span class="p-stock">约有8件</span></a></li>              
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 广告部分 -->
+    <div class="banner">
+        <div class="banner-c">
+            <div class="aside-msg">
+                <ul class="aside-msg-sub-list">
+                    <!-- li自动生成 -->
+
+                </ul>
+            </div>
+            <!-- 侧边栏 -->
+            <ul class="aside-list">
+                <li id="li-1"><a href="#">手机电话卡</a></li>
+                <li id="li-2"><a href="#">电视盒子</a></li>
+                <li id="li-3"><a href="#">笔记本 平板</a></li>
+                <li id="li-4"><a href="#">家电 插线板</a></li>
+                <li id="li-5"><a href="#">出行 穿戴></a></li>
+                <li id="li-6"><a href="#">智能 路由器</a></a></li>
+                <li id="li-7"><a href="#">电源 配件</a></li>
+                <li id="li-8"><a href="#">健康 儿童</a></li>
+                <li id="li-9"><a href="#">耳机 音箱</a></li>
+                <li id="li-10"><a href="#">生活 箱包</a></li>
+            </ul>
+            <!-- 幻灯片 -->
+            <ul class="banner-swiper">
+            </ul>
+            <a class="arr arr-left"  onclick="goNext(false);" href="#">&lt;</a>
+            <a class="arr arr-right" onclick="goNext(true);" href="#">&gt;</a>
+            <ul class="dotts">
+                <!-- <li ><a href="javascript:;"></a></li>
+                <li><a href="javascript:;"></a></li>
+                <li><a href="javascript:;"></a></li>
+                <li><a href="javascript:;"></a></li>
+                <li><a href="javascript:;"></a></li> -->
+            </ul>
+
+        </div>
+
+    </div> 
+    <script src="js/aside-data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/mi_data.js"></script>
+    <script>
+        var imgs = ['m1.jpg','m2.jpg','m3.jpg','m4.jpg','m5.jpg','m1.jpg'];
+        var searchBlock = document.getElementsByClassName('search-block')[0]; 
+        var searchInput = document.getElementsByClassName('search-input')[0]; 
+        // 获取搜索框按钮
+        var searchBtn =document.getElementsByClassName('search-btn')[0];
+        // 这里不加0 获取所有li标签
+        var containerNavL = document.getElementsByClassName('container-nav-list');
+        var navItemSubList = document.getElementsByClassName('nav-item-sub-list')[0];
+        // 生成当前hover对象  数据
+        var navDataList = document.getElementsByClassName('nav-data-list')[0];
+
+        // 获取左右箭头
+        var allR = document.getElementsByClassName('all-right')[0];
+        var allL = document.getElementsByClassName('all-left')[0];
+
+        // 获取小点点
+        var dotts = document.getElementsByClassName('dotts')[0];
+        var dottEl =[];
+        // 广告
+        var bannerC = document.getElementsByClassName('banner-c')[0];
+
+        // 获取幻灯片
+        var el = document.getElementsByClassName('banner-swiper')[0];
+        var lis = [];
+        // 获取购物车按钮
+        var car = document.getElementById('car');
+        var cartMenu = document.getElementsByClassName('cart-menu')[0];
+
+        // 获取侧边栏所有li标签
+        var asideLis = document.getElementsByClassName('aside-list');
+
+        // 计数器
+        var count = 0;
+        // 清除定时器
+        var timer = null;
+        // 图片宽度
+        // var imgW = lis[0].offsetWidth;
+        var imgW = 1226;
+        // 自动播放
+        autoPlay();
+        // 动态生成 初始化幻灯片 和小点点
+        initDottHtml();
+        initSwiperHtml();
+
+        // 初始化幻灯片页面
+        function initSwiperHtml(){
+        var str = '';
+        for(var i =0 ; i < imgs.length; i++){
+            str += '<li class="swiper-slide"><img src="img/'+imgs[i]+'" alt =""></li>';
+        }
+        // 重新赋值
+        el.innerHTML = str;
+        // 插入lis
+        lis = myChildren(el);
+    }
+        // 初始化小点点页面
+        function initDottHtml(){
+            str = ''
+            for(var i= 0 ; i <imgs.length-1; i++){
+                // 默认第一张小点点开启 判断第一张加active 三元表达式重要!!
+                var classStr = i==0?' class="active"':'';
+                str += '<li'+classStr+'><a href="javascript:;"></a></li>';
+            }
+            // 重新赋值
+            dotts.innerHTML = str;
+            // 插入目标
+            dottEl = myChildren(dotts);
+            // 初始化小点点点击事件
+            initDottEvent();
+            function initDottEvent(){
+                for(var i = 0 ; i < dottEl.length ; i++){
+                    // 保存下标 保存在index属性中
+                    dottEl[i].index = i;
+                    dottEl[i].onclick = function(){
+                        count = this.index;
+                        var target = -1*count*imgW;
+                        animate(el,target);
+                        changeDott(count);
+                    }
+                }
+            }
+        }
+
+        // 当焦点框获取焦点时
+        searchInput.onfocus = function(){
+            addClassName(searchBlock,'active');
+        }
+        // 失去焦点时
+        searchInput.onblur = function(){
+            removeClassName(searchBlock,'active');
+        }
+        // 当鼠标移动到主导航栏事件
+            for(var i = 0; i <containerNavL.length; i++){
+                containerNavL[i].onmouseenter= function(){
+                    // 找到li标签的下标
+                    var  index = this.id.split('_')[1]-1;
+                    // 当数据对象长度 大于li下标时 获取数据
+                    // 比如长度3 则可以获取下标 0 1 2的数据
+                    if(miData.length>index){
+                    // 获取当前数据
+                    var currentData = miData[index];
+                    // 新建一个页面 (封装函数思想)
+                    buildHtml(currentData,navDataList);
+                }else{
+                    console.log('no-data');
+                }
+                addClassName(navItemSubList,'active');
+
+             }
+             containerNavL[i].onmouseleave = function(){
+                removeClassName(navItemSubList,'active');
+             }
+        }
+        
+        // searchBlock.onmouseenter = function(){
+        //     addClassName(searchBlock,'actives');
+        //     addClassName(searchBtn,'actives');
+        // }
+        // searchBlock.onmouseleave=function(){
+        //     removeClassName(searchBlock,'actives');
+        //     removeClassName(searchBtn,'actives');
+        // }
+
+        // 购物车事件
+        car.onmouseenter =function(){
+            addClassName(cartMenu,'active');
+        }
+        car.onmouseleave=function(){
+            removeClassName(cartMenu,'active');
+        }
+
+        // 当鼠标移动到侧导航栏时
+        for (var i = 0; i <asideLis.length; i++){
+            asideLis[i].onmouseenter =function(){
+                // 找到li下标
+                var index = this.id.split('-')[1]-1;
+                // 判断数据长度与li下标大小;
+                if(asideData.length > index){
+                    // 获取当前数据
+                    var currentData = asideData[index];
+                    buildAsideHtml(currentData,);
+                }
+            }
+        }
+
+        // 两个箭头点击切换幻灯片
+        // 封装一个goNext方法
+        // isRight 是否是右边的箭头
+        function goNext(isRight){
+            if(isRight){
+                count++;
+                if(count == lis.length){
+                    // 重置count 同时图片闪到第一张
+                    count =1;
+                    el.style.left = 0;
+                }
+            }else{
+                count --;
+                if(count < 0 ){
+                    // 重置count 同时图片返回第二张
+                    count = lis.length - 2;
+                    el.style.left = -1*lis.length-1*imgW+'px';
+                }
+            }
+            // 目标移动位置
+            var target = -1* count * imgW;
+                animate(el,target);
+                // 同时记得修改小点点下标
+                changeDott(count);  
+    } 
+
+        // 当鼠标移入幻灯片时
+    bannerC.onmouseenter = function(){
+        // 停止计时器
+        clearInterval(timer);
+        console.log('停止定时器...')
+    }
+    // 当鼠标离开幻灯片 重新开始
+    bannerC.onmouseleave = function(){
+        autoPlay();
+        console.log('重新开启定时器...')
+    }
+
+    // 自动播放功能
+    function autoPlay(){
+			timer = setInterval(function(){
+				count ++ ;
+				if(count == lis.length){
+					//重置count
+					count = 1 ;
+					//瞬间定位到初始位置
+					el.style.left = 0;
+					// animate(el,0);
+				}
+				// 每一张图片怎么运动
+				var target = -1* count * imgW;
+                animate(el,target);
+                console.log('移动距离==>'+target);
+                changeDott(count);
+                console.log('步数==>'+count);
+		
+			},2000)
+        }
+
+        
+
+        // 封装一个函数用来创建主导航下的子栏目接收数据 
+        // 参数:data获取的数据 targetEl插入的目标
+        function buildHtml(data,targetEl){
+            // 空字符串用来接收数据
+           var str = '';
+           for(var i = 0 ; i <data.length ; i++){
+            //    先判断有没有new这个属性 三元表达式 判断常用
+               var newHtml = data[i].new?('<span class="new">新品</span>'):'<span class="new active"></span>';
+                
+               str +=  '<li class="pro-item">'+newHtml+'<a href="#" class="img-link">'
+                +'<img class="img" src="'+data[i].img+'"/></a>'
+                +'<p class="name">'+data[i].name+'</p><p class="price">'+data[i].price+'</p></li>';
+           }
+        // 插入当前对象
+        // 注意innerHTML 后四位全是大写!!!!!!!!!!
+            targetEl.innerHTML = str;
+        }
+
+        // 改变dotts的样式
+        function changeDott(count){
+			//重置count 
+			if(count == (lis.length-1)){
+				count = 0;
+			}
+			//排他思想
+			// 1.先去掉同行的active样式
+			for(var i= 0 ; i < dottEl.length ;i ++ ){
+				removeClassName(dottEl[i],'active');
+			}
+			// 2.给自己添加样式
+			addClassName(dottEl[count],'active');
+		}
+   
+    
+    </script>
+
+</body>
+</html>

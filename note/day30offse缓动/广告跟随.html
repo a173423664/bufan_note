@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .box1{
+            position: absolute;
+			top: 200px;
+            left: 400px;
+            height: 1200px;
+            width: 400px;
+            /* border: 1px solid yellow; */
+        }
+
+        .box1 img{
+            display: block;
+            width: 1200px;
+            height: 400px;
+        }
+        .content{
+            width: 100%;
+            height: 800px;
+            background-color: pink;
+            margin: 500px 0;
+        }
+        
+    
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <img src="img/timg.jpeg" alt="">
+    </div>
+
+    <div class="content"> </div>
+
+    
+
+    <script>
+        var box1 = document.getElementsByClassName('box1')[0];
+        // 获取距离body的距离(上一个定位父元素的距离);
+        var boxH = box1.offsetTop;
+        // 监听滚动事件的距离
+        window.onscroll = function(){
+            // 被卷进去的距离
+            var scrollT = window.pageYOffset || document.documentElement.scrollTop || 0;
+            // 目标距离就是offset距离加上scrollTop
+            var target = boxH +scrollT;
+            animate(box1,target);
+            
+    }
+        function animate(el,target){
+            clearInterval(el.timer);
+            el.timer = setInterval(function(){
+                // 当前被卷进去的高度
+                var leader = el.offsetTop;
+                // 步长
+                var step = (target-leader)/10;
+                // 判断
+                if( Math.abs(step)<1){
+                    step = step>0?1:-1;
+                }
+                // 修改元素位置
+                el.style.top = leader+step+'px';
+                console.log('leader==>'+leader);
+                if(target== leader){
+                    el.style.top = target+'px';
+                    clearInterval(el.timer);
+                    console.log('结束了')
+                }
+                    
+            },17)
+
+        }
+
+        
+    </script>
+
+ 
+
+
+
+    
+</body>
+</html>

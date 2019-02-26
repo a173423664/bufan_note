@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <button id="btn01">添加超链接</button>
+    <ul id="u1">
+        <li ><a href="javascript:;" class="link">超链接一</a></li>
+        <li><a href="javascript:;" class="link">超链接二</a></li>  
+        <li><a href="javascript:;" class="link">超链接三</a></li>   
+    </ul>
+    <script>
+
+        var u1 = document.getElementById('u1');
+
+        var btn01 = document.getElementById('btn01');
+        btn01.onclick = function(){
+            // 创建一个li标签
+            var li = document.createElement('li');
+            li.innerHTML = '<a href="javascript:;" class="link">超链接一</a>';
+            // 把li添加到ul中
+            // 注意大写
+            u1.appendChild(li);
+        }
+
+        var allA = document.getElementsByTagName('a');
+        // 这种方法不好用
+        // 遍历
+        // for(var i = 0 ; i < allA.length; i ++ ){
+        //     allA[i].onclick = function(){
+        //         alert('我是a的单机响应函数');
+        //     }
+        // }
+
+        // 我们希望一次绑定,即可应用到多个元素上,及时元素是后添加的.
+        // 我们可以尝试将其绑定给共同的祖先元素
+
+        // 事件的委派是指 将事件统一绑定共同的祖先元素，这样当后代元素的时间触发时，会一直冒泡到祖先元素上。
+        // 从而通过祖先元素来处理事件
+        // 事件委派是利用冒泡,通过冒泡减少事件的绑定次数,优化程序性能
+        u1.onclick =function(event){
+            event = event || window.event;
+            if(event.target.className =='link'){
+                // 则执行
+                alert(event.target);
+            }
+            // event中的target表示触发事件的对象
+            // 如果触发是我们期望的元素,则执行否则不执行
+        }
+    
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn01">点我一下</button>
+
+
+    <script>
+    //    <!-- 对象.事件 = 函数的形式绑定函数 一次只能绑定一次响应函数 -->
+    // // <!-- 不能绑定多个，如果绑定多个，后面的会覆盖前面的 -->
+        var btn01 = document.getElementById('btn01');
+        // btn01.onclick = function(){
+        //     alert(2);
+        // }
+        // addEventListener()通过这个方法也可以为元素绑定响应函数
+        // 可以为一个元素的相同事件绑定多个响应函数,
+        // 这样当事件被触发时,响应函数将按照函数绑定的顺序依次
+        // 参数:
+        //     1.事件的字符串,不要on
+            // 2.回调函数,当事件被触发时,调用回调函数
+             // 3.是否发生在捕获阶段触发事件，需要一个布尔值，一般都传false 
+            // btn01.addEventListener('click',function(){
+            //     alert(1);
+            // },false);
+            // btn01.addEventListener('click',function(){
+            //     alert(2);
+            // },false);
+            // btn01.addEventListener('click',function(){
+            //     alert(3);
+            // },false);
+            // attachEvent()
+            // 在IE8中,可以使用它来绑定响应函数
+            // 这个方法也可以用一个事件绑定多个响应函数
+            // 不同的是它是先执行后绑定,执行顺序与addEventListener()相反
+            // 参数:
+            //     1.事件的字符串,要on
+            //     2.回调函数,
+            // btn01.attachEvent('onclick',function(){
+            //     alert(1);
+            // });
+            // btn01.attachEvent('onclick',function(){
+            //     alert(2);
+            // });
+
+            // btn01.attachEvent('onclick',function(){
+            //     alert(3);
+            // });
+
+            // 定义一个函数来为指定元素绑定多个响应函数
+            // addEventListener()中的this指的是绑定事件的对象
+            // attachEvent()中的this指的是window
+            // 需要统一两者的this指向
+            // 思考:!!!!
+
+                
+            // obj指的是事件的对象
+            // evnetstr指的是事件的字符串
+            // callback回调函数
+            bind(btn01,'click',function(){
+                alert(1);
+            });
+                        // 注意event不要写错!!!!
+            function bind( obj,eventstr,callback){
+                if(obj.addEventListener){
+                    // 大部分游览器的兼容方式
+                    obj.addEventListener(eventstr,callback,false);
+
+                }else{
+                    // IE8以以下游览器
+                    // 上面那个问题attachEvent()this指向对象为window
+                    // this由调用方式觉决定
+                    // 方法:callback.call(obj);
+                    
+                    // 在浏览器中先调用一个匿名函数
+                    // 然后在匿名函数中用call方法修改回调函数的指向对象
+                    // 这样我们就可以去指定这个this
+                    obj.attachEvent('on'+eventstr,function(){
+                        callback.call(obj);
+                    });
+                }
+                
+            }
+
+
+    
+    
+    </script>
+ 
+</body>
+</html>
