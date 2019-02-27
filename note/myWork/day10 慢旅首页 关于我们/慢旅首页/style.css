@@ -28,8 +28,10 @@ ul{
 	background: url(img/top-icon.gif) no-repeat left;
 	width: 235px;
 	height: 100%;
-	position: absolute;
-	left: -60px;
+	/* 图片定位 */
+	/* 向左为负 向上为负 */
+	/* 先左右 后上下 */
+	background-position: -60px;
 }
 
 .header .header-c .header-dec {
@@ -39,12 +41,13 @@ ul{
 }
 
 .header .header-c .header-dec li{
-	line-height:76px;
+	line-height:36px;
 	font-size: 16px;
 	color: #818181;
 	float: left;
-	height: 100%;
+	height: 36px;
 	margin-left: 74px;
+	margin-top: 20px;
 }
 .header  .header-dec .header-list{
 	color: #818181;
@@ -89,10 +92,10 @@ ul{
 
 .banner .banner-c .dotts .dotts-list{
 	float: left;
-	height: 10px;
-	width: 10px;
+	/* height: 10px;
+	width: 10px; */
 	/*border: 2px solid #fff;*/
-	border-radius: 50%;
+	/* border-radius: 50%; */
 	margin-left: 14px;
 }
 .banner .banner-c .dotts .dotts-list a{
@@ -110,7 +113,7 @@ ul{
 
 /*主体部分*/
 .container{
-	margin-top: 100px;
+	padding-top: 100px;
 }
 .container .container-c{
 	width: 1200px;
@@ -126,9 +129,8 @@ ul{
 	width:  53px;
 	background-color: #04e4f8;
 	position: absolute;
-	left: 0;
-	top: 0;
-	margin-left: -23.5px;           
+	left: -23.5px;  
+	top: 0;          
 }
 
 .container .main .common-title .ename{
@@ -209,7 +211,7 @@ ul{
 	border:1px solid #e7e7e7;
 	position: absolute;
 	right: 21px;
-	top: : 362px;
+	top:  362px;
 }
 .container .container-c .main .main-dec2{
 	width: 814px;

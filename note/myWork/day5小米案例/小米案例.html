@@ -3,342 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		*{
-			padding: 0;
-			margin: 0
-		}
-		ol,li{
-			list-style: none;
-		}
-		a{
-			text-decoration: none;
-		}
-
-		.header{
-			position: relative;
-			left: 0;
-			top: 0;
-			width: 1226px;
-			height: 60px;
-			background-color:#333333;
-			margin:auto;
-		}
-		
-		.header div{
-			float: left;
-			font-size:12px;
-			line-height:60px;
-			color: gray;
-			margin-right: 3px;
-			margin-left: 3px;
-		}
-
-		.header li{
-			float: left;
-			font-size:12px;
-			line-height:60px;
-			margin-right:3px;
-			margin-left:3px;
-		}
-		
-		.header li a{
-			color: gray;
-		}
-
-		.header .header-list2 {
-			float: left;
-			width: 150px;
-			font-size:10px;
-			line-height:60px;
-			margin-right:5px;
-			margin-left: 220px;	
-		}
-
-		.header-list3{
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 200px;
-			height: 100%;
-			line-height: 60px;
-			text-align: center;
-		}
-
-		.header .header-list3 li{
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 200px;
-			height: 100%;
-			background-image: url(img/g1.png);
-			background-repeat: no-repeat;
-			background-position: 70px center;
-			text-indent:5em;
-		}
-
-		.header .header-list3 li a{
-			float: left;
-			display: block;
-			width: 100%;
-			height: 100%;
-		}
-
-		.top{
-			position: relative;
-			width: 1226px;
-			height:55px;
-			margin: 20px auto;
-			
-		}
-		.top .logo-block{
-			float: left;
-			width: 227px;
-			height:100%;
-			
-		}
-		.top .logo-block .logo1{
-			float: left;
-			width: 65px;
-			height: 100%;
-			background: url(img/logo1.png) no-repeat;
-		}
-
-		.top .logo-block .logo2{
-			float: left;
-			width: 162px;
-			height: 100%;
-			background: blue url(img/logo2.gif) no-repeat center ;
-
-		}
-
-		.top .top-nav{
-			float:left;
-			height: 100%; 
-			
-				
-		}
-
-		.top .top-nav .top-nav-item{
-			float: left;
-
-			
-		}
-
-		.top .top-nav .top-nav-item a{
-			display: block;
-			height: 100%;
-			line-height: 55px;
-			padding-left: 10px;
-			padding-right: 10px;
-			color: black;
-		}
-
-		.top .top-nav .top-nav-item:hover {
-			background-color:orange;
-		}
-
-		.top .search-block{
-			position: absolute;
-			top: 0;
-			right: 20px;
-			width: 290px;
-			height:45px;
-			border: 1px solid #C3C3C3;
-
-
-		} 
-
-		.top .search-block .search-input{
-			float: left;
-			width: 235px;
-			height: 100%;
-			text-indent: 1em;
-			outline: none;
-			border: none;
-		}
-
-		.top .search-block .search-btn{
-			float: left;
-			display: block;
-			width: 54px;
-			height: 45px;
-			border-left:1px solid #C3C3C3; 
-			background:  url(img/fdj2.png) no-repeat center;
-		} 
-
-		.top .search-block .search-btn:hover{
-			background-color:orange;
-			background-image: url(img/fdj.png);
-		}
-
-		.top .search-block:hover{
-			border-color: #E3E3E3
-		}
-
-		.top .search-block .tips{
-			position: absolute;
-			right:65px;
-			top: 13.5px;
-			height:12px;
-			width:150px;
-		}
-
-		.top .search-block .tips .tip-item1{
-			position: absolute;
-			width: 36px;
-			right:90px;
-			font-size: 12px;
-			line-height: 12px;
-			background-color:#E3E3E3;
-			padding:3px;
-		}
-
-		.top .search-block .tips .tip-item1{
-		color:gray;
-		}
-
-		.top .search-block .tips .tip-item2{
-			position: absolute;
-			right:10px;
-			font-size: 12px;
-			line-height: 12px;
-			background-color:#E3E3E3;
-			padding:3px;
-		}
-
-		.top .search-block .tips .tip-item2{
-		color:gray;
-		}
-		.top .search-block .tips .tip-item1:hover{
-			background-color: orange;
-
-		}
-
-		.top .search-block .tips .tip-item2:hover{
-			background-color: orange;
-
-		}
-
-		.banner{
-			position: relative;
-			top:0;
-			left: 0;
-			width: 1226px;
-			height: 460px;
-			background-image: url(img/m2.jpg);
-			background-repeat: no-repeat;
-			margin: auto;
-			background-size: 100% auto;
-		}
-
-		 .banner .aside-list {
-		 	background-color:#2E465f;
-		 	width: 230px;
-			height: 100%;
-			overflow: hidden;
-		 }
-		
-		 .banner .aside-list .aside{
-			width: 100%;
-			height: 100%;
-			background-color:#2E465f;
-			font-size: 14px;
-			line-height: 46px;
-			margin-top:20px;
-		} 
-
-		.aside-list .aside li{
-			background-image: url(img/J1.png);
-			background-position: 200px center;
-		 	width: 230px;
-		 	height: 44px;
-		 	background-color:#2E465f;
-		 	background-repeat: no-repeat;
-		 }
-
-		 .aside-list .aside li a{
-		 	display: block;
-		 	color: white;
-		 	width: 230px;
-		 	padding-left: 20px;	
-		 }
-
-
-		.banner .arr{
-			position: absolute;
-			top:50%;
-			margin-top:-35px;
-			display: block;
-			width: 40px;
-			height:70px;
-			line-height: 70px;
-			font-size: 28px;
-			text-align: center;
-		}
-
-		.banner .arr:hover{
-			color: gray;
-			background-color:rgba(0,0,0,.5);
-		}
-
-		.banner .arr.arr-right{
-			right: 0;
-
-		}
-		.banner .arr.arr-left{
-			left:230px;
-		}
-		.dott{
-			position: absolute;
-			right: 70px;
-			bottom: 30px;
-			height: 10px;
-		}
-
-		.dott li{
-			float: left;
-			height: 6px;
-			width: 6px;
-			margin-right:20px;
-			border-color: white;
-			border: 2px solid #999;
-			border-radius: 50%;
-		}
-		.header-list li:hover a{
-			background-color: rgba(227,251,84,.3);
-			
-		}
-		.header-list2 li:hover a{
-			background-color: rgba(127,255,120,.5);
-			
-		}
-		.header-list3 li:hover a{
-			background-color: rgba(127,255,120,.5);
-			
-		}
-		.aside li:hover a{
-			background-color: rgba(255,103,0,.8);
-			
-		}
-
-		.dott li a{
-			display: block;
-			width: 100%;
-			height: 100%;
-			border-radius: 50%;
-			background-color: rgba(0,0,0,.3);
-		}
-
-		.dott li:hover{
-			border-color: #333;	
-		}
-
-		.dott li:hover a{
-			background-color: rgba(255,255,255,.3);
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	
 	<div class="header">
 		<ul class="header-list">
 			<li><a href="">小米商城</a></li>
@@ -371,63 +39,189 @@
 		</ul>
 		
 		</ul>
-		<ul class="header-list3 cart">
+		<ul class="header-list3">
 			<li>
 				<a href="#">购物车(0)</a>
 			</li>
 		</ul>
 	</div>
+
+	
 	<div class="top">
-		<div class="logo-block">
+		<div class="top-logo">
 			<a href="" class="logo1" ></a>
 			<a href="" class="logo2"></a>
 		</div>
 		<ul class="top-nav">
-				<li class="top-nav-item"><a href="#">小米手机</a></li>
-				<li class="top-nav-item"><a href="#">红米</a></li>
-				<li class="top-nav-item"><a href="#">电视</a></li>
-				<li class="top-nav-item"><a href="#">笔记本</a></li>
-				<li class="top-nav-item"><a href="#">家电</a></li>
-				<li class="top-nav-item"><a href="#">新品</a></li>
-				<li class="top-nav-item"><a href="#">路由器</a></li>
-				<li class="top-nav-item"><a href="#">智能硬件</a></li>
-				<li class="top-nav-item"><a href="#">服务</a></li>
-				<li class="top-nav-item"><a href="#">社区</a></li>
+				<li class="top-nav-item" id="li_1"><a href="#">小米手机</a></li>
+				<li class="top-nav-item" id="li_2"><a href="#">红米</a></li>
+				<li class="top-nav-item" id="li_3"><a href="#">电视</a></li>
+				<li class="top-nav-item" id="li_4"><a href="#">笔记本</a></li>
+				<li class="top-nav-item" id="li_5"><a href="#">家电</a></li>
+				<li class="top-nav-item" id="li_6"><a href="#">新品</a></li>
+				<li class="top-nav-item" id="li_7"><a href="#">路由器</a></li>
+				<li class="top-nav-item" id="li_8"><a href="#">智能硬件</a></li>
+				<li class="top-nav-item" id="li_9"><a href="#">服务</a></li>
+				<li class="top-nav-item" id="li_10"><a href="#">社区</a></li>
 		</ul>
 		<div class="search-block">
 				<input type="text" class="search-input">
 				<a href="#" class="search-btn"></a>
 			<div class="tips">
-				<a href="#" class="tip-item1">小米8</a>
-				<a href="#" class="tip-item2">小米MIX 2S</a>
+				<a href="#" class="tip-item">小米8</a>
+				<a href="#" class="tip-item">小米MIX 2S</a>
 			</div>
-		</div>
+			<ul class="product-list">
+				<li><a href="#"><span class="p-name">小米6x</span><span class="p-stock">约有1件</span></a></li>
+				<li><a href="#"><span class="p-name">小米mix 2S</span><span class="p-stock">约有5件</span></a></li>
+				<li><a href="#"><span class="p-name">黑鲨游戏机手机</span><span class="p-stock">约有1件</span></a></li>
+				<li><a href="#"><span class="p-name">红米Note 5</span><span class="p-stock">约有15件</a></li>
+				<li><a href="#"><span class="p-name">红米5A</span><span class="p-stock">约有5件</span></a></li>
+				<li><a href="#"><span class="p-name">小米电视4C</span><span class="p-stock">约有5件</span></a></li>
+				<li><a href="#"><span class="p-name">电视32英寸</span><span class="p-stock">约有3件</span></a></li>
+				<li><a href="#"><span class="p-name">笔记本pro</span><span class="p-stock">约有15件</span></a></li>
+				<li><a href="#"><span class="p-name">空气净化器</span><span class="p-stock">约有11件</span></a></li>
+				<li><a href="#"><span class="p-name">净水器</span><span class="p-stock">约有8件</span></a></li>
+			</ul>
 			
-	</div>
-	<div class="banner">
-		<div class="aside-list">
-			<ul class="aside">
-				<li><a href="#">手机电话卡</a></li>
-				<li><a href="#">电视盒子</a></li>
-				<li><a href="#">笔记本 平板</a></li>
-				<li><a href="#">家电 插线板</a></li>
-				<li><a href="#">出行 穿戴></a></li>
-				<li><a href="#">智能 路由器</a></a></li>
-				<li><a href="#">电源 配件</a></li>
-				<li><a href="#">健康 儿童</a></li>
-				<li><a href="#">耳机 音箱</a></li>
-				<li><a href="#">生活 箱包</a></li>
-			</ul>
 		</div>
-			<a class="arr arr-left" href="#">&lt;</a>
-			<a class="arr arr-right" href="#">&gt;</a>
-			<ul class="dott">
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-				<li><a href="#"></a></li>
-			</ul>
 	</div>
+	<div class="nav-item-sub-list">
+		<ul class="nav-data-list">
+			
+		</ul>
+					
+	</div>
+
+	<div class="banner">
+			<div class="aside-list">
+				<ul class="aside">
+					<li><a href="#">手机电话卡</a></li>
+					<li><a href="#">电视盒子</a></li>
+					<li><a href="#">笔记本 平板</a></li>
+					<li><a href="#">家电 插线板</a></li>
+					<li><a href="#">出行 穿戴</a></li>
+					<li><a href="#">智能 路由器</a></a></li>
+					<li><a href="#">电源 配件</a></li>
+					<li><a href="#">健康 儿童</a></li>
+					<li><a href="#">耳机 音箱</a></li>
+					<li><a href="#">生活 箱包</a></li>
+				</ul>
+			</div>
+				<a class="arr arr-left" href="#">&lt;</a>
+				<a class="arr arr-right" href="#">&gt;</a>
+				<ul class="dott">
+					<li><a href="javascript:;"></a></li>
+					<li><a href="javascript:;"></a></li>
+					<li><a href="javascript:;"></a></li>
+					<li><a href="javascript:;"></a></li>
+					<li><a href="javascript:;"></a></li>
+					<li><a href="javascript:;"></a></li>
+				</ul>
+	</div>
+	<script src="utils/common.js"></script>
+	<script src="data/mi_data.js"></script>
+	<script>
+	var searchBlock = document.getElementsByClassName('search-block')[0];
+		//搜索框
+	var searchInput = document.getElementsByClassName('search-input')[0];
+		//搜索框下拉列表
+	var productList = document.getElementsByClassName('product-list')[0];
+		
+													// 这里注意不要加[0]!!!
+													// 获取所有li标签
+	var topNavItems = document.getElementsByClassName('top-nav-item');
+
+	var navItemSubList = document.getElementsByClassName('nav-item-sub-list')[0];
+	// 生成当前hover对象
+	var navDataList = document.getElementsByClassName('nav-data-list')[0];
+	// 搜索框获取焦点
+	
+	searchInput.onfocus = function(){
+			// active 这个样式就是开关
+			addClassName(searchBlock,'active');
+			// productList.style.display = 'block';
+		}
+		searchInput.onblur = function(){
+			// productList.style.display = 'none';
+			removeClassName(searchBlock,'active');
+		}
+
+	searchInput.onfocus = function(){
+		addClassName(searchBlock,'active');
+	}
+	
+	
+		for(var i = 0 ; i < topNavItems.length ; i ++){
+			
+			// str = '';
+			// 当进入一个事件时enter表示进入
+			topNavItems[i].onmouseenter = function(){
+				// console.log(this.id);   li_1
+				// 计算出当前li对应的数据对象的数组下标
+				var index = this.id.split('_')[1]-1;
+				// console.log(miData[id]);
+				// 找到id属性的下标也就是li标签的下标这是一个方法 要牢记!1!
+
+				// 3 > 0 1 2
+				// 因为只有miData.length>li标签的下标 li才有data可以传
+				if(miData.length>index){
+					//当前数据对象
+					var currentData = miData[index];
+					// 用获取到的数据动态生成html 插入目标对象
+								// 当前目标对象	插入目标对象
+ 					buildHtml(currentData,navDataList);
+				}else{
+
+					console.log('no data...');
+				}
+
+				addClassName(navItemSubList,'active');
+
+				// navItemSubList.style.display = 'block';
+			}
+			
+			topNavItems[i].onmouseleave = function(){
+				removeClassName(navItemSubList,'active');
+				// navItemSubList.style.display = 'none';
+			}
+		}
+
+
+	
+
+
+	
+		
+		// 创建一个函数来封装构建HTML的方法
+		// 需要两个参数一个就是获取的数据,第二个就是插入的目标.
+		// 数据 插入目
+
+
+		function buildHtml(data,targetEl){
+			var str = '';
+			for(var i = 0 ; i < data.length ; i ++){
+				var newHtml = data[i].new?('<span class="new">新品</span>'):'<span class="new active"></span> ';
+				str += '<li class="pro-item">'+newHtml+'<a href="#" class="img-link">'
+					+'<img class="img" src="'+data[i].img+'"/></a>'
+					+'<p class="name">'+data[i].name+'</p> <p class="price">'+data[i].price+'</p></li>';
+			}
+			// 重新赋值
+			targetEl.innerHTML = str;
+
+		}
+
+
+	
+	
+		
+	
+	
+
+
+
+		
+	
+	</script>
 </body>
 </html>

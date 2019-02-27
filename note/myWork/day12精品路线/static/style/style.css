@@ -32,7 +32,7 @@ body{
 	position: absolute;
 	right: 0;
 	top: 0;
-	height: 80px; 
+	height: 100%; 
 }
 .header .header-c .nav li{
 	margin-left: 77px;
@@ -73,9 +73,10 @@ body{
 .header .header-c .nav .about-item:hover .sub-item a{
 	border-bottom: none;
 }
-.header .header-c .nav .about-item .sub-item a:hover{
+.header .header-c .nav .about-item:hover .sub-item a:hover{
 	color: #04e4f8;
 }
+
 
 
 .container .container-c{
@@ -377,37 +378,26 @@ body{
 	top: 310px;
 }
 
-
 .footer .footer-c .personal-infomation .commenty{
 	width: 135px;
 	height: 67px;
 	margin-left: 45px;
-
-}
-.footer .footer-c .personal-infomation .commenty{
-
-}
-.footer .footer-c  .personal-infomation .commenty{
+	margin-top: 55px;
 	color: #716f6f;
 	font-size: 14px;
 	line-height: 20px;
-	margin-top: 55px;
-	float: right;
-
-}
-.footer .footer-c  .personal-infomation .commenty.commenty-1{
 	float: left;
-	margin-left: 105px;
 }
 
 .footer .footer-c .personal-infomation .commenty .input-wire{
+	
 	outline: none;
 	width: 135px;
 	margin-top: 35px;
 	border: none;
 	border-bottom: 1px solid #716f6f;
 	display: block;
-	float: left;
+	/* float: left; */
 	background-color: #f2f2f2;
 }
 

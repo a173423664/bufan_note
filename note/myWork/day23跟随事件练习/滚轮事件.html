@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #box1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+
+</style>
+<body>
+    <div id="box1"></div>
+    <script>
+        // 当鼠标滚轮向下滚动时,div变长.
+        // 当鼠标滚轮向上滚动时,div变短.
+
+        // 获取元素box1
+        var box1 = document.getElementById('box1');
+        // 给box1绑定一个鼠标滚轮事件
+        // box1.onmousewheel = function(){
+        //     alert('滚了');
+        // }
+        // // onmousewheel 火狐不支持该属性
+        // // 需要使用DOMMouseScroll属性来绑定滚动事件
+        // // 注意:该属性需要使用addEventListener()函数来绑定
+
+        // bind(box1,'DOMMousecroll',function(){
+        //     alert('滚了');
+        // })
+
+        // 但是注意这里是两个函数需要将其转变成一个参数
+        // 方法一:
+                //1 提取一个fun函数
+                // function fun(){
+                //     alert('滚了');
+                // }
+                //2 将fun函数赋值给box1.onmousewheel 
+                // box1.onmousewheel = fun;
+
+                //3 在把fun传入
+                // bind(box1,'DOMMousecroll',fun()
+
+        // 方法二:
+                 // 给box1绑定一个鼠标滚轮事件
+                box1.onmousewheel = function(event){
+                    event = event || window.event;
+                    // 判断滚轮的的方向
+                    // event.wheelDelta可以获取滚轮方向
+                    // 往上显示正120 往下显示-120
+                    // 注意:这个属性在火狐中不支持
+                    // 火狐中使用detail来获取滚动方向
+                    // alert(event.detail);
+                    if(event.wheelDelta > 0 || event.detail < 0){
+                        // alert('向上滚');
+                        // box1变短
+                        box1.style.height = box1.clientHeight - 10 +'px';
+                    }else{
+                        // alert('向下滚');
+                        // box1变长
+                        box1.style.height = box1.clientHeight + 10 +'px';
+                    }
+                    
+                }
+                // 为火狐绑定的滚动事件
+                bind(box1,'DOMMouseScroll',box1.onmousewheel);
+                    
+
+
+
+
+        function bind( obj,eventstr,callback){
+                if(obj.addEventListener){
+                    // 大部分游览器的兼容方式
+                    obj.addEventListener(eventstr,callback,false);
+
+                }else{
+                    // IE8以以下游览器
+                    // 上面那个问题attachEvent()this指向对象为window
+                    // this由调用方式觉决定
+                    // 方法:callback.call(obj);
+                    
+                    // 在浏览器中先调用一个匿名函数
+                    // 然后在匿名函数中用call方法修改回调函数的指向对象
+                    // 这样我们就可以去指定这个this
+                    obj.attachEvent('on'+eventstr,function(){
+                        callback.call(obj);
+                    });
+                }
+                
+            }
+
+
+    </script>
+    
+    
+</body>
+</html>

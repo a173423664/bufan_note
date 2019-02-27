@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图练习</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    ul{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    .outer{
+        /* display: none; */
+        position: relative;
+        width: 1246px;
+        height: 460px;
+        margin: 100px auto;
+        background-color: yellow;
+        padding: 10px 0;
+        /* padding-top: 10px;
+        padding-left: 10px; */
+        overflow: hidden;
+    }
+
+    .outer .imgList{
+         position: absolute;
+        /* width: 7476px; */
+        height: 460px;
+
+    }
+     .outer .imgList .img-item{
+        float: left; 
+        margin: 0 10px;
+        
+    }
+    /* .outer .imgList.img-item img{
+        width: 1226px;
+        height: 100%;
+    }   */ 
+
+    /* .outer .arr{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        display: block;
+        width:36px;
+        height: 72px;
+        margin-top: -36px;
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+        line-height: 72px;
+        background-color: rgba(0, 0, 0, .5);
+    } */
+    /* outer .arr.arr-r{
+        left: auto;
+        right: 0;
+    } */
+    .outer .navDiv{
+        position: absolute;
+        bottom: 25px;
+        /* left: 548px; */
+        /* 左右外边距5+宽度15=25 25*6=150  (1246-150)/2=548  */
+        
+    }
+    .outer .navDiv a{
+        /* display: block; */
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        float: left;
+        background-color: red;
+        margin: 0 5px;
+        opacity: 0.5;
+        /* 兼容i8透明: */
+        filter: alpha(opacity=50);
+    }
+
+    .navDiv a:hover {
+        background-color: black;
+    }
+
+
+    
+    
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <ul class="imgList">
+            <li class="img-item">
+                <img src="img/m1.jpg" alt="">
+            </li>
+            <li class="img-item">
+                <img src="img/m2.jpg" alt="">
+            </li>
+            <li class="img-item">
+                <img src="img/m3.jpg" alt="">
+            </li>
+            <li class="img-item">
+                <img src="img/m4.jpg" alt="">
+            </li>
+            <li class="img-item">
+                <img src="img/m5.jpg" alt="">
+            </li>
+            <li class="img-item">
+                <img src="img/m6.jpg" alt="">
+            </li>
+        </ul>
+        <!--  <a href="javascript:;" class="arr arr-l">&lt;</a>
+        <a href="javascript:;" class="arr arr-r">&gt;</a> -->
+        <div class="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+    <script src="utils/common.js"></script>
+
+    <script>
+    var imgList = document.getElementsByClassName('imgList')[0];
+    // 获取所以的img标签
+    var imgArr = document.getElementsByTagName('img');
+
+      // 设置imgList宽度 不要忘了加px
+      imgList.style.width = 1246*imgArr.length+'px'; 
+    
+    var target = 7476;
+    var step = 17;
+    var outer = document.getElementsByClassName('outer')[0];
+    var navDiv = document.getElementsByClassName('navDiv')[0];
+    // 设置navDiv的偏移量
+    // 用大边框的宽度减去导航栏的宽度/2 不要忘记加px
+    // 这样写更加灵活 推荐
+    navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth)/2+'px'; 
+    
+    // 设置显示图片的索引
+    var index = 0;
+    var allA = document.getElementsByTagName('a');
+    // 默认效果
+    allA[index].style.backgroundColor = 'black';
+
+    // 为所有超链接添加编号
+    for(var i= 0; i < allA.length; i++){
+        // 为每个超链接都添加一个index属性
+        allA[i].num = i;
+        allA[i].onclick = function(){
+            // 获取num属性并将其保存在index中
+            var index = this.num;
+            // 切换图片
+            imgList.style.left = -1246*index+'px';
+            // console.log(i);
+            // console.log(index);
+            // 形参的方法
+            setA(index);
+           
+        }
+        
+    }
+    
+
+    // 设置一个样式修改dotts
+    function setA(index){
+        for(var i = 0; i < allA.length; i++){
+            // 将内联的颜色去掉 样式表中有颜色
+            allA[i].style.backgroundColor = 'yellow';
+        }
+        allA[index].style.backgroundColor = 'black';
+        // console.log(index);
+    }
+
+
+
+
+
+
+  
+
+    
+    </script>
+</body>
+</html>

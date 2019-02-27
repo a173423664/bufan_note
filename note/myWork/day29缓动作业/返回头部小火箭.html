@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+    .btn1{
+        position: fixed;
+        display: none;
+		position: fixed;
+		right: 100px;
+		bottom: 200px;
+
+    }
+    .footer{
+		width: 100%;
+		height: 200px;
+		background-color: #000;
+		margin-top: 1800px;
+		}
+	</style>
+    </style>
+</head>
+<body>
+    <button class="btn1">返回头部</button>
+    <div class="footer"></div>
+    
+    <script>
+        var btn1 = document.getElementsByClassName('btn1')[0];
+        var footer = document.getElementsByClassName('footer')[0];
+        var timer = null;
+        
+
+        window.onscroll = function(){
+            // 被卷进去的高度
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+            if(scrollTop>800){
+                btn1.style.display = 'block';
+            }else{
+                btn1.style.display = 'none';
+            }
+        }
+        // 给btn1绑定一个单机响应函数
+        btn1.onclick = function(){
+            animate(0);
+
+        }
+        function animate(target){
+          // 清除第一次点击的定时器
+            clearInterval(timer);
+            timer = setInterval(function(){
+          
+            // 被卷进去的高度
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+            // 当前位置
+            var leader = scrollTop;
+            // 步长
+            var step = (target - leader)/10;
+            // 判断最后小于10px如何移动
+            // 方法二:
+            // if(step>0&&step<1){
+            //     step =1
+            // }
+            // if(step<0&&step>-1){
+            //     step =-1;
+            // }
+            if(Math.abs(step)<1){
+                step = step>0?1:-1;
+            }
+            // 修改元素位置
+            window.scrollTo(0,leader+step);
+            console.log('leader'+leader);
+            if(target ==  leader){
+                // 目标返回最上部
+                window.scrollTo(0,target);
+                clearInterval(timer);
+                console.log('定时器关闭了');
+
+            }
+
+        },17)
+    }
+    </script>
+</body>
+</html>

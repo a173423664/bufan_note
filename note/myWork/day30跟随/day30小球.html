@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .ball{
+        width:80px;
+        height:80px;
+        background: red;
+        border-radius: 50%;
+        position:absolute;
+        top:0;
+        left:0;
+    }
+    </style>        
+
+</head>
+
+<body>
+    <div id="ball">
+
+    </div>
+    
+    <script>
+       
+        var oBall = document.querySelector('#ball');
+
+        // 左位移步长
+        var leftStep = 0;
+        // 上位移步长
+        var topStep = 0;
+        var aBall = [];
+        var length = 0;
+      
+        leftMax = document.documentElement.clientWidth-80;
+        topMax = document.documentElement.clientHeight-80;
+    //  }
+        
+        creatBall(oBall,15);         
+      
+        aBall = oBall.children;      
+        //获取oBall里面的所有小球
+        length = aBall.length;
+         //创建小球的封装函数
+        // 参数:obj插入的对象 num个数
+        function creatBall(obj,num){     
+            for(var i=0;i<num;i++){
+              
+                // 创建div元素
+                var cBall = document.createElement('div');
+                // 同时className成ball
+                cBall.className = 'ball';
+                // 修改颜色样式
+                ballBg(cBall);
+                //这里去i+1而不取i的原因是，一个小球的i为0
+                cBall.leftStep=i+1;
+                cBall.topStep=i+2;    
+                // 向obj中传入小球
+                obj.appendChild(cBall);
+            };
+        };
+        
+        
+        setInterval(function(){       
+            for (var i=0;i<length;i++ ){
+            
+            var Left = aBall[i].offsetLeft+aBall[i].leftStep
+            var Top = aBall[i].offsetTop+aBall[i].topStep;
+                if(Left>=leftMax){
+                    Left = leftMax;
+                    aBall[i].leftStep = -aBall[i].leftStep;
+                    ballBg(aBall[i]);
+                }else if(Left<=0){
+                    Left = 0;
+                    aBall[i].leftStep= -aBall[i].leftStep;
+                    ballBg(aBall[i]);
+            };
+                if(Top>=topMax){
+                    Top = topMax;
+                    aBall[i].topStep= -aBall[i].topStep;
+                    ballBg(aBall[i]);
+            }else if(Top<=0){
+                    Top = 0;
+                    aBall[i].topStep = -aBall[i].topStep;
+                    ballBg(aBall[i]);
+            };
+                    aBall[i].style.left = Left+'px';
+                    aBall[i].style.top = Top+'px';
+                    }   
+                },30);
+        
+                function ballBg(obj){
+                    var r = Math.floor(Math.random()*255);
+                        g = Math.floor(Math.random()*255);
+                        b = Math.floor(Math.random()*255);
+                    obj.style.backgroundColor = 'rgb('+r+','+g+','+b+')';
+                }
+        
+     </script>
+    
+
+   
+    
+</body>
+</html>

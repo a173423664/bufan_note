@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+		// 素数称为质数,除1和他本身以外不能被其他自然数整数的数.
+	var a =prompt('请输入一个数字查看否为质数');
+	var sr = 0;
+	for(var j =1 ; a>=j ; j++){
+		if(a % j == 0){
+			sr++;
+	}
+	}
+	// 只能被1和他本身整除 所以这个数a%f==0 只能有两次 超过则不为质数
+	if (sr == 2) {
+			alert ('这是一个质数');
+		}else{
+			alert('这不是一个质数');
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

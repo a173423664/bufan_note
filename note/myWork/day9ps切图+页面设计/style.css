@@ -25,8 +25,9 @@ a{
 .header .header-top .header-top-c{
 	position: relative;
 	width: 1000px;
-	height: 100%;
+	height: 37px;
 	margin: 0 auto;
+
 }
 .header .header-top-c .welcome{
 	font-size: 14px;
@@ -40,6 +41,7 @@ a{
 	height: 100%;
 	font-size: 14px;
 	line-height: 37px;
+	color: #969696;
 }
 
 .header .header-top-c .setting a{
@@ -63,9 +65,10 @@ a{
 }
 .header .header-main-c .logo{
 	display: block;
-	width: 180px;
+	/* width: 180px; */
 	height: 100%;
-	background: url(img/logo.png) no-repeat center;
+	background: url(img/logo.png) no-repeat left;
+	/* 图片大小 第一个参数控制宽度 后面的参数控制高度 */
 	background-size: 180px auto;
 		}
 
@@ -89,14 +92,12 @@ a{
 
 }
 
-.header .header-main-c .nav li.active a{
-	color: #1669ad;
-	border-bottom: 2px solid #1669ad;
-}
+.header .header-main-c .nav li.active a,
 .header .header-main-c .nav li:hover a{
 	color: #1669ad;
 	border-bottom: 2px solid #1669ad;
 }
+
 
 .banner{
 	width: 100%;
@@ -108,14 +109,15 @@ a{
 	width: 1000px;
 	height: 100%;
 	margin: 0 auto;
-		}
-.banner .swiper{
+}
+
+.banner-c .swiper{
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-		}
+}
 
-.banner .swiper li{
+.banner-c .swiper li{
 	float: left;
 	width: 1000px;
 	height: 100%;
@@ -129,12 +131,12 @@ a{
 	position: absolute;
 	left: 0;
 	bottom: 12px;
-	height: 4px;
 }
+
 .banner .banner-c .dotts li{
 	float: left;
 	width: 24px;
-	height: 100%;
+	height: 4px;
 	margin-right: 6px;
 	background-color: #4280ba;
 }
@@ -152,12 +154,15 @@ a{
 .banner .banner-c .dotts li:hover{
 	background-color: #d1d1d1;
 }
+
+
 .container .common-title{
 	position: relative;
 	width: 100%;
 	height: 40px;
 	border-bottom: 1px solid #cfcfcf;
 	overflow: hidden;
+	/* background-color: yellow; */
 }
 .container .common-title .dotts{
 	position: absolute;
@@ -176,21 +181,21 @@ a{
 	margin-top: 6px;
 	background-color: #fff;
 }
+
 .container .common-title .cname{
 	font-size: 18px;
 	font-weight: bold;
-	color: #5a5a5a;
-	line-height: 40px;
-	margin-left: 22px;
 }
 
 .container .common-title .ename{
 	font-size: 15px;
+}
+.container .common-title .cname,
+.container .common-title .ename{
 	color: #5a5a5a;
 	line-height: 40px;
 	margin-left: 22px;
 }
-
 
 
 .container .common-title .more{
@@ -215,6 +220,7 @@ a{
 
 .container .product{
 	padding-top: 27px;
+	/* margin-top: 27px; */
 }
 
 .container .product .imgs{
@@ -224,8 +230,9 @@ a{
 
 .container .product .imgs .img-item{
 	float: left;
-	width: 244px;
+	/* width: 244px; */
 	margin-left: 8px;
+	/* margin-top: 0; */
 }
 
 .container .product .imgs .img-item.margin-left{
@@ -241,6 +248,7 @@ a{
 	font-size: 15px;
 	text-align: center;
 	line-height: 38px;
+	background-color: yellow;
 }
 .container .company{
 	/*background-color: yellow;*/
@@ -288,6 +296,27 @@ a{
 
 	/*background-color: red;*/
 }
+
+.container .content .common-title .dotts.s1{
+	position: absolute;
+	left: 310px;
+	top: 12px;
+	width: 6px;
+	height: 16px;
+	background-color: #11589d;
+	overflow: hidden;
+}
+.container .content .common-title .dotts.s1 span{
+	display: block;
+	width: 100%;
+	height: 4px;
+	margin-top: 6px;
+	background-color: #fff;
+}
+
+
+
+
 
 .container .content .div1{
     height: 175px;

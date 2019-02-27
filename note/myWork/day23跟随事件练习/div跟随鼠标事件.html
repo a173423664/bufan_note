@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 偏移量只对开启定位的元素启作用
+             */
+             position: absolute;
+        }
+        
+        
+    </style>
+</head>
+<body style="height:2000px">
+    <div id="box1">
+    </div>
+    <div id="box2" style="height:500px;width:500px;background-color: pink;">
+    </div>
+    
+    <script>
+        var box1 = document.getElementById('box1');
+        // 这里给box1绑定事件是个错误的决定
+        // 因为box1范围小 绑定给document
+        document.onmousemove = function(event){
+            // 先解决ie8兼容问题
+            event = event || window.event;
+            // chrome游览器认为滚动条是body的,可用通过scrollTop来获取
+            // 火狐游览器认为滚动条是html的,
+            // 需要兼容
+            var st = document.body.scrollTop || document.documentElement.scrollTop;
+            // var st = document.body.scrollTop;
+            // var st = document.documentElement.scrollTop;
+            var sl =document.body.scrollLeft || document.documentElement.scrollLeft;
+
+            // client获取的是相对可见文档的坐标
+            var x = event.clientX;
+            var y = event.clientY;
+            // pageX,pageY可以获取鼠标相对于当前页面的坐标
+            // 但是这两个属性ie8中不兼容,如果要兼容IE8则不推荐使用
+
+            // box1的偏移量
+            
+            box1.style.left = x+sl+'px';
+            box1.style.top = y+st+'px';
+        }
+
+        // 把box2的冒泡取消event cancelBubble 不能写错!!!!
+        var box2 = document.getElementById('box2');
+
+        box2.onmousemove= function(event){
+            event = event || window.event; 
+            event.cancelBubble = true;
+        }
+     
+
+    
+    </script>
+    
+</body>
+</html>

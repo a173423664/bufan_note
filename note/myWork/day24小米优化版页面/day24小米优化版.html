@@ -112,6 +112,7 @@
     <!-- 广告部分 -->
     <div class="banner">
         <div class="banner-c">
+        <!-- 侧边栏隐藏信息 -->
             <div class="aside-msg">
                 <ul class="aside-msg-sub-list">
                     <!-- li自动生成 -->
@@ -131,11 +132,14 @@
                 <li id="li-9"><a href="#">耳机 音箱</a></li>
                 <li id="li-10"><a href="#">生活 箱包</a></li>
             </ul>
-            <!-- 幻灯片 -->
+            <!-- 轮播图 -->
             <ul class="banner-swiper">
             </ul>
+            <!-- 左右箭头轮播 -->
+            <!-- 添加了onclick点击事件 -->
             <a class="arr arr-left"  onclick="goNext(false);" href="#">&lt;</a>
             <a class="arr arr-right" onclick="goNext(true);" href="#">&gt;</a>
+            <!-- 小点点轮播 -->
             <ul class="dotts">
                 <!-- <li ><a href="javascript:;"></a></li>
                 <li><a href="javascript:;"></a></li>
@@ -209,6 +213,7 @@
         // 初始化小点点页面
         function initDottHtml(){
             str = ''
+            // img实际是五张
             for(var i= 0 ; i <imgs.length-1; i++){
                 // 默认第一张小点点开启 判断第一张加active 三元表达式重要!!
                 var classStr = i==0?' class="active"':'';
@@ -312,7 +317,8 @@
                 if(count < 0 ){
                     // 重置count 同时图片返回第二张
                     count = lis.length - 2;
-                    el.style.left = -1*lis.length-1*imgW+'px';
+                    // 这里括号不能忘
+                    el.style.left = -1*(lis.length-1)*imgW+'px';
                 }
             }
             // 目标移动位置
@@ -335,6 +341,7 @@
     }
 
     // 自动播放功能
+    // 只需考虑右边界的情况
     function autoPlay(){
 			timer = setInterval(function(){
 				count ++ ;

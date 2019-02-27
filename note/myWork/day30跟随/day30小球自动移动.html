@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运动的小球</title>
+    <style>
+       *{
+           padding: 0;
+           margin: 0;
+       }
+        .box1{
+            position:absolute;
+            top:0;
+            left:0;
+            width:80px;
+            height:80px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>   
+    <script>
+        var box1 = document.querySelector('.box1');
+         //设置方块每次向左运动的像素值
+        var  leftNum = 5;  
+        //设置方块每次向下运动的像素值          
+        var  topNum = 5;              
+     // 思路:
+             //浏览器窗口宽度减去方块的宽度等于方块能运动到的最大左边位置
+            leftMax = document.documentElement.clientWidth-box1.offsetWidth;             
+            topMax = document.documentElement.clientHeight-box1.offsetHeight;
+      
+        //为方块的运动新建一个计时器
+        setInterval(function(){    
+            //每次运动完之后，距离浏览器左边边框的距离等于上一次距离边框的距离加上这次运动的距离
+            var Left = box1.offsetLeft+leftNum;    
+            var  Top = box1.offsetTop+topNum;
+            //判断当方块向左移动的位置大于之前限定的最大距离或者小于0时，也就是超出浏览器窗口的左右边框时，运动方向相反
+            if(Left>=leftMax){     
+                Left = leftMax;
+                // 方向取反
+                leftNum = -leftNum;
+                color(box1);
+            
+            }else if(Left<=0){
+                Left = 0;
+                // 方向取反
+                leftNum = -leftNum;
+                color(box1);
+              
+            };
+            if(Top>=topMax){
+                Top = topMax;
+                topNum = -topNum;
+                color(box1);
+                
+            }else if(Top<=0){
+                Top = 0;
+                topNum = -topNum;
+                color(box1);
+            };
+            box1.style.left = Left+'px';      
+            box1.style.top = Top+'px';
+        },30);
+
+    // 随机生成颜色
+        function color(obj){
+            var a = Math.round(Math.random()*255);
+            var b = Math.round(Math.random()*255);
+            var c = Math.round(Math.random()*255);
+            obj.style.backgroundColor = 'rgb('+a+','+b+','+c+')';
+        }
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		.section-1{
+			width: 100%;
+			height:100%;
+			background-color: red;
+		}
+		.section-2{
+			width: 100%;
+			height: 100%;
+			background-color: yellow;
+		}
+		.section-3{
+			width: 100%;
+			height: 100%;
+			background-color: blue;
+		}
+
+
+		.button-group{
+			position: fixed;
+			left: 200px;
+			top: 100px;
+			width: 270px;
+			height: 30px;
+			border: 2px solid #000;
+		}
+		.button-group a{
+			display: block;
+			float: left;
+			width: 90px;
+			height: 100%;
+			background-color: red;
+		}
+		.button-group .yellow{
+			background-color: yellow;
+		}
+		.button-group .blue{
+			background-color: blue;
+		}
+
+	</style>
+<body>
+    <div class="section-1">
+		
+      </div>
+      <div class="section-2">
+        
+      </div>
+      <div class="section-3">
+        
+      </div>
+
+      <div class="button-group">
+        <a href="javascript:;" id="btn-1" class="btn red"></a>
+        <a href="javascript:;" id="btn-2" class="btn yellow"></a>
+        <a href="javascript:;" id="btn-3" class="btn blue"></a>
+      </div>
+
+      <script>
+      
+          var btnS =  document.getElementsByClassName('btn');
+          // 都一样所以获取一个高度
+          var secH = document.getElementsByClassName('section-1')[0].offsetHeight;
+
+          var timer = null;
+
+          for(var i = 0; i<btnS.length; i++){
+            btnS[i].index = i;
+            btnS[i].onclick = function(){
+              var target = this.index*secH;
+              animate(target);
+            }
+          }
+
+          function animate(target){
+            clearInterval(timer);
+            timer = setInterval(function(){
+              var leader = document.documentElement.scrollTop;
+              var step = (target-leader)/10;
+              if( Math.abs(step)<1){
+                    step = step>0?1:-1;
+                }
+              // 修改
+              leader +=step;
+              
+              // 赋值
+              window.scrollTo(0,leader);
+
+              if(target==leader){
+                clearInterval(timer);
+              }
+            },17)
+
+          }
+      
+      
+      </script>
+
+
+
+
+    
+  
+</body>
+</html>

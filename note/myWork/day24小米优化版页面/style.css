@@ -81,14 +81,13 @@ ol,ul{
     background-color: #fff;
 }
 
-
-    
 .header-c  .header-loginbar .top-nav-list a{
     color: #b0b0b0;
     display: block;
     /* 只有转成块元素才能对a标签进行居中操作 */
     text-align: center;
 }
+/* 购物车隐藏栏 */
 .header-c .cart-menu{
     display: none;
     position: absolute;
@@ -200,7 +199,7 @@ ol,ul{
 .nav-item-sub-list:hover{
     display: block;
 }
-
+/* 下拉框 */
 .nav-item-sub-list .nav-data-list{
     width: 1226px;
     height: 100%;
@@ -271,7 +270,8 @@ ol,ul{
 
 /* 激活样式 */
 /* 这里注意激活样式 只给边框换颜色!!! */
-.container-c .search-block.active{
+/* 权重问题考虑清楚 这里 */
+.container .container-c .search-block.active{
     border-color: orange;
 }
 
@@ -317,9 +317,9 @@ ol,ul{
 }
 /* 搜索框hover效果 */
 /* 这个怎么解决?????? */
-/* .container-c .search-block:hover{
+.container-c .search-block:hover{
     border: 1px solid #7F7F7F;
-} */
+}
 .container-c .search-block .search-btn:hover{
     background: orange url(img/fdj2.png) no-repeat center;
 }
@@ -367,7 +367,6 @@ ol,ul{
     
 }
 .container-c .pro-list li .p-name{
-
     padding-left: 1em;
 }
 .container-c .pro-list li .p-stock{
@@ -512,7 +511,7 @@ background-color: rgba(255,103,0,.9);
 }
 
 .banner-c .dotts li{
-   float: left;
+    float: left;
     width: 6px;
     height: 6px;
 	border: 2px solid #fff;
@@ -532,13 +531,10 @@ background-color: rgba(255,103,0,.9);
 .banner-c .dotts li a:hover{
     background-color: #c3c3c3;
 }
+/* 小点点默认效果 */
 .banner-c .dotts li.active{
     border-color: orange;
 }
-
-
-
-
 .banner-c .dotts li.active>a{
     background-color: #333;
 }

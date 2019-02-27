@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+   			text-decoration: none;
+}
+		ul{
+			list-style: none;
+		}
+		.banner{
+			position: relative;
+			width: 1200px;
+			height: 460px;
+			margin: 100px auto;
+			background-color: pink;
+			overflow: hidden;
+		}
+		.banner .swiper{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 600%;
+			height: 100%;
+		}
+		.banner .swiper .swiper-slide{
+			float: left;
+			width: 1200px;
+			height: 100%;
+		}
+		/*> 直接子节点*/
+		.banner .swiper .swiper-slide>img{
+			/*防止默认行内块元素会有空格*/
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.banner .dotts{
+			position: absolute;
+			left: 50px;
+			bottom: 50px;
+			height: 12px;
+		}
+		.banner .dotts .dott-item{
+			float: left;
+			width: 12px;
+			height: 12px;
+			border: 2px solid #fff;
+			background-color: #e5e5e5;
+			/*css3属性 圆角*/
+			border-radius: 50%;
+			margin-right: 10px;
+		}
+		.banner .dotts  .dott-item>a{
+			display: block;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+		.banner .dotts .dott-item.active{
+			border-color: orange;
+		}
+		.banner .dotts .dott-item.active>a{
+			background-color: #333;
+		}
+.banner .arr{
+	position: absolute;
+    top:50%;
+    margin-top:-35px;
+    display: block;
+    width: 40px;
+    height:70px;
+    line-height: 70px;
+    font-size: 28px;
+    text-align: center;
+    color: gray;
+	background-color: rgba(0,0,0,.5);
+}
+
+.banner .arr:hover{
+
+    background-color:rgba(0,0,0,.5);
+}
+
+.banner .arr.arr-right{
+    right: 0;
+ 
+}
+
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul class="swiper">
+			<li class="swiper-slide">
+				<img src="img/m1.jpg" alt="">
+			</li>
+			<li class="swiper-slide">
+				<img src="img/m2.jpg" alt="">
+			</li>
+			<li class="swiper-slide">
+				<img src="img/m3.jpg" alt="">
+			</li>
+			<li class="swiper-slide">
+				<img src="img/m4.jpg" alt="">
+			</li>
+			<li class="swiper-slide">
+				<img src="img/m5.jpg" alt="">
+			</li>
+			<li class="swiper-slide">
+				<img src="img/m1.jpg" alt="">
+			</li>
+		</ul>
+		<!-- 向左 -->
+		<a onclick="goNext(false);" href="javascript:;" class="arr arr-left"><</a>
+		<!-- 向右 -->
+		<a onclick="goNext(true);" href="javascript:;" class="arr arr-right">></a>
+		<ul class="dotts">
+			<!-- <li class="dot active"><a href="#"></a></li>
+			<li class="dot"><a href="#"></a></li>
+			<li class="dot"><a href="#"></a></li>
+			<li class="dot"><a href="#"></a></li>
+			<li class="dot"><a href="#"></a></li> -->
+		</ul>
+	</div>
+	<script src="utils/common.js"></script>
+	<script>
+		
+		
+		var banner = document.getElementsByClassName('banner')[0];
+		var el = document.getElementsByClassName('swiper')[0];
+		var lis = el.children;
+		var dottsEl = document.getElementsByClassName('dotts')[0];
+		var dotLis = dottsEl.children;
+		// 图片宽度
+		var liW = lis[0].offsetWidth;
+		//计数器
+		var count = 0 ;
+		var timer  = null ;
+		var arrL = document.getElementsByClassName('arr-left')[0];
+		var arrR = document.getElementsByClassName('arr-right')[0];
+		// 初始小点点事件
+		
+		initDottsHtml();
+		autoPlay();
+
+		// arrR.onclick =function(){
+		// 	count++;
+		// 	if(count == dotLis.length){
+		// 		count = 0;
+		// 	}
+		// 	// el.style.left = -1*count*liW+'px';
+
+		// 	target= -1*count*liW;
+		// 	animate(el,target);
+		// 	changeDott(count);
+		// }
+
+			// arrR.onclick =function(){
+		// 	count++;
+		// 	if(count == dotLis.length){
+		// 		count = 0;
+		// 	}
+		// 	// el.style.left = -1*count*liW+'px';
+
+		// 	target= -1*count*liW;
+		// 	animate(el,target);
+		// 	changeDott(count);
+		// }
+		
+		// 左右点击轮播
+		function goNext (isRight) {
+			if(isRight){
+				count ++;
+			
+			}else{
+				count --;
+			}
+			go(count);
+		}
+
+		// 进入banner停止事件
+		banner.onmouseenter = function(){
+			// 停止定时器
+			clearInterval(timer);
+			console.log('停止定时器...');
+		}
+		// 移出banner开始事件
+		banner.onmouseleave = function(){
+			//重新开启
+			autoPlay();
+			console.log('重新开启定时器...');
+		}
+
+	
+		// 初始化小点点页面
+		function initDottsHtml(){
+			var str = '';
+			for(var i = 0 ; i < lis.length - 1; i++){
+				var classStr = i==0?' active':'';
+				str += '<li onclick="go('+i+')" class="dott-item'+classStr+'"><a href="javascript:;"></a></li>';
+			}
+
+			dottsEl.innerHTML = str;
+	}
+
+	
+
+
+		
+
+		
+
+		function autoPlay () {
+			// 	// 每次移动的target跟次数有关系
+			timer = setInterval(function(){
+				count ++;
+				go(count);
+			},2000);
+		}
+
+		// 根据count跳转到固定位置
+		function go(count) {
+			//修改外层计数器
+			
+			window.count = count;
+			
+			if(count == lis.length){
+				// count为6时? 			
+					// 则把最外层count修改成为1;
+					window.count = 1;
+					// left然后此时定格为0
+					el.style.left = 0
+			}
+			
+			if(count<0){
+				// 如果小于0
+				// 则先闪现到最后一个图片的位置
+				el.style.left = -1*(lis.length-1)*liW+'px';
+				// 然后延迟调动到 注意(这里length-2代表倒数第二张图片 实际也就是最后一张
+				window.count = lis.length-2;
+			}
+		
+
+			var target =  -1*window.count*liW;
+			changeDott(window.count);
+			animate(el,target);
+
+
+		function changeDott(count){
+			if( count == dotLis.length){
+				count= 0;
+			}
+			// 1.先去掉同行的active样式
+			for(var i= 0 ; i < dotLis.length ;i ++ ){
+				removeClassName(dotLis[i],'active');
+			}
+			// 2.给自己添加样式
+			addClassName(dotLis[count],'active');
+		}
+	
+	}
+	
+	
+
+	</script>
+</body>
+</html>

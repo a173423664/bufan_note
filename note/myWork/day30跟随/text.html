@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box1{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    
+    <script>
+        // 获取
+        var box1 = document.getElementsByClassName('box1')[0];
+        // 定时器
+        var timer = null;
+
+        // 点击方块时方式拖拽 
+        document.onmousedown = function(event){
+            // 获取鼠标的位置
+            clearInterval(timer);
+            var event = event || window.event;
+            // 兼容写法
+            var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+            var pageY = event.pageY || event.clientY + document.documentElement.scrollTop ; 
+         
+          
+            // 图片跟着鼠标慢慢移动
+            timer= setInterval(function(){
+               
+                // 图片当前位置
+               
+                var leaderX = box1.offsetLeft;
+                var leaderY = box1.offsetTop;
+                 
+            // 目标位置 (鼠标点击的位置减去盒子自身身长的一半)
+            var targetX = pageX - box1.offsetWidth/2;
+            var targetY = pageY - box1.offsetHeight/2;
+                 // 步长
+                var stepX = (targetX-leaderX)/10;
+                var stepY = (targetY-leaderY)/10;
+                // 修改后的位置
+                leaderX = leaderX + stepX;
+                leaderY = leaderY + stepY;
+                // 赋值
+                box1.style.left = leaderX+'px';
+                box1.style.top = leaderY+'px';
+                if(targetX==leaderX&&targetY==leaderY){
+                    clearInterval(timer);
+                }
+
+               
+            
+            },17)
+        }
+        
+    </script>
+    
+</body>
+</html>

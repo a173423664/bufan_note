@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图练习</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    ul{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    .banner{
+        position: relative;
+        width: 1200px;
+        height: 460px;
+        margin: 100px auto;
+        background-color: pink;
+        overflow: hidden;
+    }
+    .banner .swiper{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 600%;
+        height: 100%;
+        background-color: yellow;
+
+    }
+    .banner .swiper .img-item{
+        float: left;
+        width: 1200px;
+        height: 100%;
+    }
+    .banner .swiper .img-item img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .banner .arr{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        display: block;
+        width:36px;
+        height: 72px;
+        margin-top: -36px;
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+        line-height: 72px;
+        background-color: rgba(0, 0, 0, .5);
+    }
+    .banner .arr.arr-r{
+        left: auto;
+        right: 0;
+    }
+
+    .banner .dotts{
+        position: absolute;
+        left: 60px;
+        bottom: 50px;
+        height: 15px;
+    }
+    .banner .dotts li{
+        float: left;
+        width: 15px;
+        height: 10px;
+        background-color: blue;
+        margin-right: 15px;
+    }
+    .banner .dotts li a{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .banner .dotts li.active{
+        background-color: aqua;
+    }
+
+
+    
+    
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <ul class="swiper"></ul>
+        <a href="javascript:;" class="arr arr-l">&lt;</a>
+        <a href="javascript:;" class="arr arr-r">&gt;</a>
+        <ul class="dotts"></ul>
+    </div>
+    <script src="js/common.js"></script>
+    <script>
+     var imgs = ['m1.jpg','m2.jpg','m3.jpg','m4.jpg','m5.jpg','m6.jpg'];
+     var swiperEL = document.getElementsByClassName('swiper')[0];
+     var lis = [];
+     var arrR = document.getElementsByClassName('arr-r')[0];
+     var arrL = document.getElementsByClassName('arr-l')[0];
+     var dotts = document.getElementsByClassName('dotts')[0];
+     var dottsLi = [];
+     var imgW = 1200;
+     var count = 0 ;
+
+     arrR.onclick = function(){
+         count ++;
+         if( count == lis.length){
+             count = 0;
+         }
+         swiperEL.style.left = -1*imgW*count+'px';
+         changeDottActive(count);
+} 
+
+    arrL.onclick = function(){
+         count --;
+         if( count == -1){
+             count = lis.length-1;
+         }
+         swiperEL.style.left = -1*imgW*count+'px';
+         changeDottActive(count);
+} 
+
+    initSwiperHtml();
+    initDottsHtml();
+
+    function initSwiperHtml(){
+        var str = '';
+        for(var i =0 ; i < imgs.length; i++){
+            str += '<li class="img-item"><img src="img/'+imgs[i]+'" alt =""></li>';
+        }
+        swiperEL.innerHTML = str
+        lis = myChildren(swiperEL);
+    }
+
+    function initDottsHtml(){
+        var str = '';
+        for(var i =0 ; i < imgs.length; i++){
+            var classStr = i==0?' class="active"':'';
+            str += '<li'+classStr+'><a href= "javascript:;"></a></li>';
+        }
+        dotts.innerHTML = str;
+        dottsLi = myChildren(dotts);
+
+        // 小点点点击事件
+        initDottsEvent();
+
+        function initDottsEvent(){
+            for(var i = 0; i <dottsLi.length; i++){
+                dottsLi[i].index = i;
+                dottsLi[i].onclick = function(){
+                    changeDottActive(this.index);
+                    count = this.index;
+                    swiperEL = -1*count*imgW+'px';
+                }
+            }
+        }
+    }
+    
+    // 设置一个修改dotts样式的开关
+     function changeDottActive(){
+         for( var i = 0; i<dottsLi.length ; i++){
+             if(hasClass(dottsLi[i],'active')){
+                 removeClassName(dottsLi[i],'active')
+             }
+         }
+         addClassName(dottsLi[count],'active');
+     }
+
+
+
+
+    </script>
+    
+</body>
+</html>

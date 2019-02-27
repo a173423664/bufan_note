@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .btn{
+            position: fixed;
+            right: 0;
+            bottom: 150px;
+            width: 40px;
+            height: 40px;
+            background-color: yellow;
+
+        }
+        .mask{
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width:100%;
+            height: 100%;
+            background-color: rgba(0,0,0, .5);
+            z-index:999;
+
+        }
+        .mask .er{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -75px;
+            margin-top: -75px;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn = document.getElementsByClassName('btn')[0];
+            var mask = document.getElementsByClassName('mask')[0];
+
+            btn.onclick =function(){
+                mask.style.display = 'block';
+                this.style.display = 'none';
+            }
+            mask.onclick = function(){
+                // 思考this指向谁?
+                // 有new 指向实例对象
+                // 没有new,指向调用者
+                this.style.display = 'none';
+                btn.style.display = 'block';
+            }
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="mask">
+        <img  class="er" src="img/wx.jpg" alt="">
+    </div>
+    <div class="btn"></div>
+    
+</body>
+</html>

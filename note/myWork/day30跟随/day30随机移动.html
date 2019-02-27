@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(100,100,50,0.5);
+        }
+      
+
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <script>
+        var box1 = document.getElementsByClassName('box1')[0];
+        timer = null;
+
+        document.onmousedown = function(event){
+            clearInterval(timer);
+            // 兼容一下IE8
+            var event = event || window.event;
+            // 目标位置 Math.round(Math.random()*) 可以取整数
+            // 只要调用一次 所以写在外面
+            var targetX =  parseInt(Math.round(Math.random()*document.documentElement.clientWidth));
+            var targetY =  parseInt(Math.round(Math.random()*document.documentElement.clientHeight));
+
+            timer = setInterval(function(){
+                // 当前位置
+                var leaderX = box1.offsetLeft;
+                var leaderY = box1.offsetTop;
+                // 计算步长
+                var stepX = (targetX - leaderX)/10;
+                var stepY = (targetY - leaderY)/10;
+                // 修改当前元素位置
+                leaderX = leaderX + stepX;
+                leaderY = leaderY + stepY;
+                // 赋值
+                box1.style.left = leaderX+'px';
+                box1.style.top = leaderY+'px';
+                if(targetX==leaderX &&targetY == leaderY){
+                    clearInterval(timer);
+                    console.log('结束了');
+                }
+            },17)
+    } 
+
+
+    </script>
+    
+</body>
+</html>

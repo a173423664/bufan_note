@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+       #box1{
+           height: 100px;
+           width: 100px;
+           background-color: red;
+           margin-top: 50px;
+           position: absolute;
+           /* 如果是ie则需要加一个left=0 */
+           left: 0;
+       }
+       #box2{
+           height: 100px;
+           width: 100px;
+           background-color: yellow;
+           margin-top: 50px;
+           position: absolute;
+           /* 如果是ie则需要加一个left=0 */
+           top: 200px;
+       }
+    
+    </style>
+</head>
+<body>
+    <div style="height:1000px;width:0;border-left:1px solid black;position:absolute;left:800px;"></div>
+    <button id="btn01">点击以后向右移动</button>
+    <button id="btn02">点击以后向左移动</button>
+    <button id="btn03">点击以后box2向右移动</button>
+    <button id="btn04">测试</button>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+    var box1 =document.getElementById('box1');
+    var box2 =document.getElementById('box2');
+
+    var btn01 = document.getElementById('btn01');
+    var btn02 = document.getElementById('btn02');
+    var btn03 = document.getElementById('btn03');
+    var btn04 = document.getElementById('btn04');
+    
+    // 目前我们定时器变量保存在全局变量timer中
+    // 所有执行的正在执行的定时器全都保存在插件里
+    // var timer = null;
+    // timer一开始是ondefind 不会停止
+    // 点击以后向右移动 left值增大
+    btn01.onclick = function(){
+        move(box1,'left',800,10);
+   
+    }
+   
+    btn02.onclick = function(){
+        
+        move(box1,'left',0,10);
+
+
+    btn03.onclick = function(){
+        move(box2,'left',800,20);
+    }
+
+   btn04.onclick = function(){
+       move(box2,'width',800,20,function(){
+           alert('动画执行完毕了')
+       })
+   }
+
+    // 尝试创建一个简单的函数 封装函数的思想
+    // 参数:1.obj 执行对象;
+    // 参数2.speed速度 正数向左 负数向右
+    // 参数3: target目标
+    // 参数4.attr 方向 left top width height
+    // 参数5 callback 回调函数 将在动画效果执行完毕以后执行
+
+        function move(obj,attr,target,speed,callback){
+            
+             // 这里在外面定时器外面获取 因为只需要执行一次
+            clearInterval(obj.timer);
+            // 获取元素当前位置
+           
+            var current = parseInt(getStyle(obj,attr));
+            // 如果当前位置比目标位置大 则向左移动 speed为负
+            if(current>target){
+                var speed = -speed;
+            }
+        // 获取box1原来的left值
+        // var oldValue = box1.offsetLeft;
+         // 但注意这个把写死了只能改变left 我们希望写一个方法可以改变其他所有的值
+        
+        // 此时我们获取到的值是0px 如果+10会拼串而我们需要获取到的是数值所以用parseInt()方法
+        // 变量定在里面每次都会新建 这样不好
+        // 我们在obj里面保存一个timer属性 用来保存它自己的定时器标识
+
+        obj.timer = setInterval(function(){
+
+            var oldValue = parseInt(getStyle(obj,attr));
+            // 在旧值基础上加上10
+            var newValue =  oldValue + speed ;
+        
+            // 向左移动时 数值越来越小 需判断newValue的值是否小于target 向左移动speed值也小于0
+            // 向右移动时,判断newValue的值是否大于target speed 大于0 
+            // 这两个条件只要有一个满足 newValue就等于0;
+
+            if((speed < 0 && newValue < target) || (speed > 0 && newValue > target)){
+                // 这里不能等于0 不然就写死了!!!
+                newValue = target;
+            }
+
+                    // 注意添加动态属性要用[attr] 而不能用点的形式 这点要注意
+            obj.style[attr]=  newValue +'px';
+            // 移动到等于0时 停止
+            if(newValue == target){
+                clearInterval(obj.timer);
+                // 如果有callback参数且有callback方法才使用
+                callback && callback();   
+            }
+           
+        },30)
+    }
+    
+
+
+
+
+
+    // IE中使用的是obj.currentStyle方法，而FF是用的是getComputedStyle 方法
+    //  getstyle()方法 可以获取当前元素 和要获取的样式名
+    function getStyle(obj,name){
+        if(window.getComputedStyle){
+            return getComputedStyle(obj,null)[name];
+        }else{
+            return obj.currentStyle[name];
+        }
+    }
+    }
+
+
+    
+    </script>
+    
+</body>
+</html>

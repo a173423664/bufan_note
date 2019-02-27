@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box1{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+
+    <script>
+        var timer = null;
+        var box1 = document.getElementsByClassName('box1')[0];
+
+        // 在页面上点击的时候获取鼠标的位置,让图片慢慢移动到该位置上
+        document.onmousedown =function(event){
+            clearInterval(timer);
+            // 兼容一下IE8 
+            var event = event || window.event;
+            // 获取鼠标在页面上的位置
+            // 有两种写法兼容一下
+            var pageX = event.pageX || event.clientX + document.documentElement.scrollLeft;
+            var pageY = event.pageY || event.clientY + document.documentElement.scrollTop; 
+
+            // 让div慢慢移动到位置上来
+            timer = setInterval(function(){
+                // 缓步轮播
+                //  step = (target - leader)/10;
+                // //  修改位置
+                //  leader = leader + step;
+                   // 图片当前位置
+                var leaderX = box1.offsetLeft;
+                var leaderY = box1.offsetTop;
+                // 闭包的写法里面可以获取外层函数的变量
+                // 水平竖直方向上的目标
+
+                var targetX = pageX - box1.offsetWidth/2;
+                var targetY = pageY - box1.offsetHeight/2;
+                // console.log(targetX,targetY)
+                // console.log(pageY) 
+                // 步数 x方向 Y方向
+                var stepX = (targetX - leaderX)/10;
+                var stepY = (targetY - leaderY)/10;
+                // 修改当前元素位置
+                leaderX = leaderX + stepX;
+                leaderY = leaderY + stepY;
+
+                // 赋值 单位不能忘记!!!
+                box1.style.left = leaderX+'px';
+                box1.style.top = leaderY+'px';
+                if(targetX==leaderX&&targetY==leaderY){
+                    clearInterval(timer);
+                    console.log('结束了');
+                    console.log('leaderX==>'+leaderX+'leaderY'+leaderY);
+                }
+
+
+            },12)
+        }
+    
+    </script>
+   
+    
+</body>
+</html>

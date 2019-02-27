@@ -1,0 +1,134 @@
+
+
+<!-- // onscrll 可以监听浏览器的滚动事件
+// 作业  实现 参考bufanui.com 的head  0-400的区间内 头部以0-1的透明度渐变 -->
+<!-- // 提示: 透明度只有0-1,可以0-100处理,计算完毕之后还原 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* #box1{
+            width: 100%;
+            height: 400px;
+
+        } */
+
+
+        *{
+			padding: 0;
+			margin: 0;
+        }
+         #box1{
+            position: fixed;
+            top: 0;
+            left:0;
+            width: 100%;
+            height: 300px;
+            background-color: rgba(0, 5, 0, 0.3);
+            /* opacity:0.3;
+            filter:alpha(opacity=30); */
+
+        }
+        #box2{
+            width: 100%;
+            height: 500px;
+            margin: 500px auto;
+            background-color: blanchedalmond;
+        }
+        html,body{
+            height: 2000px;
+        }
+        
+        
+
+    
+
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <script>      
+  
+    var box1 = document.getElementById('box1');
+    var boxH = box1.offsetHeight;
+    var a = 0;
+    window.onscroll = function(){
+        // 被卷进去的距离
+        var top = window.pageYOffset|| document.documentElement.scrollTop || 0;
+        if(top>boxH){
+            a=1;
+    }else{
+        a = top/boxH;
+        }
+        box1.style.backgroundColor = 'rgba(0, 5, 0, +'+a+')';
+    }
+
+
+
+      // var speed = 1;
+    // var timer = null;
+    // 给它
+    // var alpha=30;
+    // document.onmousewheel = function(event){
+    //     event = event || window.event;
+    //     // 判断滚轮的的方向
+    //     // event.wheelDelta可以获取滚轮方向
+    //     // 往上显示正120 往下显示-120
+    //     // 注意:这个属性在火狐中不支持
+    //     // 火狐中使用detail来获取滚动方向
+    //     // alert(event.detail);
+    //     if(event.wheelDelta > 0 || event.detail < 0){
+    //     // alert('向上滚');
+    //     startRun(30);
+    //     }else{
+    //     // alert('向下滚');
+    //     startRun(100);
+    //     }
+                     
+    //  }
+    
+    //  window.onscroll =function(){
+
+           
+        
+    //  }
+
+    //          startRun(400);
+    //         console.log(startRun);
+
+//     function startRun(target){
+//         // 清除上一次定时器
+//         clearInterval(timer);
+//         timer = setInterval(function(){
+
+//         if(target > alpha){
+//             speed = 0.5;
+//         }
+//         else{
+//             speed =-0.5
+//         }
+//         if(alpha == target){
+//         clearInterval(timer);
+//         }
+//         else{
+//         alpha = alpha + speed;
+
+//         // box1.style.filter = 'alpha(opacity='+alpha+')';
+//         box1.style.opacity = alpha/100;
+       
+//       }
+//     },30)
+//   }
+          
+    </script>
+      
+</body>
+</html>

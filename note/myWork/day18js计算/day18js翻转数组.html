@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 方法一:倒序
+		var arr = [ 3,4,5,6,7];
+		function reverse(arr){
+			// 用个一个空容器重新装数组
+			var arr2 = [];
+			// 倒序所以从最后一位开始算起,起始i为4;
+			for( var i = arr.length-1 ; i>=0 ; i--){
+				arr2.push(arr[i]);
+			}
+			return arr2;
+		}
+		console.log(reverse(arr));
+
+
+		// 方法二:翻转下标
+		// 取地板值,
+		function reverse2(arr){  
+			for( var i =0 ; i< Math.floor(
+				arr.length/2); i++){
+				var temp = arr[i];
+			// 数组中首尾两个对称数字数互换
+				arr[i] = arr[arr.length-1-i];
+				arr[arr.length-1-i]=temp;	
+				}
+				// 不需要返回因为修改的是arr自己.
+		}
+		reverse2(arr);
+		console.log(arr); 
+
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

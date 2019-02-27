@@ -3,161 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<style>
-		*{
-			padding: 0;
-			margin: 0;
-		}
-
-		ul,ol{
-			list-style: none;
-		}
-
-		a{
-			text-decoration: none;
-		}
-
-		.d1{
-			width: 100%;
-			height: 500px;
-			margin: 500px auto;
-			background-color: yellow;
-		}
-
-		.fx{
-			position: fixed;
-			right: 20px;
-			bottom: 100px;
-			width: 38px;
-			height: 124px;
-			background-color: white;
-
-		}
-
-		.fx .qq{
-			position: relative;
-			height: 38px;
-			background: #6872BA url(img/icon-qq-active.png) no-repeat center;
-			
-		}
-
-		.fx .wx{
-			position: relative;
-			height: 38px;
-			background: #6872BA url(img/wx.png) no-repeat center;
-			cursor: pointer;
-		}
-
-		.fx .wx .er{
-			position: absolute;
-			left:-100px;
-			bottom: 0;
-			width:100px;
-			height: 100px;
-			display: none;
-
-		}
-		.fx .wx:hover .er{
-			display: block;
-		}
-
-		.fx .go-up{
-			height: 48px;
-			margin-top:10px;
-			background-color: #646464;
-			background: url(img/goup.png) no-repeat center;
-			cursor: pointer;	
-		}
-
-		.fx .qq .dec{
-			position: absolute;
-			right:0;
-			bottom:0;
-			width: 173px;
-			line-height: 40px;
-			font-size: 14px;
-			display: none;
-			border: 1px solid gray;
-		}
-
-		.fx .qq:hover .dec{
-			display: block;
-
-		}
-
-		.fx .dec .dec-list.dec-list2{
-			background-color: #6872BA;
-			color: #fff;
-			text-indent: 20px ;
-
-		}
-
-		.fx .qq .dec .dec-list.dec-list2 a{
-			color: white;
-		}
-
-		.fx .qq .dec .dec-list.dec-list2 .close{
-			position: absolute;
-			right: 20px;
-			top: 9px;
-			display: block;
-			width: 22px;
-			height: 22px;
-			font-size: 14px;
-			line-height: 22px;
-			text-indent: 0;
-
-		}
-
-		.fx .qq  .dec .teacher{
-			height: 40px;
-			line-height: 40px;
-			text-align: center;
-			background:  url(img/icon-qq.png) no-repeat 20px;
-		}
-		
-		.fx .qq  .dec .teacher.t1{
-			background-color: #E8E8E8;
-		}
-
-		.fx .qq  .dec .teacher.t2{
-			background-color: #F3F3F3;
-		}
-
-		.fx .qq  .dec .teacher.t1:hover,
-		.fx .qq  .dec .teacher.t2:hover{
-			height: 44px;
-			background-color: #000;
-			background-image: url(img/icon-qq-active.png);
-		}
-
-		.fx .qq  .dec-list.teacher a{
-			display: block;
-			width: 100%;
-			height: 100%;
-			color: #717171;
-		}
-
-		.fx .qq .dec .dec-list.tel-title{
-			height: 40px;
-			background: #fff url(img/icon-tel.png) no-repeat 20px;
-			color: #717171;
-			/* text-indent: 50px; */
-			text-align: center
-		}
-		.fx .qq .dec .dec-list.tel{
-			height: 40px;
-			text-align: center;
-			background-color: white;
-		}
-		.fx .qq .dec .dec-list.tel a{ 
-			height: 40px;
-			line-height: 40px;
-			color:#717171;
-		}
-
-
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="d1">
@@ -167,18 +13,12 @@
 		<div class="qq">
 			<ul class="dec">
 				<li class="dec-list dec-list2">在线咨询
-				<a href="" class="close">X</a>
+					<a href="" class="close">X</a>
 				</li>
-				<li class="dec-list teacher t1">
-					<a href="">张老师</a>
-				</li>
-				<li class="dec-list teacher t2">
-					<a href="">王老师</a>
-				</li>
+				<li class="dec-list teacher t1"><a href="">张老师</a></li>
+				<li class="dec-list teacher t2"><a href="">王老师</a></li>
 				<li class="dec-list tel-title">联系电话</li>
-				<li class="dec-list tel">
-					<a href="">0371-55602883</a>
-				</li>
+				<li class="dec-list tel"><a href="">0371-55602883</a></li>
 			</ul>
 		</div>
 		<div class="wx">
