@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 定义一个函数用来获取指定元素的样式 -->
+    <script>
+        // 判定兼容条件
+        function getStyle(obj,name){
+            if(getComputedStyle){
+                // 正常浏览器的方式,会获取计算后的最终样式
+                return getComputedStyle(obj,null)[name];
+            }else{
+                return obj.currentStyle[name];
+            }
+        }
+        // 封装一个方法用来获取元素的属性 并且去掉属性中的px
+        function getStyle(obj,name){
+            var v = window.getComputedStyle(obj,null)[name];
+            // 判断获取到的属性是由包含px
+            if(v.indexOf('px')!=-1){
+                // 如果有则从字符串中截取 提取出新的字符串 如果这个方法只写一个参数,则返回字符串会一直到字符串末尾.
+                v = v.substr(0,length-2);
+            }
+            // 返回一个number类型的值
+            return parseInt(v);
+            
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .calendar-box{
+            position: relative;
+            width: 538px;
+            height: 370px;
+            /* background-color: pink; */
+            margin: 200px auto;
+            border: 1px solid #5CAEFF;
+
+        }
+        /* 左边内容 */
+        .calendar-box .calendar-left-data{
+            position: absolute;
+            left: 0;
+            width: 405px;
+            height: 370px;
+            background-color:#fff;
+
+        }
+        /* 头部部分 */
+        .calendar-box .calendar-left-data .calendar-select-box{
+            float: left;
+            width: 294px;
+            height: 24px;
+            /* background-color: aqua; */
+            margin-top: 9px;
+            margin-left :9px;
+        }
+        /* 下拉框 选择年 */
+        .calendar-box .calendar-left-data .calendar-select-box .year{
+            width: 78px;
+            height: 24px;
+            margin-top: 1px;
+            /* font-size: 12px; */
+            text-indent: 2px;
+            float: left;
+
+        }
+      
+
+        .calendar-box .calendar-left-data .calendar-select-box .month-data{
+            position: relative;
+            float: left;
+            width: 107px;
+            height: 24px;
+            /* background-color: black; */
+            margin-left:9px;
+        }
+
+        .calendar-box .calendar-left-data .calendar-select-box .month-data .arr{
+            float: left;
+            /* display: block; */
+            /* display: block; */
+            width: 23px;
+            height: 22px;
+            text-align: center;
+            line-height: 22px;
+            color: #7a7a7a;
+            font-size: 16px;
+            border: 1px solid #c3c3c3;
+
+
+        }
+
+
+        .calendar-box .calendar-left-data .calendar-select-box .month-data .arr.arr-left{
+            border-right: none;
+        }
+        .calendar-box .calendar-left-data .calendar-select-box .month-data .arr.arr-right{
+            border-left: none;
+            position: absolute;
+            right: 0;
+            left: auto;
+        }
+
+        .calendar-box .calendar-left-data .calendar-select-box .month-data .month-select{
+            text-align: center;
+            height: 24px;
+            width: 61px;
+        }
+        
+        .calendar-box .calendar-left-data .vocation-plan{
+            float: right;
+            height: 24px;
+            width: 90px;
+            /* background-color: yellow; */
+        }
+        .calendar-box .calendar-left-data .vocation-plan .plan{
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            
+        }
+
+
+        .calendar-box .calendar-left-data .calendar-btn-backToday{
+            width: 82px;
+            height: 24px;
+            /* background-color: aqua; */
+            float: left;
+            margin-top:  9px;
+            margin-left: 9px;
+            border: 1px solid #c3c3c3;
+        }
+        .calendar-box .calendar-left-data .calendar-btn-backToday a{
+            font-size: 14px;
+            height: 100%;
+            width: 100%;
+            color: #7a7a7a;
+            text-align: center;
+            line-height: 24px;
+            display: block;
+            
+
+        }
+        
+
+
+
+
+
+
+        .calendar-box .calendar-right-data{
+            position: absolute;
+            right: 0;
+            width: 130px;
+            height: 370px;
+            background-color: #5CAEFF;
+        }
+    </style>
+</head>
+<body>
+    <!-- 整个日历框 -->
+    <div class="calendar-box">
+        <!-- 左边的日历框 -->
+        <div class="calendar-left-data">
+                <div class="calendar-select-box">
+                        <select class="year">
+                                <option value ="volvo">2019年</option>
+                                <option value ="saab">2018年</option>
+                                <option value="opel">2017年</option>
+                                <option value="audi">2016年</option>
+                                
+                        </select>
+                        <div class="month-data">
+                            <a href="#" class="arr arr-left"><</a>
+                            <select class="month-select">
+                                    <option value ="volvo">2月</option>
+                                    <option value ="saab">1月</option>
+                                    <option value="opel">3月</option>
+                                    <option value="audi">4月</option>
+                            </select>
+                            <a href="#" class="arr arr-right">></a>
+                        </div>
+                        <div class="vocation-plan">
+                                <select class="plan">
+                                        <option value ="volvo">假期安排</option>
+                                        <option value ="saab">端午节</option>
+                                        <option value="opel">春节</option>
+                                        <option value="audi">中秋节</option>
+                                        
+                                </select>
+                        </div>
+                    
+                </div>
+                <div class="calendar-btn-backToday">
+                        <a href="#">返回今天</a>
+                </div>
+
+                <thead>
+                        <tr>
+                        <!-- scope可以设置值为row或col，定义他们是行标题还是列标题 -->
+                            <th scope="col">一 </th>
+                            <th scope="col">二</th>
+                            <th scope="col">三</th>
+                            <th scope="col">四</th>
+                            <th scope="col">五</th>
+                            <th scope="col">六</th>
+                            <th scope="col">日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#">28</a></td>
+                            <td><a href="#">29</a></td>
+                            <td><a href="#">30</a></td>
+                            <td><a href="#">31</a></td>
+                            <td><a href="#">1</a></td>
+                            <td><a href="#">2</a></td>
+                            <td><a href="#">3</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">6</a></td>
+                            <td><a href="#">7</a></td>
+                            <td><a href="#">8</a></td>
+                            <td><a href="#">9</a></td>
+                            <td><a href="#">10</a></td>
+                            <td><a href="#">11</a></td>
+                            <td><a href="#">12</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">13</a></td>
+                            <td><a href="#">14</a></td>
+                            <td><a href="#">15</a></td>
+                            <td><a href="#">16</a></td>
+                            <td><a href="#">17</a></td>
+                            <td><a href="#">18</a></td>
+                            <td><a href="#">19</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">20</a></td>
+                            <td><a href="#">21</a></td>
+                            <td><a href="#">22</a></td>
+                            <td><a href="#">23</a></td>
+                            <td><a href="#">24</a></td>
+                            <td><a href="#">25</a></td>
+                            <td><a href="#">26</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">27</a></td>
+                            <td><a href="#">28</a></td>
+                            <td><a href="#">29</a></td>
+                            <td><a href="#">30</a></td>
+                            <td><a href="#">31</a></td>
+                            <td class="null">1</td>
+                            <td class="null">2</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+        </div>
+       <!-- 右边的日历框 -->
+        <div class="calendar-right-data">
+
+        </div>
+
+    </div>
+    
+</body>
+</html>

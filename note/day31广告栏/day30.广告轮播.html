@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .scroll-msg{
+            position: fixed;
+            bottom: 100px;
+            width: 500px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, .7);
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 20px;
+        }
+        .scroll-msg .btn1{
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            float: left;
+            text-align: center;
+            height: 16px;
+            width: 16px;
+            line-height: 16px;
+            color: #fff;
+            font-size: 12px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+        .scroll-msg .btn1:hover{
+            background-color: bisque;
+        }
+        .box1{
+            margin-top: 1800px;
+            height: 200px;
+            width: 100%;
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="scroll-msg">不凡学院,我来了
+        <a href="#" class="btn1">X</a>
+    </div>
+    <div class="box1"></div>
+
+        <script src="js/common.js"></script>
+        <script>
+            var step = 3;
+            var scrollM = document.getElementsByClassName('scroll-msg')[0]; 
+            
+            var timer = null;
+            var btn1 = document.getElementsByClassName('btn1')[0];
+            // 自动播放
+            leftMax = document.documentElement.clientWidth;
+
+            autoPlay(scrollM);
+            // 封装一个函数用来自动播放
+            function autoPlay(el) {
+            timer = setInterval(function(){
+                var Left = el.offsetLeft+step; 
+                if(Left>=leftMax){
+                    el.style.left = -el.offsetWidth+'px';
+                    // console.log(Left);
+                }else{
+                    el.style.left = Left+'px';
+                }  
+            },17)
+        }
+
+        // 放上去停止
+        scrollM .onmouseenter = function(){
+        // 停止计时器
+        clearInterval(timer);
+        console.log('停止定时器...')
+    }
+        scrollM .onmouseleave = function(){
+        // 停止计时器
+        autoPlay(scrollM);
+        console.log('停止定时器...')
+    }
+
+    // 关闭广告栏
+    btn1.onclick = function(){
+        scrollM.style.display = 'none';
+    }
+
+
+        </script>
+    
+</body>
+</html>
