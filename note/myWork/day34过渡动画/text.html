@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+        // 添加class
+        // 参数的对象el
+        // 属性cname
+    function addClassName(el,cname){
+    if(!el.getAttribute('class')){
+        el.setAttribute('class',cname)
+        return;
+    }
+    // 创建一个老字符串 获取其中的class 
+    var oldClassStr = el.getAttribute('class');
+    // 然后转化为数组是否包含某个danger? 
+    var oldClassArr = oldClassStr.split(' ');
+    if(oldClassArr.indexOf(cname == -1)){
+        oldClassStr += ' '+cname;
+        el.setAttribute('class',oldClassStr)
+    }
+}
+
+// 删除一个属性
+    
+    
+    </script>
+    
+</body>
+</html>

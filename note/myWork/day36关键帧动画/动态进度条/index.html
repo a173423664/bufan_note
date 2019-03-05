@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        	.progress{
+					width: 500px;
+				    height: 100px;
+					margin: 100px auto;
+					/*background-repeat: no-repeat;*/
+                    /* 径向渐变效果 参数:方向 颜色至少指定两个颜色 */
+					background: linear-gradient(
+						     to right bottom,
+					 		 black 25%,
+							 red 25%,
+							 red 50%,
+							 black 50%,
+							 black 75%,
+							 red 75%
+					);
+					background-size: 100px 100px;
+					animation:move 1s infinite  linear  ;
+			}
+
+			@keyframes move {
+					from{
+							background-position: -200px 0;
+					}to{
+							background-position: 0 0;
+					}
+			}
+
+    
+    </style>
+</head>
+<body>
+    <div class="progress">
+
+    </div>
+    
+</body>
+</html>

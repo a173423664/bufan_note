@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,3,5,7,9];
+        var obj = {0:1 , 1:3 ,2:5,3:7,4:9,length:5};
+
+        // 利用原生js的map方法遍历
+        // 第一个参数 当前遍历到的元素
+        // 第二个参数 当前遍历到的索引
+        // 第三个参数 当前遍历到的数组
+        // 注意点:和原生的forEach一样,不能遍历的伪数组
+        arr.map(function(value,index,array){
+            consloe.log(index,value,array);
+        });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+        var res=  $.map(arr,function(value,index){
+            consloe.log(index , value);
+            return value + index ; 
+        }); 
+
+        var res2= $.each(arr,function(index,value){
+            console.log(index,value);
+        })
+
+        // 打印一下
+        console.log(res);
+        console.log(res2);
+
+        // jQuery的each静态方法和map静态方法区别
+        // each静态方法默认返回值就是,遍历谁返回谁
+        // map静态方法默认的返回值是一个空数组
+         
+        //  each静态方法不支持在回调函数中对遍历的数组进行处理;
+        //  map静态方法可以在回调函数中通过return对遍历的数组进行处理,然后新成一个新的数组返回
+    </script>
+    
+</body>
+</html>

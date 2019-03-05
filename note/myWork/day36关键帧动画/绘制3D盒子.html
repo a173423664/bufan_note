@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        /* 定义画布样式 */
+        .stage{
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+            /* 设置眼睛 */
+            perspective: 300px;
+            /* 显示3d效果 */
+            /* transform-style: preserve-3d; */
+        }
+        .container{
+            transform-style: preserve-3d;
+        }
+        .side{
+            background-color: rgba(255, 0, 0, .2);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 196x;
+            height: 196px;
+            line-height: 196px;
+            font-size: 60px;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid red;
+            /* 设置文本阴影 */
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+            text-transform: uppercase;
+        }
+        /* 使用3d变换制作 */
+        .front{
+            transform: translateZ(100px);        
+            }
+        .back{
+            transform: rotateX(180deg) translateZ(100px);
+        }
+        .left{
+            transform: rotateY(-90deg) translateZ(100px); 
+        }
+        .right{
+            transform: rotateY(90deg) translateZ(100px); 
+        }
+        .top{
+            transform: rotateX(90deg) translateZ(100px); 
+        }
+        .bottom{
+            transform: rotateX(-90deg) translateZ(100px); 
+        }
+
+    
+        
+    
+    </style>
+</head>
+<body>
+    <!-- 设置画布样式 -->
+    <div class="stage">
+        <div class="container">
+            <div class="side front">前面</div>
+            <div class="side back">背面</div>
+            <div class="side left">左面</div>
+            <div class="side right">右边</div>
+            <div class="side top">顶面</div>
+            <div class="side bottom">底面</div>
+        </div>
+    </div>
+    
+</body>
+</html>

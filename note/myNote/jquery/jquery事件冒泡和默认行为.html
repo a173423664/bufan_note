@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        $(function(){
+            // 1.什么是事件冒泡?
+            // 如果给儿子绑定一个响应函数,父亲也会响应事件,这就叫事件冒泡
+            //  2.如何阻止事件冒泡？
+            // 只要在儿子事件中设置return false；
+            // 传入参数事件参数 然后在儿子事件中调用方法event.stopPropagation();
+
+            // 阻止默认行为;
+            // 1. return false
+            // 2.调用事件方法event.preventDefault()
+            $('a').click(function(){
+                alert('弹出注册框');
+                return fasle;
+            })
+
+        })    
+        
+    </script>
+    
+</body>
+</html>

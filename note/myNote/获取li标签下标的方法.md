@@ -24,7 +24,7 @@
 				console.log(miData[id]);
 				// 有数据了 接下来????
 				addClassName(navItemSubList,'active');
-			}
+			}5
 ```
 1. 先获取li标签共同class.
 2. 遍历li标签.

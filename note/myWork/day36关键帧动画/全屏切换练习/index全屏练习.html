@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        html,body{
+            /* width: 100%; */
+            height: 100%;
+        }
+        body{
+            /* 超出部分隐藏 */
+            overflow: hidden;
+        }
+        .img-box{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            /* 还要记得设置优先级 */
+            z-index: 0; 
+        }
+        .img-box img{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+
+        .img-box img:target{
+            animation: active1 1s;
+            /* 因为是第一张优先级最低 所以z最小 后面两张相等即可 */
+            z-index: 5;
+        }
+        /* .img-box img:nth-child(1){
+            z-index: 1;
+        } */
+         /* 这里要利用伪类标签逐一选中
+           */
+        
+        .img-box img:nth-child(1):target{
+            animation: active1 1s;
+          
+             
+            z-index: 1;
+
+        }
+        .img-box img:nth-child(2):target{
+            animation: active2 1s;
+            z-index: 5;
+
+        }
+        .img-box img:nth-child(3):target{
+            animation: active3 1s;
+            z-index: 5;
+        } 
+
+        
+        ul{
+            position: absolute;
+            left: 50%;
+            bottom: 200px;
+            margin-left: -150px;
+            /* 宽高不能写反 */
+            width: 300px;
+            height: 80px;
+            z-index: 1;
+        } 
+        
+      
+
+        ul li{
+            float: left;
+        }
+
+        ul li a{
+            display: block;
+            height: 80px;
+            width: 80px;
+            border:1px solid red;
+            border-radius: 50%;
+            color: yellow;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 16px;
+            text-align: center;
+            margin-left: 15px;
+            line-height: 80px;
+            text-decoration: none;
+        }   
+
+
+
+
+
+        /* 动画样式 */
+        @keyframes active1{
+            0%{
+                transform: translateX(-2000px);
+            }
+            100%{
+                transform: translateX(0px);
+            }
+        }
+        @keyframes active2{
+            0%{
+                transform: translateY(-1000px);
+            }
+            100%{
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes active3{
+            /* 旋转返回初始大小 为位置 */
+            0%{
+                transform: scale(0.5) rotate(340deg) ;
+            }
+            100%{
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+
+
+      
+
+
+
+
+    
+    </style>
+</head>
+<body>
+    <div class="img-box">
+        <img src="images/bg1.jpg" id="img1" alt="">
+        <img src="images/bg2.jpg" id="img2" alt="">
+        <img src="images/bg3.jpg" id="img3" alt="">
+    </div>
+    <ul>
+        <li><a href="#img1">pic1</a></li>
+        <li><a href="#img2">pic2</a></li>
+        <li><a href="#img3">pic3</a></li>
+    </ul>
+    
+</body>
+</html>

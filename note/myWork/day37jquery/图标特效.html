@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style:none;
+            width: 400px;
+            height: 250px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        ul>li{
+            width: 100px;
+            height: 50px;
+            margin-top: 50px;
+            /* background-color: aqua; */
+            text-align: center;
+            float: left;
+            font-size: 14px;
+            color: #c3c3c3;
+            overflow: hidden;
+        }
+        ul>li>span{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            position: relative; 
+        }
+       
+    </style>
+
+</head>
+<body>
+
+    <!-- 精灵图片jq的生成方式 -->
+    <!-- 1.遍历所有的li -->
+    <!-- $('li').each(function(index,ele)){ -->
+        <!-- 1.1生成新的图片 -->
+        <!-- var $url = "url('img/bg.png') no-repeat 0 +(index*-24)'px'" -->
+        <!-- 1.2设置新的图片位置 -->
+        <!-- 设置给当前li里面的span标签 -->
+        <!-- .css('background', $url); -->
+
+    <!-- } -->
+    <ul>
+        <li>
+            <span><img src="img/t1.png" alt=""></span>
+            <p>图标</p>
+        </li>
+        <li>
+            <span><img src="img/t2.png" alt=""></span>
+            <p>图标</p>
+        </li>
+        <li>
+            <span><img src="img/t3.png" alt=""></span>
+            <p>图标</p>
+        </li>
+        <li>
+            <span><img src="img/t4.png" alt=""></span>
+            <p>图标</p>
+        </li>
+        <li>
+            <span><img src="img/t5.png" alt=""></span>
+            <p>图标</p>
+        </li>
+        <li>
+            <span><img src="img/t6.png" alt=""></span>
+            <p>图标</p>
+        </li>
+        <li>
+            <span><img src="img/t7.png" alt=""></span>
+            <p>图标</p>
+        </li>
+        <li>
+            <span><img src="img/t8.png" alt=""></span>
+            <p>图标</p>
+        </li>
+    </ul>
+
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            // 监听li移入事件
+            $('li').mouseenter(function(){
+                //2.1 图片网上移动
+                $(this).children('span').animate({
+                    // 改变位置时,图片需要定位,切记
+                    top:-50 
+                },1000,function(){
+                    // 2.2图片网下移
+                    $(this).css('top','50px');
+                    // 2.3将图片复位 top0;
+                    // 这时还需考虑图片移出去会隐藏,此时只需给li设置overfollow:hidden
+                    $(this).animate({
+                        top:0
+                    },1000)
+
+
+
+                })
+            })
+
+        })
+    </script>
+</body>
+</html>

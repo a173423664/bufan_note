@@ -13,6 +13,9 @@
         a{
             text-decoration: none;
         }
+        ul,ol{
+            list-style: none;
+        }
 
         .calendar-box{
             position: relative;
@@ -121,19 +124,199 @@
             font-size: 14px;
             height: 100%;
             width: 100%;
-            color: #7a7a7a;
+            color: black;
             text-align: center;
             line-height: 24px;
             display: block;
-            
+        }
+        /* 星期栏 */
+        .calendar-box .calendar-left-data .week-data{
+            position:absolute;
+            left: 15px;
+            top: 50px;
+            margin-top: 0;
+            width: 378px;
+            height: 33px;
+            border-top: 1px solid #5af;
+        }
+        .calendar-box .calendar-left-data .week-data .week-data-list{
+            float: left;
+            width: 54px;
+            height: 33px;
+        }
+        .calendar-box .calendar-left-data .week-data .week-data-list .week-name{
+            font-size: 14px;
+            font-weight: 400;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .calendar-box .calendar-left-data .week-data .week-data-list:nth-last-child(-n+2) .week-name {
+            color: red;
+        }
+      
 
+
+        .calendar-box .calendar-left-data .calendar-container{
+            width: 378px;
+            height: 270px;
+            /* background-color: yellow; */
+            position: absolute;
+            top: 89px;
+            left: 15px;
+        }
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list{
+            height: 100%;
+            width: 100%;
+            /* overflow: hidden; */
+        }
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item{
+            position: relative;
+            float: left;
+            font-size: 18px;
+            color: #000;
+            text-align: center;
+            width: 54px;
+            height: 54px;
+            border-top: 1px solid #c3c3c3;
+            box-sizing: border-box;
+            
+        }
+         /* .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:visited{
+             border: 3px solid #fb0; 
+            这里有一个坑  如果原先盒子有边框 那么boxsizing以后挤压盒子内容,盒子会少一个边框的像素,此时要么给这个盒子加上边框的宽度或者
+            挤压内容 
+             height: 55px; 
+            box-sizing: border-box;
+             cursor: pointer; 
+        } */
+
+
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:hover{
+            /* box-shadow: 3px 3px 0 0 #fb0,-3px -3px 0 0 #fb0; */
+            /* 这里有一个坑  如果原先盒子有边框 那么boxsizing以后挤压盒子内容,盒子会少一个边框的像素,此时要么给这个盒子加上边框的宽度或者*/
+            /* 挤压内容 */
+            /* height: 55px; */
+            border: 3px solid #fb0; 
+            
+            box-sizing: border-box;
+            cursor: pointer;
+
+        }
+        /* 选中前4个 */
+         .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(-1n+4)
+    
+        {
+            color: #c3c3c3;
         }
         
 
+        /* 伪类 */
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(-n+14){
+            background-color: #FFF0F0;
+        }
+        
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(-n+7){
+            background-color: #F5F5F5;
+        }
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(-n+5){
+            background-color: #ffffff;
+        }
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(6),
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(7),
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(21),
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(20),  
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(27),
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(28)
+        {
+            color: red;
+        }
+        
+        /* 后三个 */
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-last-child(-n+3){
+            color: #c3c3c3;
+        }
 
 
+        /* 创建伪元素标签 */
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(-n+14)::before{
+            position: absolute;
+            left:0;
+            top: 0;
+            content: '休';
+            background-color: red;
+            width: 15px;
+            height: 15px;
+            color: #fff;
+            text-align: left;
+            line-height: 14px;
+            font-size: 13px;
+            text-indent: 1px;
 
+        }
+        
+        /* 去掉前7个 */
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(-n+7)::before{
+            content: '';
+            background-color: transparent;
+            color: #fff;
+        }
+         
+          /* 第六个 第七个  */
+          .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(6)::before,
+          .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(7)::before{
+            position: absolute;
+            left:0;
+            top: 0;
+            content: '班';
+            background-color: #969799;
+            width: 15px;
+            height: 15px;
+            color: #fff;
+            text-align: left;
+            line-height: 14px;
+            font-size: 13px;
+            text-indent: 1px;
+        }
+        /* 第28个框 */
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(28){
+             border: 3px solid #fb0;
+            /* 这里有一个坑  如果原先盒子有边框 那么boxsizing以后挤压盒子内容,盒子会少一个边框的像素,此时要么给这个盒子加上边框的宽度或者*/
+            /* 挤压内容 */
+            /* height: 55px; */
+            box-sizing: border-box;
+        }
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(32){
+            background-color: #fb0;
+            color: #fff;
+        }
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(32) .cp-item{
+            color: #fff;
+        }
 
+        /* 大写 */
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item .cp-item{
+            width: 48px;
+            height: 12px;
+            margin-left: 3px;
+            font-size: 12px;
+            color: #999; 
+            display: block;
+            text-align: center;
+        }
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(6) .cp-item,
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(8) .cp-item,
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(9) .cp-item,
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(18) .cp-item,
+        .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(23) .cp-item{
+            color: red;
+         } 
+         .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-child(-n+4) .cp-item,
+         .calendar-box .calendar-left-data .calendar-container .calender-container-list .data-item:nth-last-child(-n+3) .cp-item
+         {
+             color: #c3c3c3;
+         }
+       
+      
 
         .calendar-box .calendar-right-data{
             position: absolute;
@@ -142,6 +325,94 @@
             height: 370px;
             background-color: #5CAEFF;
         }
+        .calendar-box .calendar-right-data .data-title{
+            width: 130px;
+            height: 48px;
+            line-height: 48px;
+            font-size: 13px;
+            color: #fff;
+            text-align: center;
+            background-color: #5CAEFF;
+        }
+        .calendar-box .calendar-right-data .new-right-day{
+            width: 130px;
+            height: 75px;
+            background-color: #5CAEFF;
+
+        }
+        .calendar-box .calendar-right-data .new-right-day .right-day{
+            text-align: center;
+            width: 75px;
+            height: 75px;
+            font-size: 52px;
+            background-color: #fb0;
+            border-radius: 3px;
+            color: #fff;
+            margin: 0 auto;
+            line-height: 76px;
+            box-shadow: 1px 2px 5px rgba(0,0,0,.1), -1px 2px 5px rgba(0,0,0,.1);
+        }
+        .calendar-box .calendar-right-data .common-p{
+            width: 130px;
+            height: 20px;
+            line-height: 20px;
+            color: #fff;
+            text-align: center;
+            font-size: 13px;
+            /* background-color: #5CAEFF; */
+        }
+        .calendar-box .calendar-right-data .right-fix{
+            position: relative;
+            /* margin-top: 10px; */
+            border-top: 2px solid #94c9ff;
+            padding-top: 10px;
+            width: 110px;
+            height: 155px;
+            line-height: 18px;
+            text-align: center;
+            margin: 10px auto;
+        }
+        .calendar-box .calendar-right-data .right-fix .pg1,
+        .calendar-box .calendar-right-data .right-fix .pg2{
+            position: absolute;
+            top: 20px;
+            width: 55px;
+            height: 71px;
+            float: left;
+            font-size: 13px;
+            color: white;
+        }
+        .calendar-box .calendar-right-data .right-fix .pg2{
+            left: 55px;
+        }
+        .calendar-box .calendar-right-data .right-fix .pg1 .bgn,
+        .calendar-box .calendar-right-data .right-fix .pg2 .bgn{
+            font-size: 24px;
+            text-align: center;
+            text-shadow: 2px 2px 1px rgba(0,0,0,.1);
+            /* display: block; */
+            color: #fff;
+            /* float: left; */
+        }
+        
+        .calendar-box .calendar-right-data .right-fix .pg1 span{
+            width: 55px;
+            height: 20px;
+            /* background-color: pink; */
+            line-height: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #fff;
+            display: block;
+            /* margin-top: 0; */
+        }
+        .calendar-box .calendar-right-data .right-fix .pg2 span{
+            display: block;
+
+
+        }
+
+
     </style>
 </head>
 <body>
@@ -149,108 +420,100 @@
     <div class="calendar-box">
         <!-- 左边的日历框 -->
         <div class="calendar-left-data">
+            <!-- 下拉框选择 -->
                 <div class="calendar-select-box">
-                        <select class="year">
-                                <option value ="volvo">2019年</option>
-                                <option value ="saab">2018年</option>
-                                <option value="opel">2017年</option>
-                                <option value="audi">2016年</option>
-                                
+                    <!-- 选择年 -->
+                    <select class="year">
+                            <option value ="volvo">2019年</option>
+                            <option value ="saab">2018年</option>
+                            <option value="opel">2017年</option>
+                            <option value="audi">2016年</option>
+                    </select>
+                        <!-- 选择月 -->
+                    <div class="month-data">
+                        <a href="#" class="arr arr-left"><</a>
+                        <select class="month-select">
+                                <option value ="volvo">2月</option>
+                                <option value ="saab">1月</option>
+                                <option value="opel">3月</option>
+                                <option value="audi">4月</option>
                         </select>
-                        <div class="month-data">
-                            <a href="#" class="arr arr-left"><</a>
-                            <select class="month-select">
-                                    <option value ="volvo">2月</option>
-                                    <option value ="saab">1月</option>
-                                    <option value="opel">3月</option>
-                                    <option value="audi">4月</option>
-                            </select>
-                            <a href="#" class="arr arr-right">></a>
-                        </div>
-                        <div class="vocation-plan">
-                                <select class="plan">
-                                        <option value ="volvo">假期安排</option>
-                                        <option value ="saab">端午节</option>
-                                        <option value="opel">春节</option>
-                                        <option value="audi">中秋节</option>
-                                        
-                                </select>
-                        </div>
-                    
+                        <a href="#" class="arr arr-right">></a>
+                    </div>
+                        <!-- 计划安排 -->
+                    <div class="vocation-plan">
+                        <select class="plan">
+                            <option value ="volvo">假期安排</option>
+                            <option value ="saab">端午节</option>
+                            <option value="opel">春节</option>
+                            <option value="audi">中秋节</option>        
+                        </select>
+                    </div>
                 </div>
+                <!-- 返回今天 -->
                 <div class="calendar-btn-backToday">
                         <a href="#">返回今天</a>
                 </div>
+                <ul class="week-data">
 
-                <thead>
-                        <tr>
-                        <!-- scope可以设置值为row或col，定义他们是行标题还是列标题 -->
-                            <th scope="col">一 </th>
-                            <th scope="col">二</th>
-                            <th scope="col">三</th>
-                            <th scope="col">四</th>
-                            <th scope="col">五</th>
-                            <th scope="col">六</th>
-                            <th scope="col">日</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="#">28</a></td>
-                            <td><a href="#">29</a></td>
-                            <td><a href="#">30</a></td>
-                            <td><a href="#">31</a></td>
-                            <td><a href="#">1</a></td>
-                            <td><a href="#">2</a></td>
-                            <td><a href="#">3</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">6</a></td>
-                            <td><a href="#">7</a></td>
-                            <td><a href="#">8</a></td>
-                            <td><a href="#">9</a></td>
-                            <td><a href="#">10</a></td>
-                            <td><a href="#">11</a></td>
-                            <td><a href="#">12</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">13</a></td>
-                            <td><a href="#">14</a></td>
-                            <td><a href="#">15</a></td>
-                            <td><a href="#">16</a></td>
-                            <td><a href="#">17</a></td>
-                            <td><a href="#">18</a></td>
-                            <td><a href="#">19</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">20</a></td>
-                            <td><a href="#">21</a></td>
-                            <td><a href="#">22</a></td>
-                            <td><a href="#">23</a></td>
-                            <td><a href="#">24</a></td>
-                            <td><a href="#">25</a></td>
-                            <td><a href="#">26</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">27</a></td>
-                            <td><a href="#">28</a></td>
-                            <td><a href="#">29</a></td>
-                            <td><a href="#">30</a></td>
-                            <td><a href="#">31</a></td>
-                            <td class="null">1</td>
-                            <td class="null">2</td>
-                        </tr>
-                    </tbody>
-                </table>
+                </ul>
+                <!-- 日历表内容 -->
+                <div class="calendar-container">
+                    <ul class="calender-container-list">
 
+                    </ul>
+
+                </div>  
 
         </div>
        <!-- 右边的日历框 -->
         <div class="calendar-right-data">
-
+            <p class=" data-title" >2019-02-24 星期日</p>
+            <div class="new-right-day">
+                <p class="right-day">24</p>
+            </div>
+            <p class="common-p">正月二十</p>
+            <p class="common-p">己亥年 【猪年】</p>
+            <p class="common-p">丙寅月 壬辰日</p>
+            <div class="right-fix">
+                <p class="pg1"><a class="bgn">宜</a></span> <span>求医</span><span>破屋</span></p>
+                <p class="pg2"> <a class="bgn">忌</a><span>诸事不宜</span> </p>
+            </div>
         </div>
 
     </div>
     
 </body>
+<script src="utils/common.js"></script>
+    <script>
+        weekData = ['一','二','三','四','五','六','日'];
+        weekLis = [];
+        dataArray = ['28','29','30','31','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','1','2','3'];
+        cpArray = ['小年','廿四','廿五','廿六','廿七','湿地日','廿九','除夕','春节','初二','初三','初四','初五','初六','初七','初八','初九','情人节','十一','十二','十三','十四','元宵节','十六','十七','十八','十九','二十','廿一','廿而','廿三','廿四','廿五','廿六','廿七'];
+        
+        var calendarEL = document.getElementsByClassName('calender-container-list')[0];
+        var lis = [];
+        var weekDataEL = document.getElementsByClassName('week-data')[0];
+        buildWeekHtml();
+        function buildWeekHtml(){
+            var str = '';
+            for(var i = 0 ; i < weekData.length; i++){
+                str += '<li class="week-data-list"><p class="week-name">'+weekData[i]+'</p></li>';
+            }
+            weekDataEL.innerHTML = str;
+            weekLis = myChildren(weekDataEL);
+        }
+        buildDataHtml();
+        function buildDataHtml(){
+            var str = '';
+        // 遍历日历表
+        for(var i = 0 ;  i < dataArray.length ; i++){
+            str += '<li class="data-item">'+dataArray[i]+'<span class="cp-item">'+cpArray[i]+'</span></li>';
+        }
+        // 重新赋值
+        calendarEL.innerHTML = str;
+        lis = myChildren(calendarEL);
+    }
+    
+    </script>
 </html>

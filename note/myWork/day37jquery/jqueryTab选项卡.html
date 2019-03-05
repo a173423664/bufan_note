@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            margin: 200px auto;
+            width: 700px;
+            height: 500px;
+            border: 1px solid red;
+        }
+        .box .nav{
+            width: 700px;
+            
+            
+        }
+       .nav>li{
+            width: 140px;
+            height: 50px;
+            float: left;
+            line-height: 50px;
+            color: yellow;
+            background-color: gray;
+            font-size: 16px;
+            text-align: center;
+        }
+        .nav .current{
+            background-color: red;
+        }
+
+        .content{
+            width: 700px;
+            height: 450px;
+        }
+        .content>li>img{
+            width: 700px;
+            height: 450px;
+           background-size: cover;
+        }
+        .content>li{
+            display: none;
+        }
+         .content .show{
+            display: block; 
+        } 
+
+    </style>
+</head>
+    
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li class="current">图片一</li>
+            <li>图片二</li>
+            <li>图片三</li>
+            <li>图片四</li>
+            <li>图片五</li>
+        </ul>
+
+        <ul class="content">
+            <li class="show"><img src="img/1.png" alt=""></li>
+            <li><img src="img/2.png" alt=""></li>
+            <li><img src="img/3.png" alt=""></li>
+            <li><img src="img/4.png" alt=""></li>                
+        </ul> 
+    </div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+        // 第一种写法
+        //     编写jq代码
+        //     1.1当鼠标移入li的时候li变红
+            // $('li').mouseenter(function(){
+            //     $(this).addClass('current');
+            // // 1.2获取当前li下标
+            //    var index = $(this).index();
+            // //  1.3  根据下标找到对应的图片
+            //     var $li = $('.content > li').eq(index);
+            //     // 1.4显找到的图片
+            //     $li.addClass('show');
+            // })
+
+
+            // // 2.当鼠标移出时变回原来颜色
+            // $('li').mouseleave(function(){
+            //     $(this).removeClass('current')
+            //        // 2当鼠标移出时移出show
+            //     //    2.2获取当前li下标
+            //     var index =$(this).index();
+            //     //  1.3  根据下标找到对应的图片 $li代表是第一个li
+            //     var $li = $('.content > li').eq(index);
+
+            //     // 然后给移出的li删除class属性
+            //     $li.removeClass('show');
+               
+
+            //    但是这种写法有个弊端
+            // 在鼠标移出时,边框显示显示为空
+
+            // 第二种写法: 只写移入事件
+
+                $('li').mouseenter(function(){
+                    // 当鼠标移入时
+                    // 改变当前li颜色,并且还原其他li的颜色
+                    $(this).addClass('current');
+                    $(this).siblings().removeClass('current');
+
+                    // 获取当前移入的li索引
+                    var index = $(this).index();
+                    // 让图片的显示当前索引的li
+                    var $li = $('.content>li').eq(index);
+                    $li.addClass('show');
+                    // 另外让其他兄弟li关闭
+                    $li.siblings().removeClass('show');
+                })
+            })
+         
+
+
+
+
+        // })
+        
+    </script>
+    
+</body>
+</html>

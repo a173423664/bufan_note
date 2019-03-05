@@ -63,7 +63,7 @@
                 <ul class="nav-data-list">
                     <!-- li自动生成 -->
                 </ul>
-            </div>
+        </div>
         <!-- 版心 -->
         <div class="container-c">
             <!-- 主体logo -->
@@ -115,22 +115,21 @@
         <!-- 侧边栏隐藏信息 -->
             <div class="aside-msg">
                 <ul class="aside-msg-sub-list">
-                    <!-- li自动生成 -->
 
                 </ul>
             </div>
             <!-- 侧边栏 -->
             <ul class="aside-list">
-                <li id="li-1"><a href="#">手机电话卡</a></li>
-                <li id="li-2"><a href="#">电视盒子</a></li>
-                <li id="li-3"><a href="#">笔记本 平板</a></li>
-                <li id="li-4"><a href="#">家电 插线板</a></li>
-                <li id="li-5"><a href="#">出行 穿戴></a></li>
-                <li id="li-6"><a href="#">智能 路由器</a></a></li>
-                <li id="li-7"><a href="#">电源 配件</a></li>
-                <li id="li-8"><a href="#">健康 儿童</a></li>
-                <li id="li-9"><a href="#">耳机 音箱</a></li>
-                <li id="li-10"><a href="#">生活 箱包</a></li>
+                <li id="li-1" class="aside-list-item"><a href="#">手机电话卡</a></li>
+                <li id="li-2" class="aside-list-item"><a href="#">电视盒子</a></li>
+                <li id="li-3" class="aside-list-item"><a href="#">笔记本 平板</a></li>
+                <li id="li-4" class="aside-list-item"><a href="#">家电 插线板</a></li>
+                <li id="li-5" class="aside-list-item"><a href="#">出行 穿戴></a></li>
+                <li id="li-6" class="aside-list-item"><a href="#">智能 路由器</a></a></li>
+                <li id="li-7" class="aside-list-item"><a href="#">电源 配件</a></li>
+                <li id="li-8" class="aside-list-item"><a href="#">健康 儿童</a></li>
+                <li id="li-9" class="aside-list-item"><a href="#">耳机 音箱</a></li>
+                <li id="li-10" class="aside-list-item"><a href="#">生活 箱包</a></li>
             </ul>
             <!-- 轮播图 -->
             <ul class="banner-swiper">
@@ -141,11 +140,7 @@
             <a class="arr arr-right" onclick="goNext(true);" href="#">&gt;</a>
             <!-- 小点点轮播 -->
             <ul class="dotts">
-                <!-- <li ><a href="javascript:;"></a></li>
-                <li><a href="javascript:;"></a></li>
-                <li><a href="javascript:;"></a></li>
-                <li><a href="javascript:;"></a></li>
-                <li><a href="javascript:;"></a></li> -->
+           
             </ul>
 
         </div>
@@ -184,8 +179,11 @@
         var cartMenu = document.getElementsByClassName('cart-menu')[0];
 
         // 获取侧边栏所有li标签
-        var asideLis = document.getElementsByClassName('aside-list');
-
+        var asideLis = document.getElementsByClassName('aside-list-item');
+        var asideMsg = document.getElementsByClassName('aside-msg')[0];
+        // 生成数据对象
+        var asideSub = document.getElementsByClassName('aside-msg-sub-list')[0];
+    
         // 计数器
         var count = 0;
         // 清除定时器
@@ -269,6 +267,29 @@
                 removeClassName(navItemSubList,'active');
              }
         }
+
+
+
+             // 当鼠标移动到侧导航栏时
+             for (var i = 0; i <asideLis.length; i++){
+                asideLis[i].onmouseenter =function(){
+                // 找到li下标
+                var index = this.id.split('-')[1]-1;
+                console.log(index);
+                // 判断数据长度与li下标大小;
+                if(asideData.length > index){
+                    // 获取当前数据
+                    var currentData = asideData[index];
+                    buildAsideHtml(currentData,asideSub);
+                }else{
+                    console.log('no-data');
+                }
+                addClassName(asideMsg ,'active');
+            }
+            asideLis[i].onmouseleave = function(){
+                removeClassName(asideMsg,'active');
+             }
+        }
         
         // searchBlock.onmouseenter = function(){
         //     addClassName(searchBlock,'actives');
@@ -287,19 +308,7 @@
             removeClassName(cartMenu,'active');
         }
 
-        // 当鼠标移动到侧导航栏时
-        for (var i = 0; i <asideLis.length; i++){
-            asideLis[i].onmouseenter =function(){
-                // 找到li下标
-                var index = this.id.split('-')[1]-1;
-                // 判断数据长度与li下标大小;
-                if(asideData.length > index){
-                    // 获取当前数据
-                    var currentData = asideData[index];
-                    buildAsideHtml(currentData,);
-                }
-            }
-        }
+     
 
         // 两个箭头点击切换幻灯片
         // 封装一个goNext方法
@@ -362,8 +371,6 @@
 			},2000)
         }
 
-        
-
         // 封装一个函数用来创建主导航下的子栏目接收数据 
         // 参数:data获取的数据 targetEl插入的目标
         function buildHtml(data,targetEl){
@@ -382,6 +389,15 @@
             targetEl.innerHTML = str;
         }
 
+
+        function buildAsideHtml(data,targetEl){
+            var str = '';
+            for(var i = 0; i < data.length ; i++){
+                str += '<li class= "aside-item"><img class ="aside-img" src ="'+data[i].img+'"><a class="aside-name" href="#">'+data[i].name+'</a></li>';
+            }
+            targetEl.innerHTML = str;
+        }
+
         // 改变dotts的样式
         function changeDott(count){
 			//重置count 
@@ -397,7 +413,6 @@
 			addClassName(dottEl[count],'active');
 		}
    
-    
     </script>
 
 </body>

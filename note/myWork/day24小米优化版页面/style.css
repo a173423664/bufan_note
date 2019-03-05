@@ -229,7 +229,7 @@ ol,ul{
 }
 /* 当new被激活时 不显示 */
 .nav-item-sub-list .nav-data-list .pro-item .new.active{
-    border: none
+    border: none;
 }
 
 .nav-item-sub-list .nav-data-list .pro-item .img-link{
@@ -287,13 +287,7 @@ ol,ul{
     display: block;
 }
 
-/* .container-c .search-block.actives{
-    border-color: gray;
 
-}
-.container-c .search-block.actives .search-btn.actives{
-    border-left-color:gray;
-} */
 
 
 /* 焦点框 */
@@ -445,34 +439,70 @@ background-color: rgba(255,103,0,.9);
 }
 
 
-/* .banner-c .aside-msg{
+ .banner-c .aside-msg{
+    display: none;
     position: absolute;
     top: 0;
     left:234px;
-    width: 992px;
+    /* width: 992px; */
     height: 460px;
-    background-color: pink;
+    background-color: #fff;
     z-index: 123;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
-.aside-msg .aside-msg-sub-list .aside-item{
-    height: 57.5px;
-    width: 100%;
-}
-
-.aside-msg .aside-msg-sub-list .aside-item .imgs-link{
+.banner-c .aside-msg.active{
     display: block;
-    height: 57.5px;
-    width: 248px;
 }
 
-.aside-msg .aside-msg-sub-list .aside-item .imgs-link imgs{
-    height: 100;
+.banner-c .aside-msg .aside-msg-sub-list{
+    border-top: 1px solid #c3c3c3;
+    border-right: 1px solid #c3c3c3;
+    height: 100%;
+    border-right: 1px solid #c3c3c3;
+    border-bottom: 1px solid #c3c3c3;
+    box-sizing: border-box;
+    /* box-shadow: -120px -10px 100px  0 gray; */
 }
-.aside-msg .aside-msg-sub-list .aside-item .cname{
+.banner-c .aside-msg .aside-msg-sub-list .aside-item{
+    width: 247.7px;
+    height: 76px;
+    text-indent: 15px;
+    float: left;
+    padding-top: 20px;
+   
+    
+    
+}
+.banner-c .aside-msg .aside-msg-sub-list .aside-item .aside-img{
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    float: left;
+    padding-left: 15px;
+   
+    
+}
+.banner-c .aside-msg .aside-msg-sub-list .aside-item .aside-name{
     font-size: 14px;
-    line-height: 40px;
-} */
+    /* color: #333; */
+    height: 40px;
+    line-height: 20px;
+    float: left;
+    display: block
+    /* background-color: red; */
+}
+.banner-c .aside-msg .aside-msg-sub-list .aside-item .aside-name:hover{
+    color: orange;
+}
+
+
+.banner-c .aside-msg:hover{
+    display: block;
+}
+
+
 
 
 

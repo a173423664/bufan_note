@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .wraper{
+        /* 运动轨迹包含框 */
+        position: relative;
+        width: 600px;
+        height: 600px;
+        background-color: bisque;
+        border: 1px solid red;
+        margin: 200px auto;
+    }
+    .box{
+        /* 定义小盒样式 */
+        position: absolute;;
+        left:0;
+        top: 0;
+        height: 100px;
+        width: 100px;
+        background-color: aqua;
+        /* 定义动画名称  动画时长 时间曲线 次数*/
+        animation: ball 5s linear infinite
+    }
+    /* 设计一个关键帧动画 共分为5帧 */
+    @keyframes ball{
+        0%{left:0;top:0;}
+        25%{left:500px;top: 0}
+        50%{left:500px;top:500px}
+        75%{left:0; top:500px}
+        100%{left: 0; top: 0}
+
+    }
+</style>
+
+<body>
+    <div class="wraper">
+        <div class="box"></div>
+    </div>
+    
+</body>
+</html>

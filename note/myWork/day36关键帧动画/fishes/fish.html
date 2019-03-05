@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: lightskyblue;
+        }
+        /*小鱼 容器 */
+        .fishbox{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            /* 定义盒子的动画过程  */
+            animation: active1 20s linear infinite;
+            /* 播放方向 */
+            /* alternate 动画会在偶数次倒着播放 */
+            animation-direction: normal;
+        }
+        .fish{
+            /* 根据原图计算得出 */
+            height: 126px;
+            width: 174px;
+            background: url(image/fish8.png) no-repeat left top;
+            position: absolute;
+            top: 35%;
+            left: 0;
+            /* 定义小鱼的动画 */
+            animation: run 0.8s steps(8) infinite;
+        }
+        /* 给鲨鱼框定义 */
+		.sharkbox{
+			width: 509px;
+            height: 270px;
+            animation: active2 20s linear infinite;
+		}
+        .shark{
+            width: 509px;
+            height: 270px;
+            background: url(image/shark1.png) no-repeat ;
+            animation:  run2 1s steps(8) infinite;
+
+        }
+        /* 添加动画 */
+        /* 小鱼盒子 */
+        @keyframes run{
+            0%{}
+            100%{background-position: left -1008px;
+            }
+
+        }
+        /* 定义大鱼动画 */
+        @keyframes run2{
+            0%{}
+            100%{
+                background-position: left -2160px;
+            }
+        }
+
+
+        /* 给小鱼添加动画 */
+        @keyframes active1{
+            0%{}
+            25%{
+                transform: translateX(800px) rotate(45deg);
+             }
+             50%{
+                 transform: translate(800px,350px) rotate(135deg);
+             }
+             75%{
+                 transform: translate(100px,300px) rotate(235deg);
+             }
+             100%{
+                 transform: translate(0,0) rotate(360deg);
+             }
+        }
+
+        @keyframes active2{
+            0%{}
+            25%{
+                transform: translate(600px,200px) rotate(80deg);
+                }
+            75%{
+                transform: translate(800px,1000px) rotate(120deg);
+            }
+            100%{
+                transform: translate(1500px,800px) rotate(180deg);
+            }
+            
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <div class="fishbox">
+        <div class="fish">
+
+        </div>
+    </div>
+    <div class="sharkbox">
+        <div class="shark">
+
+        </div>
+    </div>
+    
+</body>
+</html>

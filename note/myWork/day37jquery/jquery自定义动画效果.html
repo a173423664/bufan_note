@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-top: 10px;
+        }
+        .two{
+            background-color: blue;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <button>添加属性</button>
+    <button>累加属性</button>
+    <button>关键字</button>
+    <button></button>
+    <div class="one"></div>
+    <div class="two"></div>
+
+    <script src="lib/jquery-3.3.1.min.js"></script>
+
+    <script>
+        // 入口函数
+        $(function(){
+            // 1.添加属性
+            // $('button').eq(0).click(function(){
+            //     // $('.one').animate({
+            //     //     width:500
+            //     // },1000,function(){
+            //     //     alert('动画执行完毕')
+            //     // })
+
+            //     // 第一个参数: 接收一个对象可以在对象中修改属性
+            //     // 第二个参数:  指定动画时长
+            //     // 第三个参数: 指定动画速度
+            //     // 第四个参数 回调函数，动画结束完以后执行
+            //     $('.one').animate({
+            //         marginLeft:500
+            //     },5000,function(){
+            //         alert('动画执行完毕')
+            //     })
+                
+            //     $('.two').animate({
+            //         marginLeft:500
+            //         // 默认匀速动画
+            //         // 可以设置成缓动动画linear
+            //     },5000,'linear',function(){
+            //         alert('动画执行完毕')
+            //     })
+            // })
+
+            // 累加属性 对象里需要写成字符串
+            // 注意点:千万不要忘记给添加选择器标识符
+            $('button').eq(1).click(function(){
+                $('.one').animate({
+                    // 累加
+                    width: '+=100'
+                },1000,function(){
+                    alert('动画执行完毕');
+                })
+            })
+
+            $('button').eq(2).click(function(){
+                $('.one').animate({
+                    // 宽度隐藏
+                    // width: 'hide'
+                    // 切换宽显示/隐藏
+                    width: 'toggle'
+                },1000,function(){
+                    alert('动画执行完毕');
+                })
+            })
+
+
+        })
+    </script>
+</body>
+</html>

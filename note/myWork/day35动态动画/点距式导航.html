@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .nav-box{
+            position: relative;
+            width: 40px;
+            height: 40px;
+            /* background-color: blue; */
+            margin: 300px auto;
+        }
+        .nav-box .nav{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .nav-box .nav>li{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transition: all ease .4s;
+        }
+        /* 这个是设置图片的原来位置的 */
+        .nav-home{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            z-index: 999;
+            background: url(img/home.png) no-repeat center;
+            background-size: cover;
+            transition: all ease .4s;
+        }
+        .nav-home.active{
+            transform: rotate(360deg);
+        }
+
+        /* 
+        分别给5个li标签加上图片 利用伪类
+        */
+        .nav .nav-item:nth-child(1){
+            background: url(img/clos.png) no-repeat center;
+
+        }
+        .nav .nav-item:nth-child(2){
+            background: url(img/full.png) no-repeat center;
+
+        }
+        .nav .nav-item:nth-child(3){
+            background: url(img/home.png) no-repeat center;
+
+        }
+        .nav .nav-item:nth-child(4){
+            background: url(img/open.png) no-repeat center;
+
+        }
+        .nav .nav-item:nth-child(5){
+            background: url(img/prev.png) no-repeat center;
+        }
+
+
+    
+    </style>
+</head>
+<body>
+
+
+    <!-- 导航框 -->
+    <div class="nav-box">
+        <!-- 导航栏 -->
+        <ul class="nav">
+            <!-- 项目 -->
+            <li class="nav-item"></li>
+            <li class="nav-item"></li>
+            <li class="nav-item"></li>
+            <li class="nav-item"></li>
+            <li class="nav-item"></li>
+        </ul>
+        <!-- 导航的 -->
+        <div class="nav-home"></div>
+    </div>
+    <script>
+        // 获取所有的li标签
+        var R = 200;
+		var btn = document.querySelector('.nav-home');
+		var lis = document.querySelectorAll('.nav>li');
+		//一个夹∠
+		var radOne = Math.PI/8;
+
+		btn.onclick = function () {
+			//是否执行打开 true为打开
+			var toOpen = true;
+			if(this.classList.contains('active')){
+				this.classList.remove('active');
+				toOpen = false;
+			}else{
+				this.classList.add('active');
+				toOpen = true;
+			}
+
+			for(var i = 0 ; i < lis.length ; i++){
+				var x = toOpen?-1*getXY(radOne*i).x:0;
+				var y = toOpen?-1*getXY(radOne*i).y:0;
+				lis[i].style.left = x+'px';
+				lis[i].style.top = y+'px';
+				lis[i].style.transform = 'rotate('+(toOpen?'720deg':'0')+'deg)';
+				//假如每一个li延迟0.2s
+				// transition-delay: 
+				lis[i].style.transitionDelay = .2*i+'s';
+			}
+			
+			
+		}
+
+
+
+		/**
+		* 根据弧度算 x,y坐标
+		*  
+		**/
+		function getXY(rad) {
+			return {
+				x: Math.cos(rad)*R,
+				y: Math.sin(rad)*R
+			}
+		}
+    </script>
+    
+</body>
+</html>

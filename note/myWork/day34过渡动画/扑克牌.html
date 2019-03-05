@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            position: relative;
+            margin: 200px auto;
+            width: 260px;
+            height: 400px;
+            background-color: antiquewhite;
+
+        }
+        .box .img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            box-shadow: 1px 1px 3px rgba(0,0,0,.7);
+            transition: all ease .4s;
+            /* 旋转的基准点 */
+            transform-origin: center bottom;
+            -ms-transition:all .4s ease;
+			-webkit-transition:all .4s ease;
+			transform-origin: center bottom;
+        }
+
+        .box:hover img:nth-child(1){
+            transform: rotate(-40deg);
+        }
+        .box:hover img:nth-child(2){
+            transform: rotate(-30deg);
+        }
+        .box:hover img:nth-child(3){
+            transform: rotate(-20deg);
+        }
+        .box:hover img:nth-child(4){
+            transform: rotate(-10deg);
+        }
+        .box:hover img:nth-child(5){
+            transform: rotate( 0);
+        }
+        .box:hover img:nth-child(6){
+            transform: rotate(10deg);
+        }
+        .box:hover img:nth-child(7){
+            transform: rotate(20deg);
+        }
+        .box:hover img:nth-child(8){
+            transform: rotate(30deg);
+        }
+        .box:hover img:nth-child(9){
+            transform: rotate(40deg);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img  class="img" src="img/pk1.png" alt="">
+        <img  class="img" src="素材/pk2.png"  alt="">
+        <img  class="img" src="img/pk2.png" alt="">
+        <img  class="img" src="img/pk1.png" alt="">
+        <img  class="img" src="img/pk1.png" alt="">
+        <img  class="img" src="img/pk1.png" alt="">
+        <img  class="img" src="img/pk1.png" alt="">
+        <img  class="img" src="img/pk2.png" alt="">
+        <img  class="img" src="img/pk2.png" alt="">
+        <img  class="img" src="img/pk1.png" alt="">
+
+
+    </div>
+    
+</body>
+</html>

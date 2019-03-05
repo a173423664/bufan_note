@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			background-color: #98C13B;
+		}
+		.box{
+			position: relative;
+			margin: 300px auto;
+			width: 400px;
+			height: 400px;
+			border: 1px solid gray;
+			background-color: #fff;
+		}
+		.head{
+			position: relative;
+			width: 100px;
+			height: 100px;
+			margin: 50px auto;
+			border-radius: 50%;
+            /* background-color: yellow; */
+
+		}
+
+
+        .head .eye{
+            position: absolute;
+            top: 14px;
+            left: 25px;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            
+        }
+        .head .eye.r{
+            left:60px;
+
+        }
+
+
+
+        /* 天线 */
+		.head .head-line{
+			position: absolute;
+			top: -15px;
+			width: 4px;
+			height: 20px;
+            /* background-color: aqua; */
+		}
+		   .head .head-line.line-l{
+           
+			left: 30px;
+			transform: rotate(-30deg);
+		
+		}  
+		.head .head-line.line-r{
+			right: 30px;
+			transform: rotate(30deg);
+		}  
+        /* 颈部空白 */
+		.head-mask{
+			position: absolute;
+			width: 100px;
+			height: 60px;
+			top: 40px;
+			left: 0;
+			background-color: #fff;
+		}
+		.body{
+			position: absolute;
+			width: 100px;
+			height: 110px;
+			top: 100px;
+			left: 50%;
+			margin-left: -50px;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+
+		}
+
+        .header{时
+            position: absolute;
+            top: 100px;
+            left: 120px;
+            width: 20px;
+            height: 70px;
+            background-color: #98C13B;
+            border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+        
+        }
+        .header.r{
+            position: absolute;
+            right: 120px;
+            left: auto;
+
+
+        }
+
+        
+        .footer{
+            position: absolute;
+            top:210px;
+            left: 50%;
+            width: 22px;
+            margin-left: -30px;
+            height:36px;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+            /* background-color: aqua;  */
+
+        }
+
+
+        .footer.l{
+            position: absolute;
+            left: 60%;
+        }
+
+
+
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+
+		<div class="head">
+            <div class="eye"></div>
+            <div class="eye r"></div>
+			<div class="head-mask"></div>
+			<div class="head-line line-l"></div>
+			<div class="head-line line-r"></div>
+
+		</div>
+		<div class="body">
+			
+        </div>
+        <div class="header l">
+
+        </div>
+        <div class="header r">
+
+        </div>
+        <div class="footer l">
+        </div>
+        <div class="footer r">
+        </div>
+
+	</div>
+</body>
+</html>

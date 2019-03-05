@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 600px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button>展开</button>
+    <button>收起</button>
+    <button>切换</button>
+    <div></div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            // 当点击btn展开
+            $('button').eq(0).click(function(){
+                // 展开 slidedown
+                $('div').slideDown(1000);
+            })
+
+               // 当点击btn 收回
+               $('button').eq(1).click(function(){
+                // 
+                $('div').slideUp(1000);
+            })
+
+                 // 当点击btn 切换
+                 $('button').eq(2).click(function(){
+                // 
+                $('div').slideToggle(1000);
+            })
+            
+
+
+
+        })
+    </script>
+</body>
+</html>

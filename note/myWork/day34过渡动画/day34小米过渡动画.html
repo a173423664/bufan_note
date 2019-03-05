@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+
+        .header{
+            width: 100%;
+            height: 58px;
+            background-color:#F5F5F5; 
+        }
+        .header .header-c{
+            position: relative;
+            width: 1226px;
+            height: 100%;
+            margin: 0 auto;
+            background-color: #F5F5F5;
+        }
+        .header-c .header-name{
+            /* float: left; */
+            font-size: 22px;
+            color: #333;
+            line-height: 58px;
+            font-weight: 200;
+        }
+        .header-c .header-nav{
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+
+        .header-c  .header-nav .nav-list{
+            float: left;
+            margin-left: 30px;
+        }
+
+        .header-c  .header-nav .nav-list a{
+            line-height: 58px;
+            color: #424242;
+            font-size: 16px;
+            padding-bottom: 4px;
+            /* border-bottom: 2px solid #ff6700; */
+            transition: all ease .4s;
+        }
+        .header-c  .header-nav .nav-list a:hover{
+             border-bottom: 2px solid #ff6700;
+             color: #ff6700;
+        }
+        .header-c  .header-nav .nav-list a.active{
+            border-bottom: 2px solid #ff6700;
+             color: #ff6700;
+             /* display: block; */
+        }
+
+        /* 内容区 图片 */
+        .container{
+            width: 100%;
+            height: 614px;
+            background-color:#F5F5F5; 
+        }
+        .container .container-c{
+            position: relative;
+            width: 1226px;
+            height: 614px;
+            background-color: #F5F5F5;
+            margin: 0 auto;
+        }
+        .container .container-c .left-content{
+            float: left;
+            width: 248px;
+            height: 614px;
+            margin-left: -14px;
+            /* background-color: pink; */
+        }
+        .container .container-c .left-content .left-img{
+            width: 234px;
+            height: 300px;
+            /* background-size: cover; */
+        }
+        .container .container-c .left-content .left-img img{
+            width: 234px;
+            height: 300px;
+            background-size: cover;
+            margin-left: 14px;
+            transition: all ease .4s;
+        }
+        .container .container-c .left-content .left-img img.imgs{
+            margin-top: 10px;
+        }
+        .container .container-c .left-content .left-img img:hover{
+            /* x轴  y轴  模糊半径  */ 
+            box-shadow: 5px 5px 15px 2px  rgba(0, 0, 0, .1), -5px 0 15px 2px  rgba(0, 0, 0, .1);
+            /* x轴控制向左右 左为负  y轴控制上下 上为负*/  
+            transform: translate(0,-2px);
+        }
+        .container .container-c  .right-content{
+            height: 614px;
+            width: 992px;
+            float: left;
+            /* background-color: antiquewhite; */
+
+        }
+
+        .container .container-c  .right-content .left-img-list{
+            width: 100%;
+            height: 100%;
+
+        }
+        .container .container-c  .right-content .left-img-list .light-list{
+            position: relative;
+            width: 234px;
+            height: 300px;
+            float: left;
+            background-color: #fff;
+            margin-left: 14px;
+            margin-bottom: 14px;
+            transition: all ease .4s;
+            overflow: hidden;
+            
+        }
+        /* li列表 */
+        .container .container-c  .right-content .left-img-list .light-list .img-list{
+            width: 234px;
+            height: 300px;
+            display: block;
+
+            
+        }
+        .container .container-c  .right-content .left-img-list .light-list .new{
+            width: 64px;
+            height: 26px;
+            text-align: center;
+            color: #fff;
+            background-color: #e53935;
+            font-size: 12px;
+            line-height: 20px;
+            margin-left:100px;
+            /* margin: 0 auto; */
+        }
+
+        .container .container-c  .right-content .left-img-list .light-list .new.active{
+            border: none;
+            background-color: #fff;
+        }
+/* 
+        .container .container-c  .right-content .left-img-list .light-list .img-list img {
+            margin-top: 10px;
+        } */
+
+        /* 图片 */
+        .container .container-c  .right-content .left-img-list .light-list .img-list img{
+            margin-top: 23px ;
+            margin-left: 42px;
+            width: 150px;
+            height: 150px;
+            background-size: cover;
+        }
+        /* 产品名称 */
+        .container .container-c  .right-content .left-img-list .light-list .img-list .pro-name{
+            /* margin-top: 15px; */
+            margin-top: 0;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            font-weight: 400;
+        }
+        /* 价格 */
+        .container .container-c  .right-content .left-img-list .light-list .img-list .num{
+            color:  #ff6700;
+            margin-top: 5px;
+            text-align: center;
+            font-size:13px;
+        }
+        /* 评价 */
+        .container .container-c  .right-content .left-img-list .light-list .img-list .rank{
+            color: #b0b0b0;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* 底部隐藏栏 */
+        .container .container-c  .right-content .left-img-list .light-list .footer{
+            width: 234px;
+            height: 75px;
+            background-color: #ff6700;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: translate(0,75px);
+            transition: all ease .4s;
+        }
+        .container .container-c  .right-content .left-img-list .light-list .footer .review{
+            font-size: 12px;
+            color: #fff;
+            text-align: center;
+            width: 174px;
+            margin :10px auto;
+            text-indent: 0;
+        }
+
+        .container .container-c  .right-content .left-img-list .light-list .footer .author{
+            width: 174px;
+            color:rgba(255,255,255,0.6);
+            text-align: left;
+            font-size: 12px;
+            margin :10px auto;
+        
+        }
+        /* box阴影 */
+        .container .container-c  .right-content .left-img-list .light-list:hover{
+            box-shadow: 5px 20px 2px  rgba(0, 0, 0, .1), -5px 0 20px 2px  rgba(0, 0, 0, .1);
+            transform: translate(0 ,-2px);
+        }
+        .container .container-c  .right-content .left-img-list .light-list:hover .footer{
+            /* 恢复原来位置 */
+            transform: translate(0,0);
+        }
+
+
+        /* 最后一张图片  特殊*/
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .brick-item,
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .figure-img{
+            width: 234px;
+            height: 141px;
+            /* margin-right: 16px; */
+            margin-bottom: 16px;
+            position: relative;
+            left: 14px;
+            transition:  all .2s linear;
+            overflow: hidden;
+            /* background-color: red; */
+            background-color: #fff;
+            /* background-color: #424242; */
+
+            
+        }
+        /* 两个小框的hover效果 */
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .figure-img:hover{
+            box-shadow: 5px 8px 2px  rgba(0, 0, 0, .1), -5px 0 8px 2px  rgba(0, 0, 0, .1);
+            transform: translate(0 ,-2px);
+        }
+
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .brick-item:hover{
+            box-shadow: 5px 8px 2px  rgba(0, 0, 0, .1), -5px 0 8px 2px  rgba(0, 0, 0, .1);
+            transform: translate(0 ,-2px);
+        }
+        /* 图片大小 */
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .figure-img img{
+            position: absolute;
+            top: 26.5px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+
+        }
+        /* 产品名称 */
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .figure-img .pro-name{
+            position: absolute;
+            left:25px;
+            top: 40px;
+            display: block;
+            width: 94px;
+            height: 21px;
+            line-height: 21px;
+            /* 对象溢出文本时显示... */
+            text-overflow:ellipsis;
+            white-space:nowrap; 
+            overflow: hidden;
+            font-size: 14px;
+            color: #333;
+            /* text-align: center; */
+            font-weight: 400;
+        }
+        /* 价格 */
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .figure-img .num{
+            position: absolute;
+            left: 29px;
+            top: 64px;
+            color:  #ff6700;
+            text-align: center;
+            font-size:13px;
+
+        }
+        /* 更多 */
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .brick-item .more{
+            position: absolute;
+            top: 44.5px;
+            left: 25px;
+            display: block;
+            width: 95px;
+            height: 45px;
+            font-size: 18px;
+            color: #333;
+
+        }
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .brick-item .more .small{
+            font-size: 12px;
+            display: block;
+            color: #757575;
+            padding-top: 6px;
+        }
+
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .brick-item .icon-font{
+            width: 48px;
+            height: 48px;
+            position: absolute;
+            top: 43.5px;
+            right: 25px;
+            
+        } 
+        .container .container-c  .right-content .left-img-list:nth-last-child(1) .brick-item .icon-font img{
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-c">
+            <p class="header-name">配件</p>
+            <ul class="header-nav">
+                <li id="li_1" class="nav-list"><a class="active" href="#">热门</a></li>
+                <li id="li_2" class="nav-list"><a href="#">保护套</a></li>
+                <li id="li_3" class="nav-list"><a href="#">贴膜</a></li>
+                <li id="li_4" class="nav-list"><a href="#">其他配件</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container-c">
+            <div class="left-content">
+                <a href="#" class="left-img">
+                    <img src="img/m1.jpg" alt="">
+                </a>
+                <a href="#" class="left-img">
+                    <img src="img/m2.jpg" class="imgs" alt="">
+                </a>
+            </div>
+            <div class="right-content">
+                <ul class="left-img-list">
+                    <!-- <li class="light-list">
+                        <a href="#" class="img-list">
+                            <img src="img/m3.png" alt="">
+                             <p class="pro-name">悦米机械键盘</p>
+                            <p class="num">299元</p>
+                            <p class="rank">2584人评价</p>
+
+                        </a>
+                        <a href="#" class="footer">
+                            <p class="review">手感舒适,材料美观,服务态度极好,能做到这样十全十美...</p>
+                            <p class="author">来自于 鄢陵 的评价</p>
+                        </a> 
+                    </li>
+                    <li class="light-list">
+                        <a href="#" class="img-list">
+                                <img src="img/m5.jpg" alt="">
+                                <p class="pro-name">小米USB充电器（10W)</p>
+                               <p class="num">19.9元</p>
+                               <p class="rank">6105人评价</p>
+                        </a>
+                        <a href="#" class="footer">
+                                <p class="review">物流超快，一天就收到了!居然还有发票，这是我从来没有...</p>
+                                <p class="author"> 来自于 钟情 的评价 </p>
+                            </a> 
+                    </li>
+                    <li class="light-list">
+                        <a href="#" class="img-list">
+                                <img src="img/m4.jpg" alt="">
+                                <p class="pro-name">小米指环支架 金色</p>
+                               <p class="num">19元</p>
+                               <p class="rank">3.2万人评价</p>
+                        </a>
+                        <a href="#" class="footer">
+                                <p class="review">做工精美，外观靓丽，不可多得的神器！</p>
+                                <p class="author"> 来自于 最美的太阳 的评价</p>
+                            </a> 
+                    </li>
+                    <li class="light-list">
+                            <a href="#" class="img-list">
+                                    <img src="img/m6.jpg" alt="">
+                                    <p class="pro-name">小米USB充电器60W快充版（6口）</p>
+                                   <p class="num">129元</p>
+                                   <p class="rank">1214人评价</p>
+                            </a>
+                            <a href="#" class="footer">
+                                    <p class="review">质感不错。电气纹波也很小，对换过歪屏的充电时操作不灵...</p>
+                                    <p class="author">  来自于 吼吼 的评价 </p>
+                             </a> 
+                    </li>
+                    <li class="light-list active">
+                        <span class="new">减10元</span>
+                        <a href="#" class="img-list">       
+                            <img src="img/m7.jpg" alt="">
+                            <p class="pro-name">小米便携鼠标</p>
+                            <p class="num">89元</p>
+                            <p class="rank">2万人评价</p>
+                        </a>
+                        <a href="#" class="footer">
+                            <p class="review">漂亮的不像实力派，彪悍的不像偶像派。激动的不知道说什...</p>
+                            <p class="author"> 来自于 赤砂之蝎 的评价 </p>
+                        </a>
+                    </li>
+                    <li class="light-list">
+                            <a href="#" class="img-list">       
+                                    <img src="img/m8.jpg" alt="">
+                                    <p class="pro-name">小米USB 快速充电数据线灰色</p>
+                                    <p class="num">16.9元</p>
+                                    <p class="rank">2301人评价</p>
+                                </a>
+                                <a href="#" class="footer">
+                                    <p class="review">真不错，在此520佳节，可否帮我作首藏头诗，“我爱徐...</p>
+                                    <p class="author">  来自于 牛震 的评价  </p>
+                                </a>
+                       
+                    </li>
+                    <li class="light-list">
+                            <a href="#" class="img-list">       
+                                    <img src="img/m9.jpg" alt="">
+                                    <p class="pro-name">USB Type-C 转接头</p>
+                                    <p class="num">5元</p>
+                                    <p class="rank">9382人评价</p>
+                                </a>
+                                <a href="#" class="footer">
+                                    <p class="review">很方便好用，可以把家里原来的找利用起来，不用再专门买...</p>
+                                    <p class="author">  来自于 yuzhihui 的评价  </p>
+                                </a>       
+                    </li> -->
+                  
+                  <li class="light-list">
+                        <div class="figure-img">" light-lis 
+                            <a href="#" class="pro-name">小米二合一数据线100cm</a>
+                            <p class="num">24.9元</p>
+                        
+                                <img src="img/m10.jpg" alt="">
+                            </a>
+                        </div> 
+                        更多 
+                         <div class="brick-item">
+                            <a href="#" class="more">浏览更多
+                                <span class="small">其他配件</span>
+                            </a>
+                            <a href="#" class="icon-font">
+                                <img src="img/j.png" alt="">
+                            </a>
+                        </div> 
+
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 引入外部js文件 -->
+    <script src="utils/common.js"></script>
+    <script src="utils/miPro.js"></script>
+
+    <script>
+   
+        // 导航栏
+        var navLis = document.getElementsByClassName("nav-list");
+        // 整个页面
+        var rightContent =  document.getElementsByClassName('right-content')[0];
+        // ul标签
+        var leftImgLis = document.getElementsByClassName('left-img-list')[0];
+
+
+        // 当鼠标移动到导航栏上的时候
+        // 遍历导航栏
+        buildProHtml(miPro[0],leftImgLis);
+       for(var i = 0 ; i < navLis.length ; i++){
+            navLis[i].onmouseenter = function(){
+                // 找到li的下标
+                var index = this.id.split('_')[1]-1;
+                if(miPro.length>index){
+                    var currentData = miPro[index];
+                    buildProHtml(currentData,leftImgLis);
+                }else{
+                    console.log('no-data');
+                } 
+            }
+       }
+
+    //    封装一个函数
+    // data表示获取到的数据   targetEL表示要插入的对象
+    function buildProHtml(data,targetEL){
+        var str = "";
+        for(var i = 0 ; i < data.length; i++){
+            var newHtml = data[i].new?'<span class="new">减10元</span>':'<span class="new active">减10元</span>';
+
+            str += '<li class="light-list">'+newHtml+'<a href="#" class="img-list"><img src="'+data[i].img+'" alt="">'
+                +'<p class="pro-name">'+data[i].pro+'</p><p class="num">+'+data[i].price+'</p><p class="rank">'+data[i].rank+'</p>'
+                +'</a><a href="#" class="footer"><p class="review">'+data[i].review+'</p> <p class="author">'+data[i].author+'</p>'
+                    +'</a></li>';
+                   
+                    }
+                    leftImgLis.innerHTML = str;
+
+    
+        str += '<li class=" light-lis active-list"><div class="figure-img"><a href="#" class="pro-name"></a> <p class="num">24.9元</p>'
+            +'<img src="img/m10.jpg" alt=""></a></div><div class="brick-item"><a href="#" class="more">浏览更多<span class="small">其他配件</span>'
+            +'</a> <a href="#" class="icon-font"><img src="img/j.png" alt=""></a></div></li>';
+        leftImgLis.innerHTML = str;
+            
+
+    }
+
+
+    </script>
+    
+</body>
+</html>

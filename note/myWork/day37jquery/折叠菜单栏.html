@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            list-style: none;
+            width: 300px;  
+            margin: 100px auto;
+            
+           
+        }
+        .nav>li{
+        
+            /* 不能写高度 因为这样会把li的高度写死了,从而无法再li里在继续添加标签*/
+            border: 1px solid red;
+            /* border-radius: 5px; */
+            /* text-align: center; */
+            text-indent: 10px;
+            line-height: 35px;
+            border-bottom: none; 
+            position: relative;
+        }
+        .nav>li:last-child{
+            border-bottom: 1px solid red;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .nav>li:first-child{
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+        }
+
+        .nav>li>span{
+            background: url('img/左箭头.png') no-repeat center;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        } 
+
+        .nav>.current>span{
+            transform: rotate(-90deg);
+        }
+
+        /* .sub.sss{
+            display: block;
+        } */
+
+        .sub{
+            display: none;
+        }
+        .sub>li{
+            list-style: none;
+            border: 1px solid white;
+            background:mediumpurple;
+            /* display: none; */
+        }
+
+        .nav>li:hover{
+            background-color: red;
+        }
+      
+
+
+    </style>
+</head>
+<body>
+    <ul class="nav">
+       <li>一级菜单<span></span> 
+           <ul class="sub">
+               <li>二级菜单</li>
+               <li>二级菜单</li>
+               <li>二级菜单</li>
+               <li>二级菜单</li>
+               <li>二级菜单</li>
+           </ul>
+        </li>
+       <li>一级菜单<span></span>
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul> </li>
+       <li>一级菜单<span></span>
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul> </li>
+       <li>一级菜单<span></span>
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul> </li>
+       <li>一级菜单<span></span>
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul> </li>
+       <li>一级菜单<span></span>
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul> </li>
+       <li>一级菜单<span></span>
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul> </li>
+       <li>一级菜单<span></span>
+            <ul class="sub">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>  </li>
+    </ul>
+
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            // 监听一级菜单事件
+            // $(this).attr('lis',0);
+            $('.nav>li').click(function(){
+              
+                // 获取二级菜单 可以通过这个方法 .children
+                var $sub = $(this).children('.sub');
+                // 让二级菜单展开
+                $sub.slideDown(1000);
+                // 获取点击以后的一级菜单的二级菜单
+                var $other = $(this).siblings().children('.sub');
+                // 然后这些二级菜单收起
+                $other.slideUp(1000);
+                // 给被点击的一级标签设置current
+                $(this).addClass("current");
+                // 让所有其他没有被点击的还原
+                $(this).siblings().removeClass("current");
+
+                
+
+                // if($('.nav>li').attr('lis')=='1'){
+                //     $(this).attr('lis',0)
+                //     return $('.sub').slideDown(1000);
+                // }
+                // $(this).siblings().attr('lis',0)
+                // $('.sub').slideUp(1000);//链式调用!!!他的坏处就在于 如果过于长了,你就会有点懵逼.
+			    // $(this).attr('lis',1)    
+			    // $('.sub').slideDown(1000);//find指的是从孩子里寻找.
+
+            })
+
+
+        })
+    </script>
+</body>
+</html>

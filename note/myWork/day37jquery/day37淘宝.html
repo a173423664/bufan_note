@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+
+        .banner{
+            height: 200px;
+            width: 300px;
+            margin: 200px auto;
+            border: 1px solid red;
+            position: relative;
+        }
+        ul{
+            height: 100%;
+            width: 50px;
+            background-color: aqua;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* ul.aside-right{
+            right: 0;
+            left: auto;
+        } */
+
+        ul>li{
+            width: 50px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-bottom:1px solid black;
+            background-color: yellow;
+        }
+        ul>li:last-child{
+            border-bottom: none;
+        }
+        .content{
+             display: none;
+            height: 200px;
+            width: 200px;
+        }
+        ul li .content img{
+           
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50px;
+            top: 0;
+        }
+        /* .aside-right li>img{
+            position: absolute;
+            left: -200px;
+            top: 0;
+        } */
+    
+    .current .content{
+        display: block;
+    }
+
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="banner">
+        <ul>
+            <li class="current">1
+                <div class="content">
+                    <img src="img/1.webp" alt="">
+                </div>
+            </li>
+
+            <li>2
+                <div class="content">
+                    <img src="img/2.webp" alt="">
+                </div>
+            </li>
+            <li>3
+                <div class="content">
+                     <img src="img/3.webp" alt="">
+                </div>     
+            </li>
+            <li>4
+                <div class="content">
+                    <img src="img/4.webp" alt="">
+                </div>
+            </li>
+            <li>5
+                <div class="content">
+                    <img src="img/5.webp" alt="">
+                </li>
+        </ul>
+         <!-- <ul class="aside-right">
+            <li>6
+                 <img src="img/6.webp" alt="">
+            </li>
+            <li>7
+                 <img src="img/7.webp" alt="">
+            </li>
+            <li>8
+                 <img src="img/8.webp" alt="">
+            </li>
+            <li>9
+                 <img src="img/9.webp" alt="">
+            </li>
+            <li>10
+                 <img src="img/10.webp" alt="">
+            </li>
+        </ul> -->
+    </div>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('li').mouseenter(function(){
+                $(this).siblings().css('background-color','yellow')
+                $(this).css('background-color','red')
+                $(this).addClass('current');
+            })
+            $('li').mouseleave(function(){
+               $(this).removeClass('current');
+               $(this).css('background-color','yellow')
+               $('li').eq(0).css('background-color','red');
+               $('li').eq(0).addClass('current');
+
+            })
+
+
+        })
+    </script>
+
+    
+</body>
+</html>

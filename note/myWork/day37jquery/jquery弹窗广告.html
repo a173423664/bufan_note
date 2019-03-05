@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .ad{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            display: none;
+        }
+
+        .ad>span{
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            /* background-color: red; */
+            top: 60px;
+            right: 0;
+
+        }  
+
+    
+    
+    </style>
+</head>
+
+<body>
+    <div class="ad">
+        <img src="img/tc.png" alt="">
+        <span></span>
+    </div>
+
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+
+        // 点击span关闭
+        $('span').click(function(){
+            $('.ad').remove();
+        })
+        // 让图片慢慢出现
+        // $('.ad').slideDown(1000,function(){
+        //     $('.ad').fadeOut(1000,function(){
+        //         $('.ad').fadeIn(1000);
+        //     })
+        // });
+        // 方法二 用动画队列写 建议先调用一下stop方法 可以规避一些隐含的bug
+        // slidedown是下拉菜单 fade淡入淡出
+        $('.ad').stop().slideDown(1000).fadeOut(1000).fadeIn(1000);
+
+    })
+    </script>
+    
+</body>
+</html>

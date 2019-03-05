@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .one{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .two{
+            width: 500px;
+            height: 20px;
+            background-color: blue;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <button>执行动画</button>
+    <button>结束动画</button>
+    <div class="one"></div>
+    <div class="two"></div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            $('button').eq(0).click(function(){
+                // 千万不要忘记选择器的符号
+                // delay()可以设置两段动画之间的延迟时间
+                $('.one').animate({
+                    width: 500
+                },1000).animate({
+                    height:500
+                },1000).animate({
+                    width:200
+                },1000).animate({
+                    height:200
+                },1000);
+
+                $('button').eq(1).click(function(){
+                    // 立即停止当前动画,继续执行后续动画
+                    // $('.one').stop();
+                    // $('.one').stop(false);
+                    // $('.one').stop(false,false);
+
+                    // 立即停止当前的，和后续的所有动画
+                    //  $('.one').stop(true);
+                    //  $('.one').stop(true,false);
+
+                    // 立即完成当前的.继续执行后续的
+                    // $('.one').stop(false,true);
+
+                    // 立即完成当前的,并且停止后续的所有的
+                    //  $('.one').stop(true,true);
+
+
+                })
+            })
+
+
+
+
+        })
+    
+    </script>
+</body>
+</html>

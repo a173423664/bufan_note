@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 静态方法holdReady方法
+        // 传一个true 这样入口函数不会在页面加载完毕以后立即执行
+        // $.holdReady(false)
+        // 作用是可以控制jquery代码块的执行
+        $.holdReady(true);
+        $(document).ready(function(){
+            alert('ready');
+        }) ;
+
+    
+    </script>
+    
+</body>
+</html>

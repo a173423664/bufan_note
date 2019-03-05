@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            left:50%;
+            top: 200px;
+            margin-left: -150px;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+    <button>显示</button>
+    <button>删除</button>
+    <button>切换</button>
+    <div></div>
+
+    <script src="lib/jquery-3.3.1.min.js"></script>
+
+    <script>
+      
+            $('button').eq(0).click(function(){
+                // $('div').css('display','block');
+                // 显示动画 
+                // 参数一表示时间单位毫米
+                // 参数二 回调函数,动画执行完毕后调用
+                $('div').show(1000,function(){
+                    alert('显示动画执行完毕!');
+                });
+            })
+            $('button').eq(1).click(function(){
+                // $('div').css('display','none');
+                $('div').hide(1000);
+            })
+
+            $('button').eq(2).click(function(){
+                // $('div').css('display','none');
+                // 切换 有就消失,没有就显示
+                $('div').toggle(1000);
+            })
+
+     
+
+    </script>
+</body>
+</html>

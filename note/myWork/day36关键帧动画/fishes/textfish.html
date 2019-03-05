@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 创建一个容器 */
+        .box{
+            width: 500px;
+            height: 270px;
+            border: 1px solid  red;
+            margin:  200px auto;
+            background: url(image/shark1.png) left top;
+
+            /* step函数 有两个参数 第一个值指定了时间函数的间隔数量 必须是正整数
+            第二个参数可选,接受start/end 两个值 指定在每个间隔的起点还是终点发生阶跃变化  默认是end
+            step-start等同于steps(1,start)，动画分成1步，动画执行时为开始左侧端点的部分为开始；
+            step-end等同于steps(1,end)：动画分成一步，动画执行时以结尾端点为开始，默认值为end。*/
+            animation:  move 1s steps(8) infinite;
+        }
+        @keyframes move{
+            0%{
+
+            }
+            100%{
+                /* backgrouud-positon第一个值是水平位置，第二个值是垂直位置。 */
+                /* 一次切换270px切换8次 */
+                background-position: left -2160px;
+                /* 这里一步要走270一共走8步 所以一共走了2160px */
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    
+</body>
+</html>
