@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function(){
+            // 1.什么是事件委托?
+            // 请别人做事件,然后将做完的结果反馈给我们
+
+            $('button').click(function(){
+
+                $('ul').append('<li>我是新增的li</li>');
+            })
+            // 在jquery中,如果通过核心函数找的元素不止一个,那么在添加事件的时候,jquery会遍历所有找到的的元素,给所有找到的元素添加事件
+
+            // 通过这个只能找到三个,因为加载完毕只有三个li 新增的li没有添加click事件 这时需要事件委托
+            // $('ul>li').click(function(){
+            //     console.log($(this).html())
+            // })
+            
+            // 给ul绑定delegate事件 
+            // delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。
+            // 找一个入口函数执行之前就有的函数,来监听动态添加  的某些元素的事件
+
+                // ul在入口函数执行时就有了 所以可以获取到click事件
+                // 还有一个问题 这里的this为什么能拿到li？
+                // 因为事件冒泡 点li没有click事件。向上传递，传递给ul，ul有，所以会响应事件，为什么能拿到事件，因为他就是从你点的拿到的。 
+            $('ul').delegate('li','click',function(){
+                console.log($(this).html());
+})
+
+
+
+ 
+        })    
+        
+    </script>
+    <ul>
+        <li>我是第一个li</li>
+        <li>我是第二个li</li>
+        <li>我是第三个li</li>
+    </ul>
+    <button>添加li</button>
+</body>
+</html>
