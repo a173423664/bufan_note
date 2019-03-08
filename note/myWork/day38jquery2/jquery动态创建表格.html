@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            color: #000;
+            
+
+        }
+        /* button{
+            height: 25px;
+            width: 50px;
+            line-height: 25px;
+            color: #fff;
+            background-color: #F2904D;
+            margin-left: 5px;
+            text-align: center;
+            border: none;
+            outline: none;
+
+        } */
+
+        div{
+            margin: 200px auto;
+            width: 600px;
+            height: 300px;
+            position: relative;
+            background-color: #DCD5D5;
+
+        }
+        div>.table{
+            width: 600px;
+            position: absolute;
+            left:0;
+            top:30px; 
+
+        }
+        div>.add{
+            height: 30px;
+            width: 50px;
+            font-size: 16px;
+            line-height: 30px;
+            background-color: #F2904D;
+            color: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        div>.area{
+            display: none;
+            height: 50px;
+            width: 600px;
+            /* background-color: pink; */
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+        .area.active{
+            display: block;
+        }
+        .area>p{
+            display: inline-block;
+            padding-left: 20px;
+            
+        }
+        .btn_list{
+            width: 150px;
+            height: 30px
+        }
+        .btn_list>button{
+            height: 30px;
+            width: 50px;
+            line-height: 30px;
+            color: #fff;
+            background-color: #F2904D;
+            margin-left: 5px;
+            text-align: center;
+        }
+
+
+        div>.box{
+            width: 150px;
+            height: 30px;
+		    display: none;
+            position: absolute;
+            right: 0;
+            top: 70px;
+            /* background-color: #000; */
+		}
+
+		.box.active{
+			display: block;
+		}
+
+    </style>
+</head>
+<body>
+    <div>
+        <button class="add">添加</button>
+        <table class="table" border="1" cellpadding= 10  cellspacing =2> 
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>备注</th>
+            </tr>
+        </table>
+        <div class="area">
+            用户名: <input type="text" class="username"></br>
+            <p>电话:</p><input type="text" class="phone">
+            <button class="ensure">确定</button>
+            <button class="cancel">取消</button>
+        </div>
+         <div class="box">
+            <button id="btn_true">确定</button>
+            <button id="btn_false">取消</button>
+        </div>
+        
+    </div>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        // 可以定义个全局的el为null
+        var el = null;
+       
+            // 思考
+            $('.add').click(function(){
+            // 1.点击添加按钮会显示用户栏
+            // 1.1只要给用户栏添加显示按钮
+            $('.area').addClass('active');
+            el = null;
+            })
+
+            // 2.输入数据后点击确定按钮会自动添加文本数据
+            // 点击确定拿到输入框的数值
+            $('.ensure').click(function(){
+                //2.1 首先他要获取数据
+                var name_ = $('.username').val();
+                var phone_ = $('.phone').val();
+                 // 行数就是序号数
+                //  var index = $('tr').length
+            // 在这里判断有没有拿到el值 如果没有则继续添加新数据
+            if(!el){
+                   // 2.2然后将获取的数据插入表格中
+                   $('.table').append($(`<tr><th></th><th>${name_}</th><th>${phone_}</th><th class='btn_list'><button class='btn_edit'>编辑</button><button class='btn_remove'>删除</button></th></tr>`))
+
+            }else{
+                // 如果有el,则说明拿到了想要修改的节点.就把该节点的数据修改.变成输入框的数据
+                el.find('.phone').text(phone_)
+                el.find('.username').text(name_)
+            } 
+
+                // el = $(this).
+                // 2.3这时需要清空当前列表
+                $('.username').val('');
+                $('.phone').val('');
+                // 2.4这时需要移出激活样式
+                $('.area').removeClass('active');
+            })
+            // 3点击取消按钮将会隐藏输入框
+            // $('.cancel').click(function(){
+            //     // 3.1只需移出激活样式
+            //     $('.area').removeClass('active');
+            // })
+            // 4点击编辑按钮 可以编辑当前文本框的内容
+            // 4.1因为编辑按钮是动态添加的.需要使用事件冒泡.
+            $('.table').on('click','.btn_edit',function(){
+            // 4.2编辑需要先获取要当前一行的数据然后赋值给input.最后保存在el中,让el变成需要修改的那一行
+            // var idnex = $(this).parent().parent().length;
+            // console.log($(this).parent().parent().find('.username').text())
+            var name_ = $(this).parent().parent().find('.username').text()
+			var phone_ = $(this).parent().parent().find('.phone').text()
+            // 4.3编辑的时候需要将框打开 赋值
+            $('.area').addClass('active');
+            $('.username').val(name_);
+            $('.phone').val(phone_);    
+            // console.log( $('.username'));
+            // 4.4然后把值赋给el; 
+            el = $(this).parent().parent();         
+            })
+            // 5.取消的时候,并不是点击一下就取消而是要先弹出确定/取消框 
+            //点击确定后才是真正的取消,但此时电脑不会判断要删除哪一个
+            // ,所以确定之前要先把要删除的值保存一下
+            
+            // 5.1取消按钮为动态添加事件需要事件委派
+            $('.table').on('click','.btn_remove',function(){
+                // 5.2此时弹出确定/取消框
+                $('.box').addClass('active');
+                // 5.3把此时的信息赋值给el存起来
+                el = $(this).parent().parent();
+            })
+            // 6此时点击确定 删除指定的数据
+            $('#btn_true').click(function(){
+                el.remove();
+                // 6.1关闭确定框
+                $('.box').removeClass('active');
+            })
+
+
+        
+    </script>
+    
+    
+</body>
+</html>

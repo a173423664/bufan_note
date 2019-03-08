@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="swiper-3.4.2.min.css">
+    <style>
+        .swiper-container{
+            margin:200px auto;
+            width: 1200px;
+            height: 460px;;
+        }
+        /* .swiper-container>.bg{
+            height: 100%;
+        } */
+        /* .bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 130%;
+        height: 100%;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center;
+    } */
+
+    </style>
+</head>
+<body>
+        <div class="swiper-container">
+                
+                    <div class="swiper-wrapper">
+                       <div class="swiper-slide"><div data-swiper-parallax="-100">Slide 1</div></div>
+                       <div class="swiper-slide"><div data-swiper-parallax="-100">Slide 2</div></div>
+                       <div class="swiper-slide"><div data-swiper-parallax="-100">Slide 2</div></div>
+                       <div class="swiper-slide"><div data-swiper-parallax="-100">Slide 2</div></div>
+                       <div class="swiper-slide"><div data-swiper-parallax="-100">Slide 2</div></div>
+                    </div>
+                </div>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="swiper-3.4.2.jquery.min.js"></script>
+    <script language="javascript"> 
+            var mySwiper = new Swiper('.swiper-container',{
+                    parallax : true,
+            })
+        </script>
+
+    
+</body>
+</html>

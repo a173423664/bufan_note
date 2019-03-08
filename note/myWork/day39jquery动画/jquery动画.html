@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            width: 1000px;
+            height: 300px;
+            border: 1px solid yellow;
+            margin: 200px auto;
+        }
+        .box .li-item{
+            width: 200px;
+            height: 100%;
+            float: left;
+            /* 超出部分隐藏 */
+            overflow: hidden;
+        }
+        .box .li-item>img{
+            height: 100%;
+        }
+    </style>
+</head>
+
+
+<body>
+        <ul class="box">
+            <li class="li-item"><img src="img/m1.jpg" alt=""></li>
+            <li class="li-item"><img src="img/m2.jpg" alt=""></li>
+            <li class="li-item"><img src="img/m3.jpg" alt=""></li>
+            <li class="li-item"><img src="img/m4.jpg" alt=""></li>
+            <li class="li-item"><img src="img/m5.jpg" alt=""></li>
+        </ul>
+        <script src="lib/jquery-3.3.1.min.js"></script>
+        <script>
+            // 设定衣一个全局变量
+            var timer = null;
+            var currentLi =null
+            $(function(){
+                // 鼠标移入的时候
+                $('.li-item').mouseenter(function(){
+                    // 每一个调用都会关闭上一次执行的
+                    clearTimeout(timer);
+                    // 先要获取那边的li
+                    var $that = $(this);
+                    currentLi = $that;
+                    timer = setTimeout(function(){
+
+                        // 所有兄弟变成100
+                        console.log($that);
+                        $that.siblings().animate({
+                            width:100
+                        })
+                        // 自己变成600
+                        $that.animate({
+                            width:600
+                        })
+                    },200)
+                })
+                // 在整个函数中获取不到上一次函数的this值 所以必须要声明一个全局变量
+                $('.box').mouseleave(function(){
+                    currentLi.animate({
+                        width:200
+                    })
+                    currentLi.siblings().animate({
+                        width:200
+                    })
+                })
+
+            })
+
+
+             // 设定一个全局的timer变量
+            // var currentLi = null;
+            // var timer = null;
+            // $(function(){ 
+            //     // 用一个全局变量保存当前li
+            //         var current = null;
+            //         // 思路当鼠标移入时,当前图片展开,变宽
+            //         $('.li-item').mouseenter(function(){
+            //             // 用一个变量去接收当前的li标签
+            //             // var currentLi  = $(this);
+            //             // currentLi = $that;
+            //              // 开启一个定时器
+            //              current = $(this);
+            //              $(this).siblings().animate({
+            //                   // 兄弟节点变窄
+            //                 width: '100px'
+            //             })
+            //             $(this).animate({
+            //                 // 当前img变宽
+            //                 width: '600px'
+            //             })
+            //             // 恢复原样
+            //             $('.box').mouseleave(function(){
+            //                 current.animate({
+            //                 // 当前img变宽
+            //                 width: '200px'
+            //             })
+            //                 current.siblings().animate({
+            //                 // 当前img变宽
+            //                 width: '200px'
+            //             })
+            //         })
+
+                    // // 当鼠标离开后当前图片恢复原样
+                    // $('.box').mouseleave(function(){
+                    //     currentLi.animate({
+                    //         width:200
+                    //     })
+                    //     currentLi.siblings().animate({
+                    //         width:200
+                    //     })
+                    // })
+               
+            // })
+        </script>
+</body>
+</html>
