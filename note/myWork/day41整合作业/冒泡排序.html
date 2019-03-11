@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var arr = [33,22,11,27,17];
+		// 冒泡排序
+		//比较的次数
+		// 一共5个元素 但只要排4次 所以length-1,外层会执行4次
+		for(var j = 0 ; j < arr.length-1; j ++){  
+		
+			// j = 0 时, 嵌套for循环 i的值会从0到3 也就是前四个数组元素.
+
+			// 当i=0时, i<4, i会自增为1,如果arr[0]>arr[1] 转换位置
+			// 当i=1时, i<4, i会自增为2,如果arr[1]>arr[2] 转换位置
+			// 当i=2时, i<4, i会自增为3,如果arr[2]>arr[3] 转换位置
+			// 当i=3时, i<4, i会自增为4,如果arr[3]>arr[4] 转换位置
+			// j = 1 时,
+			// // 当i=0时, i<3, i会自增为1,如果arr[0]>arr[1] 转换位置
+			// // 当i=1时, i<3, i会自增为2,如果arr[1]>arr[2] 转换位置
+			// // 当i=2时, i<3, i会自增为3,如果arr[2]>arr[3] 转换位置
+			// j = 2 时,
+			// // 当i=0时, i<2, i会自增为1,如果arr[0]>arr[1] 转换位置
+			// // 当i=1时, i<2, i会自增为2,如果arr[1]>arr[2] 转换位置
+			
+			// j = 3 时,
+			// 当i=0时, i<1, i会自增为1,如果arr[0]>arr[1] 转换位置
+			// 内层循环也会执行4次
+
+		// 1.第一次循环时i = 0；在第二个循环j里会循环到arr的长度减1次，能将数组中最大的数字放在最后；
+		// 2.第二次循环时i = 1；在第二个循环j里会循环到arr的长度减二次，是因为最后一位已经是最大的了，
+		// 就没必要再去遍历了；同时会将第二大的数字放在倒数第二位；
+		// 3.同第2步骤，依次可将数组排列出来。
+
+			for(var i = 0 ; i < arr.length-(j+1) ; i ++){
+				if(arr[i]>arr[i+1]){
+					var temp = arr[i];
+					arr[i] = arr[i+1];
+					arr[i+1] = temp;
+				}
+			}
+			console.log(arr);
+		}
+
+    </script>
+    
+</body>
+</html>

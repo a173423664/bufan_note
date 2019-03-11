@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3动画实现轮播图</title>
+    <style>
+            *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .banner{
+            width: 1200px;
+            height: 460px;
+            margin: 200px auto;
+            position: relative;  
+            overflow: hidden;
+        }
+        .banner .swiper{
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            
+        }
+        .banner .swiper .slide{
+            float: left;
+            height: 100%;
+            width: 1200px;
+           
+
+        }
+        .banner .swiper .slide img{
+            height: 100%;
+            width: 1200px;
+        }
+        .banner:hover .banner .swiper{
+            animation: run pause;
+        }
+        /* 箭头样式 */
+        .arr{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -36px;
+            width: 36px;
+            height: 72px;
+            text-align: center;
+            line-height: 72px;
+            font-size: 22px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, .5)
+        }
+        .arr.arr-right{
+            left: auto;
+            right: 0;
+        }
+        .dotts{
+            position: absolute;
+            bottom: 30px;
+            right: 60px
+
+        }
+        .dotts>li{
+            width: 6px;
+            height: 6px;
+            border: 2px solid  #fff;
+            background-color:  #e5e5e5;
+            /* css3属性 */
+            border-radius: 50%;
+            margin-left: 5px;
+            margin-right: 5px;
+            float: left;
+        }
+        .dotts>li>a{
+            display: block;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+        .dotts li.active{
+         border-color: orange;
+}
+        .dotts li.active>a{
+        background-color: #333;
+}
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <ul class="swiper">
+        </ul>
+        <a href="javascript:;" class="arr arr-left" dir="left">&lt;</a>
+        <a href="javascript:;" class="arr arr-right"  dir="right">&gt;</a>
+        <ul class="dotts">
+           
+
+        </ul>
+    </div>
+    <script src="lib/jquery-3.3.1.js"></script>
+    <script>
+            var imgArr = ['m1.jpg','m2.jpg','m3.jpg','m4.jpg','m1.jpg']
+            var imgW = 0 ;
+            // 图片长度
+            var imgL = imgArr.length;
+            // 定时器
+            var timer = null;
+            $swiper = $('.swiper');
+            // 计数器
+            var count = 0;
+            // 初始化事件
+            initSwiperHtml();
+            autoRun();
+            hoverEvent();
+            initArrowEvent();
+            initDottsHtml();
+    
+            // 初始化swiper页面
+    function initSwiperHtml(){
+                $.each(imgArr,function(index,value){
+                    $(`<li class="slide"><img src="img/${value}" alt=""></li>`).appendTo($('.swiper'));
+                })
+                //  方法一:width()方法直接获取属性
+                  imgW = $('.slide').eq(0).width();
+                // 方法二:通过css返回属性值(这个方法返回的不是数值时字符串 所以需要截取,这里写一下方法 
+                // 截取到1200px substr()
+                // imgW = $('.slide').eq(0).css('width').substr(0,4);
+                // console.log(imgW);
+                // swiper宽度
+                 $swiper.css('width',`${imgW*imgL}px`);
+            }
+            // 自动播放
+    function autoRun(){
+                timer = setInterval(function(){
+                count++;
+                goDown(count);
+                changeDottsActive(count)
+            },2000)
+        }
+
+            // 图片运动封装
+    function goDown(count){
+        // stop()默认暂停被选元素上指定的当前动画,仅停止活动中的动画,允许任何排入队列的动画向后执行
+            $swiper.stop();
+            if(count == imgL){
+                window.count = 1;
+                $swiper.css('left',0)
+            }
+            if(count < 0){
+                window.count =imgL-2;
+                var lW =  imgL-1;
+                $swiper.css('left',-1*lW*imgW+'px')
+            }
+                var target = -1*imgW*window.count ;
+                $swiper.animate({
+                left: target
+        },300)
+    }
+    // hover事件
+    function hoverEvent(){
+        // 注意:是给banner绑定
+        $('.banner').hover(function(){
+            clearInterval(timer);
+        },function(){
+            autoRun();
+        })
+    }
+
+    // 左右按钮点击事件
+    function initArrowEvent(){
+        // 自定义事件判断
+        $('.arr').click(function(){
+            if($(this).data('dir') =='left'){
+            count--;
+        }else{
+            count++;
+        }
+        goDown(count);
+        console.log(count);
+        changeDottsActive(count)
+        })
+    }
+    // 初始化小点点页面
+    function initDottsHtml(){
+        for(var i = 0 ; i < imgL-1; i++ ){
+            // 这里有两种思路:判断
+            if(i==0){
+                // 这里使用html()也可以实现
+                $('.dotts').append(' <li class="active"><a href="javascript:;"></a></li>');
+            }else{
+                
+                // $('.dotts').html(' <li><a href="javascript:;"></a></li>');
+                $(' <li><a href="javascript:;"></a></li>').appendTo( $('.dotts'));
+            }
+            // 方法二:
+            // $('.dotts').append(' <li><a href="javascript:;"></a></li>');
+            // $('li').eq(0).addClass('active');
+        }
+        // 点击事件
+        initDottsEvent();
+        function initDottsEvent(){
+        $('.dotts li').click(function(){
+            // 保存一下当前点击的下标给定时器
+         count = $(this).index();
+           goDown(count);
+           changeDottsActive(count);
+        })
+    }
+
+}
+    // 小点点激活样式改变
+    function changeDottsActive(count){
+        if(count == imgL-1){
+            count = 0
+        } 
+        // 排他思想 设置或返回属性  attr也可以
+        $('.dotts li').eq(count).addClass('active');
+        $('.dotts li').eq(count).siblings().removeClass('active');
+        // 这里不能使用remove 是指删除特定的元素 empty()是删除被选元素的子  元素
+        // $('.dotts li').eq(count).siblings().remove('.active');
+    }
+    
+    </script>
+    
+
+
+
+
+
+</body>
+</html>

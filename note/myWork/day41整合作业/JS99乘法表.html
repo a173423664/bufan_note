@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.onload = function(){
+        // 1*1=1
+		// 2*1=2 2*2=4
+		// 3*1=3 3*2=6 3*3=9
+        // ... 
+        // 外行控制表高
+            // 原理 外层循环等于1 内层可以等于0和1 乘以不等于0的数才有意义
+                // 外层等于2时,内层等于1,2
+        for( var i = 1 ; i <=9 ; i++){
+            var str = '';
+            for( var j = 1; j<=i ; j++){
+                str += (i+'*'+j+'='+i*j+' ')
+            }
+            console.log(str);
+        }
+    }
+
+    </script>
+    
+</body>
+</html>

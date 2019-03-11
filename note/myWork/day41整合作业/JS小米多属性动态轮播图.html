@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    a{
+        list-style: none;
+    }
+    .banner{
+			position: relative;
+			width: 1200px;
+			height: 600px;
+			/* background-color: pink; */
+			margin: 100px auto;
+		}
+		.banner .banner-imgs{
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			list-style:none;
+		}
+		.banner .banner-imgs .img-item{
+			position: absolute;
+			left: 0;
+			top: 0;
+			/* width: 800px; */
+		}
+		.banner .banner-imgs .img-item img{
+			width: 100%;
+			height: 100%;
+		}
+        .banner .img-item.m1{
+			left: 100px;
+			top: 0;
+			width: 450px;
+			opacity: .3;
+			z-index: 1;
+		}
+    
+        .banner .img-item.m2{
+			left: 0;
+			top: 100px;
+			width: 600px;
+			opacity: .8;
+			z-index: 2;
+		}
+        .banner .img-item.m3{
+			left: 200px;
+			top: 70px;
+			width: 800px;
+			z-index: 3;
+		}
+        .banner .img-item.m4{
+			left: 600px;
+			top: 100px;
+			width: 600px;
+			opacity: .8;
+			z-index: 2;
+		}
+		.banner .img-item.m5{
+			left: 650px;
+			top: 0;
+			width: 450px;
+			opacity: .3;
+			z-index: 1;
+		}
+        .banner .arr{
+			position: absolute;
+			display: block;
+			left: 0;
+			top:200px;
+			width: 36px;
+			height: 72px;
+			font-size: 20px;
+			color: #fff;
+			line-height: 72px;
+			text-align: center;
+			background-color: rgba(0,0,0,.8);
+			z-index: 10;
+            cursor: pointer;
+		}
+		.banner .arr.arr-right{
+			left:auto;
+			right: 0;
+		}
+
+</style>
+    
+<body>
+    <div class="banner">
+        <ul class="banner-imgs">
+            <!-- <li class="img-item m1">
+                <img src="img/m1.jpg" alt="">
+            </li>
+            <li class="img-item m2">
+                <img src="img/m2.jpg" alt="">
+            </li>
+            <li class="img-item m3">
+                <img src="img/m3.jpg" alt="">
+            </li>
+             <li class="img-item m4">
+                <img src="img/m4.jpg" alt="">
+            </li>
+            <li class="img-item m5">
+                <img src="img/m5.jpg" alt="">
+            </li> -->
+        </ul>
+        <a class="arr arr-left" onclick="goNext(true);">&lt;</a>
+        <a class="arr arr-right" onclick="goNext(false);">&gt;</a>
+    </div>
+    <script src="js/moreAttribute.js"></script>
+    <script>
+        // 提取坐标
+        var attrArray = [
+				{
+					left: 100,
+					top: 0,
+					width: 450,
+					opacity: .3,
+					zIndex: 1	
+				},
+				{
+					left: 0,
+					top: 100,
+					width: 600,
+					opacity: .8,
+					zIndex: 2
+				},
+				{
+					left: 200,
+					top: 70,
+					width: 800,
+					opacity: 1,
+					zIndex: 3
+				},
+				{
+					left: 600,
+					top: 100,
+					width: 600,
+					opacity: .8,
+					zIndex: 2
+				},
+				{
+					left: 650,
+					top: 0,
+					width: 450,
+					opacity: .3,
+					zIndex: 1
+				}
+		];
+
+		   // 获取所有li标签
+		// var lis = document.querySelectorAll('.img-item');
+   		var lis = document.getElementsByClassName('img-item');
+		    // 动态生成轮播图
+		var imgArr = ['m1.jpg','m2.jpg','m3.jpg','m4.jpg','m5.jpg'];
+		var	bannerEl = document.querySelector('.banner-imgs')
+		var timer = null;
+		// 初始化事件
+		autoPlay();
+		initSwiperHtml();
+
+        function initSwiperHtml(){
+			var str = '';
+			for(var i= 0 ; i < imgArr.length ;  i++){
+				str += ' <li class="img-item m'+(i+1)+'"><img src="img/'+imgArr[i]+'" alt=""></li>'
+			}
+			bannerEl.innerHTML = str;
+		}
+		function goNext (isLeft) {
+			if(isLeft){
+				//把最后一个值拿出来  放到第一位置
+				// var lastV =  attrArray.pop();
+				// .pop()删除数组中最后一个元素 再放在开头
+				attrArray.unshift(attrArray.pop());
+			}else{
+				// 提取第一个元素 加到末尾
+				attrArray.push(attrArray.shift());
+			}
+			// console.log(attrArray)
+			animateGo();
+		}
+
+        // 自动播放
+		function autoPlay () {
+			setInterval(function(){
+				goNext();
+			},2000)
+		}
+
+		// 图片变化 属性
+		function animateGo() {
+			for(var i = 0 ; i < lis.length ;i++){
+				animate(lis[i],attrArray[i]);
+			}
+		}
+
+
+    
+    </script>
+        
+    
+</body>
+</html>

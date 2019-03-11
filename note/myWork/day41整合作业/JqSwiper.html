@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery原生轮播图</title>
+    <style>
+            *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .banner{
+            width: 1200px;
+            height: 460px;
+            margin: 200px auto;
+            position: relative;  
+            overflow: hidden;
+        }
+        .banner .swiper{
+            /* width: 500%; */
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .banner .swiper .slide{
+            float: left;
+            height: 100%;
+            width: 1200px;
+
+        }
+        .banner .swiper .slide img{
+            height: 100%;
+            width: 1200px;
+        }
+        /* 箭头样式 */
+        .arr{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -36px;
+            width: 36px;
+            height: 72px;
+            text-align: center;
+            line-height: 72px;
+            font-size: 22px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, .5)
+        }
+        .arr.arr-right{
+            left: auto;
+            right: 0;
+        }
+        .dotts{
+            position: absolute;
+            bottom: 30px;
+            right: 60px
+
+        }
+        .dotts>li{
+            width: 6px;
+            height: 6px;
+            border: 2px solid  #fff;
+            background-color:  #e5e5e5;
+            /* css3属性 */
+            border-radius: 50%;
+            margin-left: 5px;
+            margin-right: 5px;
+            float: left;
+        }
+        .dotts>li>a{
+            display: block;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+        .dotts li.active{
+         border-color: orange;
+}
+        .dotts li.active>a{
+        background-color: #333;
+}
+    </style>
+</head>
+<body>
+<div class="banner">
+    <ul class="swiper">
+    </ul>
+    <a href="javascript:;" class="arr arr-left" dir="left">&lt;</a>
+    <a href="javascript:;" class="arr arr-right"  dir="right">&gt;</a>
+    <ul class="dotts">
+    </ul>
+</div>
+    <script src="lib/jquery-3.3.1.js"></script>
+    <script>
+    var imgs = ['m1.jpg','m2.jpg','m3.jpg','m4.jpg','m1.jpg']
+    // 图片长度
+    var imgsL = imgs.length;
+    $swiper = $('.swiper');
+     //一个图片的宽度 动态生成的图片宽度 无法在函数外部取到 
+     var liW = 0 ;
+    //全局计数器
+    var count = 0;
+    //全局定时器
+    var timer = null;
+    // 全部事件
+    initSwiper();
+    autoPlay();
+    arrowEvent();
+    hoverE();
+    initDottsHtml();
+    // 动态生成轮播图
+    function initSwiper(){
+        // 利用each方法遍历 第一值是下标 第二是值
+        $.each(imgs,function(index,value){
+            // append在被选元素内部的结尾插入指定内容 appendTo正好相反
+            // append()与html()方法区别
+            // append是在原有的基础上增加  html方法是替换
+            // ${}es6新语法
+            $swiper.append(`<li class="slide"><img src="img/${value}" alt=""></li>`)
+        });
+        // 图片的宽度
+        // 这里可以使用遍历过滤方法eq()或者first()
+        // liW =  $('.slide').eq(0).width();
+        liW =  $('.slide').first().width();
+        console.log(liW);
+        // 设置轮播图宽度
+        $swiper.css('width',`${liW*imgsL}px`);
+        // $swiper.attr('width',`${liW*imgsL}px`)
+    }
+   
+    // 自动播放
+    function autoPlay(){
+       timer = setInterval(function(){
+            count++;
+        goNext(count);
+        changeDotts(count)
+       },2000)
+    }
+    // 左右箭头点击事件
+    function arrowEvent(){
+    // 根据自定义属性 判断方向
+    $('.arr').click(function(){
+        // 方法一:
+        // data()方法可以返回或者改变值
+        // if($(this).data('dir') == 'left'){
+        //     // $swiper.stop();
+        //     count--;
+        // }else{
+        //     // $swiper.stop();
+        //     count++;
+        // }
+        // 方法二:
+        // 也可以判断下标是否为0
+        if($(this).index==0){
+            count--;
+        }else{
+            count++;
+        }
+        goNext(count);
+        changeDotts(count);
+    })
+}   
+    // hover事件 分别代表移入移出事件
+    function hoverE(){
+        $('.banner').hover(function(){
+            // 移入时停止定时器
+            clearInterval(timer);
+        },function(){
+            autoPlay();
+            changeDotts(count)
+        })
+    }
+    // 图片切换事件
+    function goNext(count){
+        // stop()默认暂停被选元素上指定的当前动画
+        // 仅停止活动中的动画,允许任何排入队列的动画向后执行
+        $swiper.stop();
+        if(count == imgsL){
+                window.count = 1;
+                $swiper.css('left',0)
+            }
+        if(count < 0){
+            window.count =imgsL-2;
+            var lW =  imgsL-1;
+            $swiper.css('left',-1*lW*liW+'px')
+        }
+        var target = -1*liW*window.count ;
+        $swiper.animate({
+            left: target
+        },300)
+    }
+    // 动态生成小点点事件
+    function initDottsHtml(){
+        // 注意:比图片少一
+        for(var i = 0 ; i < imgsL-1; i++ ){
+            //默认激活样式
+            // 方法一:
+            // if(i==0){
+            //     // apenndTo写法
+            //    $('<li class="active"><a href="javascript:;"></a></li>').appendTo($('.dotts'));
+            // }else{
+            //     $('<li><a href="javascript:;"></a></li>').appendTo($('.dotts'));
+            // }
+            // 方法二:可以使用if else  同样可以使用三元表达式
+            var classStr = i==0?('<li class="active"><a href="javascript:;">'
+                +'</a></li>'):'<li><a href="javascript:;"></a></li>'
+            $('.dotts').append(classStr);
+        }
+
+            // 点击事件
+        initDottsEvent();
+    function initDottsEvent(){
+
+        $('.dotts li').click(function(){
+            //  保存下标到count
+        count = $(this).index();
+            goNext(count);
+            changeDotts(count);
+    })
+
+}
+        
+}
+    // 激活样式
+    function changeDotts(count){
+        // 当走到最后一张图片的时候,小点点跳回第一个
+        if(count == imgsL-1){
+            count = 0;
+        }
+        // 当前加上激活样式 
+        // 方法一:
+        $('.dotts li').eq(count).attr('class','active');
+        $('.dotts li').eq(count).siblings().attr('class','');
+        // 方法二:
+        $('.dotts li').eq(count).addClass('active');
+        $('.dotts li').eq(count).siblings().removeClass('active');
+    }
+
+    // juqery轮播写法总结:
+    // 1.始终注重生成样式与属性
+    // 2.ES6中的模版表达式的使用ES6之前在字符串中输出变量,必须要把字符串破开.现在可以使用${name}写法 ;
+    // 3.动态生成的时候可以使用each()方法配合append或者appendTo 注意与html()方法的区别.
+    // 4.attr可以返回或者设置属性 addClass removeClass.
+    // 这里要区分一下attr()与css()方法
+    // attr是设置或者返回属性  相当于setAttribute/getAttribute
+
+    // css()是设置或者返回style 相当于 obj.style.backgroundColor;
+    // 5.index()用来获取当前下标.
+    // 6.排他思想..
+    // 7.封装缓动动画.                                                                                                      
+
+
+    
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .banner{
+            width: 1200px;
+            height: 460px;
+            margin: 200px auto;
+            position: relative;  
+            overflow: hidden;
+        }
+        .banner .swiper{
+            width: 500%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .banner .swiper .swiper-slide{
+            float: left;
+            height: 100%;
+            width: 1200px;
+
+        }
+        /* 箭头样式 */
+        .arr{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            margin-top: -36px;
+            width: 36px;
+            height: 72px;
+            text-align: center;
+            line-height: 72px;
+            font-size: 22px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, .5)
+        }
+        .arr.arr-right{
+            left: auto;
+            right: 0;
+        }
+        .dotts{
+            position: absolute;
+            bottom: 30px;
+            right: 60px
+
+        }
+        .dotts>li{
+            width: 6px;
+            height: 6px;
+            border: 2px solid  #fff;
+            background-color:  #e5e5e5;
+            /* css3属性 */
+            border-radius: 50%;
+            margin-left: 5px;
+            margin-right: 5px;
+            float: left;
+        }
+        .dotts>li>a{
+            display: block;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+        .dotts li.active{
+         border-color: orange;
+}
+        .dotts li.active>a{
+        background-color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <ul class="swiper">
+        </ul>
+        <!-- 左右箭头 -->
+        <a class="arr arr-left" href="javascript:;">&lt;</a>
+        <a class="arr arr-right" href="javascript:;">&gt;</a>
+        <ul class="dotts">
+        </ul>
+    </div>
+    <script src="js/common.js"></script>
+    <script>
+        // 入口函数 会等页面加载完毕后执行js代码
+        window.onload = function(){
+            // 创建一个图片数组,用来动态生成swiper和dott
+            imgArr = ['m1.jpg','m2.jpg','m3.jpg','m4.jpg','m1.jpg']
+            // 思路先让图片自动播放 
+            // 获取获取对象
+            var BL = document.getElementsByClassName('banner')[0];
+            var swiperEL = document.getElementsByClassName('swiper')[0];
+            var lis = [];
+            var dotts = document.getElementsByClassName('dotts')[0];
+            var dottsLi = [];
+            // 图片宽度
+            imgW = 1200;
+            var arrL = document.getElementsByClassName('arr-left')[0];
+            var arrR = document.getElementsByClassName('arr-right')[0];
+            // 设置一个定时器
+            var timer = null;
+            // 计数器
+            var count = 0;
+            // 初始化事件
+            autoplay();
+            initSwiperHtml();
+            mouseEvent();
+            arrowEvent();
+            initDottHtml();
+
+            // 动态生成swiper页面
+            function initSwiperHtml(){
+                // 声明一个变量接收创建的数据
+                var str = '';
+                // 循环遍历一下img数组
+                for(var i = 0; i < imgArr.length; i++){
+                    // 动态生成轮播图
+                    str += '<li class="swiper-slide"><img src="img/'+imgArr[i]+'" alt=""></li>';
+                }
+                // 赋值给ul
+                swiperEL.innerHTML = str;
+                // 插入
+                // lis = myChildren(swiperEL);
+            }
+
+            // 自动播放需要考虑左右边界
+            function autoplay(){
+                clearInterval(timer);
+                // 开启一个定时器
+             timer = setInterval(function(){
+                count++;
+                if(count == imgArr.length){
+                    // count重置
+                    count = 1; 
+                    // 瞬间返回起始点
+                    swiperEL.style.left = 0;
+                }
+                var target = -1*imgW*count;
+                animate(swiperEL,target);
+                changeDotts(count);
+                console.log('移动的距离==>'+target);
+                }, 2000);
+            }
+
+            // 鼠标事件
+            function mouseEvent(){
+                 // 当鼠标移入时停止
+                BL.onmouseenter =function(){
+                clearInterval(timer);
+                console.log('移出了')
+            }
+                // 当鼠标移出
+                BL.onmouseleave= function(){
+                autoplay();
+                console.log('移入了')
+            }
+
+            }
+            function arrowEvent(){
+                 // 左右箭头点击事件
+            arrL.onclick = function(){
+                count--;
+                if(count < 0){
+                    count = imgArr.length-2;
+                    // 原生代码记得加px!!!!!!!!!!
+                    swiperEL.style.left = -1*imgW*(imgArr.length-1)+'px';
+                }
+                var target = -1*count*imgW;
+                animate(swiperEL,target);
+                changeDotts(count);
+            }
+            arrR.onclick = function(){
+                count++;
+                if(count == imgArr.length){
+                    count = 1;
+                    swiperEL.style.left = 0;
+                }
+                var target = -1*count*imgW;
+                animate(swiperEL,target);
+                changeDotts(count);
+            }
+        }
+           
+
+             // 初始小点点页面 动态生成思想
+          
+            function initDottHtml(){
+            var str = '';
+            // 实际上是五张图片
+            for(var i = 0; i < imgArr.length-1 ; i++){
+                // 三元表达式判断
+                var classStr  = i==0?' class="active"':'';
+                str += '<li'+classStr+'><a href="javascript:;"></a></li>'
+            }
+            // 插入
+            dotts.innerHTML = str;
+            dottsLi = myChildren(dotts);
+            // 初始化点击事件
+            initDottEvent();````````````````````````
+            function initDottEvent(){
+                for(var i = 0 ; i < dottsLi.length; i++){
+                // 要获得当前i的下标,通过变成对象的属性
+                dottsLi[i].index= i;
+                dottsLi[i].onclick =function(){
+                        count = this.index;
+                        var target = -1*count*imgW;
+                        animate(swiperEL,target);
+                        changeDotts(count);
+                }
+            }
+        }
+    }
+    // 改变dotts激活样式
+    function changeDotts(count){
+        // count走到最后一张图片
+        if(count == lis.length-1){
+            // 返回第一张
+            count = 0;
+        }
+        // 排他思想
+        for(var i = 0; i <dottsLi.length; i++){
+            // 遍历一遍
+           removeClassName(dottsLi[i],'active');
+        }
+            addClassName( dottsLi[count],'active');
+    }
+}
+//  原生js轮播写法总结:
+// 1.样式记的加单位
+// 2.动态生成遍历数组
+// 3. 封装方法
+// 4. 轮播两个临界位置处理办法
+// 5.小点点动态生成与事件绑定
+
+
+
+    </script>
+
+
+</body>
+</html>
+

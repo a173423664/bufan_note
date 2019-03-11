@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        h1{
+            color: aqua;
+        }
+        .cfb {
+            width: 1000px;
+            height: 800px;
+            text-align: center; 
+            }
+
+        .cfb ul {
+            width: 100%;
+            overflow: hidden;
+            text-align: center; 
+            }
+        .cfb ul li {
+            float: left;
+            width: 70px;
+            color: black; 
+            text-align: center; 
+            }
+            
+        .cfb ul span {
+            color: red; 
+            font-size: 16px;
+            }
+    </style>
+</head>
+<body>
+    <h1>九九乘法表</h1>
+    <div id="list9" class="cfb">
+
+    </div>
+
+    <script src="lib/jquery-3.3.1.js"></script>
+    <script>
+        $(function(){
+            var Obj = $("#list9");
+
+        for (var i = 1; i <= 9; i++) {
+            // 自定义事件  值为变量
+            Obj.append('<ul><li data-i='+i+'>1×'+i+'=<span>'+i+'</span></li></ul>');
+        };
+
+        // 遍历
+        $('ul').each(function() {
+            var lis =  $(this).children('li');
+            // 取自定义变量
+            var index = lis.data("i");
+            for (var i = 2; i <= index; i++) {
+            $(this).append('<li>'+i+'×'+index+'=<span>'+i*index+'</span></li>');
+        };
+    })
+})  
+    </script>
+</body>
+
+</html>
