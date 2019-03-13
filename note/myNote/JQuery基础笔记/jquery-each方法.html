@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- forEach(function(currentValue, index, arr) -->
+        <!-- 参数:currentValue	必需。当前元素 -->
+        <!-- index	可选。当前元素的索引值。 -->
+        <!-- arr	可选。当前元素所属的数组对象。 -->
+        <!-- 求数组中的值 -->
+        <button onclick="numbers.forEach(myFunction)">点我</button>
+        <p>数组元素总和：<span id="demo"></span></p>
+<script>
+        var sum = 0;
+        var numbers = [65, 44, 12, 4];
+
+         function myFunction(item) {
+        sum += item;
+        demo.innerHTML = sum;
+}
+        // 一般静态的forEach方法
+        // 第一个参数:遍历到的参数.
+        // 第二个参数:当前遍历的索引
+        // 注意点:原生的foreach只能遍数组,不能遍历伪数组.
+        var arr = [1,3,5,7,9];
+        arr.forEach(function(value,index){
+            console.log(index,value);
+        })
+ 
+        // 利用jquery的each静态方法遍历数组
+        // 第一个参数:当前遍历到的索引;
+        // 第二个参数:遍历到的元素 
+        // 回调函数传入的参数顺序不同.原生的先传value 后传index
+        // 另外jquery的each方法可以遍历伪数组
+       $.each(arr,function(index,value){
+        
+       })
+
+            
+</script>
+</body>
+</html>

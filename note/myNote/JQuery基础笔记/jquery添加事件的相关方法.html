@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+
+        // 内部插入
+        // append
+        // 会将新元素添加到子元素的最后
+        // appendTo
+        // 上方法相反
+        // prepend
+        // 会将新元素添加到子元素的最后
+        // prependTo
+
+
+        // 外部插入
+        // after
+        // 会将指定节点,添加到元素外部 后面
+        // $(target).insertAfter(selector);
+        // before
+        // 添加到元素添加到指定元素外部的前面
+        // $(target).insertBefore(selector);
+        $(function(){
+            // 1.创建一个节点
+            var $li = $('<li>li新增的节点</li>');
+            // 2.添加节点
+            $('ul').append($li);
+            // ($li).appendTo('ul');
+            $('ul').after($li);
+        })
+
+        // 替换元素
+        // $('h1').replaceWith($h6);
+
+        // $h6.replaceAll('h1');
+
+        // 复制节点相反方法
+
+        // clone(false) 浅复制 只能复制元素.不能复制事件
+        // clone(true)深复制 不仅能复制元素,还能复制事件
+
+        // 总结在jquery中,append/perpend是在选择元素内容嵌入,而after和before是在元素外面追加
+        
+    </script>
+</body>
+</html>

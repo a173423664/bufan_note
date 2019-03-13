@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+   
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=134db1b9cf1f1f2b4427210932b34dcb"></script>
+    <title>地图展示</title>
+    <style>
+         #allmap{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+    }
+    </style>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(118.987239,30.623007), 14);  // 初始化地图,设置中心点坐标和地图级别
+    // 如果想显示不想显示上方的区域,可以把中心点放在下面
+	//添加地图类型控件
+	map.addControl(new BMap.MapTypeControl({
+		mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));	  
+	map.setCurrentCity("宁国");          // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    
+    var point = new BMap.Point(118.987239,30.623007);
+    var myIcon = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/fox.gif", new BMap.Size(300,157));
+    // 顺序不能错
+    var marker = new BMap.Marker(point,{icon:myIcon});  // 创建标注
+    map.addOverlay(marker);               // 将标注添加到地图中
+	marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    
+    // var point = new BMap.Point(113.773887,34.7766);
+	// var myIcon = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/fox.gif", new BMap.Size(300,157));
+	// var marker = new BMap.Marker(point,{icon:myIcon});  // 创建标注
+	// map.addOverlay(marker);               // 将标注添加到地图中
+	// marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+    // var point = new BMap.Point(118.987239,30.623007);
+	// var marker = new BMap.Marker(point,{icon:myIcon});  // 创建标注
+	// var myIcon = new BMap.Icon("http://lbsyun.baidu.com/jsdemo/img/fox.gif", new BMap.Size(300,157));
+	// map.addOverlay(marker);               // 将标注添加到地图中
+	// marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+        // api功能
+    // var pt = new BMap.Point(118.987239,30.623007);
+	
+ 
+</script>
+</script>

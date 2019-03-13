@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 验证用户登录框 -->
+	<!-- 1. 用户名 必须是字母数字下划线中文,长度6-10位 不能为空
+	2. 密码字母数字_@ 长度6-12
+	3. 提交的时候 检测结果 并要求给出错误提示
+		a) 错误阻止提交
+		b) 成功可以提交
+	 -->
+
+	<form action="/abc" onsubmit="return sub();">
+		用户名:<input type="text" class="username"><br>
+		<p class="msg username-msg"></p>
+		密码: <input type="text" class="password"><br>
+		<input type="submit">
+		<p class="msg pwd-msg"></p>
+	</form>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		var usernameReg = /^[0-9a-z_]{6,10}$/;
+		var passwordReg = /^[0-9a-z_@]{6,12}$/;
+		function sub() {
+			//在提交之前 做验证  如果通过 返回true 如果不通过  返回false即可
+			var username = $('.username').val();
+			var pwd = $('.password').val();
+			if(!usernameReg.test(username)){
+				$('.msg.username-msg').css('color','red').text('用户名格式错误!');
+			}else{
+				$('.msg.username-msg').css('color','green').text('用户名可用!');
+			}
+			if(!passwordReg.test(pwd)){
+				$('.msg.pwd-msg').css('color','red').text('密码格式错误!');
+			}else{
+				$('.msg.pwd-msg').css('color','green').text('密码可用!')
+			}
+
+			return usernameReg.test(username)&&passwordReg.test(pwd);
+		}
+
+	</script>
+</body>
+</html>

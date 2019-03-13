@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- parent()可以取到祖先元素 -->
+    parent()方法返回被选元素的直接父元素
+    该方法只会向上一级DOM数进行遍历
+    parents()方法返回被选元素的所有祖先元素.它一路向上直到文档的根元素.
+    这个方法也可以使用参数来过滤对祖先元素的搜索
+
+    parentsUntil()方法返回介于两个给定元素之间的所有祖先元素.
+    例子,该方法返回介于span与div元素之间的所有祖先元素
+    $(doucmernt).ready(function(){
+        $('span').parentsUntil('div');
+    })
+    
+</body>
+</html>

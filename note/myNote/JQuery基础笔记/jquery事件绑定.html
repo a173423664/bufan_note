@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        $(function(){
+
+            // 编写jq代码
+            // jquery绑定事件的两种方式
+            // 1.evenName(fn)
+            // 编码效率略高/部分事件jquery没有添加不能实现
+
+            // 注意点:
+            // 1.添加相同事件不会覆盖
+            // 2.可以添加多个不同事件也不会覆盖
+
+            $('button').click(function(){
+
+            });
+
+
+            // 2.on(eventName fn);
+            //  事件变成了是字符串,没提示编码效率略低 不推荐 
+
+            $('button').on('click', function(){
+
+            })
+        })    
+        
+    </script>
+    
+</body>
+</html>

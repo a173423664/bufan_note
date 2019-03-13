@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 事件解绑
+        // off方法如果不传参数,会移除所有的事件
+        $('button').off() 
+        // off方法如果传递一个参数,会移除所有指定类型的事件
+        $('button').off('click')   
+        // 传入两个参数,会移除指定类型的事件
+        $('button').off('click',texs1);    
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box{
+            width: 400px;
+            height: 320px;
+            margin: 200px auto;
+            position: relative;
+            /* background-color: blue; */
+        }
+        .box .vd1{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .box .setting{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 40px;
+            width: 100%;
+            background-color:gary;
+        }
+        .box .setting .play,
+        .box .setting .reset{
+            position: absolute;
+            left: 0;
+            top: 10px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: brown;
+            line-height: 15px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .box .setting .reset{
+            left: 30px;
+            background-color: blanchedalmond;
+            
+        }
+        .box .setting .time{
+            margin-left: 200px;
+			line-height: 40px;
+			color: black;
+        }
+        .box .setting .full-screen{
+			position: absolute;
+			right: 0;
+			top: 10px;
+			width: 20px;
+			height: 20px;
+			background-color: pink;
+		}
+        .box .setting .process-bar{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 10px;
+			background-color: #fff;
+		}
+		.box .setting .process-bar .process-line{
+			position: relative;
+			display: block;
+			width: 10%;
+			height: 100%;
+			background-color: red;
+
+		}
+		/*伪元素 是无法选中的*/
+		/*.box .setting .process-bar .process-line::after{*/
+		.box .setting .process-bar .process-line .dott{
+			position: absolute;
+			right: -12px;
+			top: 0;
+			display: block;
+			content: '';
+			width: 12px;
+			height: 12px;
+			background-color: blue;
+			cursor: pointer;
+		}
+        * {
+
+-webkit-touch-callout: none; /* iOS Safari */
+
+-webkit-user-select: none; /* Chrome/Safari/Opera */
+
+-khtml-user-select: none; /* Konqueror */
+
+-moz-user-select: none; /* Firefox */
+
+-ms-user-select: none; /* Internet Explorer/Edge */
+
+user-select: none; /* Non-prefixed version, currently
+
+not supported by any browser */
+
+}
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <video class="vd1" src="一碗扯面.mp4"></video>
+        <div class="setting">
+                <!-- 开始暂停 -->
+            <span class="play">
+                        >
+            </span>
+                    <!-- 重置 -->
+            <span class="reset">
+                        口
+            </span>
+                    <!-- 播放时间 -->
+            <div class="time">
+                        
+            </div>
+                    <!-- 全屏 -->
+            <div class="full-screen">
+                        
+            </div>
+            <!-- 进度条 -->
+            <div class="process-bar">
+                <span class="process-line">
+                    <i class="dott"></i>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <script src="lib/jquery-3.3.1.js"></script>
+    <script>
+        var boxEl = document.querySelector('.box')
+        var playEl = document.querySelector('.play')
+        var vd = document.querySelector('.vd1')
+        var resetEl = document.querySelector('.reset')
+        var timerEl = document.querySelector('.time')
+        var fullscreenEl = document.querySelector('.full-screen')
+        var processBarEl = document.querySelector('.process-bar')
+        var Pl = document.querySelector('.process-line')
+        var dottEl = document.querySelector('.dott')
+
+        // 当点击按钮视频播放或者暂停
+        playEl.onclick = function(){
+            if(vd.paused){
+                vd.play();
+            }else{
+                vd.pause();
+            }
+        }
+        // oncanplay: 事件在用户可以开始播放视频/音频（audio/video）时触发
+        vd.oncanplay = function(){
+            // 当前的播放的时间
+            var currentTime = vd.currentTime;
+            // 总播放时间
+            var durationTime = vd.duration;
+            timerEl.innerText = Math.floor(currentTime)+'/'+Math.floor(durationTime);
+            console.log('durationTime',durationTime);
+        }
+
+        // 当播放更新的时候
+        vd.ontimeupdate = function(){
+            // 获取当前的播放时间
+            var currentTime = vd.currentTime;
+            var durationTime = vd.duration;
+            // 进度条进度
+            var bl = currentTime/vd.duration
+            // 进度条的长度动态更新
+            Pl.style.width = bl*100+'%';
+            // 插入时间 时间取整
+            timerEl.innerText = Math.floor(vd.currentTime)+'/'+Math.floor(durationTime);
+        }
+        // 按下置零
+        resetEl.onclick = function(){
+            // 是一个读写属性
+            vd.currentTime = 0;
+        }
+        fullscreenEl.onclick = function(){
+            vd.webkitRequestFullScreen();
+        }
+
+        // 实现拖拽进度条
+        // 按下进度条
+        dottEl.onclick =function(e){
+			// e.stopPropagation();
+		}
+		dottEl.onmousedown = function(e){
+			boxEl.onmousemove = function(e){
+				// console.log('move')
+				// console.log(e.pageX);
+				var timeLong = e.pageX - boxEl.offsetLeft;
+				var bl = timeLong / processBarEl.offsetWidth;
+				//更新进度条
+				Pl.style.width = bl*100+'%';
+			}
+			boxEl.onmouseup = function(){
+				boxEl.onmousemove = null;
+			} 	
+		}
+
+
+
+
+    </script>
+</body>
+</html>

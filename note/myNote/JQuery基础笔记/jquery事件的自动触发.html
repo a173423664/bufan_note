@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        $(function(){
+            // 自动触发事件,两种方法
+
+            //1. .trigger(触发事件的名称)
+            // 注意:如果利用trigger自动触发事件.会进行事件冒泡
+            // 如果利用trigger自动触发事件,会触发么默认行为;
+            // 默认行为指 自动设置的值
+
+
+            // 面试题
+            // 注意一点要使用.trigger既触发a事件 又触发a默认行为.
+            // 需要在a标签中加上span将内容写在span里面,因为a包含span,
+            // 所以在点击的时候同时也会触发a
+
+
+            //2. .triggerHandler()
+            // 如果利用triggerhandler()自动触发事件,不会触发事件冒泡
+            // 如果利用triggerHandler()自动触发事件,不会触发默认行为 
+
+
+
+            $('father').trigger('click');
+
+
+        })    
+    </script>
+    
+</body>
+</html>

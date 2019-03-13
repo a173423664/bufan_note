@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			margin-right: 10px;
+		}
+		.box{
+			width: 400px;
+			height: 300px;
+			border: 1px solid green;
+			margin: 200px auto;
+		}
+    </style>
+</head>
+	<!-- 拖拽源 -->
+	<div class="d1" draggable="true"></div>
+	<div class="d1" draggable="true"></div>
+	<div class="d1" draggable="true"></div>
+	<div class="d1" draggable="true"></div>
+	<div class="d1" draggable="true"></div>
+	<!-- 目标对象 -->
+	<div class="box">
+		
+	</div>
+        
+        <script src="lib/jquery-3.3.1.js"></script>
+        <script>
+        // ondragstart	应用于拖拽元素，当拖拽开始时调用
+		// ondrag 		应用于拖拽元素，整个拖拽过程都会调用
+		// ondragleave	应用于拖拽元素，当鼠标离开拖拽元素时调用
+		// ondragend	应用于拖拽元素，当拖拽结束时调用
+		// 目标元素
+		// ondragenter	应用于目标元素，当拖拽元素进入时调用
+		// ondragover	应用于目标元素，当停留在目标元素上时调用
+		// ondrop		应用于目标元素，当在目标元素上松开鼠标时调用
+        // ondragleave	应用于目标元素，当鼠标离开目标元素时调用
+        var d1Els = document.querySelectorAll('.d1');
+		var boxEl = document.querySelector('.box');
+        var tempDiv = null;
+        for(var i = 0 ; i <d1Els.length ; i++){
+            // 开始拖拽
+            d1Els[i].ondragstart = function(){
+                tempDiv = this;
+                // 如果是保存下标可以使用
+                // d1Els[i].index = i
+                console.log('ondragstart')
+            }
+        }
+        boxEl.ondragover =function(e){
+            // 无法触发ondrop事件.是因为默认html元素不允许连个标签在同一个位置显示
+            e.preventDefault();
+        }
+        boxEl.ondrop = function () {
+			console.log('ondrop');
+			// append 
+			// 注意: append 会把原来的元素移除
+			this.appendChild(tempDiv);
+		}
+
+        
+        </script>
+<body>
+    
+</body>
+</html>

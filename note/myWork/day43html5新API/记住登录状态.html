@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- get 提交用户名和密码会在地址栏显示
+	file:///D:/abc?username=%E5%BC%A0%E4%B8%89&password=1234 -->
+	<!-- <form action="/abc">						不会显示保存的地址 -->
+		用户名:<input type="text" name="username" autocomplete="off" class="username"><br>
+		密码:<input type="password" name="password" class="password"><br>
+		记住密码: <input type="checkbox" class="rember"><br>
+		<input type="submit">
+	</form>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		var KEY = 'userInfo';
+		//如果存在 则保存到表单
+		if(window.localStorage.getItem(KEY)){
+			var userStr = window.localStorage.getItem(KEY);
+			// json字符串==> 对象
+			var userObj = JSON.parse(userStr);
+			$('.username').val(userObj.username);
+			$('.password').val(userObj.pwd);
+			$('.rember')[0].checked = 'checked';
+		}
+
+		// 当表单状态发生变化时候触发
+		$('.rember').on('change',function () {
+			// $(this) 指的是当前的事件的触发对象 的 jq对象
+			console.log($(this).prop('checked'));
+			var isChecked = $(this).prop('checked');
+			//如果选中
+			if(isChecked){
+				var user = {
+					username: $('.username').val(),
+					pwd: $('.password').val()
+				}
+				//把对象存储到localstorage中
+				// localStorage只能存字符串
+				// json对象==> 字符串
+				window.localStorage.setItem(KEY,JSON.stringify(user));
+				// console.log(window.localStorage.getItem('userInfo'));
+			}else{
+				window.localStorage.removeItem(KEY);
+			}
+		})
+	
+
+	</script>
+</body>
+</html>

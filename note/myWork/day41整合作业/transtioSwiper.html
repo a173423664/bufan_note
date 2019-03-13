@@ -28,6 +28,7 @@
             position: absolute;
             left: 0;
             top: 0;
+            transition: all ease .8s;
             
         }
         .banner .swiper .slide{
@@ -124,7 +125,6 @@
             hoverEvent();
             initArrowEvent();
             initDottsHtml();
-    
             // 初始化swiper页面
     function initSwiperHtml(){
                 $.each(imgArr,function(index,value){
@@ -139,11 +139,13 @@
                 // swiper宽度
                  $swiper.css('width',`${imgW*imgL}px`);
             }
-            // 自动播放
+            // 自动播放 使用transtion
     function autoRun(){
                 timer = setInterval(function(){
                 count++;
-                goDown(count);
+                // goDown(count);取消过渡效果
+              goDown(count);
+              console.log(count);
                 changeDottsActive(count)
             },2000)
         }
@@ -151,20 +153,33 @@
             // 图片运动封装
     function goDown(count){
         // stop()默认暂停被选元素上指定的当前动画,仅停止活动中的动画,允许任何排入队列的动画向后执行
-            $swiper.stop();
-            if(count == imgL){
-                window.count = 1;
-                $swiper.css('left',0)
-            }
-            if(count < 0){
-                window.count =imgL-2;
-                var lW =  imgL-1;
-                $swiper.css('left',-1*lW*imgW+'px')
-            }
-                var target = -1*imgW*window.count ;
-                $swiper.animate({
-                left: target
-        },300)
+        if(count == $('.swiper .slide').length){
+				//应该先取消过渡效果
+				$('.swiper').css('transition','none');
+				//置零
+				$('.swiper').css('left',0);
+				setTimeout(function(){
+					// console.log('left: ',$('.swiper').css('left'));
+					window.count = 1;
+					$('.swiper').css('transition','all ease .4s');
+					$('.swiper').css('left',-1*window.count*imgW+'px');
+				},1);
+			}else {
+				$('.swiper').css('left',-1*window.count*imgW+'px');	
+			}
+            // if(count < 0){
+            //     $('.swiper').css('transition','none');
+            //     var lW =  imgL-1;
+            //     $('.swiper').css('left',-1*lW*imgW+'px');
+            //     setTimeout(function(){
+            //         window.count =imgL-2;
+            //         $('.swiper').css('transition','all ease .4s');
+            //         $('.swiper').css('left',-1*window.count*imgW+'px');
+                    
+            //     },1)
+            // }else{
+            //     $('.swiper').css('left',-1*window.count*imgW+'px');
+            // }
     }
     // hover事件
     function hoverEvent(){
@@ -186,7 +201,7 @@
             count++;
         }
         goDown(count);
-        console.log(count);
+        // console.log(count);
         changeDottsActive(count)
         })
     }
@@ -216,7 +231,6 @@
            changeDottsActive(count);
         })
     }
-
 }
     // 小点点激活样式改变
     function changeDottsActive(count){
@@ -229,9 +243,16 @@
         // 这里不能使用remove 是指删除特定的元素 empty()是删除被选元素的子  元素
         // $('.dotts li').eq(count).siblings().remove('.active');
     }
+    // transition缓动轮播图 经验总结
+    // 该等于最后一张时 应该首先取消过渡效果,然后将left置0;
+    // 同时设置一个settimerout定时器延缓1毫秒执行 count此时等于=1 
+    // 同时开启过渡属性
+    // left值等于count*图宽
+
     
     </script>
-    
+
+
 
 
 
