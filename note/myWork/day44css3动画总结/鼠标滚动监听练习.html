@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper{
+			transition: all ease .4s;
+		}
+		.box1,.box2,.box3,.box4{
+			width: 100%;
+			height: 600px;
+			background-color: green;
+		}
+		.box2{
+			position: relative;
+			background-color: blue;
+		}
+		.box3{
+			background-color: pink;
+		}
+		.box4{
+			background-color: orange;
+		}
+		.box2 .sun{
+			position: absolute;
+			left: 200px;
+			top: 100px;
+			width: 200px;
+			height: 200px;
+			background-color: orange;
+			border-radius: 50%;
+            /* 延迟时间 */
+            animation-delay: .4s;
+            /* 持续时间 */
+            animation-duration: 1s;
+            /* 属性规定动画在播放之前或之后，其动画效果是否可见。 */
+            /* both向前和向后填充模式都被应用。 */
+            animation-fill-mode: both;
+            /* 动画时间曲线 */
+            animation-timing-function: ease;
+
+            opacity: 0;
+            transform:scale(0.7) translateY(300px);
+        
+		}
+        /* 注意这里给整个块加上active最好.这样可以控制整个块里面的动画开关 
+        设置动画开关的最好方法就是将动画名写给父类*/
+        .box2.active .sun{
+            animation-name: sunUp;
+        }
+        /* 设置动画 */
+        @keyframes sunUp{
+            0%{ opacity: 0; 
+                transform: scale(.7) translateY(300px)
+            }
+            100%{
+                opacity: 1; 
+                transform: scale(1) translateX(0)
+            }
+        }   
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+		<div class="box1"></div>
+		<div class="box2">
+			<div class="sun"></div>
+		</div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+    </div>
+    <script>
+        var wrapper = document.querySelector('.wrapper');
+        // 获取盒子的高度
+        var boxH = document.querySelector('.box1').offsetHeight;
+        var count = 0;
+        // 锁 默认锁 开启的
+        var lock = false
+        // 鼠标的滚轮事件
+        window.onmousewheel = function(e){
+            // 还取消取消鼠标滚轮的默认
+            e.preventDefault();
+            // 这里需要运用到一个加锁的思想 这个加锁的思想很巧妙需要我们理解
+            // 如果加锁了
+            if(lock){
+                return;
+            }
+            console.log(e.wheelDelta);
+            lock = true;
+            // 这里监听鼠标滚路事件主要用wheelDelta 除了火狐不支持其他都支持
+            if(e.wheelDelta<0){
+                count++;
+                // 添加激活样式
+                // var currentBox = document.querySelector('.box'(+count+1));
+                var currentBox = document.querySelector('.box'+(count+1));
+                // classList.add是h5中添加属性的方法
+
+                // 注意这里会报错因为没设置限制条件
+                currentBox.classList.add('active');
+                // 每次wrapper移动的距离 (注意有单位)
+                // 这里注意translateY()里面的内容容易写错
+                wrapper.style.transform = 'translateY('+-count*boxH+'px)'	;
+                console.log('count==>'+count)
+            }
+            // 这里要重新设置一下锁解除的时候.可以设置为2s后解除
+            setTimeout(function(){
+                // 解除
+                lock = false;
+            },2000)
+        }
+
+        // 思路总结:
+        // 1. 鼠标滚轮事件为onmosuewheel()  向上还是向下滚为wheelDelta\
+        // 2. 取消鼠标默认的浏览器滚动事件e.preventDefult()
+        // 3.加锁思想 设置锁默认开启 判断如果锁了则返回.然后在最后加上一个定时器,设置时间,将锁打开
+        // 4.这里要主要给每个块标签添加active的时候可以使用标签名依次加一的方法
+        // 5. H5中添加属性是classList.add('active');
+        // 6.注意给translate添加动画属性的时候容易写错.格外留意!!!
+
+    </script>
+</body>
+</html>

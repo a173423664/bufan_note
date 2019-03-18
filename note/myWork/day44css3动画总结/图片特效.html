@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        	*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			width: 1000px;
+			height: 600px;
+			background-color: lightcoral;
+			margin: 100px auto;
+			perspective: 1000px;
+		}
+		.box img{
+			width: 100%;	
+			height: 100%;	
+			transition: all ease .4s;
+		}
+		/*.box:hover img{
+			transform: rotateX(-8deg) rotateY(8deg);
+		}*/
+		/* .box .d1{
+			position: absolute;
+			left: 100px;
+			top: 200px;
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			transition: all ease .4s;
+		} */
+		/* .box:hover .d1{
+			transform: translateZ(100px) translateX(100px);
+		} */
+    </style>
+</head>
+<body>
+    <div class="box">
+		<img src="img/cb.JPG" alt="">
+		<!-- <div class="d1"></div> -->
+    </div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        // var $box = $('.box')
+        // var count = 0;
+        // 如果最大转度
+        var deg = 30;
+        
+        // 思路:
+        // 1. 移动鼠标的时候先要获取鼠标距离中心点的差值
+        // 2.然后判断鼠标在四个象限中的坐标正负和转角的正负
+        // 3.看图可以知道当鼠标放在图片上时.图片发生旋转,且绕X和Y轴旋转.并且当鼠标横移时.Y轴发现旋转
+      	// 1 deg:   x +  y +    dis:  x -   y  + 
+		// 2   x +  y -			 x +   y  + 
+		// 3   x -  y -   		 x +   y  -
+		// 4   x -  y +			 x -   y  -
+        // 注意鼠标的时候还要把缓动关闭
+        // 原因是:如果不关闭鼠标移动的速度比缓动的时间快很多,会造成图片反映迟缓
+        $('.box').on('mouseenter',function(){
+            $('.box img').css('transition','none')
+        })
+
+        // 鼠标在图片中移动的时候不应该带有缓动效果
+        $('.box').on('mousemove',function(e){
+
+            var positionX  =$('.box').width()/2 -( e.pageX - $('.box').offset().left);
+            var positionY  =$('.box').height()/2 - (e.pageY - $('.box').offset().top);
+            console.log(positionX);
+            console.log(positionY);
+
+            // 鼠标坐标对应的角度
+            var degX = positionY/$('.box').height()*deg
+            var degY = -1*positionX/$('.box').width()*deg
+            // 过渡的距离   es6写法
+            // var transformValue = `rotateX(${degX}) rotateY(${degY})`;
+            // 单位deg不能忘记
+            var transformValue = 'rotateX('+degX+'deg) rotateY('+degY+'deg)';
+            $('.box img').css('transform',transformValue)
+            // 当鼠标移开后恢复
+            $('.box').on('mouseleave',function(){
+            // 注意,添加缓动动画让图片缓慢恢复 
+            $('.box img').css('transition','all ease .4s ');
+            $('.box img').css('transform',' rotateX(0) rotateY(0)');
+            })
+            // 思路总结
+            // 1.首先要考虑鼠标移动与图片角度的关系
+            // 2.考虑鼠标在每个象限移动的时候X轴和Y轴的正负与旋转在每个象限X与Y轴对应的关系 根据动态图进行分析
+            // 3.通过分析可以发现鼠标在Y轴方向上移动的时候 图片沿X轴旋转且是正相关的关系
+            // 3.通过分析可以发现鼠标在X轴方向上移动的时候 图片沿Y轴旋转且是负相关的关系
+            // 4.接下来可以考虑当鼠标在图像上移动的时候拿到当前坐标跟图像中心的偏移位置
+            // 5.通过偏移位置与图像宽高之间的比列乘以最大旋转角得到当前鼠标的偏移角度
+            // 6.当数据写入transform属性中,下面我们了解一下属性
+            // ransform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。
+            // 7.最后考虑刚鼠标移入图片时.应该取消当前的过渡效果,原因是鼠标在图片中移动的时候.是角度是动态更新的.
+            // 8.最后当鼠标移离图片时,给图片加上一个过渡效果.并让图片恢复原位 
+
+            
+
+            
+        })  
+        
+        
+    </script>
+    
+</body>
+</html>
