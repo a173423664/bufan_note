@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style1.css">
+
+</head>
+<body> 
+    <div class="header">
+        <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                  <a class="navbar-brand" href="#">
+                      <img src="nav-img/logo-1.png" alt="">
+                  </a>
+            </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">返回首页</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">快捷导航<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">设计平台</a></li>
+                        <li><a href="#">前端开发</a></li>
+                        <li><a href="#">素材资源</a></li>
+                        <li><a href="#">网页素材</a></li>
+                        <li><a href="#">字体社区</a></li>
+                        <li><a href="#">设计团队</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+    </div>
+    <div class="mycontianer">
+        <!-- <div class="container ">
+            <div class="row">
+                <div class="title-block">
+                    <span class="title">设计平台</span>
+                </div>
+                <div class="sjRow"> -->
+                        <!-- <a href="" class="link-block col-ms-1 col-lg-4">
+                    <img src="" alt="">
+                    <p class="link-title"></p>
+                    <p class="desc"></p>
+            </a> -->
+                <!-- </div>
+        
+            </div>
+        </div>   
+        <div class="container h5 ">
+                <div class="row">
+                    <div class="title-block ">
+                        <span class="title">前端开发</span>
+                    </div>
+                    <div class="h5row sjRow >
+    
+                    </div>
+
+                <a href="" class="link-block col-ms-1 col-lg-4">
+                        <img src="" alt="">
+                        <p class="link-title"></p>
+                        <p class="desc"></p>
+                </a> 
+                </div>
+            </div>    -->
+    </div>
+    <!-- 页尾 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-message">
+                <a href="#" class="copyright">
+                    ©2017不凡科技 郑州IT技术服务
+                </a>
+                <a href="#" class="bei">
+                    
+			        豫ICP备17015347号
+                </a>
+            </div>
+        </div>
+    </div>    
+
+    <script src="data/navData.js"></script>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>   
+    <script>
+     
+        var linkBlocks = navigationData.linkBlocks;
+        
+        console.log(linkBlocks);
+        // var designplatform = linkBlocks[0].blocks;
+        // console.log(designplatform);
+        // var h5Develop = linkBlocks[1].blocks;
+        // console.log(h5Develop);
+        for (var i = 0;  i< linkBlocks.length; i++) {
+            var titleTipHtml = linkBlocks[i].titleTip?' <span class="active">网盘获取，请关注公众号 <strong>不凡因子</strong> 回复 \" <strong>密码 </strong> \"获取</span>':'';
+            var adsHtml = linkBlocks[i].ads?'<img src="'+linkBlocks[i].ads+'" alt="" class="adsImg col-xs-12">':'';
+            $('.mycontianer').append('<div class="container"><div class="row"><div class="title-block ">'
+                +'<span class="title">'+linkBlocks[i].name+'</span>'+titleTipHtml+'</div>'
+                +'<div class="h5row sjRow"></div>'+adsHtml+'</div></div> ');
+            for (let j = 0; j < linkBlocks[i].blocks.length; j++) {
+                console.log(i)
+                $('.sjRow').eq(i).append('<a href="'+linkBlocks[i].blocks[j].href+'" class="link-block col-xs-12 col-sm-6 col-lg-3">'
+                    +'<div class="content-row"><img src="'+linkBlocks[i].blocks[j].img+'" alt="">'
+                        +'<p class="link-title">'+linkBlocks[i].blocks[j].title+'</p>'
+                        +'<p class="desc">'+linkBlocks[i].blocks[j].desc+'</p></div></a>');
+            }
+        }
+
+
+    </script> 
+    
+</body>
+</html>

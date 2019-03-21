@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        	*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 50%;
+			height: 200px;
+			background-color: green;
+			transition: all ease .4s;
+		}
+		.d1.active{
+			left:50%;
+			background-color: orange;
+		}
+    </style>
+</head>
+<body>
+    <div class="d1">
+
+    </div>
+        <!-- 触摸滑动api -->
+            <!-- ontouchstart
+            ontouchmove
+            ontouchend -->
+            
+    <script>
+           var d1El = document.querySelector('.d1')
+        //    触摸滑动
+        d1El.ontouchstart = function(e){
+            // 开始滑动
+            // 1.先获取当前屏幕所有触摸点的列表 (注意后面要加es结尾)
+            var touch = e.touches[0];
+            // 2.然后获取当前触摸点位置
+            var startX = touch.pageX;
+            // 3.初始默认结束位置等于起始位置
+            var endX = startX
+            // 开始滑动(注意滑动是在整个屏幕上滑动)
+        document.ontouchmove= function(e){
+            // 4.重新获取触点列表
+            var touch = e.touches[0];
+            // 5.重新赋值结束位置
+            endX = touch.pageX;
+        }
+        // 滑动结束
+        d1El.ontouchend = function(){
+            // 6.先取消滑动(取消的是全屏滑动需要在整个html页面上加)
+            document.ontouchmove = null;
+            // 求出滑动与非滑动距离差
+            var chaX = endX - startX;
+            // 滑动有两个方向需要求绝对值
+            // 小于30为误操作
+            if(Math.abs(chaX)>30){
+                if(chaX>0){
+                    d1El.classList.add('active');
+                }else{
+                    d1El.classList.remove('active');
+                }
+            }
+        }
+        }
+    </script>
+
+    
+</body>
+</html>

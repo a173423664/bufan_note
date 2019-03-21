@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 移动端视口宽度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="lib/swiper-3.4.2.min.css">
+    <style>
+    	a{
+    		text-decoration: none;
+    	}
+		html{
+			font-size: 37.5px;
+		}
+		/* 头部 */
+		.header{
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 1.066667rem;
+			background-color: #fff;
+			z-index: 999;
+		}
+		.header .logo{
+			position: absolute;
+			left: 0;
+			top: .15625rem;
+			width: 1.733333rem;
+			height: 0.746667rem;
+			background: url(img/logo.png) no-repeat center;
+			background-size: cover;
+			/*特别注意: 精灵图片 在rem时候 应该写原始宽高;*/
+			/*background-size: 2.666667rem  2.0rem;*/
+		}
+		.header .title{
+			line-height: 1.066667rem;
+			font-size: 0.346667rem;
+			text-align: center;
+            font-family: PingFangSC-Regular;
+            color: #9D9E9E ;
+            letter-spacing:2px;
+		}
+        .header .nav{
+            width: 0.533333rem;
+            height: 0.426667rem;
+            position: absolute;
+            right: 0;
+            top: 0.32rem;        
+				}
+			
+        .header .nav .nav-item{
+            display: block;           
+            width: 0.533333rem;
+            height: 0.426667rem;
+        }
+        .header .nav .nav-item span{
+            display: block;
+            width: 0.533333rem;
+            height: 0.026667rem;
+            margin-bottom: 0.16rem;
+            background-color: #6D6D6E;
+            border-radius: 0.213333rem;
+				}
+				
+		/*主导航栏*/
+        .sup-nav{
+			/* height: 8.986667rem; */
+			width: 10.0rem;
+			background-color: #fff;
+			position: absolute;
+			/* display: none; */
+			z-index: 5;
+			/* transform: translate(0,9.253333rem); */
+			animation-delay: .4s;
+      /* 持续时间 */
+      animation-duration: 1s;
+      /* 属性规定动画在播放之前或之后，其动画效果是否可见。 */
+    	/* both向前和向后填充模式都被应用。 */
+      animation-fill-mode: both;
+      /* 动画时间曲线 */
+      animation-timing-function: ease;
+      opacity: 0;
+}
+.sup-nav.active{
+			/* display: block; */
+			animation-name: show;
+}
+@keyframes show{
+            0%{
+							height:0; 
+							opacity: 0; 
+            }
+            100%{
+							height: 8.986667rem;;
+              opacity: 1; 
+            }
+				}   
+				
+    .sup-nav .sup-nav-item{
+      height: 8.986667rem;
+			width: 10.0rem;
+			position: absolute;
+			left: 0;
+
+        }
+
+        .sup-nav .sup-nav-item .sup-nav-list{
+        	height: 0.48rem;
+        	width: 10.0rem;
+        	margin-top: 0.533333rem;
+        	line-height: 0.48rem;
+        	font-size: 0.346667rem;
+        }
+
+
+        .sup-nav .sup-nav-item .sup-nav-list a{
+        	font-family: PingFangSC-Regular;
+        	color: #3D3D3D;
+        	text-align: center;
+        	display: block;
+        	height: 0.48rem;
+        	width: 10.0rem;
+           }
+           .sup-nav .sup-nav-item .sup-nav-list:hover a{
+           	color: #3683FF ;
+           }
+
+        /*广告栏部分*/
+        .banner{
+        	width: 10.0rem;
+        	height: 5.893333rem;
+        	background: url(img/xueyuan-1.png) no-repeat center;
+					background-size: cover;
+					z-index: 10;
+        }
+
+		/*广告下标题栏*/
+        .aboutUs{
+			width: 10.0rem;
+			/*height: 14.8rem;*/
+			margin-top: 0;
+			/* background-color: yellow; */
+			position: relative;
+
+        }
+        .aboutUs .pname{
+        	height: 0.586667rem;
+        	width: 10.0rem;
+        	line-height: 0.586667rem;
+        	text-align: center;
+        	font-family: PingFangSC-Regular;
+        	color: #3D3D3D ;
+        	font-size: 0.426667rem;
+        	letter-spacing: 1.6px;
+        	/*margin-top: 0.64rem;*/
+        	position: absolute;
+        	top: 0.506667rem;
+
+        }
+		.aboutUs .path{
+			display: block;
+			height: 0.053333rem;
+			width: 1.845333rem;
+			background-image: linear-gradient(-135deg, #C000FF  0%, #00C7EF  100%);
+			position:absolute;
+			left: 4.077333rem;
+			top: 1.12rem;
+
+		}
+		.aboutUs .ename{
+			/*margin-top: 0.16rem;*/
+			font-family: ArialMT;
+			color: rgba(157,158,158,1);
+			font-size: 0.32rem;
+			line-height: 0.373333rem;
+			width: 10.0rem;
+			height: 0.373333rem;
+			text-align: center;
+			position: absolute;
+			top: 1.229333rem;
+		}
+
+		.aboutUs .about-banner{
+			display: block;
+			width: 8.474667rem;
+			height: 4.773333rem;
+			background: url(img/bufan-1.png) no-repeat center;
+			background-size: cover;
+			position: absolute;
+			top: 1.949333rem;
+			left: 0.769333rem;
+		}
+
+		.aboutUs .about-introduce{
+			width: 8.506667rem;
+			height: 3.733333rem;
+			font-family: PingFangSC-Regular;
+			color: rgba(109,109,110,1);
+			font-size: 0.373333rem;
+			line-height: 0.533333rem;
+			/*color: #6D6D6E;*/
+			letter-spacing: 0;
+			position: absolute;
+			top: 7.069333rem;
+			left: 0.746667rem;
+		}
+
+		/*UI设计*/
+		.aboutUs .UI-design{
+			width: 10.0rem;
+			height: 4.0rem;
+			position: absolute;
+			top: 11.733333rem;
+			/*background-color: pink;*/
+			background-image: linear-gradient(-133deg, #FF769B 0%, #FFC29C 100%);
+			border-radius: 10px;
+			z-index: 20;
+		}
+
+		.aboutUs  .common-pname{
+			height: 0.666667rem;
+			/* font-family: .PingFang-SC-Semibold; */
+			color: #fff;
+			font-size: 0.48rem;
+			line-height: 0.666667rem;
+			letter-spacing: 1px;
+			text-align: center;
+			margin-top: 0.533333rem;
+			/*margin-bottom: 0.266667rem;*/
+		}
+
+		.aboutUs  .common-introduce{
+			height: 1.066667rem;
+			color: #FFFFFF ;
+			letter-spacing: 0;
+			line-height: 0.533333rem;
+			font-size: 0.373333rem;
+			text-align: center;
+			/*text-align: center;*/
+			/*margin-top: 0.053333rem;*/
+		}
+
+		.aboutUs  .common-details{
+			display: block;
+			width: 2.293333rem;
+			height: 0.666667rem;
+			border: 0.013333rem solid #fff;
+			border-radius: 0.426667rem;
+			font-size: 0.373333rem;
+			color:  #FFFFFF ;
+			line-height: 0.666667rem;
+			text-align: center;
+			margin-top: 0.533333rem;
+			margin-left: 3.853333rem;
+
+		}
+	
+		/* 隐藏ui */
+		.aboutUs .hide-UI{
+			/* opacity: 0; */
+			width: 7.653333rem;
+			height: 7.248rem;
+			position: absolute;
+			top: 11.7rem;
+			margin-left: 1.173333rem;
+			z-index: 9;
+			animation-delay: .4s;
+      /* 持续时间 */
+      animation-duration: 1s;
+      /* 属性规定动画在播放之前或之后，其动画效果是否可见。 */
+    	/* both向前和向后填充模式都被应用。 */
+      animation-fill-mode: both;
+      /* 动画时间曲线 */
+      animation-timing-function: ease;
+			opacity: 0;
+		
+		}
+
+		.aboutUs .hide-UI.active{
+			animation-name: UI1 ;
+			z-index: 21;
+		}
+		@keyframes UI1{
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opacity: 1;
+			}
+		}
+
+
+		.aboutUs	.hide-UI a{
+			display: block;
+			height: .797333rem;
+			width: .797333rem;
+			position: absolute;
+			right: 0;
+			top:0;
+			border-radius: 50%;
+			background-color: #fff;
+		}
+		.aboutUs	.hide-UI a img{
+			position: absolute;
+			left: .1585rem;
+			top: .1585rem;
+			display: block;
+			height: .48rem;
+			width: .48rem;
+		}
+		.aboutUs	.hide-UI .UI-bar{
+			width: 100%;
+			height: 6rem;
+			background-image: linear-gradient(-137deg, #FF4A5A 0%, #FFCB8A 100%);
+			border-radius: 4px;
+			position: absolute;
+			left: 0;
+			top: 1.333333rem;
+		}
+
+		.aboutUs	.hide-UI .UI-bar .bar-p{
+			font-size: .48rem;
+			font-family: PingFang-SC-Semibol;
+			color: #FFFFFF ;
+			height: .666667rem;
+			line-height: .666667rem;
+			margin-left: 1.44rem;
+			margin-top: 1.6rem;
+			margin-bottom: .266667rem;
+		}
+		.aboutUs	.hide-UI .UI-bar .bar-b{
+			font-size: .426667rem;
+			line-height: .613333rem;
+			height: .613333rem;
+			color: #fff;
+			font-family: PingFangSC-Regular;
+			margin-left: 1.44rem;
+		}
+
+		.aboutUs	.hide-UI .vertical-bar{
+			display: block;
+			width: .053333rem;
+			height: .515333rem;
+			/* border: 2px solid #FFFFFF; */
+			background-color: #fff;
+			position: absolute;
+			right: .398667rem;
+			top: .8rem;
+		}
+
+		/* H5开发 */
+		.aboutUs .H5-develop{
+			width: 10.0rem;
+			height: 4.0rem;
+			position: absolute;
+			top: 16.133333rem;
+			/*background-color: pink;*/
+			background-image: linear-gradient(-135deg, #6BBBFF 0%, #B9A7FF 100%);
+			border-radius: 10px;
+		}
+		/*教学环境*/		
+		.aboutUs .teaching-environment{
+			width: 10.0rem;
+			height: 14.773333rem;
+			position: absolute;
+			top: 20.533333rem;
+			background-color: #3D3D3D;
+		}
+
+		.aboutUs .teaching-environment .pname.pe{
+			color: #fff;
+		}
+
+		.aboutUs .teaching-environment .path.pe{
+			background-image: linear-gradient(-135deg, #C75FFF  0%, #FF9696 100%);
+		}
+		/*285 426  142.5*/
+		.aboutUs .teaching-environment .environment-pic{
+			width: 7.6rem;
+			height: 11.36rem;
+			margin-top: 2.133333rem;
+			margin-left: 1.2rem;
+			background-color:#fff;
+		}
+
+		.aboutUs .teaching-environment .environment-pic .environment-list{
+			height: 3.786667rem;
+			width: 3.8rem;
+			float: left;
+		}
+		.aboutUs .teaching-environment .environment-pic .environment-list a{
+			display: block;
+			height: 3.786667rem;
+			width: 3.8rem;
+		}
+		.aboutUs .teaching-environment .environment-pic .environment-list a img{
+			height: 3.786667rem;
+			width: 3.8rem;
+		}
+		.aboutUs .teaching-environment .environment-pic .environment-list a .teaching-title{
+			padding-top: 1.066667rem;
+			/* font-family: .PingFang-SC-Semibold; */
+			font-size: 0.469333rem;
+			color: #6D6D6E;
+			line-height: 0.666667rem;
+			height: 0.666667rem;
+			/*text-align:center;*/
+			margin-left: 0.586667rem;
+		}
+		.aboutUs .teaching-environment .environment-pic .environment-list a .teaching-title.t1{
+			margin-top: -0.666667rem;
+		}
+		.aboutUs .teaching-environment .environment-pic .environment-list a .teaching-title.t2{
+			margin-top: -0.266667rem;
+		}
+		.aboutUs .teaching-environment .environment-pic .environment-list a .teaching-int{
+			font-family: PingFangSC-Regular;
+			font-size: 0.352rem;
+			color: #9D9E9E;
+			letter-spacing: 0;
+			line-height: 0.48rem;
+			height: 0.96rem;
+			width: 2.986667rem;
+			/*text-align:center;*/
+			margin-left: 0.586667rem;
+		}
+
+
+     body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color:#000;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+			position: absolute;
+			top: 35.04rem;
+      width: 100%;
+			height: 28.16rem;
+	
+    }
+	
+		.swiper-container .swiper-wrapper{
+			width: 100%;
+			height: 27.333333rem;
+			
+		
+		}
+		.swiper-wrapper .swiper-slide {
+			width: 8.24rem;
+			height: 24rem;
+			margin-top: 2.133333rem;
+		
+			
+		}
+
+	 .swiper-slide .box{
+			margin-top:.4rem;
+			height: 4.584rem;
+			width: 8.24rem;
+			margin-left: .4rem;
+			background-color: #f2f4f5;
+		}
+		.swiper-slide .box img{
+			height: 4.584rem;
+			width: 8.24rem;
+		}
+		/* 分页器 */
+		.swiper-container .swiper-pagination{
+			margin-left: 4rem;
+		}
+		.swiper-container .swiper-pagination .swiper-pagination-bullet{
+			display: block;
+			width: .392rem;
+			height: .053333rem;
+			background-color: blue;
+			border-radius: 12.8px;
+			/* margin-left: .533333rem; */
+			float: left;
+		}
+    .swiper-container .swiper-pagination .swiper-pagination-bullet .swiper-pagination-bullet-active{
+			background-color:#fff;
+		}
+		
+		.student-work{
+			position: absolute;
+			top: 63.466667rem;
+			/* background-color: #00C7EF; */
+			height: 13.36rem;
+			width: 100%;
+		}
+		
+		.student-work .path.p2{
+			background-image: linear-gradient(-135deg, #19EA3C  0%, #3ADDFF 100%);
+		}
+		.student-work  .d1{
+			position: absolute;
+			top: 2rem;
+		}
+
+		.student-work .recommend{
+			
+			width: 100%;
+			height: 3.733333rem;	
+		}
+		.student-work .recommend img{
+			display: block;
+			width: 100%;
+			height: 3.733333rem;
+			margin-top: .266667rem;
+		}
+		.advantage{
+			position: absolute;
+			top: 77.44rem;
+			width: 100%;
+			height: 2rem;
+			/* background-color: #00C7EF; */
+
+		}
+
+		#swiper2{              
+			position: absolute;
+			top: 79.346667rem;
+			height: 9.6rem;
+			width: 100%;
+			/* background-color: #19EA3C; */
+			margin-top: 0;
+		}
+
+		#swiper2  .swiper-slide{
+			margin-top: -0.4rem;
+			width: 8rem;
+			height: 8.293333rem;
+			/* margin-left: -0.266667rem;
+			margin-right: -0.533333rem; */
+			/* margin-right: -0.533333rem; */
+
+		}
+		#swiper2  .swiper-slide .box{
+			width: 100%;
+			height: 100%;
+		}
+		#swiper2  .swiper-slide .box img{
+			background:cover;
+			width: 100%;
+			height: 100%;
+		}
+
+		.course{
+			position: absolute;
+			top: 89.32rem;
+			width: 100%;
+			height:19.733333rem;
+			background-color: #f2f4f5;
+		}
+		/* .course . */
+	
+		.course .zhen.zhen2{
+			position: absolute;
+			top: 1.333333rem;
+			height: 2.8rem;
+			width: 9.253333rem;
+			margin: .4rem;
+			/* background-color: #00C7EF; */
+		}
+		.course .zhen img{
+			display: block;
+			float: left;
+			width: 2.133333rem;
+			height: 2.8rem;
+		}
+		.course .zhen .p1{
+			width: 7.12rem;
+			height: 2.8rem;
+			float: left;
+			background-color: #fff;
+		}
+
+		.course .zhen .pname{
+			font-family: PingFang-SC-Semibold;
+			color: #3D3D3D ;
+			font-size: .426667rem;
+			line-height: .613333rem;
+			/* height: 1.84rem; */
+			width: 6.408rem;
+			text-align: left;
+			text-indent: .453333rem;
+		}
+		.course .zhen .ename{
+			font-family: PingFangSC-Regular;
+			font-size: .346667rem;
+			color: #000;
+			line-height: .613333rem;
+			height: 1.226667rem;
+			width: 6.408rem;
+			margin-left: .453333rem;
+			text-align: left;
+			/* text-indent: .453333rem; */
+		}
+		.course .zhen{
+			height: 2.8rem;
+			width: 9.253333rem;
+			margin: .4rem;
+			/* background-color: #00C7EF; */
+			position: absolute;
+			top: 4.4rem;
+		}
+		.course .zhen.z1{
+			top: 7.466667rem;
+		}
+		.course .zhen.z2{
+			top: 10.533333rem;
+		}
+		.course .zhen.z3{
+			top: 13.6rem;
+		}
+		.course .zhen.z4{
+			top: 16.666667rem;
+		}
+
+		.footer{
+			width: 10rem;
+			height: 12.346667rem;
+			background-color:  #f2f4f5;
+			position: relative;
+			top: 109.05rem;
+			overflow: hidden;
+		}
+		.footer .pname{
+			height: 0.586667rem;
+      width: 10.0rem;
+      line-height: 0.586667rem;
+      text-align: center;
+      font-family: PingFangSC-Regular;
+      color: #3D3D3D ;
+      font-size: 0.426667rem;
+      letter-spacing: 1.6px;
+      /*margin-top: 0.64rem;*/
+      position: absolute;
+      top: 1.173333rem;
+		}
+		.footer .path{
+			display: block;
+			height: 0.053333rem;
+			width: 1.845333rem;
+			background-image: linear-gradient(-135deg, #C75FFF  0%, #FF9696   100%);
+			position:absolute;
+			left: 4.077333rem;
+			top: 1.76rem;
+		}
+		.footer .ename{
+			font-family: ArialMT;
+			color: rgba(157,158,158,1);
+			font-size: 0.32rem;
+			line-height: 0.373333rem;
+			width: 10.0rem;
+			height: 0.373333rem;
+			text-align: center;
+			position: absolute;
+			top: 1.893333rem;
+		}
+
+		.footer .s1{
+			height: 1.173333rem;
+			width: 10rem;
+			/* background-color: red; */
+			position: absolute;
+			margin-top: 3.333333rem;
+			position: relative;
+		}
+		.footer .s1 img{
+			position: absolute;
+			left: .266667rem;
+			top: 0;
+			width: .586667rem;
+			height: .586667rem;
+		}
+		.footer .s1 .icon-add{
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 1.066667rem;
+			/* width: 1.333333rem; */
+			font-size: .426667rem;
+			height: .586667rem;
+			line-height: .586667rem;
+			font-weight: bolder;
+		}
+		.footer .s1 .common-p{
+			position: absolute;
+			top: .586667rem;
+			left: 1.066667rem;
+			width: 10rem;
+			font-size: .373333rem;
+			height: .533333rem;
+			line-height: .533333rem;
+			color: #3D3D3D;
+			font-family: PingFangSC-Regular;
+		}
+		.footer .s1.way{
+			margin-top: .933333rem;
+		}
+
+		.footer .s1.tel{
+			margin-top: 1.066667rem;
+		}
+		/* 咨询 */
+		.footer .zx{
+			width: 1.12rem;
+			height: 1.12rem;
+			background-image: linear-gradient(-145deg, #FC7441 2%, #FFBF2E 100%);
+			border-radius: 50%;
+			position: absolute;
+			right: .266667rem;
+			bottom: 1.2rem;
+		}
+		.footer .zx .zx-p{
+			font-size: .341333rem;
+			line-height: 1.12rem;
+			font-family: PingFang-SC-Medium;
+			color: #fff;
+			text-align: center;
+		}
+		.footer .return-page{
+			width: 1.12rem;
+			height: .693333rem;
+			background-image: linear-gradient(-136deg, #3683FF 0%, #7B86FF 100%);
+			border-top-left-radius: .133333rem;
+			border-top-right-radius: .133333rem;
+			position: absolute;
+			bottom: 0;
+			right: .266667rem;
+		}
+
+		.footer .return-page .go-up{
+			display: block;
+			border-top-left-radius: .133333rem;
+			border-top-right-radius: .133333rem;
+			width: 1.12rem;
+			height: .693333rem;
+		}
+		.footer .return-page .go-up img{
+			margin-left: .133333rem;
+			display: block;
+			/* background-size: cover; */
+			width: .8rem;
+			height: .693333rem;
+		}	
+
+	</style>
+    <script>
+		resetFontSize();
+
+		// 当浏览器大小变化的时候触发
+		window.onresize = function () {
+			resetFontSize();				
+		}
+		/**
+		* 根据浏览器宽度重新设置 html font-szie大小
+		**/
+		function resetFontSize(){
+			// 浏览器宽度 1/10
+			document.documentElement.style.fontSize = window.innerWidth/10 +'px';
+			console.log('html font-size重置为: '+window.innerWidth/10);
+		}
+	</script>
+</head>
+<body>
+	<!-- 头部 -->
+    <div class="header">
+		<a href="#" class="logo"></a>
+		<p class="title">郑州高端互联网技术培训</p>
+		<div class="nav">
+            <a href="javascript:;" class="nav-item">
+                <span class="noM"></span>
+                <span></span>
+                <span></span>
+            </a>
+		</div>
+			<!-- 主导航栏 -->
+		<div class="sup-nav">
+			<ul class="sup-nav-item">
+				<li class="sup-nav-list marT"><a href="#">首页</a></li>
+				<li class="sup-nav-list"><a href="#">关于</a></li>
+				<li class="sup-nav-list"><a href="#">介绍</a></li>
+				<li class="sup-nav-list"><a href="#">环境</a></li>
+				<li class="sup-nav-list"><a href="#">作品</a></li>
+				<li class="sup-nav-list"><a href="#">就业</a></li>
+				<li class="sup-nav-list"><a href="#">优势</a></li>
+				<li class="sup-nav-list"><a href="#">联系</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 广告 -->
+	<div class="banner">
+	</div>
+	<!-- 关于我们 -->
+	<div class="aboutUs">
+		<p class="pname">关于我们</p>
+		<span class="path"></span>
+		<p class="ename">Course</p>
+		<a href="#" class="about-banner"></a>
+		<p class="about-introduce">不凡学院老师由一帮80后老北漂组成。我们分别来自于腾讯网，凤凰网，网易 等北京知名互联网公司，我们都曾奋斗在一线岗位，都曾面试新人，带新人，深知公司需要什么样的人才。我们会通过实战项目结合 培训的教学模式，把知名互联网公司的工作流程，设计方法，开发方 式手把手的教给大家，在不凡学习就相当于工作，高薪就业你也行！</p>
+		<div class="UI-design">
+			<p class="UI-pname common-pname">UI设计</p>
+			<p class="UI-introduce common-introduce">就业方向：网页设计，APP设计，管理系统软件设计
+			</br>智能电视，车载系统，智能穿戴设备等软件设计</p>
+			<a class="Course-details common-details" id="u1" href="javascript:;">课程详情</a>
+		</div>
+		<!-- 337.5 -->
+		<!-- 隐藏UI图 -->
+		<div class="full">
+				<div class="hide-UI">
+						<a href="javascript:;" class="x1">
+							<img src="img/cha.png" alt="">
+						</a>
+						<span class="vertical-bar"></span>
+					<div class="UI-bar">
+						<p class="bar-p">UI设计精品班</p>
+						<p class="bar-b">课程周期：3个月</p>
+						<p class="bar-b">上课时间：周一至周五</p>
+						<p class="bar-b">招生对象：大专以上学历</p>
+						<p class="bar-b">班级人数：每班限制15人</p>
+
+					</div>
+			 </div>
+		</div>
+		<div class="H5-develop">
+			<p class="H5-pname common-pname"">H5前端开发</p>
+			<p class="H5-introduce common-introduce">就业方向：网站开发，网页特效开发，APP开发</br>
+			微信小程序开发，网页游戏开发，移动WEB开发</p>
+			<a class="Course-details-H5 common-details" id="h1" href="javascript:;">课程详情</a>
+			
+		</div>
+
+		<!-- 教学环境 -->
+		<div class="teaching-environment">
+			<p class="pname pe">教学环境</p>
+			<span class="path pe"></span>
+			<p class="ename">Course</p>
+			<ul class="environment-pic">
+				<li class="environment-list">
+					<a href="#">
+						<img src="img/bufanxueyuan.png" alt="">
+					</a>
+				</li>
+				<li class="environment-list">
+					<a href="#">
+						<p class="teaching-title">不凡学院</p>
+						<p class="teaching-int">平凡人的不平凡<br>
+						我们在学院等你</p>
+					</a>
+				</li>
+				<li class="environment-list">
+					<a href="#">
+						<p class="teaching-title t1">全Mac教学</p>
+						<p class="teaching-int">全MAC设备,与一<br>线互联网公司设备同步，提前适应工作环境！</p>
+					</a>
+				</li>
+				<li class="environment-list">
+					<a href="#">
+						<img src="img/jiaoxue.png" alt="">
+					</a>
+				</li>
+				<li class="environment-list">
+					<a href="#">
+						<img src="img/xiuxi.png" alt="">
+					</a>
+				</li>
+				<li class="environment-list">
+					<a href="#">
+						<p class="teaching-title t2">休息角</p>
+						<p class="teaching-int">小资的学习环境,<br>引爆你的设计灵感！</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- 轮播图 -->
+		<div class="swiper-container" id="swiper1">
+				<p class="pname p1">学员就业</p>
+				<span class="path p2"></span>
+				<p class="ename p3">Employment</p>
+		    <div class="swiper-wrapper">
+		    			<div class="swiper-slide">
+									<div class="box">
+										<img src="img/show1.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show2.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show4.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show3.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show5.png" alt="">
+									</div>
+									
+							</div>
+		      		<div class="swiper-slide">
+									<div class="box">
+											<img src="img/show3.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show5.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show4.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show1.png" alt="">
+										</div>
+										<div class="box">
+												<img src="img/show2.png" alt="">
+										</div>
+							</div>
+							<div class="swiper-slide">
+									<div class="box">
+											<img src="img/show3.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show5.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show4.png" alt="">
+									</div>
+									<div class="box">
+											<img src="img/show1.png" alt="">
+										</div>
+										<div class="box">
+												<img src="img/show2.png" alt="">
+										</div>
+							</div>
+		    </div>
+		    <!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+		</div>
+
+		<div class="student-work">
+				<p class="pname p1">学员就业</p>
+				<span class="path p2"></span>
+				<p class="ename p3">Employment</p>
+				<div class="d1">
+					<div class="recommend ">
+						<img src="img/em_1.jpg" alt="">
+					</div>
+					<div class="recommend">
+						<img src="img/em_2.jpg" alt="">
+					</div>
+					<div class="recommend">
+						<img src="img/em_3.jpg" alt="">
+					</div>
+			</div>
+		</div>
+		<div class="advantage">
+				<p class="pname ">师资优势</p>
+				<span class="path "></span>
+				<p class="ename ">Teacher</p>
+		</div>
+		<div class="swiper-container" id="swiper2">
+		    <div class="swiper-wrapper">
+		    			<div class="swiper-slide">
+									<div class="box">
+										<img src="img/ding.jpg" alt="">
+									</div>
+					
+							</div>
+		      		<div class="swiper-slide">
+									<div class="box">
+											<img src="img/ding.jpg" alt="">
+									</div>
+								
+							</div>
+							<div class="swiper-slide">
+									<div class="box">
+											<img src="img/ding.jpg" alt="">
+									</div>
+							</div>
+							<div class="swiper-slide">
+									<div class="box">
+											<img src="img/ding.jpg" alt="">
+									</div>
+							</div>
+							<div class="swiper-slide">
+									<div class="box">
+											<img src="img/ding.jpg" alt="">
+									</div>
+							</div>
+		    </div>
+		    <!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+		</div>
+		<!-- 课程优势 -->
+		 <div class="course">
+				<p class="pname">课程优势</p>
+				<span class="path"></span>
+				<p class="ename">Superiority</p>
+				<div class="zhen zhen2">
+						<img src="img/zhen.png" alt="">
+						<div class="p1">
+								<p class="pname">最真的项目案例</p>
+								<p class="ename">接触真实的项目实战，全面了解实际工作流程，学习就等于工作</p>
+						</div>
+						
+				</div>
+				 <div class="zhen">
+						<img src="img/hao.png" alt="">
+						<div class="p1">
+								<p class="pname">最好的教学师资</p>
+								<p class="ename">北京知名一线互联网公司资深设计师担任讲师，现场面授！</p>
+						</div>
+				</div>
+				<div class="zhen z1">
+						<img src="img/jing.png" alt="">
+						<div class="p1">
+							<p class="pname">最精品的班级设置</p>
+							<p class="ename">每期每班15人，手把手教学，保证每位同学学好学会！</p>
+						</div>
+				</div>
+				<div class="zhen z2">
+						<img src="img/yan.png" alt="">
+						<div class="p1">
+							<p class="pname">最精品的班级设置</p>
+							<p class="ename">每期每班15人，手把手教学，保证每位同学学好学会！</p>
+						</div>
+				</div>
+				<div class="zhen z3">
+					<img src="img/kai.png" alt="">
+					<div class="p1"> 
+						<p class="pname">最严的质量管控</p>
+						<p class="ename">对学员进行阶段性考核，对每个学员负责保证学员学好学会！</p>
+					</div>
+				</div>
+				<div class="zhen z4">
+						<img src="img/niu.png" alt="">
+						<div class="p1">
+							<p class="pname">最牛的大咖讲座</p>
+							<p class="ename">定期邀请北京业内大咖开设讲座，满满全是干货！</p>
+						</div>
+				</div>
+		</div>
+	</div>
+	<!-- 尾部 -->
+	<div class="footer">
+		<p class="pname ">联系我们</p>
+		<span class="path"></span>
+		<p class="ename ">Contact us</p>
+		<!-- 地址 -->
+		<div class="address s1">
+				<img src="img/address.png" alt=""><span class="icon-add">地址</span>
+				<p class="common-p">郑州市郑东新区金水东路绿地新都会6号楼1210</p>
+		</div>
+		<!-- 路线 -->
+		<div class="way s1">
+				<img src="img/way_@2x.png" alt=""><span class="icon-add">乘车路线</span>
+				<p class="common-p">地铁1号线 东风南路站C口出向北步行300米即到<br>(近郑州东站)</p>
+		</div>
+		<!-- 电话 -->
+		<div class="tel s1">
+				<img src="img/phone_@2x.png" alt="">
+				<span class="icon-add">电话</span>
+				<p class="common-p">座机: 0371-55602883   移动电话: 18838180363</p>
+		</div>
+		<!-- 咨询 -->
+		<div class="zx">
+			<p class="zx-p">
+				咨询
+			</p>
+		</div>
+		<!-- /* 返回首部 */ -->
+		<div class="return-page">
+			<a href="" class="go-up">
+				<img src="img/jt2.png" alt="">
+			</a>
+		</div>
+		
+
+	</div>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script src="lib/swiper-3.4.2.jquery.min.js"></script>
+	<script>
+		var swiper = new Swiper('#swiper1', {
+      slidesPerView: 1.2,
+      centeredSlides: true,
+      spaceBetween: 30,
+			pagination : '.swiper-pagination'
+    });
+		// var mySwiper = new Swiper('.swiper-container',{
+		// pagination : '.swiper-pagination',
+//pagination : '#swiper-pagination1',
+var swiper = new Swiper('#swiper2', {
+      slidesPerView: 1.2,
+      centeredSlides: true,
+			spaceBetween: 30,
+			pagination : '.swiper-pagination'
+		});
+
+		// 定时器
+		var timer = null;
+		// 获取头部导航标签
+		var supNav = document.querySelector('.sup-nav');
+		var headerNav = document.querySelector('.nav');
+		// 当鼠标移动到头部导航栏上时
+		headerNav.onclick = function(){
+			// // 方法一: 返回值为true 进行判断
+			if(supNav.classList.contains('active')){
+					supNav.classList.remove('active');
+			}else{
+				supNav.classList.add('active');
+			
+			}
+			// 方法二 直接用切换
+			// supNav.classList.toggle("active");
+		}
+		// 课程点击效果
+		var x1 = document.querySelector('.x1');
+		var hideUI = document.querySelector('.hide-UI');
+		var uL = document.getElementById('u1');
+		// var H5 = document.getElementById('h1');
+
+		uL.onclick = function(){
+			hideUI.classList.add('active');
+			// body.style.backgroundColor = 'gray';
+		}
+		x1.onclick =function(){
+			hideUI.classList.remove('active');
+		}
+
+
+		// 返回头部
+		$('.go-up').click(function(){
+			animate(0);
+		})
+		// 封装缓动
+		function animate(target){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				// 被卷进去的高度
+				var scrollTop =  document.documentElement.scrollTop;
+				var leader = scrollTop;
+				var step = (target-leader)/10;
+				// 修正步数
+				if(Math.abs(step)<1){
+					step = step>0?1:-1;
+				}
+				window.scrollTo(0,leader+step);
+				console.log('leader'+leader);
+				if(target==leader){
+					 // 目标返回最上部
+					window.scrollTo(0,target);
+          clearInterval(timer);
+          console.log('定时器关闭了');
+				}
+
+			},17)
+		}
+	</script>
+
+
+
+	
+
+
+	
+
+
+</body>
+</html>

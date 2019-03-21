@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>登录页</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+        <!-- action写成提交登录的地址 
+         1.get
+        不安全
+        请求参数会在地址上显示
+        请求发送的参数有上限大小
+        有缓存
+        2.post
+        1.请求参数会在请求体内包含
+        相对安全
+        请求的参数在请求体(req)包含
+        数据大小没有上限
+        没有缓存  -->     
+        <form action="/doLogin" method="post" onsubmit="return sub()">
+            <!-- 注意:不写name属性接收不到参数 -->
+            用户名: <input type="text" class="username" name="username"></br>
+            密码: <input type="text" class="password" name="password">
+            <input type="submit" value="登录" >
+        </form>  
+        <span>没有账号?</span><a href="/reg">立即注册</a>
+        
+        <script>
+          // 要求在注册之前,先验证表单内容 
+          // 表单内容不能为空,必须为数字字母下划线长度为3-10 
+            var username = /^[0-9a-z_u4e00-\u9fa5]{3,10}$/;
+            // 如何在submit提交之前做拦截: 在onsubmit里面返回一个函数 点击submit时返回
+
+        </script>
+          
+  </body>
+</html>

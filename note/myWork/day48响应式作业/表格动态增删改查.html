@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>栅格化响应式</title>
+
+    <!-- Bootstrap -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	.container{
+    		margin: 0 auto;
+    	}
+    	.container .aside{
+    		height: 100%;
+    		/*background-color: orange;*/
+    	}
+    	.container .main{
+    		height: 100%;
+    		border: 1px solid red;
+    	}
+		.container.my-container{
+			height: 500px;
+		}
+		.container .aside .nav{
+			background-color: #f5f5f5;
+		}
+		.container .main table{
+			margin-top: 30px;
+		}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">不凡学院</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">样式</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">常用操作 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">内容管理</a></li>
+                <li><a href="#">功能管理</a></li>
+                <li><a href="#">系统管理</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">退出</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">头像设置</a></li>
+                <li><a href="#">修改密码</a></li>
+                <li><a href="#">查看信息</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>	
+    <div class="container my-container row">
+    	<!-- col-sm-xx 能实现在不同的宽度的屏幕上 展示占据不同的比例的效果 -->
+    	<div class="aside col-sm-6 col-md-3 ">
+    		<ul class="nav nav-pills nav-stacked">
+    		  <li class="active"><a href="#">用户管理</a></li>
+    		  <li><a href="#">文章管理</a></li>
+    		  <li><a href="#">评论管理</a></li>
+    		  <li><a href="#">系统管理</a></li>
+    		</ul>
+    	</div>	
+    	<div class="main col-sm-6 col-md-9 ">
+    		<div class="box">
+    			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加</button>
+    			<table class="table table-bordered">
+    				<tr>
+    					<th>序号</th>
+    					<th>姓名</th>
+    					<th>电话</th>
+    					<th>操作</th>
+    				</tr>
+    				<!-- <tr>
+    					<td>01</td>
+    					<td>张三</td>
+    					<td>1243234234</td>
+    					<td>
+    						<button type="button" class="btn btn-primary btn-xs btn-edit">编辑</button>
+							  <button type="button" class="btn btn-success btn-xs">查看</button>
+							  <button type="button" class="btn btn-danger btn-xs">删除</button>
+    					</td>
+    				</tr>
+    				<tr>
+    					<td>01</td>
+    					<td>张三</td>
+    					<td>1243234234</td>
+    					<td>
+    						<button type="button" class="btn btn-primary btn-xs btn-edit">编辑</button>
+							  <button type="button" class="btn btn-success btn-xs">查看</button>
+							  <button type="button" class="btn btn-danger btn-xs">删除</button>
+    					</td>
+    				</tr>
+    				<tr>
+    					<td>01</td>
+    					<td>张三</td>
+    					<td>1243234234</td>
+    					<td>
+    						<button type="button" class="btn btn-primary btn-xs btn-edit">编辑</button>
+							  <button type="button" class="btn btn-success btn-xs">查看</button>
+							  <button type="button" class="btn btn-danger btn-xs">删除</button>
+    					</td>
+    				</tr>
+    				<tr>
+    					<td>01</td>
+    					<td>张三</td>
+    					<td>1243234234</td>
+    					<td>
+    						<button type="button" class="btn btn-primary btn-xs btn-edit">编辑</button>
+							  <button type="button" class="btn btn-success btn-xs">查看</button>
+							  <button type="button" class="btn btn-danger btn-xs">删除</button>
+    					</td>
+    				</tr> -->
+    			</table>
+    		</div>
+    		<nav aria-label="Page navigation">
+    		  <ul class="pagination">
+    		    <li>
+    		      <a href="#" aria-label="Previous">
+    		        <span aria-hidden="true">&laquo;</span>
+    		      </a>
+    		    </li>
+    		    <li><a href="#">1</a></li>
+    		    <li><a href="#">2</a></li>
+    		    <li><a href="#">3</a></li>
+    		    <li><a href="#">4</a></li>
+    		    <li><a href="#">5</a></li>
+    		    <li>
+    		      <a href="#" aria-label="Next">
+    		        <span aria-hidden="true">&raquo;</span>
+    		      </a>
+    		    </li>
+    		  </ul>
+    		</nav>
+    	</div>
+    </div>
+    <!-- 模态窗口  -->
+    <div class="modal fade" id="myModal" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            	<form>
+            	  <div class="form-group">
+            	    <label for="username">用户名</label>
+            	    <input type="text" class="form-control" autocomplete="off" id="username" placeholder="请输入用户名">
+            	  </div>
+            	  <div class="form-group">
+            	    <label for="tel">电话</label>
+            	    <input type="text" class="form-control" autocomplete="off"   id="tel" placeholder="请输入电话号码">
+            	  </div>
+            	  
+            	</form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary btn-add add">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    	// 作业: 实现当前页面的数据增删改查的交互逻辑
+    	// 难点: 如何实现点击保存的时候 区分 是 更新操作还是新增操作
+        // 先声明一个变量
+        var el = null;
+        
+        // 1.点击保存的时候拿到值并且拿到数据
+        $('.add').click(function(){
+            var name_ = $('#username').val();
+            var tel_ = $('#tel').val();
+            var index = $('tr').length;
+            // 2.2.1然后这里判断有没有拿到el的值,如果没有继续执行,也就是为table中添加新数据
+            if(!el){
+                console.log('ff');
+                $('.table.table-bordered').append($(`<tr><td>${index}</td><td class="name">${name_}</td><td class="tel">${tel_}</td><td><button type="button" class="btn btn-primary btn-xs btn-edit">编辑</button><button type="button" class="btn btn-success btn-xs">查看</button><button type="button" class="btn btn-danger btn-xs btn-remove">删除</button></td></tr>`))
+            }else{
+                // 2.2如果是有el的情况下,也就是说拿到了想要修改的节点.就是把节点的数据修改,变成输出框的数据
+                el.find('.name').text(name_);
+                el.find('.tel').text(tel_);
+            }
+            // 3.点击保存以后还要记得把数据清空
+            $('#username').val('');
+            $('#tel').val('');
+              // 4.关闭窗口
+            $('#myModal').modal('hide');
+        })
+        // 5.点击编辑的时候,我需要拿到当前的数据,然后赋值给弹窗的input,然后把this赋值给el,也就是让el成为需要修改的那一行节点
+        // 因为是动态生成的标签,且在静态页面中不显示,所以不能添加事件，应该委派给父元素
+        $('.table.table-bordered').on('click','.btn-edit',function(){
+            // find()方法返回被选元素的后代元素,一路向下直到最后一个后代
+            // children()方法返回被选元素怒的所有直接子元素
+            var name_ = $(this).parent().parent().find('.name').text();
+            var tel_ = $(this).parent().parent().find('.tel').text();
+            // 5.1赋值给弹出窗口
+            $('#username').val(name_);
+            $('#tel').val(tel_);
+            // 5.2同时也要让el变成需要修改的那一行节点tr;
+            el = $(this).parent().parent();
+            $('#myModal').modal('show');
+        })  
+        // 6.点击删除按钮的时候删除属性 动态生成==事件委派
+        $('.table.table-bordered').on('click','.btn-remove',function(){
+            // 6.1删除后一行都消失,所以要拿到当前tr节点
+        el =$(this).parent().parent();
+           el.remove();
+           el = null;
+           console.log(el);
+        })
+
+
+      
+
+
+    	// $('.btn-edit').click(function () {
+    	// 	$('#myModal').modal('show');
+    	// 	console.log($(this).parent().parent().children().eq(1).text());
+    	// })
+    </script>
+  </body>
+</html>

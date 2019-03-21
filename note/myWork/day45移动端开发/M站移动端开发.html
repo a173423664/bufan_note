@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入标签去除默认样式 -->
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        a{
+            text-decoration: none;
+        }
+        /* 头部标签 */
+        .header{
+            height: 1.066667rem;
+            width: 10rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: antiquewhite;
+        }
+        /* 
+        头部图标 
+        */
+        .header .header-logo{
+            position: absolute;
+            left: .453333rem;
+            top: 0.17rem;
+            background:url(img/logo.png) no-repeat center;
+            background-size: cover;
+            width: 1.733333rem;
+			height: 0.746667rem;
+        }
+
+        /* 头部文字 */
+        .header .header-title{
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.066667rem;
+           line-height: 1.066667rem;
+            font-family: PingFangSC-Regular;
+            letter-spacing: 2.06px;
+            color: #9D9E9E;
+        }
+
+        .header .header-nav{
+            position: absolute;
+            right: .373333rem;
+            top: .4rem;
+            width: .533333rem;
+            /* height: .373333rem; */
+        }
+        .header .header-nav .nav-slide{
+            display: block;
+            width: .533333rem;
+            height: .373333rem;
+            background:url(img/nav-list.png) no-repeat center;
+            background-size: cover;
+        }
+        /* 隐藏导航栏 */
+        .header .nav-hide{
+            opacity: 0;
+            position: absolute;
+            top: 1.066667rem;
+            left: 0;
+            width: 100%;
+            /* height: 8.986667rem; */
+            /* overflow: hidden; */
+            /* animation-delay: .4s; */
+      /* 持续时间 */
+      /* animation-duration: 2s; */
+      /* 属性规定动画在播放之前或之后，其动画效果是否可见。 */
+    	/* both向前和向后填充模式都被应用。 */
+      animation-fill-mode: both;
+      /* 动画时间曲线 */
+      animation-timing-function: ease;
+            
+        }
+        .header .nav-hide li{
+            width: 10rem;
+            height: .48rem;
+            margin-top: .578667rem;
+            line-height: .48rem;
+            text-align: center;
+        }
+        .header .nav-hide li.special{
+            /* 给最上面的li单独设置他的margin-top值 */
+            margin-top: .266667rem;
+        }
+        .header .nav-hide li a{
+            display: block;
+            /* margin-top: .48rem; */
+            width: 10rem;
+            height: .48rem;
+            color: #3D3D3D;
+            font-size: .346667rem;
+        }
+        .header .nav-hide.active{
+            animation-name: show;
+        }
+       
+        @keyframes show{
+            0%{
+                opacity: 0;
+                height: 0;
+            }
+            100%{
+                opacity: 1;
+                height: 8.986667rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        resetFontSize();
+        // 当浏览器大小发现变化时触发
+        window.onresize = function(){
+            resetFontSize();
+        }    
+        function resetFontSize(){
+			// 浏览器宽度 1/10
+			document.documentElement.style.fontSize = window.innerWidth/10 +'px';
+			console.log('html font-size重置为: '+window.innerWidth/10);
+		}
+    </script>
+    <!-- 头部标签 -->
+    <div class="header">
+        <div class="header-logo">
+
+        </div>
+        <p class="header-title">郑州高端互联网技术培训</p>
+        <div class="header-nav">
+            <a href="javascript:;" class="nav-slide"></a>
+        </div>
+        <!-- 隐藏的头部导航栏 -->
+        <ul class="nav-hide">
+            <li class="special"><a href="javascript:;">首页</a></li>
+            <li><a href="javascript:;">关于</a></li>
+            <li><a href="javascript:;">介绍</a></li>
+            <li><a href="javascript:;">环境</a></li>
+            <li><a href="javascript:;">作品</a></li>
+            <li><a href="javascript:;">就业</a></li>
+            <li><a href="javascript:;">优势</a></li>
+            <li><a href="javascript:;">联系</a></li>
+        </ul>
+    </div>
+    <script src="lib/jquery-3.3.1.js"></script>
+    <script>
+        // 点击的时候 导航栏弹出
+        $('.header-nav').click(function(){
+            // 如果有就删除,没有就加上
+         $('.nav-hide').toggleClass('active')
+            
+        })
+    
+    </script>
+
+
+    
+</body>
+</html>
