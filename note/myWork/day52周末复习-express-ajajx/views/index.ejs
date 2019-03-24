@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <style>
+    .title{
+      color: red;
+    }
+    .login-center{
+      display: block;
+      text-decoration: none;
+      color: gray;
+      border: 1px solid black;
+      height: 30px;
+      width: 100px;
+      line-height: 30px;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h1 class="title"><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <a class="login-center" href="/login">注册中心</a>
+  </body>
+</html>

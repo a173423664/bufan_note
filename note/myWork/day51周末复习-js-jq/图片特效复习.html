@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			width: 1000px;
+			height: 600px;
+			background-color: lightcoral;
+			margin: 100px auto;
+			perspective: 1000px;
+		}
+		.box img{
+			width: 100%;	
+			height: 100%;	
+			transition: all ease .4s;
+		}
+    </style>
+</head>
+<body>
+     <div class="box">
+		<img src="cb.JPG" alt="">
+		<!-- <div class="d1"></div> -->
+    </div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script>
+        // 首先要考虑鼠标移动与图片角度的关系
+        // rotate               坐标
+        // 第一象限 + +         第一象限 x - y +
+        // 第二象限 + -         第二象限 x + y +
+        // 第三象限 - -         第三象限 x + y - 
+        // 第四象限 - +         第三象限 x - y -
+        var deg = 30;
+        $('.box').on('mouseenter',function(){
+            $('.box img').css('transition','none');
+            // 当开始移动时
+            $('.box').on('mousemove',function(e){
+                var positionX = $('.box').width()/2 -(e.pageX - $('.box').offset().left);
+                var positionY = $('.box').height()/2 -(e.pageY - $('.box').offset().top);
+
+                // 对应的角度
+                var degX = positionY/$('.box').width()*deg;
+                var degY = -positionX/$('.box').height()*deg;
+
+                var transformValue = 'rotateX('+degX+'deg)  rotateY('+degY+'deg)'; 
+                $('.box img').css('transform', transformValue);
+            })
+            // 当鼠标移开后
+            $('.box').on('mouseleave',function(){
+                $('.box img').css('transition', 'all ease .4s');
+                $('.box img').css('transform' , 'rotateX(0) rotateY(0)');
+            })
+
+
+        })
+    </script>
+
+
+    
+</body>
+</html>
