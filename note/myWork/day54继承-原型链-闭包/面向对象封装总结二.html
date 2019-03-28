@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			width: 1000px;
+			height: 600px;
+			background-color: lightcoral;
+			margin: 100px auto;
+			perspective: 1000px;
+		}
+		.box img{
+			width: 100%;	
+			height: 100%;	
+			transition: all ease .4s;
+		}
+    </style>
+</head>
+<body>
+     <div class="box">
+		<img class="img" src="cb.JPG" alt="">
+		<!-- <div class="d1"></div> -->
+    </div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="js/3dhover.js"></script>
+    <script>
+        // 首先要考虑鼠标移动与图片角度的关系
+        // rotate               坐标
+        // 第一象限 + +         第一象限 x - y +
+        // 第二象限 + -         第二象限 x + y +
+        // 第三象限 - -         第三象限 x + y - 
+        // 第四象限 - +         第三象限 x - y -
+        
+        (function(){
+    function my3dhover(el,img){
+        this.img = document.querySelector(img);
+        this.$el = $(el);
+        this.deg = 35;
+        // this.img = el.children[0];
+        // 入口函数
+        this.init()
+    }
+    my3dhover.prototype ={
+        init:function(){
+            this.mouseenter();
+            this.mousemove();
+            this.mouseleave();
+        },
+        // 鼠标进入的时候
+        mouseenter:function(){
+            var that = this;
+            this.$el.mouseenter(function(){
+                that.img.css('transition','none');
+            })
+        },
+        mousemove:function(){
+            var that = this;
+            this.$el.mousemove(function(e){
+                var positionX = that.$el .width()/2 -(e.pageX - that.$el.offset().left);
+                var positionY = that.$el .height()/2 -(e.pageY - that.$el.offset().top);
+                // 对应的角度
+                var degX = positionY/that.$el.width()*that.deg;
+                var degY = -positionX/that.$el.height()*that.deg;
+                var transformValue = 'rotateX('+degX+'deg)  rotateY('+degY+'deg)'; 
+                that.img.css('transform', transformValue);
+            })
+        },
+        mouseleave:function(){
+            var that = this;
+            this.$el.mouseleave(function(){
+                that.img.css('transition', 'all ease .4s');
+                that.img.css('transform' , 'rotateX(0) rotateY(0)');
+            })
+        }
+    }
+    window.my3dhover = my3dhover;
+})()
+new my3dhover('.box','.img')
+    </script>
+
+
+    
+</body>
+</html>

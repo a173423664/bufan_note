@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js轮播图复习</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .banner{
+            width: 1200px;
+            height: 460px;
+            margin: 200px auto;
+            /* background-color: red; */
+            position: relative;
+            overflow: hidden;
+            
+        }
+        .banner .swiper{
+            width: 500%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+        .banner .swiper .swiper-slide{
+            width: 1200px;
+            height: 100%;
+            float: left;
+        }
+        .banner .swiper .swiper-slide img{
+            height: 100%;
+            width: 100%;
+        }
+        .banner .arr{
+            width: 36px;
+            height: 72px;
+            position: absolute;
+            top: 50%;
+            margin-top: -36px;
+            background-color:  rgba(0, 0, 0, .5);
+            line-height: 72px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+        }
+        .banner .arr.arr-right{
+            left:auto;
+            right: 0;
+        }
+
+        .banner .dotts{
+            position: absolute;
+            right: 60px;
+            bottom: 30px;
+        }
+        .banner .dotts>li{
+            width: 6px;
+            height: 6px;
+            border: 2px solid #fff;
+            background-color: #e5e5e5;
+            border-radius: 50%;
+            float: left;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .banner .dotts>li>a{
+            display: block;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+        .banner .dotts>li.active{
+            border-color: orange;
+        }
+        .banner .dotts>li.active>a{
+            background-color: #333333;     
+            }
+        
+    </style>  
+</head>
+<body>
+    <div class="banner">
+        <ul class="swiper">
+        </ul>
+        <a href="javascript:;" class="arr arr-left" >&lt;</a>
+        <a href="javascript:;" class="arr arr-right" >&gt;</a>
+        <ul class="dotts">
+            <!-- <li><a href="javascript:;"></a></li>
+            <li><a href="javascript:;"></a></li>
+            <li><a href="javascript:;"></a></li>
+            <li><a href="javascript:;"></a></li>
+            <li><a href="javascript:;"></a></li> -->
+        </ul>
+    </div>
+    <script src="js/swiper.js"></script>
+    <script>
+        new WuHaoSwiper('.banner','.dotts','.arr-left','.arr-right');
+    </script>
+</body>
+</html>

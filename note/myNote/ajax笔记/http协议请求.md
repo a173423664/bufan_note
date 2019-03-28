@@ -8,4 +8,5 @@
 2. Refeirer: 当前页面从哪个页面跳转过来的.
 
 + JSON.parse()方法:将JSON字符串转化为JavaScript对象
++ 也可以使用eval()方法将其转化为js代码
 + JSON.stringify()方法:将JavaScript对象,转化为JSON字符串

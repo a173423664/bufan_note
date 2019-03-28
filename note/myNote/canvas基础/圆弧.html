@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;;
+        }
+        #tutorial{
+            margin: 100px 100px;
+            border: 1px solid #000;
+        }
+    
+    </style>
+</head>
+<body>
+    <canvas id="tutorial" width="300" height="300"></canvas>
+    <script>
+function draw(){
+  var canvas = document.getElementById('tutorial');
+  if (!canvas.getContext) return;
+  var ctx = canvas.getContext("2d");
+  for (var i = 0; i < 6; i++){
+    for (var j = 0; j < 6; j++){
+      ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' +
+        Math.floor(255 - 42.5 * j) + ',0)';
+      ctx.fillRect(j * 50, i * 50, 50, 50);
+    }
+  }
+}
+draw();
+   
+
+    
+    </script>
+</body>
+</html>
