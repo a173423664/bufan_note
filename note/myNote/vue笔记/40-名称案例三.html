@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 监听文本框中数据的改变 才知道什么时候去拼接一个字符串 -->
+        <!-- 可以使用keyup事件,也是就松开键盘时候的事件去监听键盘的变化 -->
+        <input type="text" v-model="firstName"  >+
+        <input type="text" v-model="middleName" >+
+        <input type="text" v-model="lastName" >=
+        <input type="text" v-model="fullName" >
+    </div>
+
+    <script>
+        
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                firstName:'',
+                middleName:'',
+                lastName:'',
+                // fullName:'',
+            },
+            methods:{
+                
+            },
+            computed: { //在computed 中可以定义一些属性 这些属性叫做计算属性,计算数据本质就是一个方法,
+                //只不过我们在使用 这些计算属性的时候,是把它们的名称,直接当做属性来使用的;并不会把计算属性当做方法去调用
+
+                //注意1: 计算属性在引用的时候,不要加小括号引号,直接把它当做普通属性去使用就好了;
+                //注意2: 只要计算属性,这个function 内部,所用到的任何data中的数据发生了变化,就会重新计算属性的值
+                // 注意3: 计算属性的求值结果,会被缓存起来,方便下次直接使用,如果计算属性方法中所依赖的任何数据,都没有
+                //发生变化,则不会重新对计算属性求值 .
+                
+
+                'fullName':function(){
+                    return this.firstName +'-'+this.middleName+'-'+this.lastName;
+                }
+
+                
+            },
+        })
+    </script>
+</body>
+</html>

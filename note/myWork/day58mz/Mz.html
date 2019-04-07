@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="sass/style.css">
+    <link rel="stylesheet" href="lib/swiper-3.4.2.min.css">
+    <script>
+            resetFontSize();
+            // 当浏览器大小变化的时候触发
+            window.onresize = function () {
+                resetFontSize();				
+            }
+            /**
+            * 根据浏览器宽度重新设置 html font-szie大小
+            **/
+            function resetFontSize(){
+                // 浏览器宽度 1/10
+                document.documentElement.style.fontSize = window.innerWidth/10 +'px';
+                console.log('html font-size重置为: '+window.innerWidth/10);
+            }
+        </script>
+</head>
+<body>
+    <!-- 头部 -->
+    <div class="header">
+            <!-- 导航栏部分 -->
+            <ul class="header-nav">
+                <li class="nav-list"><a href="#">郑州</a></li>
+                <img src="img/bottom-jt.png" alt="">
+            </ul>
+            <!-- 头部logo部分 -->
+            <div class="header-logo"></div>
+            <!-- 放大镜图标 -->
+            <div class="header-fdj-icon">
+                <a href="javascript:;">
+                    <img src="img/fdj.png" alt="">
+                </a> 
+            </div>
+    </div>
+    <!-- 头部广告 -->
+    <div class="header-banner">
+        <img src="img/header-banner.png" alt=""> 
+    </div>
+    <!-- 头部轮播图 -->
+    <div class="swiper-container " id="swiper1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" >
+                    <div class="box">
+                        <!-- <img src="img/m1.png" alt=""> -->
+                        <div class="img-box"></div>
+                        <p class="common-title">日常保洁</p>
+                    </div>
+                    <div class="box1 box">
+                            <!-- <img src="img/m2.png" alt="" > -->
+                            <div class="img-box img-box-1"></div>
+                            <p class="common-title">空房开荒</p>
+                        </div>
+                </div>
+                <div class="swiper-slide">
+                     <div class="box">
+                        <!-- <img src="img/m3.png" alt=""> -->
+                        <div class="img-box img-box-2"></div>
+                        <p class="common-title">专业擦离</p>
+                    </div>
+                    <div class="box1 box">
+                            <!-- <img src="img/m4.png" alt="" > -->
+                            <div class="img-box img-box-3"></div>
+                            <p class="common-title">专业搬家</p>
+                    </div>
+
+                </div>
+                <div class="swiper-slide">
+                     <div class="box">
+                        <!-- <img src="img/m4.png" alt=""> -->
+                        <div class="img-box img-box-4"></div>
+                        <p class="common-title">厨房熏蒸</p>
+                    </div>
+                    <div class="box1 box">
+                            <!-- <img src="img/m6.png" alt=""> -->
+                            <div class="img-box img-box-5"></div>
+                            <p class="common-title">地板打折</p>
+                        </div>
+                </div>
+
+                <div class="swiper-slide">
+                     <div class="box">
+                        <!-- <img src="img/m7.png" alt=""> -->
+                        <div class="img-box img-box-6"></div>
+                        <p class="common-title">地板打折</p>
+                    </div>
+                    <div class="box1 box">
+                            <!-- <img src="img/m8.png" alt=""> -->
+                            <div class="img-box img-box-7"></div>
+                            <p class="common-title">地毯清洗</p>
+                    </div>
+                </div>
+        
+                <div class="swiper-slide">
+                     <div class="box">
+                        <!-- <img src="img/m5.png" alt=""> -->
+                        <div class="img-box img-box-8"></div>
+                        <p class="common-title">窗帘清洗</p>
+                    </div>
+                    <div class="box1 box">
+                        <!-- <img src="img/m10.png" alt=""> -->
+                        <div class="img-box img-box-9"></div>
+                        <p class="common-title">居家保养</p>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                     <div class="box">
+                        <!-- <img src="img/m6.png" alt=""> -->
+                        <div class="img-box"></div>
+                        <p class="common-title">日常保洁</p>
+                    </div>
+                    <div class="box1 box">
+                        <!-- <img src="img/m7.png" alt=""> -->
+                        <div class="img-box img-box-1"></div>
+                        <p class="common-title">卫生间消</p>
+                    </div>
+                </div>
+    
+                <div class="swiper-slide">
+                     <div class="box">
+                        <!-- <img src="img/m3.png" alt=""> -->
+                        <div class="img-box img-box-2"></div>
+                        <p class="common-title">居家保养</p>
+                    </div>
+                     <div class="box1 box">
+                        <!-- <img src="img/m4.png" alt=""> -->
+                        <div class="img-box img-box-3"></div>
+                        <p class="common-title">居家保养</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                   <div class="box">
+                        <!-- <img src="img/m7.png" alt=""> -->
+                        <div class="img-box img-box-4"></div>
+                        <p class="common-title">地板打折</p>
+                    </div>
+                    <div class="box1 box">
+                            <!-- <img src="img/m8.png" alt=""> -->
+                            <div class="img-box img-box-5"></div>
+                            <p class="common-title">地毯清洗</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <!-- <img src="img/m4.png" alt=""> -->
+                        <div class="img-box img-box-6"></div>
+                        <p class="common-title">厨房熏蒸</p>
+                    </div>
+                    <div class="box1 box">
+                            <!-- <img src="img/m6.png" alt=""> -->
+                            <div class="img-box img-box-7"></div>
+                            <p class="common-title">地板打折</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <!-- <img src="img/m3.png" alt=""> -->
+                        <div class="img-box img-box-8"></div>
+                        <p class="common-title">专业擦离</p>
+                    </div>
+                    <div class="box1 box">
+                            <!-- <img src="img/m4.png" alt="" > -->
+                            <div class="img-box img-box-9"></div>
+                            <p class="common-title">空房开荒</p>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <!-- 主要内容 -->
+        <div class="container">
+            <div class="rm">
+                <!-- 修饰线 -->
+                <div class="title-box">
+                    <span></span>
+                    <p class="rm-title">热门精选</p>
+                    <!-- 修饰线 -->
+                    <span class="right"></span>
+                </div>
+            </div>
+            <!-- 热门专区 -->
+            <div class="rm-main">
+                <div class="bj-pic p1">
+                    <img src="img/bj1.png" alt="">
+                </div>
+                <div class="bj-pic">
+                    <img src="img/bj2.png" alt="">
+                </div>
+                <div class="bj-pic p1">
+                    <img src="img/bj3.png" alt="">
+                </div>
+                <div class="bj-pic">
+                    <img src="img/bj4.png" alt="">
+                </div>
+            </div>
+            <!-- 家庭保洁 -->
+            <div class="home-bj rm">
+                <div class="title-box bj-title">
+                    <span></span>
+                    <p class="rm-title">家庭保洁 · 快速预约</p>
+                    <!-- 修饰线 -->
+                    <span class="right"></span>
+                </div>
+                <!-- 保洁内容介绍 -->
+                <div class="bj-main">
+                    <img src="img/bj-main.png" alt="">
+                </div>
+            </div>
+            <!-- 礼卡区 -->
+            <div class="lk-qu rm">
+                 <div class="title-box lk-title">
+                    <span></span>
+                    <p class="rm-title">礼品卡专区</p>
+                    <!-- 修饰线 -->
+                    <span class="right"></span>
+                </div>
+            </div>
+        </div>   
+        <!-- 礼卡轮播 -->
+        <div class="swiper-container " id="swiper2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="img/fuka.png" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <img src="img/fuka.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 页脚部分 -->
+        <div class="footer">
+            <!-- 更多部分 -->
+            <div class="footer-more">
+                <a href="javascript:;">更多服务</a>
+                <span class="left-jt">
+                    <img src="img/箭头.png" alt="">
+                </span>
+            </div>
+            <!-- 导航栏部分 -->
+            <ul class="footer-nav">
+                <li class="active">
+                    <!-- <img src="img/footer1.png" alt=""> -->
+                    <a href="javascript:;" class="footer-img"></a>
+                    <p>首页</p>
+                </li>
+                <li>
+                    <!-- <img src="img/footer2.png" alt=""> -->
+                    <a href="javascript:;" class="footer-img img-1"></a>
+                    <p>订单</p>
+                </li>
+                <li>
+                    <!-- <img src="img/footer3.png" alt=""> -->
+                    <a href="javascript:;" class="footer-img img-2"></a>
+                    <p>我的</p>
+                </li>
+                <li>
+                    <!-- <img src="img/footer4.png" alt=""> -->
+                    <a href="javascript:;" class="footer-img img-3"></a>
+                    <p>客服</p>
+                </li>
+            </ul>
+        </div>
+        
+
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/swiper-3.4.2.jquery.min.js"></script>
+    <script>
+         var swiper = new Swiper('#swiper1',{
+        // pagination: '.swiper-pagination',
+        slidesPerView: 5,
+        // 设置为四个一组
+        slidesPerGroup : 5,
+        // 设置为true时,默认激活样式居中
+        paginationClickable: true,
+        spaceBetween: 35,
+        // slidesPerColumn : 2,
+        slidesOffsetBefore : 15,
+        speed:600,
+        autoplay:3000,
+        loop : true
+        
+    });
+    var swiper = new Swiper( '#swiper2',{
+        slidesPerView: 1.2,
+        // 设置为四个一组
+        // slidesPerGroup : 5,
+        // 设置为true时,默认激活样式居中
+        paginationClickable: true,
+        spaceBetween: 10,
+        // slidesPerColumn : 2,
+        slidesOffsetBefore : 15,
+        autoplay: 3000,
+        loop : true,
+        speed:600
+
+    })
+    </script>
+</body>
+</html>

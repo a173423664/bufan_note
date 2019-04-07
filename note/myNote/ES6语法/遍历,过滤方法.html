@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- foreach有的也叫增强for循环,foreach其实就是for循环的一个特殊简化版 -->
+    <!-- foreach适用与循环次数未知,或者计算循环次数比较麻烦情况下使用效率更高 -->
+    <!-- 　foreach不能对数组或集合进行修改（添加删除操作），如果想要修改就要用for循环。 -->
+    <!-- 　foreach适用于只是进行集合或数组遍历，for则在较复杂的循环中效率更高。 -->
+    <script>
+        // var arr =[1,2,3,5];
+        // // arr.forEach(alert);
+        // var sum =0;
+        // arr.map(function(value,index,array){
+        //     array[index] == value;
+        //     sum += value;
+        // })  
+        // console.log(sum);
+        // map方法也Foreach方法相似
+
+        // filter用于把array某些元素过滤掉,然后返回剩下的元素
+
+        // 使用filter删掉偶数      也就是只传出奇数
+        // var arr = [1, 2, 4, 5, 6, 9, 10, 15];
+        // var r = arr.filter((x)=>{
+        //     return x%2 !=0;
+        // })
+        // console.log(r);//结果只有奇数
+
+        // filter()接收的回调函数，其实可以有多个参数。通常我们仅使用第一个参数，表示Array的某个元素。
+        // 回调函数还可以接收另外两个参数，表示元素的位置和数组本身：
+        var arr = ['A','B','C'];
+        var r = arr.filter((element,index,self)=>{
+            console.log(element);
+            console.log(index);
+            console.log(self);
+        })
+    
+        // 使用filter可以巧妙的删除重复元素
+
+        var arr = [1,2,4,32,2,4,5];
+        var r = arr.filter((element,index,self)=>{
+            // indexOf()返回指定字符串首次出现的位置
+            // 也就是说让元素的位置赋值给字符串首次出现的位置
+            return self.indexOf(element) === index;
+        })
+        console.log(r);
+    </script>
+</body>
+</html>

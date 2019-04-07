@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#cvs1{
+			display: block;
+			border: 1px solid red;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs1" width="500" height="500">
+		对不起,您的浏览器不支持!
+	</canvas>
+	<script>
+        // 1. 获取标签
+        var cvs = document.querySelector('#cvs1');
+        // 2. 获取上下文对象
+        var ctx = cvs.getContext("2d");
+        var ballO = {
+            cx:50,
+            cy:50,
+            r:50,
+            color:'green',
+            stepX:rdStep(),
+            stepY:rdStep()
+        }
+        // 小球颜色
+        ctx.fillStyle = ballO.color;
+        // 绘制小球
+        var ball = ctx.arc( ballO.cx , ballO.cy , ballO.r , 0 , Math.PI*2, false);
+        // fill() 方法填充当前的图像（路径）。默认颜色是黑色
+        ctx.fill();
+        // 下面需要让小球动起来
+        setInterval(function(){
+            // 清除小球的运动之前的轨迹
+            ctx.clearRect(ballO.cx-ballO.r,ballO.cy-ballO.r,2*ballO.r,2*ballO.r );
+            // 需要判断小球运动临界点的处理
+            if(ballO.cx+ballO.r>=cvs.width){
+                // X轴方向改变
+                ballO.stepX = -1*ballO.stepX
+            }
+            if(ballO.cx-ballO.r<=0){
+                ballO.stepX = Math.abs(ballO.stepX);
+            }
+            if(ballO.cy+ballO.r>=cvs.height){
+                ballO.stepY = -1*Math.abs(ballO.stepY);
+            }
+            if(ballO.cy-ballO.r<=0){
+                ballO.stepY = Math.abs(ballO.stepY);
+            }
+            ballO.cx += ballO.stepX;
+            ballO.cy += ballO.stepY;
+            // 开始路径
+            ctx.beginPath();
+            // 绘制小球的位置变化
+            ctx.arc(ballO.cx,ballO.cy,ballO.r,0,Math.PI*2,false);
+            // 填充当前图片路径,默认是黑色
+            ctx.fill();
+            // 结束路径
+            ctx.closePath();
+
+        },17)
+
+        // 自动生成小球的移动路径
+        function rdStep(){
+            // 表示1到10之间
+            return Math.floor(Math.random()*10)+1;
+        }
+
+		
+	</script>
+</body>
+</html>

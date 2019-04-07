@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 第一种写法页面中直接写入javascript操作,不推荐 -->
+        <p>{{ message.split('').reverse().join('') }}</p>
+        <!-- dom元素中只需要导入创建的这个vue的实例对象的方法 -->
+        <p>{{reverseMessage}}</p>
+        <p>{{reverseMessage1}}</p>
+
+        <p>{{reverseMessage2()}}</p>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        var message = 'today is a fine day! ';
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'今天天气不错啊',
+                title:'不凡学院'
+            },
+            // vue提供了一个方法,可以不用修改原始数据,但是可以实现展示修改后数据的能力
+            computed: {
+                reverseMessage:function(){
+                    return this.message.split('').reverse('').join('');
+                },
+                // 方法有两种写方法:可以简写  不写:号和function
+                reverseMessage1(){
+                    return this.message.split('').reverse('').join('');
+                }
+            },
+            // 方法属性 方法是调用一次就会执行一次,而计算结果会对结果进行缓存,如果依赖的数据没有较大的变化.那么结果也不会发生变化.
+            // 注意:既然它是方法,那么在使用的时候需要调用才可以使用
+            methods: {
+                reverseMessage2(){
+                    return this.message.split('').reverse('').join('');
+                }
+            },
+        })
+        
+    </script>
+</body>
+</html>

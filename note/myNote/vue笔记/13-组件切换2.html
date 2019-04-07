@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="app">
+            <!-- 第二种方法 结合component标签 结合is属性 来切换它的名称 -->
+            <!-- vue提供了component,来展示对应名称的组件
+            component是一个占位符  is:属性,可以用来指定展示属性的名称-->
+            <!-- :is 后面会当做一个表达式取解析 并不是一个真的字符串 要用''把组件名称包裹起来-->
+            <a href="" @click.prevent="comName= 'login'">登录</a>
+            <a href="" @click.prevent="comName= 'register'">注册</a>
+
+            
+            <!-- 当前学习了几个vue提供的标签 
+            component（组件） ， template(模板)-->
+            <!-- :is接收一个变量值 -->
+            <component :is="comName"></component>
+            
+        </div>
+        
+            <script src="lib/vue.js"></script>
+            <script>
+                // 创建全局组件
+                // 组件的名称是一个字符串
+                Vue.component('login',{
+                    template:'<h3>登录组件</h3>'
+                })
+                Vue.component('register', {
+                    template:'<h3>注册组件</h3>'
+                })
+        
+        
+                var vm = new Vue({
+                    el:'#app',
+                    data:{
+                        comName:'login' // component中的:is绑定的组件名称 默认为login
+                    },
+                    methods:{}
+                })
+            </script>
+    
+</body>
+</html>

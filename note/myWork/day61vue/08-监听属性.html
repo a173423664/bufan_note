@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p> {{message}} </p>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'不凡学院'
+            },
+            // 监听,watch可以监听作用域对象的变化,可以由两个形参,nv变化后的值,ov变化前的值
+            watch: {
+                message(nv,ov){
+                    console.log('messgae正在发生变化nv',nv)
+                    console.log('ov',ov);
+                }
+                
+            },
+        })
+
+    </script>
+</body>
+</html>

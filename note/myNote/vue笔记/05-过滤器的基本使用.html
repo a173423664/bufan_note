@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            <!-- 过滤器定义的时候也可以传多个参数 -->
+            
+        <p>{{msg | msgFormat('疯狂','123') | text }}</p>
+    </div>
+    <!-- 过滤器可用做一些常见文本格式化 -->
+    <!-- 过滤器可用在两个地方,一个mustachc插值,和v-bind表达式,过滤器应该被添加在javascript表达式的尾部.由'管道'符表示 -->
+    
+
+    <script src="lib/vue.js"></script>
+    <script>
+
+        // 定义一个全局过滤器
+        // msgFormat为过滤器的名称(字符串格式) 回调函数里第一个参数为要修改的内容 第二个参数可选,为要替换的内容
+        Vue.filter('msgFormat',function(msg,arg,sum){
+            // return msg.replace('单纯','邪恶'); 只能替换第一个 
+            return msg.replace(/单纯/g,arg+sum); //第一个参数除了字符串之后,还可以接收一个正则表达式 
+        })
+        
+        Vue.filter('text', function(msg){
+            return msg +'========'
+        })
+
+        // 过滤器定义的语法
+        // 第一个参数为:过滤器的名称 
+
+        // Vue.filter(id, [definition])
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:"曾经,我也是一个单纯的少年"
+            },
+            methods:{
+                 
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 列表动画
+        只需要定义两组类 
+        v-enter进入
+        v-leave-to离开
+        
+        v-enter-active 进入时的状态
+        v-leave-active 离开时的状态*/
+        ul{
+            list-style: none;
+        }
+        li{
+            border: 1px dashed #999;
+            margin: 5px;
+            line-height: 35px;
+            padding-left: 5px;
+            font-size: 12px; 
+            width: 100%;
+        }
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateY(80px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition: all .6s ease;
+        }
+        /* 可以设置元素在位移时候的一些样式 */
+        /* .v-move和.v-leave-active配合使用,能够实现列表后续的元素,渐渐的飘上来的效果 */
+        .v-move{
+            transition: all .6s ease;
+        }
+
+        .v-leave-active{
+            position: absolute;
+        }
+
+
+        li:hover{
+            background-color: pink;
+            transition: all .8s ease; 
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <label>
+                id:
+                <input type="text" v-model="id">
+            </label>
+            <label>
+                name:
+                <input type="text" v-model="name">
+            </label>
+            
+            <input type="button" @click="add" value="添加">
+        </div>
+        <ul>
+            <!-- 在实现列表过渡 如果需要过渡的列表,是通过v-for循环渲染出来的,不能使用transition 包裹,
+                需要使用transitionGroup  -->
+                <!-- 如果要为v-for循环创建的元素设置动画,必须为每个元素设置:key属性 -->
+                <!-- appear实现页面入场时候的效果 -->
+                <!-- 但是appear会产生一个span元素 不能在span中放置块元素 -->
+                <!-- tag属性,为transiton-group渲染指定的元素,如果不指定tag属性,默认,渲染为span标签 -->
+            <transition-group appear tag="ul" >
+            <li v-for="(item,i) in list" :key="item.id" @click="dec(i)">
+                {{item.id}}---{{item.name}}
+            </li>
+            </transition-group>
+        </ul>
+    </div>
+    
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                id:'',
+                name:'',
+                list:[
+                    {id:1,name:'赵高'},
+                    {id:2,name:'岩松'},
+                    {id:3,name:'和珅'},
+                    {id:4,name:'魏忠贤'}
+                ]
+            },
+            methods:{
+                add(){
+                    this.list.push({id:this.id,name:this.name})
+                    this.id = this.name ='';
+                },
+                dec(i){
+                    this.list.splice(i,1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <mycom1></mycom1>
+    </div>
+  
+    <script src="lib/vue.js"></script>
+  
+    <script>
+    //  创建一个全局组件 再次复习
+    // 第一个参数是组价名称 要使用组价的时候,直接把组件名称以html格式引入即可
+    // 第二个参数是一个模板对象 里面的内容就是展示组件时,引入的内容
+
+    // 组件内部,组价data和实例的data区别
+    // 1.实例中的data可以是一个对象,组件中的data必须是一个方法
+    // 2.组件中的data除了必须为一个方法之外,这个方法内部,还必须返回一个对象
+    // 3.组件中的data数据,使用方式完成一样,
+     Vue.component('mycom1',{
+         template: '<h1>这是一个全局组件---{{msg}} </h1>',
+         data:function(){
+             return{
+                 msg:'这是组件中data定义的数据'
+             }
+         }
+     })
+
+        var vm = new Vue({
+            el:"#app",
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>

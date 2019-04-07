@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="lib/vue.js"></script>
+    <script>
+        //  全部按键修饰符别名
+        // .enter
+        // .tab
+        // .delete(捕获"删除"和"退格键")
+        // .esc
+        // .space
+        // .up
+        // .down
+        // .left
+        // .right
+        // 可以通过全局config.keyCodes 对象自定义键值修饰符别名 
+        // 自定义全局按键修饰符
+        // 可以使用f2来修饰keyCodes等于113的字符
+        Vue.config.keyCodes.f2 = 113;
+        
+
+        // 使用Vue.directive(id, [definition]) 定义全局的指令
+        // 参数1: 指令的名称,注意,在定义的时候,指令的名称前面,不需要加v-前缀
+        // 但是在调用的时候,必须在指令名称前加上v-前缀来进行调用 v-focus
+        // 参数2:是一个对象,这个对象身上,有一些指令相关的函数,这些函数可以在特定的阶段,执行相关的操作
+
+        ` v-color="'b'" `  //不写单引号 就是一个变量,会在父元素上找 如果'' 说明是字符串
+        Vue.directive('focus',{
+            bind:function(el){
+                el.style.color ='red'
+            }, //每当指令绑定到元素上的时候,会立即执行这个bind函数,只执行一次 
+            //注意:在每个函数中,第一个参数,永远是el,代表被绑定指令的元素
+            //在元素刚绑定指令的时候,还没有插入到DOM中去,这时候,调用focus方法没有作用
+            // 因为一个元素,只要在插入到DOM之后,才能获取焦点 
+            inserted:function(el){
+                el.focus(); 
+
+            }, //inserted表示元素 插入到DOM中的时候,会立即执行inserted函数
+
+            update:function(){} //VNode更新的时候,会执行undated,可能会执行多次
+        } )
+
+        Vue.directive('color',{
+            bind:function(el,binding){
+                el.style.color = 'red'
+                console.log(binding.name); //指令名 
+                console.log(binding.value); //拿到传入的值 相加后的值 blue
+                // console.log(binding.expression);拿到传入的值,相加之前的值 字符串形式 'blue'
+
+            }
+        })
+
+        // 思考为什么设置样式的时候时候bind就可以了,而获取焦点框事件就不可以呢?
+        // 设置样式的时候,不管这个元素有没有被插入到页面中去,这个元素肯定有了一个内联的样式
+        // 将来元素肯定会显示到页面中去,到时候浏览器的渲染引擎必然会解析样式,应用给这个元素
+        // 一般样式操作都可以使用bind
+
+        // 但是focus是一个js的行为,比较特殊,只有加载到DOM中才可以获取焦点
+        // intseted是一个从内存渲染到页面的过程,这时候在页面中获取焦点
+        // bind意思是,只要元素加载到内容中去,就会立即执行这个bind.等于在内存中就调用了
+
+        // 钩子函数的参数:
+
+    </script>   
+</body>
+</html>

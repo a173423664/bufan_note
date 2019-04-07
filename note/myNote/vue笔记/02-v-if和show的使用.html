@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 注意:如果click事件只有一句话的时候,可以直接将方法写到click里面 -->
+
+        <input type="button" @click="flag=!flag" value="切换">
+        <h3 v-if="flag">这是if控制的元素</h3>
+        <!-- v-if的特点,每次都会重新删除或者创建的元素 -->
+        <!-- 有较高的切换消耗  元素频繁的切换  就是说如果你每次都需要删除或创建的时候 推荐使用v-show-->
+         <!-- 如果元素永远也不可能被显示出来被用户看到,则推荐使用v-if -->
+
+        <!-- v-show的特点:每次不会重新进行dom元素的创建和删除操作,只是切换了display:none样式 -->
+        <!-- 有较高的初始渲染消耗 -->
+       
+        <h3 v-if="flag">这是v-show控制的页面</h3>
+    </div>
+
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                flag:true
+            },
+
+            // methods:{
+            //     toggle(){
+            //         // 每次点击将flag取反
+            //         this.flag = !this.flag;
+            //     }
+            // }
+        })
+     </script>
+</body>
+</html>

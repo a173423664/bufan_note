@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{user}}
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                user:{
+                    name: '张三'
+                }
+            },
+            // 创建完成,可以获取元素给添加给data对象了
+            created() {
+                setTimeout(()=>{
+                    // 在created之后的数据,无法实现动态绑定
+                    // this.user.age = 30;
+                    // 这时可以使用set方法
+                    // this.$set(this.user,'age',30)
+                    // Vue.set(target, key, value)
+                    // 方法二:合并对象
+                    this.user = Object.assign({},this.user,{
+                        age:30,
+                        sex:'男'
+                    })
+
+                },2000)
+            },
+        })
+
+        
+    </script>
+</body>
+</html>

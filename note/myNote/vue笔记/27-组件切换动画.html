@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 注册两组类 */
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translate(150px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition:all 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a href="" @click.prevent="comName='login'">登录</a>
+        <a href="" @click.prevent="comName='register'">注册</a>
+
+        <!-- 指定要展示的组件内容  利用它实现元素切换--> 
+        <!-- 通过mode属性 设置组件切换时候的模式 -->
+        <transition mode="out-in" >
+                <component :is="comName"></component>
+        </transition>
+        
+    
+    </div>
+
+    <template id="tmpl">
+        <h1>组件登录</h1>
+    </template>  
+
+    <template id="tmpl1">
+        <h1>组件注册</h1>
+    </template>
+
+    <script src="lib/vue.js"></script>
+    <script>
+        Vue.component('login',{
+            template:'#tmpl',
+        })
+
+        Vue.component('register',{
+            template:'#tmpl1',
+        })
+
+         var vm = new Vue({
+             el:'#app',
+             data:{
+                 comName:'login' //当前component中的 :is绑定的组件的名称
+             }
+         })
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="users in user" :key="users.name">
+                    {{users.name}}
+            </li>
+          
+        </ul>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                user:[
+                    {
+                        name:'张三',
+                        age:21
+                    },
+                    {
+                        name:'李四',
+                        age:22
+                    },
+                    {
+                        name:'王五',
+                        age:23
+                    }
+                ]
+            },
+            // 获取数据阶段
+            // created() {
+            //     setTimeout(()=>{
+            //         this.user = this.user.filter(item=>{
+            //             return item.age>21;
+            //         })
+            //         console.log(this.user);
+            //     },2000)
+            // },
+            // 不简写的写法
+            // created() {
+            // setTimeout(function(){
+            //     this.user = this.user.filter(function(item){
+            //         return item.age>21;
+            //     })
+            //     console.log(this.user);
+            // },2000)  
+            // },
+            
+            created() {
+                setTimeout(()=>{
+                    this.user = this.user.filter(item=>{
+                        return item.age>21;
+                    })
+                    console.log(this.user);
+                },2000)
+            },
+
+        })
+    </script>    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 父组件,可以在引用子组件的时候,通过属性绑定(v-bind:)的形式,把需要传递给子组件的数据以属性绑定的形式,传递到子组件内部 -->
+        <!-- ,供子组件使用  -->
+        <com1 :parentmsg ='msg'></com1>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                msg:'啊,这是父组件的数据'
+            },
+            // 注意:定义私有组件需要使用components
+            components:{
+                // 默认情况下:子组件中,默认无法访问父组件的data上的数据和methods中的方法 
+                com1:{
+                    data(){
+                        // 注意:子组件中的data数据,并不是通过父组件传递过来的.而是子组件自身私有的.比如 子组件通过Ajax,请求回来的
+                        // 数据 都可以放到data身上
+                        // data中数据都是可读可写的.
+                        // pros上的数据都是只读的.不能修改
+                        return{
+                            title:'123',
+                            content:'qqq'
+                        }
+                    }
+                        
+                    },
+                    props:['parentmsg'] , // 把父组件传递过来的parentmsg属性,先在props数组中,定义一下,这样才能使用这个数据
+                    // 注意:所有pros中的数据,都是通过父组件传递给子组件的,
+                    template:'<h1>这是一个子组件 --- {{parentmsg}} </h1>'
+                    
+                  }
+        })
+   </script>
+</body>
+</html>

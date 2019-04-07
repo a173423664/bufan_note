@@ -1,0 +1,75 @@
+@charset "UTF-8"; 
+@import "reset.scss";
+
+@function p2r($px){
+    @return$px/37.5+rem;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: p2r(14);
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+.swiper-box{
+    width: p2r(375);
+    height: p2r(167);
+    margin: p2r(100) auto;
+    #swiper1 {
+        width: 100%;
+        height: 100%;
+        // margin: 20px auto;
+        .swiper-slide{
+            
+            // text-align: center;
+            width: p2r(55);
+            height: 100%;
+            // background-color: red;
+               /* Center slide text vertically */
+        .box{
+            width: 100%;
+            height: p2r(83.5);
+            // background-color: yellow;
+            overflow: hidden;
+            // position: relative;
+            // margin-top: p2r(14);
+            .box-img{
+                position: relative;
+                width: p2r(44);
+                height: p2r(44);
+                border: p2r(1) solid #F4A77A ;
+                border-radius: 50%;
+                margin-left: p2r(2.5);
+                margin-top: p2r(15);
+                background-image:  linear-gradient(0deg, #F4A77A 5%, #EB6B2B 100%) ;
+                z-index: 5;
+
+
+                &::after{
+                    content: '';
+                    width: p2r(44);
+                    height: p2r(44);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background:  url(../img/icon2x.png) no-repeat;
+                    background-size: p2r(440) auto;
+                    background-position:  p2r(0) p2r(0) ;
+               
+                    
+                }
+                
+            }
+         
+        }
+
+        }
+    }
+}
+
+
+
+
+

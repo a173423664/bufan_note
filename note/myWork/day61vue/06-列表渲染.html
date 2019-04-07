@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- v-for指令基于一个数组渲染一个列表 
+    这个指令使用特殊的语法,形式为item in items
+    item是当前数组元素的别名, items数据数组-->
+    <div id="app">
+        <ul>  
+            <li v-for="item in users">
+                {{item.name}}==>{{item.age}}
+            </li>
+        </ul>
+        <ul>    
+            <!-- item是当前数组元素的别名 index下标  -->
+            <!-- of效果与in相同 -->
+            <li v-for="(item, index) of users" :key="index">
+                    {{index}}==>{{item.name}}==>{{item.age}}
+            </li>
+            <!-- <li v-for="(item, index) in users" :key="index"> -->
+               <!-- {{index}}==>{{item.name}}==>{{item.age}} -->
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <!-- 对象遍历 -->
+            <!-- 遍历对象 value是对象的键值对的值 -->
+            <li v-for="value in student">{{value}}</li>
+        </ul>
+        <hr>
+        <ul>
+
+            <!-- <li v-for="(value, key) in student">
+           
+                <template v-if="key == 'sex'">
+                    {{key}}: {{value==0?'男':'女'}}
+                </template>
+                <template v-else>
+                    {{key}}:{{value}}
+                </template> -->
+                
+                <!-- 第一个参数代表值,一般可以用value表示
+                第二参数代表键名(属性名),一般可以用key表示
+                第三个参数代表下标,一般可以用index表示 -->
+                <li v-for="(value1, index) in student">
+                    <template v-if="index=='sex'">
+                        {{index}}:{{value1==0?'男':'女'}}
+                    </template>
+                    <template v-else>
+                        {{index}}:{{value1}}
+                    </template>
+                </li>
+            <!-- </li> -->
+        </ul>
+        <ul>
+            <li v-for="(value,key, index) in student">
+                    {{key}}:{{value}}:{{index}}
+            </li>
+        </ul>
+    </div>
+    
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                users:[{
+                    name:'张三',
+                    age:20
+                },
+                {
+                    name:'李四',
+                    age:21
+                },
+                {
+                    name:'王五',
+                    age:22
+                },
+                ],
+                student:{
+                    name:'张三',
+                    age:'30',
+                    sex:0
+                }
+            }
+        })
+    </script>
+
+    
+</body>
+</html>

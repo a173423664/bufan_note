@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-color="'pink'" v-fontweight="900" v-fontsize="'22px'">{{msg}}</p>
+        <p v-demo = '{color: "white" , fontSize:"16px" ,fontWeight:"16" }'>{{msg1}}</p>
+        <!-- 注意在给指令命名时,不能使用驼峰 -->
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        
+        // 定义私有指令
+         
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'不凡学院',
+                msg1:'不凡学院,越来越好!!!'
+            },
+            directives:{ 
+            'demo':{
+                bind:function(el,binding){
+                    el.style.color = binding.value.color;
+                    el.style.fontWeight = binding.value.fontWeight;
+                    el.style.fontSize = binding.value.fontSize;
+                    console.log(binding)
+                }
+            },
+            'fontweight':{
+                bind:function(el,binding){
+                    el.style.fontWeight = binding.value;
+            }
+        },
+        'color':{
+            // binding一个对象
+            // 包含了name,value,expression
+            bind:function(el,binding){
+                el.style.color = binding.value;
+            }
+        },
+        'fontsize':{
+            bind:function(el,binding){
+                el.style.fontSize = binding.value;
+            }
+        }
+        // 当遇到指令需要多个值时,可以传入一个对象字面量
+
+    }
+})
+        
+    
+    </script>
+</body>
+</html>

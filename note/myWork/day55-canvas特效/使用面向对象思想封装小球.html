@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#cvs1{
+			display: block;
+			border: 1px solid red;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs1" width="500" height="500">
+		对不起,您的浏览器不支持!
+    </canvas>
+    <script src="lib/ball.js"></script>
+	<script>
+
+        // 1. 获取标签
+        var cvs = document.querySelector('#cvs1');
+        // 2. 获取上下文对象
+        var ctx = cvs.getContext("2d");
+        
+        // new Ball(cvs,100,100,50,'pink');
+
+        // 生成小球的个数
+        for(var i = 0 ; i < 10; i++){
+            new Ball(cvs,100,100,rdR(),ballColor());
+        }
+        
+        // 随机生成小球的颜色
+        function ballColor(){
+            function rd(){
+                return Math.floor(Math.random()*256);
+            }
+            var rs = 'rgb('+rd()+','+rd()+','+rd()+')';
+            console.log(rs)
+            return rs;
+        }
+        // 随机生成小球半径大小
+        function rdR(){
+            return Math.floor(Math.random()*40)+20
+        }
+
+
+
+	</script>
+</body>
+</html>

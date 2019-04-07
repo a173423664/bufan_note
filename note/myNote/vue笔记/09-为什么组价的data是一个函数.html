@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 组件引入 直接将组件名称以HTML的形式引入 -->
+        <counter></counter>
+        <hr>
+        <counter></counter>
+        <hr>
+        <counter></counter>
+    </div>
+    <!-- 外部定义组件 需要传入id -->
+    <template id="tmpl">
+        <!-- 组件模板有且只有一个根元素 -->
+        <div>
+            <input type="button" value='+1' @click="increment">
+            <h3>{{count}}</h3>
+        </div>
+        
+    </template>
+    <script src="lib/vue.js"></script>
+    <script>
+        
+        // 定义一个全局组件 
+        Vue.component('counter',{
+            template:'#tmpl',
+            data:function(){
+                return {count:0}
+                // 为什么data必须要定义成一个函数?
+                // 这样每当你创建一个组件实例,就会调用一下data函数,函数会return一个新开辟的对象,这样就能保证每个实例,独有不共享.
+
+            },
+            methods:{
+                increment(){
+                    this.count++
+                }
+            }
+        })
+
+        var vm = new Vue({
+            el:'#app',
+            data:{},
+            methods:{}
+        })
+    </script>
+</body>
+</html>

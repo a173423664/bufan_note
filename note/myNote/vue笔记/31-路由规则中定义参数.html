@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+    <script src="lib/vue-router-3.0.2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 渲染成a标签 -->
+        <!-- 如果在路由中使用查询字符串，给路由传递参数，则不需要修改路由规则的path属性 
+        可以传递多个参数-->  
+        <router-link to="/login?id=10&name=zs">登录</router-link>
+        <router-link to="/register">注册</router-link>
+
+        <router-view></router-view>
+        
+    </div>
+    <script>
+        // 1.先创建组件模板对象
+        var login = {           //这个this可以省略
+                    // 直接通过$route.query可以拿到使用查旭字符串的值
+            template:'<h1>登录页面---{{$route.query.id}}---{{$route.query.name}}</h1>',
+            data() {
+                return {
+                    msg:'123'
+                }
+            },
+            created() { //组件的声明周期 data 
+                    
+                    console.log(this.$route.query.id)
+            },
+        }
+        var register = {
+            template:'<h1>注册页面</h1>'
+        }
+        // 2.创建路由对象
+     var router = new VueRouter({
+        //  注意:不带r
+        // 创建路由规则
+            routes:[
+                {path:'/', redirect:'/login'},
+                
+                {path:'/login',component:login },
+                {path:'/register',component:register },
+               
+
+            ]
+            
+        })
+
+        var vm = new Vue({
+            el:"#app",
+            data:{},
+            methods:{},
+            // 属性名与属性一样
+            // router:router,
+            router
+        })
+    </script>
+    
+</body>
+</html>

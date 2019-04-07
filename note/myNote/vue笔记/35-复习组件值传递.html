@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            <!-- v-bind绑定的属性不能用驼峰 -->
+        
+        <com1 :parentmsg="msg" @func="getMsgFormSon"></com1>
+    </div>
+    <template id="tmpl">
+        <div>
+            <p>这是子元素==={{parentmsg}}</p>
+            <input type="button" value="向父组件传递消息" @click="sendMsg">
+        </div>
+    </template>
+    <script src="lib/vue.js"></script>
+    <script>
+        // 问题一 子组件如何拿到父元素中的数据?
+        // 1.子元素先要利用v-bind动态接收一下,
+        // 2.然后在子组件中利用pros属性接收属性绑定传递的值
+        // 3.最后在子组件中显示
+
+        // 问题二: 子组件如何向父组件传递值?
+        // 1.子组件向父组件传递值,需要利用事件绑定机制
+        // 2.首先给子组件定义一个按钮 触发点击事件,发送一个一个方法,(方法中使用$emit传递需要传递的数据)
+        // 3.父组件监听子组件传递的数据,@func 表示监听这个事件,并且调用一个方法(方法里面用来获取从func子组件传递过来的数据)
+        // 4.需要在父组件中数据中定义一个空值:用来接收从子组件中传递过来的数据
+
+        // 创建一个组件模板对象
+        var com1 = {
+            template:'#tmpl',
+            props:['parentmsg'],
+            data() {
+                return {
+                    msg:'爸爸,这是我孝敬你的一百块钱,请收下'
+                }
+            },
+            methods: {
+                sendMsg(){
+                    // 子组件向父组件传递 $emit 
+                    this.$emit('func',this.msg)
+                }
+            },
+        }
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'爸爸给你一百块钱,你要不要?',
+                // 在父组件上属性上定义一个属性名 用来接收子组件传递过来的值
+                getMsgFormSon:'',
+
+            },
+            methods:{
+                // data就是用来接收子组件传递过来的参数 this.msg
+                getMsgFormSon(data){
+                    this.getMsgFormSon = data;
+                    console.log(this.getMsgFormSon)
+                }
+            },
+            components:{
+                com1
+            }
+        })
+    </script>
+    
+</body>
+</html>

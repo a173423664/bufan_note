@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#cvs1{
+			display: block;
+			border: 1px solid red;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="cvs1" width="500" height="500">
+		对不起,您的浏览器不支持!
+	</canvas>
+	<button class="btn-stop">停止小球</button>
+	<button class="btn-play">开启小球</button>
+	<script src="lib/Ballss.js"></script>
+	<script>
+
+        var cvs = document.querySelector('#cvs1');
+        var ctx =  cvs.getContext("2d");
+
+       
+        var ballList = [];
+        for(var i = 0 ; i <100; i++){
+            ballList.push(new Ball(cvs,50,50,rdB(),ballColor()))
+        }
+    
+        setInterval(function(){
+            ctx.clearRect( 0 , 0 , cvs.width , cvs.height);
+            for(var i =  0; i<ballList.length; i++){
+                ballList[i].play();
+            }
+        },17)
+    
+        function ballColor(){
+            function rd(){
+                return Math.floor(Math.random()*256);
+            }
+            var rs = 'rgb('+rd()+','+rd()+','+rd()+')';
+            return rs;
+            console.log(rs);
+        }
+
+        function rdB(){
+            return Math.floor(Math.random()*20)+20;
+        }
+
+
+	</script>
+</body>
+</html>

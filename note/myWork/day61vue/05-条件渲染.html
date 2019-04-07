@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .danger{
+			color: red;
+		}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-if="isUse">您的用户名可用</div>
+        <div v-else class="danger">您的用户重复</div>
+        <!-- vue会把template解析为代码块,并没有实际意义 -->
+
+        <template v-if="isUse">
+                <p>这是template块</p>
+              
+        </template>
+        <hr>
+    	<template>
+			<div v-if="type === 'A'">
+			  A
+			</div>
+			<div v-else-if="type === 'B'">
+			  B
+			</div>
+			<div v-else-if="type === 'C'">
+			  C
+			</div>
+			<div v-else>
+			  Not A/B/C
+			</div>
+
+
+		</template>
+            
+
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                isUse:true,
+                type: 'A',
+            }
+        })
+    </script>
+</body>
+</html>

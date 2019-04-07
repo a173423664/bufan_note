@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-fontsize="30">{{msg}}</p>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'不凡学院'
+            },
+            // 自定义属性
+            directives:{
+              
+                'fontsize':function(el,binding){ //注意: 这个function等同于把代码写到了bind和update中去
+                    // 注意设置样式时使用驼峰  指令名称使用小写
+                    // 一个字符串,如果只想取数字,可以使用parseInt
+                    // 假设不知道拿到的有没有parsentInt 增强代码健壮性
+                    // 统一变成number类型,然后在后面加上像素单位
+                    el.style.fontSize = parseInt(binding.value)+'px';
+                    console.log(binding);
+                }
+            }        
+        })
+    </script>
+</body>
+</html>

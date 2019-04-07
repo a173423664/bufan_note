@@ -1,0 +1,541 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0; }
+
+a {
+  text-decoration: none; }
+
+ul, ol {
+  list-style: none; }
+
+/*
+混合器选择器
+*/
+/*小菱形*/
+/*头部*/
+.header {
+  width: 100%;
+  height: 76px;
+  /**
+  *版心
+  **/ }
+  .header .header-c {
+    position: relative;
+    height: 100%;
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    /*
+    *头部导航栏
+    */ }
+    .header .header-c .header-logo {
+      background: url(../img/header-log.png) no-repeat left;
+      width: 175px;
+      height: 100%; }
+    .header .header-c .header-nav {
+      height: 76px;
+      position: absolute;
+      top: 0;
+      right: 0; }
+      .header .header-c .header-nav .nav-list {
+        float: left;
+        margin-left: 74px;
+        margin-top: 20px;
+        line-height: 36px;
+        font-size: 16px;
+        height: 36px;
+        line-height: 36px;
+        /*  
+        父类被hover的时候
+        */ }
+        .header .header-c .header-nav .nav-list a {
+          color: #818181; }
+        .header .header-c .header-nav .nav-list:hover a {
+          border-bottom: 2px solid #00daed;
+          color: #00daed; }
+
+/* 
+    广告
+     */
+.banner {
+  position: relative;
+  margin: 0 auto;
+  background: url(../img/banner-nav.gif) no-repeat center;
+  width: 1200px;
+  height: 625px; }
+  .banner .dotts {
+    position: absolute;
+    bottom: 36px;
+    left: 550px; }
+    .banner .dotts .dotts-list {
+      float: left;
+      margin-left: 14px;
+      /*
+      父标签被hover
+      */ }
+      .banner .dotts .dotts-list a {
+        display: block;
+        height: 10px;
+        width: 10px;
+        height: 10px;
+        border: 2px solid #fff;
+        border-radius: 50%; }
+      .banner .dotts .dotts-list:hover a {
+        background-color: rgba(195, 195, 195, 0.7); }
+
+/**
+内容部分
+**/
+.container {
+  padding-top: 100px;
+  /*
+  内容版心部分
+  */ }
+  .container .container-c {
+    position: relative;
+    margin: 0 auto;
+    width: 1200px;
+    height: 2717px;
+    /*
+    特别策划内容部分
+    */
+    /**
+    *关于我们 
+    **/
+    /**
+    *精品路线
+    **/
+    /**
+    *底部广告
+    **/ }
+    .container .container-c .tb-main {
+      position: relative;
+      width: 100%;
+      height: 1048px;
+      /*
+      **公共样式
+      */
+      /*
+      第二幅图片
+      */
+      /*
+      第三幅图片
+      */
+      /*
+      特别策划查看更多
+      */ }
+      .container .container-c .tb-main .common-title {
+        overflow: hidden; }
+        .container .container-c .tb-main .common-title .blue-dott {
+          height: 13px;
+          width: 53px;
+          background-color: #04e4f8;
+          position: absolute;
+          left: -23.5px;
+          top: 0; }
+        .container .container-c .tb-main .common-title .pname {
+          font-size: 24px;
+          font-weight: bold;
+          color: #3b3b3b;
+          line-height: 25px;
+          position: absolute;
+          left: 0;
+          top: 0; }
+        .container .container-c .tb-main .common-title .ename {
+          font-size: 14px;
+          color: #c7c7c7;
+          line-height: 20px;
+          position: absolute;
+          left: 0;
+          top: 30px; }
+      .container .container-c .tb-main .common-main {
+        position: absolute;
+        top: 85px;
+        height: 276px;
+        width: 100%;
+        /*文字描述*/ }
+        .container .container-c .tb-main .common-main .mian-pic {
+          width: 379px;
+          height: 276px; }
+          .container .container-c .tb-main .common-main .mian-pic .adorn-box {
+            position: absolute;
+            left: 13px;
+            width: 364px;
+            height: 252px;
+            border: 2px solid #c7c7c7;
+            z-index: 5; }
+          .container .container-c .tb-main .common-main .mian-pic img {
+            position: absolute;
+            top: 19px;
+            height: 257px;
+            width: 360px; }
+        .container .container-c .tb-main .common-main .tb-main-des {
+          position: absolute;
+          left: 379px;
+          top: 63px;
+          width: 821px;
+          height: 167px;
+          background-color: #fbfbfb; }
+          .container .container-c .tb-main .common-main .tb-main-des .p-title {
+            margin-top: 37px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 22px;
+            color: #404040;
+            text-align: center;
+            font-weight: bold;
+            text-align: center; }
+          .container .container-c .tb-main .common-main .tb-main-des .p-des {
+            margin-top: 20px;
+            height: 14px;
+            line-height: 14px;
+            text-align: center;
+            font-size: 14px;
+            color: #515254; }
+          .container .container-c .tb-main .common-main .tb-main-des .p-dec {
+            margin-top: 20px;
+            line-height: 14px;
+            font-size: 14px;
+            color: #515254;
+            text-align: center; }
+            .container .container-c .tb-main .common-main .tb-main-des .p-dec span {
+              display: inline-block;
+              width: 7px;
+              height: 7px;
+              transform: rotate(45deg);
+              -ms-transform: rotate(45deg);
+              /* IE 9 */
+              -moz-transform: rotate(45deg);
+              /* Firefox */
+              -webkit-transform: rotate(45deg);
+              /* Safari 和 Chrome */
+              -o-transform: rotate(45deg);
+              /* Opera */ }
+            .container .container-c .tb-main .common-main .tb-main-des .p-dec .pink {
+              background-color: #f19ec2; }
+            .container .container-c .tb-main .common-main .tb-main-des .p-dec .orange {
+              background-color: #f19149; }
+            .container .container-c .tb-main .common-main .tb-main-des .p-dec .purple {
+              background-color: #8c97cb; }
+            .container .container-c .tb-main .common-main .tb-main-des .p-dec .green {
+              background-color: #7ecef4; }
+            .container .container-c .tb-main .common-main .tb-main-des .p-dec .lightyellow {
+              background-color: #cce198; }
+            .container .container-c .tb-main .common-main .tb-main-des .p-dec .lightgreen {
+              background-color: #8bcfcc; }
+      .container .container-c .tb-main .tb-main-2 {
+        position: absolute;
+        top: 361px; }
+        .container .container-c .tb-main .tb-main-2 .tb-main-des-left {
+          left: 0; }
+        .container .container-c .tb-main .tb-main-2 .mian-pic-right {
+          position: absolute;
+          right: 0; }
+      .container .container-c .tb-main .tb-main-3 {
+        position: absolute;
+        top: 637px; }
+      .container .container-c .tb-main .more {
+        position: absolute;
+        bottom: 0;
+        left: 402.5px;
+        height: 69px;
+        width: 395px;
+        border: 1px solid #C3C3C3; }
+        .container .container-c .tb-main .more .more-btn {
+          display: block;
+          height: 100%;
+          width: 100%;
+          color: #c7c7c7;
+          text-align: center;
+          line-height: 69px; }
+        .container .container-c .tb-main .more:hover a {
+          color: #818181;
+          background-color: rgba(195, 195, 195, 0.7); }
+    .container .container-c .about-us.tb-main {
+      position: relative;
+      height: 495px;
+      width: 100%;
+      /*
+      **图标部分
+      */
+      /*图片部分*/
+      /**
+      *文字描述部分
+      **/ }
+      .container .container-c .about-us.tb-main .common-title.title-us .blue-dott {
+        top: 163px;
+        z-index: 999; }
+      .container .container-c .about-us.tb-main .common-title.title-us .pname.title-white {
+        top: 163px;
+        color: #ffffff;
+        z-index: 999; }
+      .container .container-c .about-us.tb-main .about-pic {
+        position: absolute;
+        left: -300px;
+        padding-top: 100px;
+        width: 725px;
+        height: 297px; }
+        .container .container-c .about-us.tb-main .about-pic img {
+          width: 100%;
+          height: 100%; }
+      .container .container-c .about-us.tb-main .about-dec {
+        width: 775px;
+        height: 297px;
+        background-color: #fbfbfb;
+        position: absolute;
+        right: 0;
+        top: 100px;
+        /**
+        *理念
+        **/ }
+        .container .container-c .about-us.tb-main .about-dec .intro {
+          position: absolute;
+          top: 73px;
+          left: 175px;
+          height: 36px; }
+          .container .container-c .about-us.tb-main .about-dec .intro .box-int {
+            float: left;
+            height: 100%; }
+            .container .container-c .about-us.tb-main .about-dec .intro .box-int .c-int {
+              font-size: 18px;
+              font-weight: bold;
+              line-height: 18px;
+              height: 18px;
+              color: #373737; }
+            .container .container-c .about-us.tb-main .about-dec .intro .box-int .e-int {
+              font-size: 14px;
+              color: #494949;
+              line-height: 18px;
+              height: 18px; }
+          .container .container-c .about-us.tb-main .about-dec .intro .p-int {
+            float: left;
+            border-left: 1px solid #818181;
+            padding-left: 2em;
+            height: 100%;
+            font-size: 14px;
+            color: #494949;
+            line-height: 18px;
+            margin-left: 10px; }
+        .container .container-c .about-us.tb-main .about-dec .concept {
+          top: 199px; }
+          .container .container-c .about-us.tb-main .about-dec .concept .p-int {
+            margin-left: 19px; }
+    .container .container-c .path.tb-main {
+      width: 1200px;
+      height: 835px;
+      /**
+      *内容区域
+      **/ }
+      .container .container-c .path.tb-main .path-main {
+        height: 500px;
+        width: 100%;
+        margin-top: 105px; }
+        .container .container-c .path.tb-main .path-main .path-list {
+          position: relative;
+          width: 400px;
+          height: 250px;
+          background-color: #fbfbfb;
+          float: left;
+          /**
+          *遮罩层
+          **/ }
+          .container .container-c .path.tb-main .path-main .path-list .path-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            text-align: center;
+            line-height: 18px;
+            height: 18px;
+            margin-top: 116px; }
+          .container .container-c .path.tb-main .path-main .path-list .path-dec {
+            font-size: 16px;
+            color: #999999;
+            text-align: center;
+            line-height: 16px;
+            height: 16px;
+            margin-top: 10px; }
+          .container .container-c .path.tb-main .path-main .path-list img {
+            width: 100%;
+            height: 100%; }
+          .container .container-c .path.tb-main .path-main .path-list .bedeck {
+            display: none;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(195, 195, 195, 0.5); }
+            .container .container-c .path.tb-main .path-main .path-list .bedeck .bedeck-box {
+              display: block;
+              width: 378px;
+              height: 228px;
+              margin-left: 10px;
+              margin-top: 10px;
+              border: 1px solid #00daed; }
+          .container .container-c .path.tb-main .path-main .path-list:hover .bedeck {
+            display: block; }
+        .container .container-c .path.tb-main .path-main .title-dec:hover {
+          background-color: rgba(0, 0, 0, 0.2); }
+      .container .container-c .path.tb-main .jp-more {
+        bottom: 100px; }
+    .container .container-c .footer-banner {
+      width: 100%;
+      height: 338px;
+      background: url(../img/banner-footer.gif) no-repeat center; }
+      .container .container-c .footer-banner .dz {
+        float: left;
+        width: 50%;
+        height: 100%; }
+        .container .container-c .footer-banner .dz .dz-title {
+          display: block;
+          width: 146px;
+          height: 45px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #fff;
+          text-align: center;
+          line-height: 41px;
+          border: 2px solid #a5a5a9;
+          box-sizing: border-box;
+          margin-top: 102px;
+          margin-left: 230px; }
+        .container .container-c .footer-banner .dz .dz-title:hover {
+          /*
+          **  当给盒子添加一个box-sizing:border-box属性时,盒子会压缩自身内容,此时添加边框不会增加盒子大小,
+          当hover时取消盒子边框,此时盒子内容会往上移,所以这是需要将内容的行高重新设置成盒子的高度.
+          */
+          background-color: #00daed;
+          border: 0;
+          line-height: 45px; }
+        .container .container-c .footer-banner .dz .dz-large-dec {
+          font-size: 22px;
+          color: #bdbaba;
+          margin-top: 12px;
+          margin-left: 205px; }
+        .container .container-c .footer-banner .dz .dz-little-dec {
+          font-size: 12px;
+          color: #bdbaba;
+          margin-top: 6px;
+          margin-left: 228px; }
+        .container .container-c .footer-banner .dz .pcy {
+          display: block;
+          margin-top: 12px;
+          color: #bdbaba;
+          margin-left: 280px; }
+      .container .container-c .footer-banner .ld.dz {
+        float: left;
+        width: 50%;
+        height: 100%; }
+
+/**
+*页脚部分
+**/
+.footer {
+  width: 100%; }
+  .footer .footer-c {
+    position: relative;
+    width: 1200px;
+    height: 480px;
+    margin: 100px auto;
+    /**
+    *信息部分
+    **/
+    /**
+    *提交部分
+    **/ }
+    .footer .footer-c .footer-msg {
+      float: left;
+      width: 50%;
+      height: 380px; }
+      .footer .footer-c .footer-msg .common-title {
+        overflow: hidden; }
+        .footer .footer-c .footer-msg .common-title .blue-dott {
+          height: 13px;
+          width: 53px;
+          background-color: #04e4f8;
+          position: absolute;
+          left: -23.5px;
+          top: 0; }
+        .footer .footer-c .footer-msg .common-title .pname {
+          font-size: 24px;
+          font-weight: bold;
+          color: #3b3b3b;
+          line-height: 25px;
+          position: absolute;
+          left: 0;
+          top: 0; }
+        .footer .footer-c .footer-msg .common-title .ename {
+          font-size: 14px;
+          color: #c7c7c7;
+          line-height: 20px;
+          position: absolute;
+          left: 0;
+          top: 30px; }
+      .footer .footer-c .footer-msg .ml-msg {
+        color: #5d5d5d;
+        font-size: 18px;
+        height: 18px;
+        line-height: 18px;
+        margin-top: 120px; }
+      .footer .footer-c .footer-msg .site {
+        margin-top: 50px; }
+      .footer .footer-c .footer-msg p {
+        font-size: 14px;
+        color: #9fa2a2;
+        height: 14px;
+        line-height: 14px;
+        margin-top: 20px; }
+      .footer .footer-c .footer-msg .msg-icon {
+        margin-top: 20px; }
+        .footer .footer-c .footer-msg .msg-icon img {
+          height: 30px;
+          width: 100px; }
+    .footer .footer-c .footer-submit {
+      position: relative;
+      float: left;
+      width: 50%;
+      height: 380px;
+      /**
+      *提交按钮
+      **/ }
+      .footer .footer-c .footer-submit .submit-msg {
+        position: absolute;
+        right: 0;
+        margin-top: 140px;
+        height: 67px; }
+        .footer .footer-c .footer-submit .submit-msg .common-box {
+          float: left;
+          height: 67px;
+          width: 135px;
+          margin-left: 45px; }
+          .footer .footer-c .footer-submit .submit-msg .common-box p {
+            font-size: 14px;
+            color: #bfbdbd; }
+          .footer .footer-c .footer-submit .submit-msg .common-box input {
+            display: block;
+            margin-top: 40px;
+            width: 135px;
+            border: 0;
+            outline: none;
+            background-color: rgba(0, 0, 0, 0);
+            border-bottom: 1px solid #d4d3d3; }
+      .footer .footer-c .footer-submit .submit-main {
+        margin-top: 253px; }
+        .footer .footer-c .footer-submit .submit-main .box-site {
+          width: 493px; }
+          .footer .footer-c .footer-submit .submit-main .box-site .long-submit {
+            width: 493px; }
+      .footer .footer-c .footer-submit .btn-submit {
+        height: 24px;
+        width: 61px;
+        background-color: #474646;
+        text-align: center;
+        line-height: 24px;
+        color: #fff;
+        border: 0;
+        outline: none;
+        position: absolute;
+        left: 102px;
+        bottom: 8px; }
+
+/*# sourceMappingURL=style.css.map */

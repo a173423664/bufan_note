@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+    <script src="lib/vue-router-3.0.2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/account">Account</router-link>
+        <router-view></router-view>
+    </div>
+
+
+    <template id="tmpl">
+        <div>
+            <h1>这是Account组件</h1>
+            <!-- 嵌套的路由 -->
+            <router-link to="/account/login">登录</router-link>
+            <router-link to="/account/register">注册</router-link>
+
+            <router-view></router-view>
+
+        </div>
+    </template>
+    <script>
+
+        // 创建一个组件模板对象
+        var account = {
+            template:'#tmpl'
+        }
+
+        var login ={
+            template:'<h3>这是登录</h3>'
+        }
+        var register ={
+            template:'<h3>这是注册</h3>'
+        }
+
+        var router = new VueRouter({
+            routes:[
+            // 如果是根路径 展示account组件
+                {path:'/account',
+                component:account,
+                // 通过children属性实现子路由嵌套 
+                // 子路由的path属性前面不要带/ 否则永远以根路径请求
+                children:[
+                    // 注意:前面加/,匹配规则表示永远以根目录来匹配的  不会拼上account这个路由了 
+                    {path:'login',component:login},
+                    {path:'register',component:register},
+                ]
+            },
+                // {path:'/account/login',component:login},
+                // {path:'/account/register',component:register}
+            ]
+        })
+
+        var vm = new Vue({
+            el:"#app",
+            data:{},
+            methods:{},
+            router //记得挂载创建出来的路由实例
+        })
+    </script>
+</body>
+</html>

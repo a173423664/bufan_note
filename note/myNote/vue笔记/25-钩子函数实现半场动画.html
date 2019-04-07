@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+    <style>
+        .ball{
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="快到碗里来" @click="flag=!flag">
+        <!-- 2.动画的入场周期函数 -->
+        <transition
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter">
+            <!-- 1.使用transition元素把小球包裹起来 -->
+            <div class="ball" v-show="flag" >
+
+            </div>
+        </transition>
+        
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                flag:false
+            },
+            methods:{
+                //注意: 动画钩子的第一个参数:el表示:要执行动画的那个DOM元素是个原生的JS DOM对象
+                // 可以认为el是docuemnt.getElementById('')方法获取到的原生DOM对象
+                beforeEnter(el){
+                // 表示动画尚未开始前,此时动画尚未开始,可以在beforeEnter中.设置元素开始动画之前的起始样式
+                    el.style.transform = 'translate(0,0)'
+                },
+                enter(el,done ){
+                    // 这里的done其实就是afterEnter函数, 也就是说done是一个函数的引用,当小球运动完成就会立马调用done来隐藏小球
+                    // 这句话没有实际的作用 但不写 没有动画效果
+                    // 可以认为el.offsetWidth会强制刷新动画
+                    // 写offset类型的都可以实现 动画
+                el.offsetWidth
+                // 表示动画 开始之后的样式, 这里可以设置 小球动画完成之后的 结束状态
+                el.style.transform = 'translate(150px,450px)'
+                el.style.transition = 'all 1s ease'
+                done();
+                },
+                afterEnter(){
+                    // 动画完成之后 
+                    this.flag = !this.flag;
+                },
+
+            }
+        })
+
+    </script>
+
+    
+</body>
+</html>

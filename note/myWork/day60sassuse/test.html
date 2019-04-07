@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+
+</head>
+<body>
+<div class="swiper-box"> 
+    <div class="swiper-container" id="swiper1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="box">
+                    <div class="box-img"></div>
+                    <p class="box-title"></p>
+                </div>
+                <!-- <div class="box box-bottom">
+                   
+                </div> -->
+            </div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+            <div class="swiper-slide">Slide 10</div>
+        </div>
+
+    </div>
+</div>   
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/swiper-3.4.2.jquery.min.js"></script>
+    <script>
+            resetFontSize();
+            // 当浏览器大小发现变化时触发
+            window.onresize = function(){
+                resetFontSize();
+            }    
+            function resetFontSize(){
+                // 浏览器宽度 1/10
+                document.documentElement.style.fontSize = window.innerWidth/10 +'px';
+                console.log('html font-size重置为: '+window.innerWidth/10);
+            }
+    
+        var swiper1 = new Swiper('#swiper1', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 5,
+        
+    
+        paginationClickable: true,
+        spaceBetween: 30,
+        slidesOffsetBefore : 20
+       
+    });
+        
+    
+    </script>
+   
+
+
+    
+</body>                                  
+</html>

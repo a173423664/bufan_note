@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            background-color: orange;
+            height: 80px;
+        }
+        h1{
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        .container{
+            display: flex;
+            height: 600px;
+        }
+        .left{
+            flex: 2;
+            background-color: green;
+        }
+        .main{
+            background-color: lightpink;
+            flex: 8;
+        }
+    </style>
+    <!-- 使用命名规则实现经典布局 -->
+    <script src="lib/vue.js"></script>
+    <script src="lib/vue-router-3.0.2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-view></router-view>
+        <div class="container">
+            <!-- 什么是时候加: 是个变量
+            不加: 永远是一个值 字符串  -->
+            <!-- router-view 路由视图层 name 表示组件名称 -->
+            <router-view name="left"></router-view>
+            <router-view name="main"></router-view>
+        </div>
+
+    </div>
+    <script>
+        // 1.创建组件模板对象
+        var header = {
+            template:'<h1 class="header" >这是header头部区域</h1>'
+        }
+        var leftBox = {
+            template:'<h1 class="left">left侧边栏区域</h1>'
+        }
+        var mainBox ={
+            template:'<h1 class="main">mainBox主体内容区域</h1>'
+        }
+
+        // 2.创建路由对象
+        var router = new VueRouter({
+            routes: [
+                // {path:'/',component:header},
+                // {path:'/left',component:leftBox},
+                // {path:'/right',component:mainBox},
+                // 注意这么写是不行 因为一次只能匹配一个路由 大概匹配到'/'时 会把三个坑全部填充
+                {path:'/',components:{
+                    // 前面是组件的名称 需要加引号 
+                    // 组件名称 :对应的组件模板对象
+                    'default':header,
+                    'left':leftBox, 
+                    'main':mainBox
+                }},
+
+
+            ]
+        })
+        var vm = new Vue({
+            el:'#app',
+            methods:{},
+            data:{},
+            // 3.将router关联到实例对象中
+            router
+        })
+    </script>
+</body>
+</html>

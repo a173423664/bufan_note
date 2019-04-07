@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function aJax(url){
+            var promise = new promise(function(resolve,reject){
+                // 监听事件状态
+                xhr.readystatechange = function(){
+                    if(this.readState!=4){
+                        return;
+                    }
+                    if(this.status==200){
+                        resolve(this.response);
+                    }else{
+                        reject(new Error(this.statusText))
+                    }
+
+                }
+                // 建立一个XML对象 用于后台与服务器交换数据，可扩展超文本传输请求
+
+                var xhr = new XMLHttpRequest();
+                // 传输方法
+                xhr.open('get',url);
+                xhr.responseType = 'json';
+                xhr.setRequestHeader = ('Accept','application/json');
+                xhr.send();
+            })
+            return promise;
+        };
+
+        aJax().then(function(json){
+            console.log('context'+json);
+        }).catch(function(error){
+            console.log('出错了'+error);
+        })
+    </script>
+    
+</body>
+</html>

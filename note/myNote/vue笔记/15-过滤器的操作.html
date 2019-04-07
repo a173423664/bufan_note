@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app2">
+        <h3> {{dt | dateFormat(dateStr,pattern)}} </h3>
+    </div> 
+
+    <script src="lib/vue.js"></script>
+    <script>
+        // 注意:全局的不管是组件 过滤器还是路由 都要写在创建的实例对象之前 否则会显示
+        //[Vue warn]: Failed to resolve filter: dateFormat  没有被解析
+        
+        Vue.filter('dateFormat',function(dateStr,pattern){
+
+            var dt = new Date(dateStr);
+            var y = dt.getFullYear();
+            var m = dt.getMonth()+1;
+            var d = dt.getDate();
+            
+           // 如果不传形参则默认  还可以使用形参默认值  设置它的默认值
+            if(pattern && pattern.toLowerCase()==='yyy-mm-dd'){
+                return `${y}-${m}-${d}`
+            }else{
+                var hh = dt.getHours();
+                var mm = dt.getMinutes();
+                var ss = dt.getSeconds(); 
+            return `${y}-${m}-${d}:${hh}:${mm}:${ss}`
+            }
+
+        })
+
+        var vm = new Vue({
+            el:'#app2',
+            data:{
+                dateStr:'',
+                pattern:'',
+                dt: new Date() 
+            },
+            // filters:{
+            //     // 定义私有过滤器 过滤器有两个条件 过滤器名称和处理函数
+            //     // 过滤器调用的时候,采用的是就近原则,如果私有过滤器和全局过滤器名称一致了,这时候以私有过滤器为主,
+            //     // 优先调用私有过滤器
+                
+            //     // 如果调用的时候不传第二个参数,pattern为undefined,此时调用就会报错
+
+            //     // 优化字符串拼接 在个位的时候怎么给字符串前填充一个0
+            //     // .padStart('字符串的长度',要添加的字符串)
+            // dateFormat:function(dateStr,pattern){
+            // var dt = new Date(dateStr);
+            // var y = dt.getFullYear();
+            // var m = (dt.getMonth()+1).toString().padStart(2,'0');
+            // var d = dt.getDate().toString().padStart(2,'0');;
+            
+            // // 如果不传形参则默认  还可以使用形参默认值  设置它的默认值
+            // //    方法一:可以使用 && 如果能转为true再进行后面的运算
+            // // 如果有pattern并且格式为YYY-mm-dd  这样就可以忽略参数 
+            // // 方法二: 可以使用ES6新方法  参数默认值
+            // if(pattern && pattern.toLowerCase()==='yyyy-mm-dd'){
+            //     return `${y}-${m}-${d}`
+            // }else{
+            //     var hh = dt.getHours().toString().padStart(2,'0');;
+            //     var mm = dt.getMinutes().toString().padStart(2,'0');;
+            //     var ss = dt.getSeconds().toString().padStart(2,'0');; 
+            // return `${y}-${m}-${d}:${hh}:${mm}:${ss}`
+            // }
+ 
+            //     }
+            // }
+        })
+        // 全局的过滤器,进行时间的格式化
+        // format格式化
+        // 假如需要传入完整的时间模式pattern
+
+
+        
+    </script>
+</body>
+</html>

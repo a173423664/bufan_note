@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+			color: orange;
+		}
+		.font-strong{
+			font-weight: bolder;
+		}
+		.big{
+			font-size: 30px;
+		}
+		.font-em{
+			font-style: italic;
+		}
+		.bg-blue{
+			background-color: lightblue;
+		}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>不凡学院</p>
+        <!-- 对象语法 -->
+        <p v-bind:class="{active:isActive,'font-strong':isStrong} ">不凡学院</p>
+        <p v-bind:class="clazz">不凡学院</p>
+        <!-- 数组语法  vue的class设置 原生可以和绑定的混用-->   
+        <p v-bind:class="[bigclass,emclass,clazz,] ">不凡学院</p>
+
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                //可以使用 fasle和true控制dom元素的属性样式
+                isActive: false,
+                isStrong: true,
+                clazz:{
+                    active:true,
+                    'font-strong':true
+                },
+                bigclass: 'big',
+                emclass:'font-em'
+            }
+        })
+
+    </script>
+    
+</body>
+</html>

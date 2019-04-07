@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+   
+</head>
+<body>
+    <!-- 列表渲染最好加上key 确保唯一性 -->
+
+    <div id="app">
+        <ul>
+            <li v-for="user in users" :key="user.name">
+                {{user.name}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+			el: '#app',
+			data: {
+				users:[
+					{
+						name: '张三',
+						age: 20
+					},
+					{
+						name: '李四',
+						age: 21
+					},
+					{
+						name: '王五',
+						age: 23
+					}
+				]
+			}
+		})
+    </script>
+</body>
+</html>

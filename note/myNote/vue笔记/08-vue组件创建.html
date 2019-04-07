@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <mycom3></mycom3>
+    </div>
+
+    <div id="app2">
+           
+        <login></login>
+    </div>
+
+      <!-- 在被控制的#app外面,使用template元素,定义组件的HTML模板结构 -->
+    <template id="tmpl">
+        <div>
+           <h1>这是用过template元素,在外部定义的组价结构,这个方式,有代码的只能提示和高亮</h1>
+           <h4>好用,不错!!!</h4> 
+        </div>
+    </template>
+
+    <!-- 这是私有组件 -->
+    <template id="tmp2">
+            <h1>这是私有组件login组件</h1>
+    </template>
+
+
+    <script src="lib/vue.js"></script>
+    <script>
+        // 创建一个全局组件:
+        // 第一个参数:组价的名称,
+        // 第二参数: 创建出来的模板对象里面包含模板要展示的内容
+        Vue.component('mycom3', {
+            template:'#tmpl' 
+        })
+        
+        // 创建vue实例,得到viewModel(视图层模型)
+        var vm = new Vue({
+            el:'#app',
+            data:{},
+            methods: {     
+            }
+        })
+
+        var vm2 = new Vue({
+          el:"#app2",
+          data:{},
+          components:{
+              //定义实例内部的私有组件
+            //   注意定义实例内部的私有组件时,需要在结尾加s
+              login:{
+                //   注意:一定记得id选择器的符号#要加上
+                  template:"#tmp2"
+              }
+          }  
+            
+        })
+    </script>
+</body>
+</html>

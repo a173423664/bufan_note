@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>  
+            <!-- key 代表他的值 -->
+            <li v-for="(w, index )  in words" >
+               {{index}}==>  {{w}}
+            </li>
+        </ul>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                words:['a','b','c']
+            },
+            created() {
+                // data对象已经能获取对象了
+              
+                setTimeout(()=>{
+                      // 注意: 通过下标修改值,vue不能检测  非变异方法
+                    // this.words[0] = '1';
+                    // 方法一:可以通过splice方法解决
+                    // this.words.splice(0,1,'1');
+                    // 方法二: vue里有内置的强制响应的方法
+                    //  第一个参数target代表目标数组 key代表要被替换的下标 value代表被替换的值
+                    // 注意也可以是添加
+                    // vue的内置方法都是$xxx起头
+                    this.$set(this.words, 3, 'D')
+
+                },2000)
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  
+</head>
+<body>
+    <div id="app">
+        <!-- 对象表示法  v-bind表示这个元素的样式与vue的属性样式相关-->
+        <p v-bind:style="{color:activeColor,fontSize:fontSize+'px'} ">不凡学院</p>
+        <!-- 对象的另一个种形式  如果属性以对象的形式写在vue  注意:此时属性名正常书写-->
+        <p v-bind:style="objStyle">不凡学院你好</p>
+        <!-- 以数组的形式 -->
+        <!-- 1.1可以使用属性 -->
+        <p v-bind:style="[{color:activeColor},{fontSize:fontSize+'px'}]">不凡学院</p>
+        <p v-bind:style="[{color:'yellow'},{fontSize:'30px'}]">不凡学院</p>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        // 实例对象
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                activeColor:'red',
+                fontSize:30,
+                objStyle:{
+                    color:'yellow',
+                    fontSize:'30px'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

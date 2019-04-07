@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#cvs1{
+			display: block;
+			border: 1px solid red;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	
+	<canvas id="cvs1" width="500" height="500">
+		对不起,您的浏览器不支持!
+	</canvas>
+	<button class="btn-stop">停止小球</button>
+	<button class="btn-play">开启小球</button>
+	<script src="lib/Ballss.js"></script>
+	<script>
+		// var btnStop = document.querySelector('.btn-stop');
+		// var btnPlay = document.querySelector('.btn-play');
+		// 1. 获取标签
+		var cvs = document.querySelector('#cvs1');
+		// 2.获取上下文对象
+		var ctx = cvs.getContext("2d");
+        // 获取所有小球的 对象
+        
+        // 3.获取全部的小球
+        var ballList = [];
+        var ball1 = new Ball(cvs,50,50);
+        for(var i = 0; i < 20; i++){
+            ballList.push(new Ball(cvs,50,50))
+        }
+        
+        // 在外围开启一个定时器 清除画布
+        setInterval(function(){
+            // 先清除整个画布  
+            ctx.clearRect(0,0,cvs.width,cvs.height);
+            // 让每个小球动一次
+            for(var i = 0; i < ballList.length; i++){
+                ballList[i].play();
+            }
+        },17)
+        
+        // 自动生成颜色 
+        // function ballColor(){
+        //      function rd(){
+        //         return Math.floor(Math.random()*266);
+        //         // 函数内部会自动调用这个函数
+        //     }
+        //     var rs = 'rgb('+rd()+','+rd()+','+rd()+')';
+        //     return rs;
+        // }
+
+        // 自动生成生成半径
+        // function rdR(){
+        //     return Math.floor(Math.random()*40)+20;
+        // }
+	</script>
+</body>
+</html>

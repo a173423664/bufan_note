@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/swiper-3.4.2.min.css">
+    <style>
+         body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-box{
+        width: 1200px;
+        height: 560px;
+        background-color: aqua;
+        margin: 100px auto;
+        overflow: hidden;
+        position: relative;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 460px;
+        /* margin: 0; */
+        padding: 0;
+        /* margin: 20px auto; */
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .swiper-slide .box{
+        width: 100%;
+        height: 100%;
+        background-color: antiquewhite;
+    }
+    /* 文章标题 */
+    .swiper-slide .box .swiper-title{
+        text-align: center;
+        position: absolute;
+        bottom: 10px;
+        background-color: rgba(0, 0, 0, .2);
+        height: 36px;
+        width: 100%;
+        color: #fff;
+        line-height: 36px;
+    }
+    img{
+        height: 100%;
+        width: 100%;
+    }
+    .swiper-pagination{
+        text-align: center;
+        width: 1200px;
+    }
+    /* 分页器按钮 */
+    .swiper-pagination .swiper-pagination-bullet{
+            margin-top: 20px;
+            margin-left: 15px;
+    }
+  
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>220202</p>
+    </div>
+    <!-- 轮播盒子 -->
+<div class="swiper-box">
+     <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="img/m1.jpg" alt="">
+                    <div class="swiper-title">文章标题</div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="img/m2.jpg" alt="">
+                    <div class="swiper-title">文章标题</div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="img/m3.jpg" alt="">
+                    <div class="swiper-title">文章标题</div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="img/m4.jpg" alt="">
+                    <div class="swiper-title">文章标题</div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">
+                    <img src="img/m5.jpg" alt="">
+                    <!-- 添加一行文章标题 -->
+                    <div class="swiper-title">文章标题</div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        
+        
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+  
+</div>
+    <script src="lib/jquery-3.3.1.min.js"></script>
+    <script src="lib/swiper-3.4.2.jquery.min.js"></script>
+    <script>
+        
+        
+
+         var swiper = new Swiper('.swiper-container', {
+
+        // 分液器
+        pagination: '.swiper-pagination',
+        // 点击后切换swiper
+        paginationClickable: true,
+        paginationHide :true,
+        // 循环播放
+        autoplay : 5000,
+        slidesPerView : 1,//'auto'
+        // 多少图片为一组
+        // slidesPerGroup : 1,
+        spaceBetween:40,
+        loop : true,
+        spaceBetween: 100,
+        // slidesPerColumn : 2,
+        // 左右点击按钮
+        prevButton:'.swiper-button-prev',
+        nextButton:'.swiper-button-next',
+        
+    });
+    </script>
+    
+</body>
+</html>

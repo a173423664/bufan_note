@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="lib/vue.js"></script>
+    <script src="lib/vue-router-3.0.2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/login">登录</router-link>
+        <router-link to="/register">注册</router-link>
+
+        <router-view></router-view>
+    </div>
+    <script>
+        // 路由的基本使用
+        // 1.导入包
+        // 2.创建组件模板对象
+        // 3.创建一个路由对象
+        // 4.路由对象中,创建路由规则注意接收一个数组类型 路由规则中,有两个重要的参数,path路由匹配路径 component匹配的组件
+        // 注意:第二个参数component接受的是一个组件模板对象,而不是组件名称 不加引号
+        // 5.路由对象中还可以由linkActiveClass
+        // 6.路由要在页面中展示,还需要一个容器.router-view
+        // 7.如果想在一开始展示默认登录页面 需要给根路径重新定向
+        // 8.router-view可以设置name属性 为组件的名称 一般在路由嵌套时 使用
+        var login = {
+            template:'<h3>这是登录子组件,这个组件是奔波儿灞开发的</h3>'
+        }
+        var register = {
+            template:'<h3>这是登录子组件,这个组件是霸波尔奔开发的</h3>'
+        }
+
+        var router = new VueRouter({ 
+            routes: [
+                {path:'/',redirect:'/login'},
+                {path:'/login',component:login},
+                {path:'/register',component:register}
+            ],
+            // 自定义属性名
+            linkActiveClass:'myactive'  //和激活相关的类
+            
+        }) 
+        
+        var vm = new Vue({
+        el:"#app",
+        data:{},
+        methods:{},
+        router    
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+<!-- 什么是组件:组件的出现,就是为了拆分Vue实例的代码量的,能够让我们以不同的组件,来划分不同的功能模块, -->
+<!-- 将来我们需要什么样的功能,就可以去调用对应的组件即可 -->
+
+<!-- 组件化和模块化的区别?
+模块化:是从代码逻辑的角度化分的(纯代码) 方便后台代码分层开发 保证每个功能模块的职能单一; 
+组件化:是从UI界面的角度进行划分的  方便UI组件的重复利用 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 如果要使用组件,直接,把组件的名称以HTML的形式,引入到页面中,即可 -->
+        <!-- 注意:注册组件的时候可以使用驼峰命名法, 引入到页面的时需要使用小写加上-  -->
+        <!-- 如果组件的名称没有使用驼峰命名法,这时引入时,只需要跟模板对象一样,不需要使用'-' -->
+        <my-com1></my-com1>
+    </div>
+    
+    <script src="lib/vue.js"></script>
+    <script>
+        // 1.1使用vue.extend,来创建全局的vue组件 (得到一个模板对象)
+       var com1 = {
+            template: '<h3>这是使用vue.extend创建的组件</h3>' //通过template属性,指定了组件要展示的HTML结构(组件要展示的具体内容)
+        }
+        
+       // 1.2 使用Vue.component('组件的名称,创建出来的组件模板对象) 
+    //    拿到了模板对象,把模板对象注册成有名称的模板对象
+
+    // 如果使用vue.component定义全局的组件,组件的名称使用驼峰命名法,则在引用组价的时候,需要把大写的驼峰改写成小写的字母.
+        // 如果不使用驼峰,则直接拿组件的名称来用
+        Vue.component('myCom1', com1)
+
+        
+
+    // 2.1vue.component注册 第一个参数：组件的名称，将来在引用组件的时候，就是一个标签的形式来引入它的
+        // 第二个参数:vue.extend 创建的组价的内容,其中,template就是组件将来要展示的内容
+        // Vue.component('myCom1', Vue.extend({
+        //     template:'<h3>这是使用vue.extend创建的组件</h3>'
+        // }) )
+
+
+        var vm = new Vue({
+            el:"#app",
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>

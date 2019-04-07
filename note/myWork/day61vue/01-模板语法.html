@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <p>{{title}}</p>
+    </div>
+
+    <div id="app-2">
+        <!-- 这里注意v- 表示vue的指令表示提供特殊特性 
+        bind的意思的是将这个元素节点title特性和vue实例的message属性保持一致 -->
+        <span v-bind:title="message">
+            <!-- 鼠标悬停几秒查看重要信息 -->
+        </span>
+    </div>
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            // 入口元素的id或者class名
+            el:'#app',
+            data:{
+                message:'今天天气不错',
+                title:'不凡学院'  
+
+            }
+        })
+
+        var vm1 = new Vue({
+            el:'#app-2',
+            data:{
+                // toLocalString 数组转化成当个的字符串
+                message:'页面加载于'+ new Date().toLocaleString()
+
+            }
+        })
+    
+    </script>
+</body>
+</html>
