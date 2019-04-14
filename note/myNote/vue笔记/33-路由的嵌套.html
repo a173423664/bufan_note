@@ -18,12 +18,11 @@
     <template id="tmpl">
         <div>
             <h1>这是Account组件</h1>
-            <!-- 嵌套的路由 -->
-            <router-link to="/account/login">登录</router-link>
-            <router-link to="/account/register">注册</router-link>
-
-            <router-view></router-view>
-
+            <router-link to="/account/login">login</router-link>
+            <router-link to="/account/register">register </router-link>
+            
+            <h3>{{$route.params.id=='login'?'这是登录':'这是注册'}}</h3>
+            <!-- <router-view></router-view> -->
         </div>
     </template>
     <script>
@@ -33,36 +32,32 @@
             template:'#tmpl'
         }
 
-        var login ={
-            template:'<h3>这是登录</h3>'
-        }
-        var register ={
-            template:'<h3>这是注册</h3>'
-        }
 
         var router = new VueRouter({
             routes:[
-            // 如果是根路径 展示account组件
-                {path:'/account',
+            // 如果是根路径    展示account组件
+                {path:'/account',component:account},
+                {path:'/account/:id',
                 component:account,
                 // 通过children属性实现子路由嵌套 
                 // 子路由的path属性前面不要带/ 否则永远以根路径请求
-                children:[
-                    // 注意:前面加/,匹配规则表示永远以根目录来匹配的  不会拼上account这个路由了 
-                    {path:'login',component:login},
-                    {path:'register',component:register},
-                ]
-            },
+
+            }
+            ],
+            // components:{
+            //     login,register
+            // }
+                // 如果写在外面,它只会展示login当前的内容,而不会展示父组件中的内容
                 // {path:'/account/login',component:login},
                 // {path:'/account/register',component:register}
-            ]
         })
 
         var vm = new Vue({
             el:"#app",
             data:{},
             methods:{},
-            router //记得挂载创建出来的路由实例
+            //挂载创建出来的路由实例
+            router 
         })
     </script>
 </body>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        /* 
+        ** 注意: exact-active与active的区别 
+            exact是当前真正匹配的那个路由 active是匹配到exact路由经过的那个路由 
+            比如说 要匹配北京新闻详情里的路由,必须要经过北京bj 这个路由
+         */
+         /* 经过路由的样式颜色 */
+    .router-link-active{
+      color: orange;
+      font-size: 20px;
+    }  
+    /* 正激活路由的样式的颜色 */
+    .router-link-exact-active{
+      color: red;
+    }
+    </style>
+    <script src="lib/vue.js"></script>
+    <script src="lib/vue-router-3.0.2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>hello!!</h1>
+        <button @click="goAbout('about')">跳转到关于页面</button>
+        <button @click="go('news_detail','zz','003')">跳转到申奥成功页面</button>
+        <button @click="refresh('news_detail','zz','003')">在当前页面刷新跳转申奥成功页面</button>
+    <p>
+        <router-link to="/home">首页</router-link>
+        <router-link to="/news/zz">郑州新闻</router-link>
+        <router-link to="/news/bj">北京新闻</router-link>
+        <router-link to="/about">关于不凡学院</router-link>
+        <router-view></router-view>
+    </p>
+    </div>
+    
+    <!-- 注意一个组件模板只能有一个根元素
+    嵌套路由需要一个设置一个view,来放置 -->
+    
+    <template id="tmpl">
+        <div>
+         <!-- 一个组件怎么控制它里面标签的显示于隐藏 -->
+            <h1>当前城市为: {{$route.params.id }}</h1>
+            <!-- 注意这里获取为对象属性 并且值为字符串格式 需要加上双引号 -->
+            
+            <ul v-show="$route.params.id=='zz'" class="list">
+                 <li>
+                     <router-link to="/news/zz/detail/001">郑州不凡学院开课啦</router-link>
+                 </li>
+                 <li>
+                        <router-link to="/news/zz/detail/002">郑州今天有雨吗</router-link>
+                </li>
+                    <li>
+                     <router-link to="/news/zz/detail/003">郑州今天会不会有太阳</router-link>
+                 </li>
+            </ul>
+            <ul v-show="$route.params.id=='bj'" class="list">
+                    <li>
+                        <router-link to="/news/bj/detail/001">北京天安门</router-link>
+                    </li>
+                    <li>
+                           <router-link to="/news/bj/detail/002">北京烤鸭</router-link>
+                   </li>
+                       <li>
+                        <!-- 当要链接到一个命名路由上,可以给to:属性传一个对象 -->
+                        <!-- 动态路由  没有被写死 动态路由可以在js中修改 -->
+                        <router-link :to="{name: 'newsDetail', params:{id:'bj',newsId:'003'}}">北京申奥成功了</router-link>
+                    </li>
+            </ul>
+            <router-view></router-view>
+        </div>
+    </template>
+
+    <template id="tmpl2">
+        <div>
+            <h3>这是新闻详情页</h3>
+            <p>{{$route.params}}</p>
+        </div>
+    </template>
+
+
+    <script>
+        //    Vue.use(VueRouter);
+        // 需要两个组件
+        const home = {
+            template:'<p>首页</p>'
+        }
+        const news = {
+            template :"#tmpl"
+        }
+        const newsDetail = {
+            template: "#tmpl2"
+        }
+        const about = {
+            template:'<p>关于我们</p>'
+        }
+        // 创建路由实例对象
+        const router = new VueRouter({
+            routes:[
+                {path:'/home' , component:home },
+                {path:'/news/:id' , 
+                component:news ,
+                children:[
+                    {path:'detail/:newsId',
+                    name:'newsDetail',
+                    component: newsDetail}
+                ]
+            },
+            {path:'/about',
+             name:'about',
+             component: about }
+             ,
+            {path:'*',  //针对非法处理的访问  除了上述这些配置好的路由.
+            redirect:'/home'}
+        ]
+    })
+
+        var vm = new Vue({
+            el:'#app',
+            data:{},
+            router,
+            methods:{
+                // switch语法
+                // 用于基于不同的条件执行不同的语句
+                // 工作原理：首先设置表达式 n（通常是一个变量）。随后表达式的值会与结构中的每个 case 的值做比较。如果存在匹配，则与该 
+                // case 关联的代码块会被执行。请使用 break 来阻止代码自动地向下一个 case 运行。
+                // 点击跳转的时候传了三个参数  一个表达式n(通常是一个变量) 
+                goAbout(about){
+                    
+                    // this.$router.push('/about')
+                    // 第三种形式 也是对象形式,路由的命名
+                    // 也就是通过路由的name属性跳转
+                    this.$router.push({name:'about'});
+                }
+                ,
+                go(goal,cityId,newsId){
+                    // switch(goal){
+                        // case 'about':
+                        // // 第一种形式 字符串
+                        // this.$router.push('/about')
+                        // // 第二种形式 (对象)
+                        // // this.$router.push({path:'/about'})
+                        // // 第三种情况  命名的路由
+                        // // 也是传入一个对象, 如果一个路由有name属性 params 跳转到某个详情页
+                        // // this.$router.push({name:'about'});
+                        // break;
+                        // case 'news_detail':   
+                        this.$router.push({name:'newsDetail',params:{id: cityId,newsId}})
+                        // break
+
+                    //     default:
+                    //     break
+                    // }
+                },
+                refresh(goal,cityId,newsId){
+                    switch(goal){
+                        case 'about':
+                        // 第一种形式
+                        // this.$router.push('/about')
+                        // 第二种形式 (对象)
+                        // this.$router.push({path:'/about'})
+                        // 第三种情况 
+                        // 也是传入一个对象,如果这个对象有名字的话 ,name为模板的名字
+                        this.$router.replace({name:'about'});
+                        break;
+                        case 'news_detail':
+                        this.$router.replace({name:'newsDetail',params:{id: cityId,newsId}})
+                        break
+
+                        default:
+                        break
+                    }
+                },
+            }
+        })
+    </script>
+    
+</body>
+</html>

@@ -24,11 +24,12 @@
                 <!-- key能保证每次循环遍历后,每次遍历的数据的唯一性 -->
                 <!-- 让data中的数据与页面中的数据强制绑定 关联起来  -->
                 <!-- 在组件中,或者在一些特殊情况中使用v-for循环的时候,,如果v-for有问题,必须在使用v-for的同时，
-                    指定唯一字符串 --> <!-- 字符串/数字类型 -->
+                    指定唯一字符串 --> <!-- 字符串/number类型 -->
                 
             <!-- 注意事项一:v-for循环的时候,key属性只能使用number和string -->
             <!-- key在使用的时候,必须使用v-bind属性绑定的形式,指定key的值 -->
 
+          
         <p v-for="item in list " :key="item.id" >
             <input type="checkbox">
             {{item.id}}--{{item.name}}

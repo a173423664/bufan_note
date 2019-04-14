@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Template • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<!-- CSS overrides - remove if you don't need it -->
+		<link rel="stylesheet" href="css/app.css">
+		<script src="lib/vue/dist/vue.js"></script>
+		
+	</head>
+	<body>
+		<div id="app">
+		<section class="todoapp">
+			<header class="header">
+				<h1>{{title}} </h1>
+				<input @keyup.enter ="add" v-model="newTodo" class="new-todo" placeholder="你有什么需要的吗?" autofocus>
+			</header>
+			<!-- This section should be hidden by default and shown when there are todos -->
+			<section class="main">
+				<input id="toggle-all" @click="handleToggleAll" class="toggle-all" type="checkbox"  v-model="toggleAll">
+				<label for="toggle-all" >Mark all as complete</label>
+				<ul class="todo-list">
+					<!-- 思路: -->
+					<!-- 第一步进行遍历,获取父组件中的数据  让了让遍历出来的数据具有唯一性,可以使用:key属性>
+					 第二步业务逻辑:点击小按钮 使label内的内容删除 
+					从上面代码可以当class属性等于completed时,文本处于删除状态,我们在数据中模拟,completed属性默认为true
+					:class=`{completed:todo.completed}`意思就是class属性等于completed时为true,todo.completed时为
+					2.1给多选框双向绑定布尔类型的值,当点击变成的选中状态时,布尔值变成false-->
+					<!-- 3.实现在文本框中输文本,按下回车键后,添加到下列框中 -->
+					<!-- 4.获取没有完成的任务的长度,在页面上显示
+					5. 双击label框,获取焦点框 需要将它的默认样式删除,v-show当id等于当前传入的的id时则显示下面文文本,否则不显示
+					自动获取焦点框
+
+					6. 编辑栏编辑完后,按下回车键,修改值 这时需要传入一个event对象-->
+
+					<!-- 7.当全选的时候,箭头处于激活状态 只要有一次时间没完成 箭头处于不显示状态 
+					思路: 需要用到监听器watch属性, 
+					用来监听没有完成任务的长度,如果全都完成了则为true,-->
+
+					<!-- 8.给按钮绑定一个删除事件 -->
+
+					<!-- 9 全部选中事件  -->
+					<li  :class="{completed:todo.completed}" v-for="todo in todosC" ::key="todo.id">
+						<div v-show="todo.id != editOnce" class="view">
+							<input class="toggle" type="checkbox" v-model="todo.completed" >
+							<label @dblclick="goEdit(todo.id,$event)" >{{todo.text}} </label>
+							<button @click="del(todo.id)" class="destroy"></button>
+						</div>
+						<!-- 这个是默认隐藏的文本框内容 当双击的时候出现 -->
+						<input  v-show="todo.id == editOnce" class="edit" v-model="todo.text">
+					</li>
+				</ul>
+			</section>
+			<!-- This footer should hidden by default and shown when there are todos -->
+			<footer class="footer">
+				<!-- This should be `0 items left` by default -->
+				<span class="todo-count"><strong>{{itemLeft}} </strong> item left</span>
+				<!-- Remove this if you don't implement routing -->
+				<ul class="filters">
+					<li>
+						<a :class="{selected:type=='All'}" @click="doFilter('All')"  href="#/">All</a>
+					</li>
+					<li>
+						<a :class="{selected:type=='Active'}" @click="doFilter('Active')" href="#/active">Active</a>
+					</li>
+					<li>
+						<a :class="{selected:type=='Completed'}" @click="doFilter('Completed')" href="#/completed">Completed</a>
+					</li>
+				</ul>
+				<!-- Hidden if no completed items are left ↓ -->
+				<button @click="decl()" class="clear-completed">Clear completed</button>
+			</footer>
+		</section>
+		<footer class="info">
+			<p>Double-click to edit a todo</p>
+			<!-- Remove the below line ↓ -->
+			<p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+			<!-- Change this out with your name and url ↓ -->
+			<p>Created by <a href="http://todomvc.com">you</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+	</div>
+		<script src="js/app.js"></script>
+		
+		<script>
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					// 默认输入框的内容为空
+					keyValue1:[],
+					newTodo:'',
+					title:'不凡学院',
+					editOnce:'', 
+					toggleAll: false,
+					type:'All', //计算属性的展示结果 默认是全部
+					todos:[
+						{
+							id:guid(),
+							text:'吃饭',
+							completed:false,
+						},
+						{
+							id: guid(),
+							text:'睡觉',
+							completed:false,
+					
+						},
+						{
+							id: guid(),
+							text:'打游戏',
+							completed:false,
+						}
+					]
+				},
+				methods:{
+					/*
+					*** 1.添加对象属性
+						2.将生成的id,内容,和completed
+						3.要进行判断如果没有则直接返回
+						4.添加完成后,将输入框中的数据去除
+					*/ 
+					add(){
+						if(!this.newTodo){
+							return ;
+						}
+						this.todos.push(
+							{
+							id: guid(),
+							text: this.newTodo,
+							completed:false
+						})
+						this.newTodo=''
+					},
+						/*
+						**  1.将当前的id赋值给标识位,只要在这个标签id等于自己id的时候,才显示,其他情况上都默认隐藏
+							2.当点击这一行的时候,让它自己的id等于这行数据的id 从而控制它的显示与隐藏 
+							3.并且上传一个$event,利用这个参数可以找到与他相关节点的元素,从而擦操作 自动获取焦点事件为focus
+						*/
+						goEdit(id,e){
+							this.editOnce = id;
+							console.log(e);
+							/*
+							**	1.这里获取的是label标签,我们可以通过 我们需要获取的是编辑栏的焦点框
+								2.parentNode 属性可返回某节点的父节点
+								3.自动获取焦点
+								4.数据模型变化了,同步到视图层也也会变化,视图变化才会触发
+							*/
+							var inputEl = e.target.parentNode.nextElementSibling;	
+						this.$nextTick(()=>{
+							inputEl.focus();
+						})
+					},
+					/*
+					**1.删除当前项,寻找id相同的一项,如果找到了删除其对应的下标元素
+					*/
+					del(id){
+						console.log('传递id',id)
+						var index1 = -1;
+						for(var i = 0 ; i < this.todos.length; i++){
+								if(this.todos[i].id == id){
+								index = i;
+								break;
+						}
+					}
+					// 使用map方法删除对应元素,并返回一个被删除过后的对象
+					// 使用map遍历数组中的每一项,当某一项的id等于当前传进来的这个id的时候.就将它对应的这个下标删除,
+					// 然后返回被删除过后对象
+
+					this.todos.splice(index,1)
+					// this.todos.map((item,i)=>{
+					// 	if(item.id == id){
+					// 		this.todos.splice(i,1)
+					// 		return item;
+
+					// 	}
+					// })
+					
+				},
+					/*
+					***过滤出所有被选中的也就是已经完成的值,
+					filter过滤出已经完成了的,就是将以及完成的过滤掉,删除
+					根据接收返回值是true还是false,决定丢弃还是保存元素
+					过滤掉已经完成了的,也就是!item.completed
+					filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+
+					*/
+					decl(id){
+							
+							this.todos=this.todos.filter(item=>!item.completed)	
+
+						}
+						,
+					/*
+					**	2. 全选按钮 当点击全选择按钮的时候,首先他会触发先将所有元素全部勾选上,
+						3. 这跟项目的completed属性有关,默认为false  没被选上.
+						4. toggleAll也默认为flase没有全选 当点击后.调用这个方法,将toggleA取反 也就 全选上了,
+						5. 并且赋值给每个元素的completed属性
+					*/
+					handleToggleAll(){
+							// this.toggleAll 和实际的值相反,因为先触发了click事件,再修改了toggleAll的值
+							// console.log(this.toggleAll);
+							//map方法可以改变一个对象里的属性,用来修改对象中属性,它会遍历对象,并修改每一个对象的属性
+							// 然后返回新修改过后的值
+							// 变量对象是数组时
+							this.todos.map(item=>{
+								item.completed = !this.toggleAll;
+								return item;
+							})
+						},
+						// 展示修饰效果
+						doFilter(type){							
+							this.type = type;
+						},
+				},
+				computed: {
+					// 计算属性,不会直接修改data中的数据,是对data数据修饰后的一种结果,是依赖于data进行的,
+					// 会进行缓存,它依赖的数据对象不发生改变的时候,它的缓存也不会改变
+					//	computed里面的方法 可以当做属性来使用,而不是当成方法进行调用
+					itemLeft(){
+						// 过滤出completed属性为false的值(也就是说过滤出还没有被完成的任务) 然后返回一个新数组
+						// 返回已经完成的,也就是完成的数组的长度 只计算个数,然后统计出来
+						// 简写方法:
+						// var unCpts = this.todos.filter(item=>!item.completed)
+						// 原生写法
+						// true 的话是保存
+						return this.todos.filter(item=>!item.completed).length
+						
+					},
+					// 通过计算属性
+					// 使用switch语句,进行有限条件判断的时候使用
+					todosC(){
+						switch (this.type) {
+							case 'All':
+								return this.todos;
+								break;
+							case 'Active':
+								return this.todos.filter(item=>!item.completed);
+								break;
+							case 'Completed':
+								return this.todos.filter(item=>item.completed);
+								break;
+							default:
+								return this.todos;
+								break;
+						}
+						
+					}
+				},
+				watch: {
+					// 监听事件 监听没有完成的值 只有当修改后的值等于0的时候,每当给一个圈打上勾的时候.它的长度都会减小1
+					itemLeft(newValue,oldValue){
+						// 如果全是旧值 没有新值 则表示全部完成了
+						// 旧值:是修改前的值
+						// 新值是修改后的值(也就是说所以任务都已经完成的情况下,返回ture,也就是全选)
+						if(newValue==0){	
+							this.toggleAll = true;
+						}else{
+							this.toggleAll = false;
+						}
+
+					},
+					//只要todos发生了变化 就应该存一次
+					/*todos(nv,ov){
+						console.log(nv,ov);
+						// 这是如何存
+						// window.localStorage.setItem('vue-todos',this.todos);
+						// 如何取?  getItem('vue-todos') 需要注意 : 第一次的数据从哪来?
+					},*/
+					// 深度监听 用于监听对象内容变化 修改内容的变化都能
+					todos:{
+						handler:function(newVal){
+							// 更新localstroage的操作 放这里...
+							// console.log(nv);
+							// console.log(ov);
+								window.localStorage.setItem('keyValue1',JSON.stringify(newVal));
+						},
+						deep: true
+					}
+				},
+				created(){
+					
+					this.todos = JSON.parse( window.localStorage.getItem('keyValue1')||'[]');
+					console.log(this.todos);
+				}
+				
+				
+			})
+
+			// 模拟uuid的生成
+			function guid() {
+		        return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+		    }
+		    function S4() {
+		        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+		    }
+		</script>
+	</body>
+</html>

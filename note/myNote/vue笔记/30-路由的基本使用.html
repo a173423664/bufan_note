@@ -42,15 +42,14 @@
             <!-- tag改变展示的标签 -->
         <router-link to="/login" tag="span">登录</router-link>
         <router-link to="/register">注册</router-link>
-
-       
+               
         <transition mode="out-in" >
             <router-view></router-view>
         </transition>
     </div>
     <script>
 
-        //  创建一个组件模板对象
+        //  1.创建一个组件模板对象
             var login = {
              template:'<h1>登录组件</h1>'
          }
@@ -64,31 +63,33 @@
         // 2.创建一个路由对象,当导入vue-router包之后,在window全局对象中,就有了一个路由构造器
         // 叫做VueRouter
         // 在new路由对象的时候,可以为构造函数,传递一个配置对象
-         var routerObj = new VueRouter({
+         var router = new VueRouter({
             //  routes     //这个配置对象中的route表示[路由匹配规则]的意思 
-             routes:[
+             routes:[       
                 //  每个路由规则都是一个对象,这个规则对象,身上,有两个必须的属性
-                // 属性1 是path,表示监听,那个路由链接地址
-                // 属性2 是component,表示,如果 路由是前面匹配到的path,则展示 component属性对应的那个组件
-                // 注意:component的属性值,必须是一个组件的模板对象,不能是组件的引用名称;
+                // 属性1 是path,表示监听,拦截路由地址
+                // 属性2 是component,表示,如果 path如果拦截到对应的路由匹配地址,则展示对应当前路由地址的component组件
+                // 注意: component的属性值,必须是一个组件的模板对象,不能是组件的引用名称;
                 // {path:'/' ,component:login}, //默认展示根路径 这样不好 根路径展示login路径,用户体验差
+                
                 {path:'/',redirect:'/login'}, //重新定向 根目录下展示login目录
                 {path:'/login', component:login},
                 {path:'/register', component:register }
              ],
+
              linkActiveClass: 'myactive'   
-            //  高亮的两种方法:第一种通过默认的属性修改
+            // 高亮的两种方法:第一种通过默认的属性修改
             // 第二种:直接自定义标签名
 
          })
 
-       
         //  创建一个实例 得到Viewmodel
         var vm = new Vue({
             el:'#app',
             data:{},
             methods:{},
-            router:routerObj //通过router属性 将路由规则对象注册到vm实例上,用来监听URL地址变化,展示对应的组件 
+            router:router //通过router属性 将路由规则对象注册到vm实例上,用来监听URL地址变化,展示对应的组件 
+            //通过router属性,将创建的路由实例对象注册到vm实例对象上,用来监听URL地址变化,展示对应的组件
         })
 
     </script>

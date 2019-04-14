@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            *{
+                margin:0;
+                padding: 0;
+            }
+            ul{
+                list-style: none;
+            }
+            a{
+                text-decoration: none;
+            }
+            body.fixed{
+                height: 100%;
+                overflow: hidden;
+            }
+            .imgs{
+                width: 1800px;
+                margin: 100px auto;
+            }
+            .imgs .img-item{
+                float: left;
+                width: 300px;
+                height: 350px;
+                border: 1px solid gray;
+                margin: 20px;
+            }
+            .imgs .img-item img{
+                width: 100%;
+                height: 280px;
+            }
+            .img-mask{
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,.5);
+            }
+            .img-mask .cover-img{
+                display: block;
+                width: 800px;
+                height: 550px;
+                margin:  100px auto;
+                border: 20px solid #fff;
+            }
+        </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='img in imgs'>{{img}}</li>
+        </ul>
+        <hr>
+        <ul class="imgs">                 
+            <!-- // 使用v-bind将父组件的数据,绑定到子组件的属性上 -->
+            <my-img @do-del="doDel" @show-big-img="handleShowBig"  @change-title="doUpdate" v-for='img in imgs' :id='img.id' :url='img.url' :title="img.title"></my-img>
+        </ul>
+
+        <div v-show="showBig" @click="hideBigImg"  class="img-mask">
+                <!-- @click.stop 阻止冒泡 -->
+            <img @click.stop class="cover-img" :src="imgTemp" alt="">
+        </div>
+
+    </div>
+
+    <script src="lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                showBig:false,
+                imgTemp:'', //大图的临时url变量
+                imgs:[
+					{
+						id: guid(),
+						url:'img/m1.jpg',
+						title: '张三的作品',
+					},
+					{
+						id: guid(),
+						url:'img/m2.jpg',
+						title: '李四的作品',
+					},
+					{
+						id: guid(),
+						url:'img/m3.jpg',
+						title: '王五的作品',
+					},
+					{
+						id: guid(),
+						url:'img/m4.jpg',
+						title: '赵六的作品',
+					},
+					{
+						id: guid(),
+						url:'img/m5.jpg',
+						title: '陈七的作品',
+					},
+				]
+ 
+            },
+            methods:{   
+                // 父组件对应的删除事件 (拿到从子组件传递过来的id)
+                // 思路:遍历如果子组件传递过来的id等于遍历出来的这一个id
+                 //  把整个id对应的下标赋值给index 然后结束循环 
+                doDel(id){  
+                    var index = 0;
+                    for(var i = 0 ; i < this.imgs.length; i++){
+                        if(this.imgs[i].id == id){
+                             index =  i;
+                             break;
+                        }
+                    }
+                    this.imgs.splice(index,1);
+                },
+                doUpdate(id,newTitle){
+                    // map修改某一项的值
+                    this.imgs.filter(item=>{
+                        if(item.id == id){
+                            item.title = newTitle;
+                        }
+                        return item ;
+                    })
+                },
+                handleShowBig(img){
+                    this.showBig = true;
+                    // 这个属性用来保存从子组件传递过来的url值 就是对应的需要放大的那个url
+                    this.imgTemp = img;
+                },
+                hideBigImg(){
+                    this.showBig = false;
+                }
+            },
+            // 需求二  点击编辑按钮的时候 显示焦点框 
+            components:{
+                myImg:{
+                    props:{
+                        // 使用pros接收从父组件传递过来的数据
+                        id:String,
+                        url:String,
+                        title:String
+                    },
+                    data(){
+                        return{
+                            isEdit:false,
+						    myTitle: this.title
+                        }
+                    },
+                    template:`
+                    <li class="img-item">
+							<img :src="url" alt="">
+                            <p v-show="!isEdit">{{myTitle}}</p>
+                            <input @keyup.enter="doSave" @keyup.esc="cancelSave" v-show="isEdit" type="text" v-model="myTitle">
+							<div>
+								<button @click="del">删除</button>
+								<button @click="goEdit">编辑</button>
+								<button @click="showBigImg" >查看大图</button>
+							</div>
+					</li>
+                    `,
+                    // display block none 不会占据原来的空间
+                    // display设置为none时，所占空间消失
+                    methods: {
+                    //  子组件不能自己删除自己所以要让父元素来删除它,需要把对应的id传过去
+                        del(){
+                            this.$emit('do-del',this.id)
+                        },
+                        goEdit(){
+                            // 当点击编辑按钮的时候,编辑按钮显示,只需要控制一下开关
+                            this.isEdit = true;
+                            this.tempTitle = this.myTitle;
+                            // 此时需要保存一下文本框中的内容,esc还原时需要使用
+                        },
+                        doSave(){
+                            this.isEdit = false;
+                            // 保存修改后的值 并且需要通知父组件的img 
+                            // 需要传递两个参数,一个id 一个当前文奔
+                            this.$emit("change-title",this.id, this.myTitle);
+                            
+                        },
+                        showBigImg(){
+                            // 展示大图 传递需要传递得url
+                            this.$emit('show-big-img', this.url)
+                        },
+                        cancelSave(){
+                            // 按下esc键还远到之前的内容
+                            this.myTitle = this.tempTitle;
+                            this.tempTitle = '';
+                            this.isEdit = false;
+
+                        }
+                    },
+                }
+            }
+        })
+
+        function guid() {
+	        return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+	    }
+	    function S4() {
+	        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+	    }
+    </script>
+    
+</body>
+</html>

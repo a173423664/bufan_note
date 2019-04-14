@@ -15,7 +15,6 @@
         可以传递多个参数-->  
         <router-link to="/login?id=10&name=zs">登录</router-link>
         <router-link to="/register">注册</router-link>
-
         <router-view></router-view>
         
     </div>
@@ -42,6 +41,7 @@
         //  注意:不带r
         // 创建路由规则
             routes:[
+                    // 拦截匹配的路由地址
                 {path:'/', redirect:'/login'},
                 
                 {path:'/login',component:login },
